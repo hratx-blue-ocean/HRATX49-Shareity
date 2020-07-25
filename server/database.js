@@ -29,7 +29,6 @@ client.connect((err) => {
       throw new Error(err);
     }
   }
-
 });
 
 module.exports = client;
