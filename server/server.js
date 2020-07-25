@@ -17,9 +17,9 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'client', 'dist')))
 
 //Login Routes
-const { user, items } = require('./routes');
-app.use('/user', user);
-app.use('/items', items)
+const { users, items } = require('./routes');
+app.use('/users', users);
+app.use('/items', items);
 
 //User/Charity Routes
 // app.get('/test', async (req, res) => {

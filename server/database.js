@@ -1,10 +1,11 @@
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
+const CONFIG = require('./config')
 const { ObjectID } = require('mongodb');
-const url = 'mongodb+srv://dbUser:BU9YOGrDvruqyfTW@cluster0.tjhwd.mongodb.net';
-const dbName = 'sharity_db';
-const itemCollName = 'items';
-const userCollName = 'users';
+const url = CONFIG.url;
+const dbName = CONFIG.dbName;
+const itemCollName = CONFIG.itemCollName;
+const userCollName = CONFIG.userCollName;
 
 const client = new MongoClient(url, { useUnifiedTopology: true });
 
