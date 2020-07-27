@@ -66,7 +66,15 @@ typings/
 # Webpack
 bundle.js
 
+<<<<<<< HEAD
 /server/config.js
 
 # Config
 config.js
+=======
+<<<<<<< HEAD
+./server/config.js
+=======
+/server/config.js
+>>>>>>> 37a0f74998f74cb91a35b8016468a09fa8e0467d
+>>>>>>> 1cb1c5d5e2a3dc52cc3829c681084aea52569485

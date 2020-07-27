@@ -2,6 +2,10 @@ const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const db = require('../database');
 
+router.get('/', (req, res) => {
+  // make db queries and res.json the data
+  res.json({data:['dolphins', 'manatees', 'sea turles']})
+})
 const saltRounds = 12;
 
 router.post('/login', async (req, res) => {
