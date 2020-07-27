@@ -66,4 +66,4 @@ typings/
 # Webpack
 bundle.js
 
-./config.js
+./server/config.js
