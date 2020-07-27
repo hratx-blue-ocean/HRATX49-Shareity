@@ -66,4 +66,8 @@ typings/
 # Webpack
 bundle.js
 
+<<<<<<< HEAD
 ./server/config.js
+=======
+/server/config.js
+>>>>>>> 37a0f74998f74cb91a35b8016468a09fa8e0467d

@@ -21,10 +21,26 @@ client.connect((err) => {
 
   //queries go here
 
+  //user queries
+  client.createUser = async (userInfo, hash) => {
+    try {
+      let insertData = {
+        ...userInfo,
+        password: hash
+      };
+      let insertResults = await userCollection.insertOne(insertData);
+      return insertResults;
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
+  }
+
+  //item queries
+
   client.getData = async () => {
     try {
       let result = await itemCollection.find().toArray();
-      console.log(result);
       return result;
     } catch(err) {
       throw new Error(err);
