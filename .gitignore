@@ -67,3 +67,6 @@ typings/
 bundle.js
 
 /server/config.js
+
+# Config
+config.js
