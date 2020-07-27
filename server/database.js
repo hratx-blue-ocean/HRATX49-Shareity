@@ -50,7 +50,7 @@ client.connect((err) => {
 
   client.getItems = async (userName) => {
     try {
-      let result = await itemCollection.find({ name: userName }).toArray();
+      let result = await itemCollection.find({ donor: userName }).toArray();
       return result;
     } catch(err) {
       console.log(err);
