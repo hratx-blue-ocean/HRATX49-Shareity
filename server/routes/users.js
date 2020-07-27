@@ -32,7 +32,6 @@ router.post('/login', async (req, res) => {
   } catch (err) {
     console.log(err);
   }
-
   //return the correct information
   res.json(userInfo)
 });
