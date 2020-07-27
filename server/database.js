@@ -48,9 +48,17 @@ client.connect((err) => {
 
   //item queries
 
-  client.getItems = async (userName) => {
+  client.getItems = async (userName, userType) => {
     try {
-      let result = await itemCollection.find({ donor: userName }).toArray();
+      //set up query based on donor vs charity
+      let query = {};
+      if (userType === "donor") {
+        query.donor = userName;
+      } else {
+        query.claimedBy = userName;
+      }
+      //find items associated with user or charity
+      let result = await itemCollection.find( query ).toArray();
       return result;
     } catch(err) {
       console.log(err);

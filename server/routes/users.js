@@ -27,7 +27,7 @@ router.post('/login', async (req, res) => {
     }
     if(userInfo.user !== null) {
       //If the password was correct, log in (get items)
-      userInfo.items = await db.getItems(userInfo.user.name);
+      userInfo.items = await db.getItems(userInfo.user.name, userInfo.user.userType);
     }
   } catch (err) {
     console.log(err);
