@@ -35,4 +35,17 @@
 .charitySideNav {
     grid-area: b;
     background-color: pink;
+    justify-content: center;
+
+}
+
+.charitySideNav {
+
+    display: grid;
+    width: 95%;
+    height: 95%;
+    margin: auto;
+
+    border: 2px solid black;
+    border-radius: 15px;
 }

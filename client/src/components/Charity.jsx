@@ -23,16 +23,20 @@ const Charity = () => {
                 </div>
 
                 <div className={styles.charitySideNav}>
+                    {/* this is where the side nav buttons start */}
                     <div className={styles.charityButtonWrapper}>
-                        <div className={styles.homeButtonWrapper}>
-                            <button className={styles.homeButton}>HOME</button>
+                        <div className={styles.buttonWrapper}>
+                            <button className={styles.charityButton}>HOME</button>
                         </div>
-                        <div className={styles.statementButtonWrapper}>
-                            <button className={styles.statementButton}>STATEMENT</button>
+
+                        <div className={styles.buttonWrapper}>
+                            <button className={styles.charityButton}>STATEMENT</button>
                         </div>
-                        <div className={styles.updatePasswordButtonWrapper}>
-                            <button className={styles.updataPasswordButton}>UPDATE PASSWORD</button>
+
+                        <div className={styles.buttonWrapper}>
+                            <button className={styles.charityButton}>UPDATE PASSWORD</button>
                         </div>
+
                     </div>
                 </div>
             </div>
