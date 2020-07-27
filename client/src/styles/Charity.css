@@ -1,5 +1,3 @@
-
-
 .charityWrapper {
 
     display: grid;
@@ -17,21 +15,25 @@
 .charityLogo {
     grid-area: a;  
     background-color: aqua;
+    border: 2px solid red;
 }
 
 .charityHeader {
-
     grid-area: e;
     background-color: blue;
 }
+
 .charityListDonated {
     grid-area: c;
     background-color: orange;
 }
+
 .charityListItemsToBePickedUp {
     grid-area: d;
     background-color: red;
+    width: 200px;
 }
+
 .charitySideNav {
     grid-area: b;
     background-color: pink;

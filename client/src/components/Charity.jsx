@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-// import './Charity.css';
-
 const Charity = () => {
 
     return (
 
         <>
-            <h1>This is the start of the Charity page</h1>
-            <div className="charitWwrapper">
-            <div></div>
+            <div className="charityWrapper">
+                <div className="charityLogo">logo</div>
+                <div className="charitHeader">header</div>
+                <div className="charityListDonated">donated</div>
+                <div className="charityItemsToBePickedUp">picked up</div>
+                <div className="charitySideNav">side nav</div>
             </div>
         </>
     )
