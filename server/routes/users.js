@@ -34,6 +34,7 @@ router.post('/signup', async (req, res) => {
     //insert the user data into the user collection
     let user = await db.createUser(req.body, hash);
     userInfo.user = user.ops[0];
+    delete userInfo.user.password;
   } catch (err) {
     console.log(err);
   }

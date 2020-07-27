@@ -22,9 +22,13 @@ client.connect((err) => {
   //queries go here
 
   //user queries
-  client.createUser = async (userInfo) => {
+  client.createUser = async (userInfo, hash) => {
     try {
-      let insertResults = await userCollection.insertOne(userInfo);
+      let insertData = {
+        ...userInfo,
+        password: hash
+      };
+      let insertResults = await userCollection.insertOne(insertData);
       return insertResults;
     } catch (err) {
       console.log(err);
