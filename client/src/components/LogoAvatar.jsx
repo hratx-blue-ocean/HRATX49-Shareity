@@ -14,12 +14,10 @@ const LogoAvatar = () => {
                 <div> 
                     <h2>Charity/User name</h2>
                 </div>
+
             </div>
         </>
     )
 }
-
-
-
 
 export default LogoAvatar;
