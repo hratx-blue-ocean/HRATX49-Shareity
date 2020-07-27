@@ -7,24 +7,38 @@ module.exports = {
   filename: 'bundle.js',
   path: DIST_DIR
   },
-  module : {
-    rules : [
+module: {
+    rules: [
       {
-        test: /\.(js|mjs|jsx)$/,
-        enforce: 'pre',
-        loader: 'eslint-loader'
-      },
-      {
-        test : /\.js?/,
-        include : SRC_DIR,
-        loader : 'babel-loader'
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        include: SRC_DIR,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true,
+            },
+          },
+        ],
       },
       {
         test: /\.css$/,
-        include: SRC_DIR,
-        loader: 'css-loader'
-      }
-    ]
+        // exclude: /node_modules/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 1,
+              // sourceMap: true
+              // localIdentName: '[local]--[hash:base64:4]'
+            },
+          },
+        ],
+      },
+    ],
   },
   devServer: {
     contentBase: DIST_DIR,

@@ -15,7 +15,6 @@
 .charityLogo {
     grid-area: a;  
     background-color: aqua;
-    border: 2px solid red;
 }
 
 .charityHeader {
@@ -31,7 +30,6 @@
 .charityListItemsToBePickedUp {
     grid-area: d;
     background-color: red;
-    width: 200px;
 }
 
 .charitySideNav {

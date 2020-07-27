@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Charity from './Charity.jsx';
-import '../styles/App.css';
-import '../styles/Charity.css';
+import styles from '../styles/App.css';
+
 
 export default class App extends Component {
   constructor(props) {
@@ -10,6 +10,7 @@ export default class App extends Component {
 
     };
   }
+
   componentDidMount() {
   }
 
