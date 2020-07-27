@@ -5,6 +5,7 @@ const Charity = () => {
     return (
 
         <>
+            <div className={styles.charityContainer}>
             <div className={styles.charityWrapper}>
                 <div className={styles.charityLogo}>
                     logo
@@ -40,6 +41,8 @@ const Charity = () => {
                     </div>
                 </div>
             </div>
+            </div>
+           
         </>
     )
 }

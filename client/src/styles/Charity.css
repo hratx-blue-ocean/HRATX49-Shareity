@@ -1,3 +1,9 @@
+
+.charityContainer {
+
+    max-width: 1300px;
+}
+
 .charityWrapper {
 
     display: grid;
@@ -34,18 +40,50 @@
 
 .charitySideNav {
     grid-area: b;
-    background-color: pink;
+    /* background-color: pink; */
     justify-content: center;
 
 }
 
 .charitySideNav {
 
-    display: grid;
+    display: flex;
+    justify-content: center;
     width: 95%;
+    min-width: 250px;
     height: 95%;
     margin: auto;
 
     border: 2px solid black;
     border-radius: 15px;
 }
+
+.charityButtonWrapper {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+
+    margin-top: 15px;
+}
+
+.buttonWrapper {
+
+    display: flex;
+    align-items: center;
+    width: 95%;
+    height: 60px;
+}
+
+.charityButton {
+
+    width: 100%;
+
+    height: 45px;
+
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
