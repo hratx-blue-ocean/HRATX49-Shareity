@@ -4,12 +4,6 @@ body {
 
 .charityMainAppContainer {
 
-<<<<<<< HEAD
-=======
-.AppHeader {
-  background-color: #282c34;
-  min-height: 100vh;
->>>>>>> Implementing login fucnctionality, break to help
   display: flex;
   justify-content: center;
 

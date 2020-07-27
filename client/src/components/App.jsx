@@ -21,13 +21,9 @@ export default class App extends Component {
   render() {
     return (
       <>
-<<<<<<< HEAD
         <div className={styles.charityMainAppContainer}>
           <Charity />
         </div>
-=======
-        <h1 className={styles.AppHeader}>Welcome to Blue Ocean!</h1>
->>>>>>> Implementing login fucnctionality, break to help
       </>
     );
   }
