@@ -8,4 +8,12 @@ router.get('/', async (req, res) => {
   res.json(result);
 });
 
+// add new item
+router.post('/', async (req, res) => {
+  try {
+    await db.postItem(req.body)
+  }
+
+});
+
 module.exports = router;

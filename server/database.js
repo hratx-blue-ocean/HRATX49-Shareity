@@ -74,6 +74,13 @@ client.connect((err) => {
       throw new Error(err);
     }
   }
+
+  client.postItem = async () => {
+    
+  }
+
+
 });
+
 
 module.exports = client;
