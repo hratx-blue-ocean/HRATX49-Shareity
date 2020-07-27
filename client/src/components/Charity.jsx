@@ -6,10 +6,11 @@ const Charity = () => {
 
         <>
             <div className={styles.charityWrapper}>
-                <div className="charityLogo">
+                <div className={styles.charityLogo}>
                     logo
                 </div>
-                <div className={styles.charitHeader}>
+
+                <div className={styles.charityHeader}>
                     header
                 </div>
 
@@ -17,12 +18,22 @@ const Charity = () => {
                     items donated
                 </div>
 
-                <div className={styles.charityItemsToBePickedUp}>
+                <div className={styles.charityListItemsToBePickedUp}>
                     items to be picked up
                 </div>
 
                 <div className={styles.charitySideNav}>
-                    side nav
+                    <div className={styles.charityButtonWrapper}>
+                        <div className={styles.homeButtonWrapper}>
+                            <button className={styles.homeButton}>HOME</button>
+                        </div>
+                        <div className={styles.statementButtonWrapper}>
+                            <button className={styles.statementButton}>STATEMENT</button>
+                        </div>
+                        <div className={styles.updatePasswordButtonWrapper}>
+                            <button className={styles.updataPasswordButton}>UPDATE PASSWORD</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </>
