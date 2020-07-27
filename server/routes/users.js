@@ -12,14 +12,26 @@ router.post('/login', async (req, res) => {
   // make db queryies and res.json the data
   let userInfo = {
     user: null,
-    items: null
+    items: []
   }
-  //need to check login information against what is in the database
-    //get user from db where email = req.email
-  //If the email wasn't in the database, then the user doesn't exist
-  //Else, check the password hash against bcrypt
-    //If the password was correct, log in
-    //else the do not log the user in.
+  try {
+    //need to check login information against what is in the database
+    //get user from db where email = req.body.email
+    let user = await db.getUser(req.body.email);
+    if(user !== null) {
+      //If the email wasn't in the database, then the user doesn't exist
+      //If it does, check the password hash against bcrypt
+      let match = await bcrypt.compare(req.body.password, user.password);
+      delete user.password;
+      userInfo.user = match ? user : null;
+    }
+    if(userInfo.user !== null) {
+      //If the password was correct, log in (get items)
+      userInfo.items = await db.getItems(userInfo.user.name);
+    }
+  } catch (err) {
+    console.log(err);
+  }
 
   //return the correct information
   res.json(userInfo)

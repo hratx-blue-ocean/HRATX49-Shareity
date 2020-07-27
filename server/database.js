@@ -36,7 +36,27 @@ client.connect((err) => {
     }
   }
 
+  client.getUser = async (email) => {
+    try {
+      let user = await userCollection.findOne({ email });
+      return user;
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
+  }
+
   //item queries
+
+  client.getItems = async (userName) => {
+    try {
+      let result = await itemCollection.find({ name: userName }).toArray();
+      return result;
+    } catch(err) {
+      console.log(err);
+      return [];
+    }
+  }
 
   client.getData = async () => {
     try {
