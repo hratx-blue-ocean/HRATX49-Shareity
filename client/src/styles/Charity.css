@@ -2,7 +2,8 @@
 .charityContainer {
 
     max-width: 1300px;
-    width: 70%;
+    min-width: 800px;
+    width: 80%;
 }
 
 .charityWrapper {
@@ -57,6 +58,7 @@
     box-sizing: border-box; 
 
     width: 95%;
+
     max-width: 200px;
     height: 70%;
     max-height: 180px;
@@ -71,7 +73,7 @@
 
     box-sizing: border-box;
 
-    width: 80%;
+    width: 70%;
     height: auto;
 }
 
@@ -81,7 +83,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 90%;
+    width: 70%;
     height: 25px;
 
     border: 2px solid black;
@@ -125,7 +127,7 @@ input[type="file" i] {
 .charityInputSubmitButton {
 
     box-sizing: border-box; 
-    width: 90%;
+    width: 70%;
     height: 25px;
 
     border: 2px solid black;
@@ -232,6 +234,7 @@ input[type="file" i] {
     justify-content: center;
     width: 95%;
     min-width: 180px;
+    max-width: 200px;
     height: 95%;
     margin: auto;
 
