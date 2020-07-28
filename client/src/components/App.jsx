@@ -19,7 +19,6 @@ export default class App extends Component {
         <div className={styles.charityMainAppContainer}>
           <Charity imageUploadHandler={this.imageUploadHandler}/>
         </div>
-        
       </>
     );
   }
