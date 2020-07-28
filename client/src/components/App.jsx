@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import Charity from './Charity.jsx';
-import styles from '../styles/App.css';
-
+import '../styles/App.css';
+import LandingPage from './Landing/landingPage.jsx'
 
 export default class App extends Component {
   constructor(props) {
@@ -19,6 +18,12 @@ export default class App extends Component {
         <div className={styles.charityMainAppContainer}>
           <Charity imageUploadHandler={this.imageUploadHandler}/>
         </div>
+<<<<<<< HEAD
+=======
+        
+        <h1>Welcome to Blue Ocean!</h1>
+        <LandingPage />
+>>>>>>> V1.0.0
       </>
     );
   }
