@@ -1,7 +1,28 @@
-import React, { useState } from 'react';
-import styles from '../styles/Charity.css';
+import React, { useState, useEffect } from 'react';
+import styles from '../../styles/Charity.css';
 import LogoAvatar from './LogoAvatar.jsx';
+// import Axios from 'axios';
 const Charity = (props) => {
+    
+    // const [listData, setListData] = useState([]);
+
+    // const getListData = () => {
+
+    //     Axios.get('./')
+    //         .then( res => {
+
+    //             let newListData = res.data;
+    //             setListData(newListData);
+    //         })
+    //         .catch( err => {
+
+    //             console.error(err);
+    //         })
+    // }
+
+    // useEffect(() => {
+    //     getListData();
+    // }, []);
 
     return (
 

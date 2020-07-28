@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
-import styles from '../styles/Charity.css';
+import styles from '../../styles/Charity.css';
 
 const LogoAvatar = () => {
 
@@ -65,7 +65,3 @@ const LogoAvatar = () => {
 }
 
 export default LogoAvatar;
-
-// AKIAWKLYQSF2TWV6AFAS
-// Secret access key
-// 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

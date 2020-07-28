@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
 import LandingPage from './Landing/landingPage.jsx'
-// import Charity from './Charity.jsx';
-// import styles from '../styles/App.css';
-// import Charity from './Charity.jsx';
+import Charity from './Charity/Charity.jsx';
 import styles from '../styles/App.css';
 import Login from './Landing/Login.jsx';
 
@@ -23,7 +21,7 @@ export default class App extends Component {
     return (
       <>
         <div className={styles.charityMainAppContainer}>
-          <Charity imageUploadHandler={this.imageUploadHandler}/>
+          <Charity />
         </div>
         
         <h1>Welcome to Blue Ocean!</h1>
