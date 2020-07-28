@@ -1,10 +1,8 @@
 
-
-
-
 .charityContainer {
 
     max-width: 1300px;
+    width: 70%;
 }
 
 .charityWrapper {
@@ -21,37 +19,141 @@
         "b b c c c d d d";
 }
 
+/* =====================================  */
+
+.charityInputAvatarContainer {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+}
+
 .charityLogo {
     grid-area: a;  
     /* background-color: aqua; */
     width: 100%;
-    min-height: 250px;
+    min-width: 180px;
     height: 100%;
 
+}
+
+.logoAvatarWrapper {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+
+    width: 100%;
 }
 
 .imageWrapper {
 
     width: 95%;
+    max-width: 200px;
     height: 70%;
-    min-height: 200px;
+    max-height: 180px;
+    min-height: 150px;
 
     margin-top: 1%;
     border: 2px solid black;
     border-radius: 10%;
 }
 
+.charityCurrentAvatar {
+
+    width: 80%;
+    height: auto;
+}
+
+.fileUploadLabelWrapper {
+
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 25px;
+
+    border: 2px solid black;
+    border-radius: 25px;
+    margin-top: 1%;
+
+    padding-top: 5px;
+
+    font-size: 16px;
+    font-style:  11px system-ui;
+}
+
+.fileUploadButtonLabel {
+
+    width: 100%;
+    height: 25px;
+    max-height: 25px;
+
+    font-size: 16px;
+    font-style:  11px system-ui;
+}
+
+.charityInputButton > input {
+
+    display: "none";
+}
+
+input[type="file" i] {
+
+    width: 70%;
+    height: 25px;
+
+    border: 2px solid black;
+    border-radius: 25px;
+    margin-top: 1%;
+}
+
+.charityInputSubmitButton {
+
+    width: 90%;
+    height: 25px;
+
+    border: 2px solid black;
+    border-radius: 25px;
+    margin-top: 1%;
+}
+
 .nameWrapper {
 
     display: flex;
-    align-items: flex-end;
-    justify-content: center;
+    align-items: center;
+    justify-content: end;
+    width: 70%;
+    height: 40px; 
+
+    font-size: 24px;
 }
+
+.avatarName {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40px; 
+
+    font-size: 16px;
+    font-style:  11px system-ui;
+}
+
+/* =====================================  */
 
 .charityHeader {
     grid-area: e;
     /* background-color: blue; */
 }
+
+/* =====================================  */
 
 .charityListDonated {
     grid-area: c;
@@ -65,12 +167,15 @@
     align-items: center;
 
     width: 95%;
+    /* min-width: 250px; */
     height: 96%;
     margin: auto;
     margin-top: 1.5%;
     border: 2px solid black;
     border-radius: 25px;
 }
+
+/* =====================================  */
 
 .charityListItemsToBePickedUp {
     grid-area: d;
@@ -84,6 +189,7 @@
     align-items: center;
 
     width: 95%;
+    /* min-width: 250px; */
     height: 96%;
     margin: auto;
     margin-top: 1.5%;
@@ -91,11 +197,12 @@
     border-radius: 25px;
 }
 
+/* =====================================  */
+
 .charitySideNav {
     grid-area: b;
     /* background-color: pink; */
     justify-content: center;
-
 }
 
 .charitySideNav {
@@ -103,7 +210,7 @@
     display: flex;
     justify-content: center;
     width: 95%;
-    min-width: 95%;
+    min-width: 180px;
     height: 95%;
     margin: auto;
 

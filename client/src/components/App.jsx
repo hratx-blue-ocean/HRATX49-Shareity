@@ -7,7 +7,6 @@ import LandingPage from './Landing/landingPage.jsx'
 import styles from '../styles/App.css';
 import Login from './Landing/Login.jsx';
 
-
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +16,9 @@ export default class App extends Component {
   }
 
   componentDidMount() {
+
   }
+
   render() {
     return (
       <>
