@@ -9,19 +9,20 @@ const LogoAvatar = () => {
 
     const uploadImage = (file) => {
         console.log(file);
-        // sends the object containing the image object that is uploaded
-        Axios.post('./', {params: file})
-            .then( res => {
+        // format the image data before posting it
+        let formData = new FormData();
 
-                setCurrentAvatar(res.data);
+        formData.append('image', file, file.name)
+        // sends the object containing the image object that is uploaded
+        Axios.post('./', formData)
+            .then( res => {
+                console.log(res.data);
             })
             .catch( err => {
-
                 console.error(err);
             })
     }
 
-    console.log(imageFile)
     return (
         
         <>
@@ -34,8 +35,15 @@ const LogoAvatar = () => {
 
                 {/* container for image upload functionality */}
                 <div className={styles.charityInputAvatarContainer}>
-                    <input className={styles.charityInputButton} type="file" onChange={() => setImageFile(event.target.files[0])} />
-                    <button className={styles.charityInputSubmitButton} onClick={() => uploadImage(imageFile)} />
+                    <input 
+                        // style={{display: 'none'}}
+                        className={styles.charityInputButton} type="file" 
+                        onChange={() => setImageFile(event.target.files[0])}
+                    />
+                    {/* <button className={styles.charityInputImageButton} onClick={() => {
+                        fileInput.click();
+                    }}>Set Avatar</button> */}
+                    <button className={styles.charityInputSubmitButton} onClick={() => uploadImage(imageFile)}>Upload</button>
                 </div>
                 {/* avatar name section */}
                 <div className={styles.nameWrapper}>
