@@ -1,6 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
-const CONFIG = require('./config')
+const CONFIG = require('./config.js');
 const { ObjectID } = require('mongodb');
 const url = CONFIG.url;
 const dbName = CONFIG.dbName;
