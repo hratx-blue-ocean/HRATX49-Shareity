@@ -20,10 +20,7 @@
   },
   "homepage": "https://github.com/selder18/blue-ocean-rewrite#readme",
   "dependencies": {
-<<<<<<< HEAD
     "antd": "^4.5.0",
-=======
->>>>>>> modified login
     "axios": "^0.19.2",
     "babel-loader": "^8.1.0",
     "bcrypt": "^5.0.0",
