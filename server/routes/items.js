@@ -10,10 +10,33 @@ router.get('/', async (req, res) => {
 
 // add new item
 router.post('/', async (req, res) => {
-  try {
-    await db.postItem(req.body)
+  console.log('item post', req.query);
+  let userInfo = {
+    user: req.query.donor,
+    userType: 'individual',
+    items: []
   }
-
+  let newItem = {
+    donor: req.query.donor,
+    name: req.query.name,
+    claimedBy: null,
+    pickedUp: false,
+    Description: req.query.Description,
+    pictures: null,
+    estimatedValue: req.query.estimatedValue,
+    itemCondition: req.query.itemCondition,
+    Location: req.query.Location,
+    dateCreated: req.query.dateCreated,
+    category: req.query.category
+  }
+  try {
+    let item = await db.addItem(newItem);
+    // userInfo.items = await db.getItems(userInfo.user, userInfo.userType);
+  }
+  catch (err) {
+    console.log(err);
+  }
+  res.json(userInfo);
 });
 
 module.exports = router;

@@ -75,11 +75,17 @@ client.connect((err) => {
     }
   }
 
-  client.postItem = async () => {
-    
+  // add item
+  client.addItem = async (item) => {
+    console.log('add item', item);
+    try {
+      let newItem = await itemCollection.insertOne(item);
+      return newItem;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
   }
-
-
 });
 
 
