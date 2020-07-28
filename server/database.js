@@ -101,7 +101,7 @@ client.connect((err) => {
       return null;
     }
   }
-  
+
 });
 
 client.editItem = async (item) => {
@@ -110,7 +110,6 @@ client.editItem = async (item) => {
     let updatedItem = await itemCollection.updateOne({_id: {item.id}}, {$set:{}})
   }
 }
-
 
 
 module.exports = client;
