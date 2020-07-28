@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../styles/App.css';
+// import '../styles/App.css';
 import LandingPage from './Landing/landingPage.jsx'
 // import Charity from './Charity.jsx';
 // import styles from '../styles/App.css';
@@ -21,9 +21,9 @@ export default class App extends Component {
   render() {
     return (
       <>
-        <div className={styles.charityMainAppContainer}>
+        {/* <div className={styles.charityMainAppContainer}>
           <Charity imageUploadHandler={this.imageUploadHandler}/>
-        </div>
+        </div> */}
         
         <h1>Welcome to Blue Ocean!</h1>
         <LandingPage />

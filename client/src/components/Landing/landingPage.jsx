@@ -3,7 +3,11 @@ import NavBar from './LandingSubComponents/navBar.jsx';
 import Cards from './LandingSubComponents/cards.jsx';
 import Axios from 'axios';
 import Paginater from './LandingSubComponents/paginate.jsx';
+<<<<<<< HEAD
 import ShowDetails from './LandingSubComponents/showDetails.jsx'
+=======
+import ShowDetails from './LandingSubComponents/showDetails.jsx';
+>>>>>>> V1.0.6
 
 const LandingPage = () => {
   const [items, setItems] = useState([]);
