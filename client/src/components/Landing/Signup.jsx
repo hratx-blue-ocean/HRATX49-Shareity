@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import runtime from 'regenerator-runtime';
 
 class Signup extends Component {
   constructor(props) {
@@ -8,7 +10,8 @@ class Signup extends Component {
           name: '',
           email: '',
           password: '',
-          type: ''
+          type: '',
+          location: ''
         },
         errMsg: '',
         emailError: ''
@@ -26,7 +29,7 @@ class Signup extends Component {
   async submitSignup(e) {
     try {
       e.preventDefault();
-      let fields = ['name', 'email', 'password', 'type'];
+      let fields = ['name', 'email', 'password', 'type', 'location'];
       let error = fields.forEach(f => {
         if (this.state.user[f] === '') {
             this.setState({ errMsg: `missing ${f}` });
@@ -39,6 +42,8 @@ class Signup extends Component {
         let result = await fetcher.data;
         if (result.user === null) {
           this.setState({ emailError: 'email is already in use'  });
+        } else {
+          localStorage.setItem('token', result.data)
         }
       }
     } catch (err) { console.log(err)};
@@ -70,7 +75,11 @@ class Signup extends Component {
                   <option value="user">User</option>
                 </select>
               </div>
-              <button type="submit">Login</button>
+              <div className="">
+                <label>Location</label>
+                <input type="text" value={this.state.user.location} onChange={(e) => this.handleChange(e, 'location')} />
+              </div>
+              <button type="submit">Sign up</button>
             </form>
             <span style={{color:"red"}}>{this.state.errMsg}</span>
             <p>
