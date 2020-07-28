@@ -3,6 +3,8 @@ import styles from '../styles/Charity.css';
 
 const LogoAvatar = () => {
 
+    const [imageFile, setImageFile] = useState('');
+    console.log(imageFile)
     return (
         
         <>
@@ -13,7 +15,9 @@ const LogoAvatar = () => {
 
                     </div>
                 </div>
-                
+                <div>
+                    <input type="file" onChange={() => setImageFile(event.target.value)}/>
+                </div>
                 <div className={styles.nameWrapper}>
                     <h2 className={styles.avatarName}>Charity/User name</h2>
                 </div>
@@ -24,3 +28,4 @@ const LogoAvatar = () => {
 }
 
 export default LogoAvatar;
+
