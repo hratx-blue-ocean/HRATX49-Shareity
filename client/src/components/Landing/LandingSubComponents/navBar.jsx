@@ -1,22 +1,21 @@
 import React, { useState } from 'react';
+import styles from '../LandingSubComponents/navBar.css'
 
-function NavBar (){
-
-
+function NavBar ({login, user}){
   return(
     <div>
-      <div>
-        <div>
+      <div className={styles.navBarMainContainer}>
+        <div className={styles.navBarLogin}>
           {/* Log in Log our btn area */}
-          <button>Login</button>
+          <button onClick={(event)=>login(event,"landingPageLoginBtn")} >Login</button>
         </div>
-        <div>
+        <div className={styles.navBarLogo}>
           {/* Logo Area */}
           Logo
         </div>
-        <div>
+        <div className={styles.navBarUserProfileArea}>
           {/* User Profile Area */}
-          <img src="#" alt="PLaceholder"/>
+          <img onClick={(event)=>user(event,"User")} src="#" alt="PLaceholder"/>
         </div>
       </div>
     </div>

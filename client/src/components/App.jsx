@@ -15,11 +15,17 @@ export default class App extends Component {
   render() {
     return (
       <>
+<<<<<<< HEAD
         <div className={styles.charityMainAppContainer}>
           <Charity imageUploadHandler={this.imageUploadHandler}/>
         </div>
 <<<<<<< HEAD
 =======
+=======
+        {/* <div className={styles.charityMainAppContainer}> */}
+          {/* <Charity /> */}
+        {/* </div> */}
+>>>>>>> V1.0.2
         
         <h1>Welcome to Blue Ocean!</h1>
         <LandingPage />

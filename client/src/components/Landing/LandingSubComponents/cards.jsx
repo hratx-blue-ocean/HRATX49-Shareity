@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import IndivCards from './cardsSubComponents/indivCards.jsx';
 import styles from '../LandingSubComponents/Cards.css';
 
-const Cards = ({ items, loading }) => {
+const Cards = ({ items, loading, displayCard }) => {
   if (loading) {
     return <h2>Loading...</h2>
   }
@@ -17,17 +17,17 @@ const Cards = ({ items, loading }) => {
         <button>Category</button>
       </div>
       {/* {styles.cardsParent} */}
-      <ul className={styles.cardsParent}>
+      <div className={styles.cardsParent}>
         {/* <IndivCards /> */}
         {/* Mapping Component for the cards */}
         
         {items.map((item) => (
-          <IndivCards key={item._id} item={item} className="list-group-item" />
+          <IndivCards key={item._id} item={item} displayCard={displayCard} className="list-group-item" />
           // {item.name}
         ))}
         {/* <Pagination total={50}/> */}
         
-      </ul>
+      </div>
     </div>
   )
 }
