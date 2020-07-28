@@ -39,14 +39,17 @@ router.post('/', async (req, res) => {
 });
 
 router.put('/', async (req, res) => {
-  let userInto = {
-    user: req.query.user.name,
-    userType: req.query.user.userType,
+  console.log('put item', req.query)
+  let userInfo = {
+    user: req.query.user,
+    userType: req.query.userType,
     items: [],
   }
+  let filter = req.query._id
+  let update = req.query.updates
   try {
     let update = await db.editItem(req.query.item);
-    userInfo.items = await db.getItems(userInfo.user, userInfo.userType);
+    // userInfo.items = await db.getItems(userInfo.user, userInfo.userType);
   }
   catch (err) {
     console.log(err);
@@ -55,3 +58,19 @@ router.put('/', async (req, res) => {
 })
 
 module.exports = router;
+
+/*
+            "_id": "5f204e6937da1b73151d3409",
+            "donor": "John Smith",
+            "name": "dresser",
+            "claimedBy": null,
+            "pickedUp": false,
+            "Description": "6 drawer dresser",
+            "pictures": null,
+            "estimatedValue": "250",
+            "itemCondition": "Good",
+            "Location": "76801",
+            "dateCreated": "07/01/2020",
+            "category": "Furniture"
+
+*/
