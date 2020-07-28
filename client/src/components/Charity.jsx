@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from '../styles/Charity.css';
 import LogoAvatar from './LogoAvatar.jsx';
-const Charity = () => {
+const Charity = (props) => {
 
     return (
 
@@ -48,7 +48,7 @@ const Charity = () => {
                 </div>
             </div>
             </div>
-           
+
         </>
     )
 }

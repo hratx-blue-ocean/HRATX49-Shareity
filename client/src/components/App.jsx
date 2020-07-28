@@ -13,14 +13,12 @@ export default class App extends Component {
 
   componentDidMount() {
   }
-
   render() {
     return (
       <>
         <div className={styles.charityMainAppContainer}>
-          <Charity />
+          <Charity imageUploadHandler={this.imageUploadHandler}/>
         </div>
-        
       </>
     );
   }
