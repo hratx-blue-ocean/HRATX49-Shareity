@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import Charity from './Charity.jsx';
-// import styles from '../styles/App.css';
+import styles from '../styles/App.css';
 import Login from './Landing/Login.jsx';
 
 
