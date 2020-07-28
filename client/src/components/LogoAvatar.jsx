@@ -12,9 +12,9 @@ const LogoAvatar = () => {
         // format the image data before posting it
         let formData = new FormData();
 
-        formData.append('image', file, file.name)
+        formData.append('charityCurrentAvatar', file, file.name)
         // sends the object containing the image object that is uploaded
-        Axios.post('./', formData)
+        Axios.post('http://cmurray-blue-ocean.s3-website-us-2.amazonaws.com/', formData)
             .then( res => {
                 console.log(res.data);
             })
@@ -30,24 +30,34 @@ const LogoAvatar = () => {
                 
                 {/* image container */}
                 <div className={styles.imageWrapper}>
-                        <img className={styles.charityCurrentAvatar} src={currentAvatar} />
+                        <img className={styles.charityCurrentAvatar} src={currentAvatar}/>
                 </div>
 
                 {/* container for image upload functionality */}
                 <div className={styles.charityInputAvatarContainer}>
-                    <input 
-                        // style={{display: 'none'}}
-                        className={styles.charityInputButton} type="file" 
-                        onChange={() => setImageFile(event.target.files[0])}
-                    />
+                    <div className={styles.fileUploadLabelWrapper}>
+                        <label className={styles.fileUploadButtonLabel} for="fileUploadButton">Change Avatar</label>
+                        <input 
+                            // style={{display: 'none'}}
+                            id="fileUploadButton"
+                            className={styles.charityInputButton} type="file" 
+                            style={{display: 'none'}}
+                            onChange={() => setImageFile(event.target.files[0])}
+                        />
+                    </div>
+
+
                     {/* <button className={styles.charityInputImageButton} onClick={() => {
                         fileInput.click();
                     }}>Set Avatar</button> */}
-                    <button className={styles.charityInputSubmitButton} onClick={() => uploadImage(imageFile)}>Upload</button>
+                    <button className={styles.charityInputSubmitButton} onClick={() =>
+                        uploadImage(imageFile)}>
+                        Upload
+                    </button>
                 </div>
                 {/* avatar name section */}
                 <div className={styles.nameWrapper}>
-                    <h2 className={styles.avatarName}>Charity/User name</h2>
+                    <h2 className={styles.avatarName}>Sir Stickenbottoms</h2>
                 </div>
 
             </div>
@@ -57,3 +67,6 @@ const LogoAvatar = () => {
 
 export default LogoAvatar;
 
+// AKIAWKLYQSF2TWV6AFAS
+// Secret access key
+// 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
