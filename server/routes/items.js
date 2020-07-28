@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
   console.log('item post', req.query);
   let userInfo = {
     user: req.query.donor,
-    userType: 'individual',
+    userType: 'donor',
     items: []
   }
   let newItem = {
@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
   }
   try {
     let item = await db.addItem(newItem);
-    // userInfo.items = await db.getItems(userInfo.user, userInfo.userType);
+    userInfo.items = await db.getItems(userInfo.user, userInfo.userType);
   }
   catch (err) {
     console.log(err);
