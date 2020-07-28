@@ -8,65 +8,57 @@ const Charity = (props) => {
     return (
 
         <>
-            <div className={styles.charityContainer}>
-            <div className={styles.charityWrapper}>
+        <div className={styles.charityContainer}>
+        <div className={styles.charityWrapper}>
 
-                {/* logo avatar */}
-                <div className={styles.charityLogo}>
-                    <LogoAvatar />
+            {/* logo avatar */}
+            <div className={styles.charityLogo}>
+                <LogoAvatar />
+            </div>
+
+            {/* header */}
+            <div className={styles.charityHeader}>
+
+            </div>
+                {/* side nav */}
+                <div className={styles.charitySideNav}>
+                    {/* this is where the side nav buttons start */}
+                    <div className={styles.charityButtonWrapper}>
+
+                        <div className={styles.buttonWrapper}>
+                            <button className={styles.charityButton}>HOME</button>
+                        </div>
+
+                        <div className={styles.buttonWrapper}>
+                            <button className={styles.charityButton}>STATEMENT</button>
+                        </div>
+
+                        <div className={styles.buttonWrapper}>
+                            <button className={styles.charityButton}>UPDATE PASSWORD</button>
+                        </div>
+
+                    </div>
                 </div>
 
-                {/* header */}
-                <div className={styles.charityHeader}>
-
-                </div>
-                    {/* side nav */}
-                    <div className={styles.charitySideNav}>
-                        {/* this is where the side nav buttons start */}
-                        <div className={styles.charityButtonWrapper}>
-
-                            <div className={styles.buttonWrapper}>
-                                <button className={styles.charityButton}>HOME</button>
-                            </div>
+                {/* list donated */}
                 <div className={styles.charityListDonated}>
                     <div className={styles.charityDonorListWrapper}>
-                    <DonatedList />
+                        <DonatedList />
 
-                            <div className={styles.buttonWrapper}>
-                                <button className={styles.charityButton}>STATEMENT</button>
-                            </div>
+                    </div>
+                </div>
 
-                            <div className={styles.buttonWrapper}>
-                                <button className={styles.charityButton}>UPDATE PASSWORD</button>
-                            </div>
+                {/* items to be picked up */}
                 <div className={styles.charityListItemsToBePickedUp}>
                     <div className={styles.charityUserListWrapper}>
                         <PickupList />
 
-                        </div>
                     </div>
+                </div>
+        </div>
+        </div>
 
-                    {/* list donated */}
-                    <div className={styles.charityListDonated}>
-                        <div className={styles.charityDonorListWrapper}>
-                <div className={styles.charitySideNav}>
-                    {/* this is where the side nav buttons start */}
-                    <div className={styles.charityButtonWrapper}>
-                        
-
-                        </div>
-                    </div>
-
-                    {/* items to be picked up */}
-                    <div className={styles.charityListItemsToBePickedUp}>
-                        <div className={styles.charityUserListWrapper}>
-
-                        </div>
-                    </div>
-            </div>
-            </div>
-
-        </>
+    </>
     )
 }
 
