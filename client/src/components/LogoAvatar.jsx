@@ -38,7 +38,7 @@ const LogoAvatar = () => {
                     <div className={styles.fileUploadLabelWrapper}>
                         <label className={styles.fileUploadButtonLabel} for="fileUploadButton">Change Avatar</label>
                         <input 
-                            // style={{display: 'none'}}
+
                             id="fileUploadButton"
                             className={styles.charityInputButton} type="file" 
                             style={{display: 'none'}}
@@ -46,15 +46,14 @@ const LogoAvatar = () => {
                         />
                     </div>
 
-
-                    {/* <button className={styles.charityInputImageButton} onClick={() => {
-                        fileInput.click();
-                    }}>Set Avatar</button> */}
+                    {/* button to upload the selected file to the s3 bucket */}
                     <button className={styles.charityInputSubmitButton} onClick={() =>
                         uploadImage(imageFile)}>
                         Upload
                     </button>
+
                 </div>
+
                 {/* avatar name section */}
                 <div className={styles.nameWrapper}>
                     <h2 className={styles.avatarName}>Sir Stickenbottoms</h2>

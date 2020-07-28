@@ -2,6 +2,7 @@
 .charityContainer {
 
     max-width: 1300px;
+    width: 70%;
 }
 
 .charityWrapper {
@@ -18,7 +19,14 @@
         "b b c c c d d d";
 }
 
+/* =====================================  */
+
 .charityInputAvatarContainer {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     width: 100%;
 }
@@ -67,7 +75,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 90%;
     height: 25px;
 
     border: 2px solid black;
@@ -107,7 +115,7 @@ input[type="file" i] {
 
 .charityInputSubmitButton {
 
-    width: 100%;
+    width: 90%;
     height: 25px;
 
     border: 2px solid black;
@@ -138,10 +146,14 @@ input[type="file" i] {
     font-style:  11px system-ui;
 }
 
+/* =====================================  */
+
 .charityHeader {
     grid-area: e;
     /* background-color: blue; */
 }
+
+/* =====================================  */
 
 .charityListDonated {
     grid-area: c;
@@ -155,12 +167,15 @@ input[type="file" i] {
     align-items: center;
 
     width: 95%;
+    /* min-width: 250px; */
     height: 96%;
     margin: auto;
     margin-top: 1.5%;
     border: 2px solid black;
     border-radius: 25px;
 }
+
+/* =====================================  */
 
 .charityListItemsToBePickedUp {
     grid-area: d;
@@ -174,6 +189,7 @@ input[type="file" i] {
     align-items: center;
 
     width: 95%;
+    /* min-width: 250px; */
     height: 96%;
     margin: auto;
     margin-top: 1.5%;
@@ -187,7 +203,6 @@ input[type="file" i] {
     grid-area: b;
     /* background-color: pink; */
     justify-content: center;
-
 }
 
 .charitySideNav {
