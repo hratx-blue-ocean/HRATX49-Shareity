@@ -74,6 +74,19 @@ client.connect((err) => {
       throw new Error(err);
     }
   }
+
+  // add item
+  client.addItem = async (item) => {
+    console.log('add item', item);
+    try {
+      let newItem = await itemCollection.insertOne(item);
+      return newItem;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  }
 });
+
 
 module.exports = client;
