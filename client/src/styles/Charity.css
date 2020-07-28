@@ -1,0 +1,142 @@
+
+
+
+
+.charityContainer {
+
+    max-width: 1300px;
+}
+
+.charityWrapper {
+
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+    grid-template-areas: 
+        "a a e e e e e e"
+        "a a e e e e e e"           
+        "b b c c c d d d"
+        "b b c c c d d d"
+        "b b c c c d d d"            
+        "b b c c c d d d";
+}
+
+.charityLogo {
+    grid-area: a;  
+    /* background-color: aqua; */
+    width: 100%;
+    min-height: 250px;
+    height: 100%;
+
+}
+
+.imageWrapper {
+
+    width: 95%;
+    height: 70%;
+    min-height: 200px;
+
+    margin-top: 1%;
+    border: 2px solid black;
+    border-radius: 10%;
+}
+
+.nameWrapper {
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.charityHeader {
+    grid-area: e;
+    /* background-color: blue; */
+}
+
+.charityListDonated {
+    grid-area: c;
+    /* background-color: orange; */
+}
+
+.charityDonorListWrapper { 
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 95%;
+    height: 96%;
+    margin: auto;
+    margin-top: 1.5%;
+    border: 2px solid black;
+    border-radius: 25px;
+}
+
+.charityListItemsToBePickedUp {
+    grid-area: d;
+    /* background-color: red; */
+}
+
+.charityUserListWrapper {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 95%;
+    height: 96%;
+    margin: auto;
+    margin-top: 1.5%;
+    border: 2px solid black;
+    border-radius: 25px;
+}
+
+.charitySideNav {
+    grid-area: b;
+    /* background-color: pink; */
+    justify-content: center;
+
+}
+
+.charitySideNav {
+
+    display: flex;
+    justify-content: center;
+    width: 95%;
+    min-width: 95%;
+    height: 95%;
+    margin: auto;
+
+    border: 2px solid black;
+    border-radius: 15px;
+}
+
+.charityButtonWrapper {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+
+    margin-top: 15px;
+}
+
+.buttonWrapper {
+
+    display: flex;
+    align-items: center;
+    width: 95%;
+    height: 60px;
+}
+
+.charityButton {
+
+    width: 100%;
+
+    height: 45px;
+
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
