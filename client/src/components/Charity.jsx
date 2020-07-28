@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styles from '../styles/Charity.css';
 import LogoAvatar from './LogoAvatar.jsx';
+import PickupList from './HomePage/PickupList.jsx';
+import DonatedList from './HomePage/DonatedList.jsx';
 const Charity = (props) => {
 
     return (
@@ -26,6 +28,9 @@ const Charity = (props) => {
                             <div className={styles.buttonWrapper}>
                                 <button className={styles.charityButton}>HOME</button>
                             </div>
+                <div className={styles.charityListDonated}>
+                    <div className={styles.charityDonorListWrapper}>
+                    <DonatedList />
 
                             <div className={styles.buttonWrapper}>
                                 <button className={styles.charityButton}>STATEMENT</button>
@@ -34,6 +39,9 @@ const Charity = (props) => {
                             <div className={styles.buttonWrapper}>
                                 <button className={styles.charityButton}>UPDATE PASSWORD</button>
                             </div>
+                <div className={styles.charityListItemsToBePickedUp}>
+                    <div className={styles.charityUserListWrapper}>
+                        <PickupList />
 
                         </div>
                     </div>
@@ -41,6 +49,10 @@ const Charity = (props) => {
                     {/* list donated */}
                     <div className={styles.charityListDonated}>
                         <div className={styles.charityDonorListWrapper}>
+                <div className={styles.charitySideNav}>
+                    {/* this is where the side nav buttons start */}
+                    <div className={styles.charityButtonWrapper}>
+                        
 
                         </div>
                     </div>
