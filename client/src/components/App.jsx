@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../styles/App.css';
 import LandingPage from './Landing/landingPage.jsx'
 import Charity from './Charity/Charity.jsx';
+import AddItem from './Modals/AddItem.jsx'
 import styles from '../styles/App.css';
 import Login from './Landing/Login.jsx';
 
@@ -20,6 +21,7 @@ export default class App extends Component {
   render() {
     return (
       <>
+        <AddItem />
         <div className={styles.charityMainAppContainer}>
           <Charity />
         </div>
