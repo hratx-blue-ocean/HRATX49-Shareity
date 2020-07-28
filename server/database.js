@@ -1,6 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
-const CONFIG = require('./config')
+const CONFIG = require('./config.js');
 const { ObjectID } = require('mongodb');
 const url = CONFIG.url;
 const dbName = CONFIG.dbName;
@@ -36,7 +36,35 @@ client.connect((err) => {
     }
   }
 
+  client.getUser = async (email) => {
+    try {
+      let user = await userCollection.findOne({ email });
+      return user;
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
+  }
+
   //item queries
+
+  client.getItems = async (userName, userType) => {
+    try {
+      //set up query based on donor vs charity
+      let query = {};
+      if (userType === "donor") {
+        query.donor = userName;
+      } else {
+        query.claimedBy = userName;
+      }
+      //find items associated with user or charity
+      let result = await itemCollection.find( query ).toArray();
+      return result;
+    } catch(err) {
+      console.log(err);
+      return [];
+    }
+  }
 
   client.getData = async () => {
     try {
@@ -46,6 +74,19 @@ client.connect((err) => {
       throw new Error(err);
     }
   }
+
+  // add item
+  client.addItem = async (item) => {
+    console.log('add item', item);
+    try {
+      let newItem = await itemCollection.insertOne(item);
+      return newItem;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  }
 });
+
 
 module.exports = client;

@@ -1,4 +1,3 @@
-.config.js
 # Logs
 logs
 *.log
@@ -67,5 +66,8 @@ typings/
 # Webpack
 bundle.js
 
+<<<<<<< HEAD
 /server/config.js
-
+=======
+/server/config.js
+>>>>>>> committing to rebase
