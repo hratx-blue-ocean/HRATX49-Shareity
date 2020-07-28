@@ -21,15 +21,72 @@ client.connect((err) => {
 
   //queries go here
 
+  //user queries
+  client.createUser = async (userInfo, hash) => {
+    try {
+      let insertData = {
+        ...userInfo,
+        password: hash
+      };
+      let insertResults = await userCollection.insertOne(insertData);
+      return insertResults;
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
+  }
+
+  client.getUser = async (email) => {
+    try {
+      let user = await userCollection.findOne({ email });
+      return user;
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
+  }
+
+  //item queries
+
+  client.getItems = async (userName, userType) => {
+    try {
+      //set up query based on donor vs charity
+      let query = {};
+      if (userType === "donor") {
+        query.donor = userName;
+      } else {
+        query.claimedBy = userName;
+      }
+      //find items associated with user or charity
+      let result = await itemCollection.find( query ).toArray();
+      return result;
+    } catch(err) {
+      console.log(err);
+      return [];
+    }
+  }
+
   client.getData = async () => {
     try {
       let result = await itemCollection.find().toArray();
-      console.log(result);
       return result;
     } catch(err) {
       throw new Error(err);
     }
   }
+
+  // add item
+  client.addItem = async (item) => {
+    console.log('add item', item);
+    try {
+      let newItem = await itemCollection.insertOne(item);
+      return newItem;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  }
 });
+
 
 module.exports = client;
