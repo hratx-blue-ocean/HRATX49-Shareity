@@ -77,7 +77,6 @@ client.connect((err) => {
 
   // add item
   client.addItem = async (item) => {
-    console.log('add item', item);
     try {
       let newItem = await itemCollection.insertOne(item);
       return newItem;
@@ -87,6 +86,13 @@ client.connect((err) => {
     }
   }
 });
+
+client.editItem = async (item) => {
+  console.log('edit item', item);
+  try {
+    let updatedItem = await itemCollection.updateOne({_id: {item.id}}, {$set:{}})
+  }
+}
 
 
 module.exports = client;

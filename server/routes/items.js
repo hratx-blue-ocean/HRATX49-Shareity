@@ -10,7 +10,6 @@ router.get('/', async (req, res) => {
 
 // add new item
 router.post('/', async (req, res) => {
-  console.log('item post', req.query);
   let userInfo = {
     user: req.query.donor,
     userType: 'donor',
@@ -38,5 +37,21 @@ router.post('/', async (req, res) => {
   }
   res.json(userInfo);
 });
+
+router.put('/', async (req, res) => {
+  let userInto = {
+    user: req.query.user.name,
+    userType: req.query.user.userType,
+    items: [],
+  }
+  try {
+    let update = await db.editItem(req.query.item);
+    userInfo.items = await db.getItems(userInfo.user, userInfo.userType);
+  }
+  catch (err) {
+    console.log(err);
+  }
+  res.json(userInfo);
+})
 
 module.exports = router;
