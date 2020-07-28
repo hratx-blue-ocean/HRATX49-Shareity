@@ -9,10 +9,13 @@ const LogoAvatar = () => {
             <div className={styles.logoAvatarWrapper}>
 
                 <div className={styles.imageWrapper}>
-                    
+                    <div>
+
+                    </div>
                 </div>
-                <div> 
-                    <h2>Charity/User name</h2>
+                
+                <div className={styles.nameWrapper}>
+                    <h2 className={styles.avatarName}>Charity/User name</h2>
                 </div>
 
             </div>
