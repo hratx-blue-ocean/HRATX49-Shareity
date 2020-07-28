@@ -28,7 +28,7 @@ class Login extends Component {
           this.setState({ errMsg: 'missing fields' });
         } else {
           let login = await axios.post('/users/login', this.state.user)
-          console.log('result:', login)
+          localStorage.setItem('token', result.data)
         }
       } catch (err) { console.log(err)};
     }
