@@ -17,8 +17,10 @@ export default class App extends Component {
   render() {
     return (
       <>
-        <h1>Welcome to Blue Ocean!</h1>
-        <Charity />
+        <div className={styles.charityMainAppContainer}>
+          <Charity />
+        </div>
+        
       </>
     );
   }

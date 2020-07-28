@@ -2,18 +2,6 @@ import React, { useState } from 'react';
 import styles from '../styles/Charity.css';
 
 const LogoAvatar = () => {
-    const source = '';
-    const [prview, setPreview] = useState(null, src);
-
-    const onClose = () => {
-
-        setPreviewt(null);
-    }
-    
-    const onCrop = () => {
-
-        setPreviewt(preview);
-    }
 
     return (
         
@@ -21,10 +9,13 @@ const LogoAvatar = () => {
             <div className={styles.logoAvatarWrapper}>
 
                 <div className={styles.imageWrapper}>
-                    <img>{preview}</img>
+                    <div>
+
+                    </div>
                 </div>
-                <div> 
-                    <h2>Charity/User name</h2>
+                
+                <div className={styles.nameWrapper}>
+                    <h2 className={styles.avatarName}>Charity/User name</h2>
                 </div>
 
             </div>

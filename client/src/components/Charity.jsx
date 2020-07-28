@@ -13,15 +13,19 @@ const Charity = () => {
                 </div>
 
                 <div className={styles.charityHeader}>
-                    header
+
                 </div>
 
                 <div className={styles.charityListDonated}>
-                    items donated
+                    <div className={styles.charityDonorListWrapper}>
+
+                    </div>
                 </div>
 
                 <div className={styles.charityListItemsToBePickedUp}>
-                    items to be picked up
+                    <div className={styles.charityUserListWrapper}>
+
+                    </div>
                 </div>
 
                 <div className={styles.charitySideNav}>
