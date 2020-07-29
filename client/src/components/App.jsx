@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 // import '../styles/App.css';
 import LandingPage from './Landing/landingPage.jsx'
-// import Charity from './Charity.jsx';
+import Charity from './Charity.jsx';
 // import styles from '../styles/App.css';
-// import Charity from './Charity.jsx';
 import styles from '../styles/App.css';
 import Login from './Landing/Login.jsx';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 
 export default class App extends Component {
@@ -21,14 +26,18 @@ export default class App extends Component {
   render() {
     return (
       <>
-        {/* <div className={styles.charityMainAppContainer}>
+      <Router>
+        <Switch>
+          <Route path="/Charity">
+        <div className={styles.charityMainAppContainer}>
           <Charity imageUploadHandler={this.imageUploadHandler}/>
-        </div> */}
-        
-        <h1>Welcome to Blue Ocean!</h1>
+        </div>
+        </Route>
+        <Route path="/">
         <LandingPage />
-        <h1>Welcome to Blue Ocean!</h1>
-        <Login />
+        </Route>
+        </Switch>
+        </Router>
       </>
     );
   }
