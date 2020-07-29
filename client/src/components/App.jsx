@@ -32,8 +32,6 @@ export default class App extends Component {
         <div className={styles.charityMainAppContainer}>
           <Charity />
         </div>
-        </Route>
-        <Route path="/">
 
         <h1>Welcome to Blue Ocean!</h1>
         <LandingPage />
