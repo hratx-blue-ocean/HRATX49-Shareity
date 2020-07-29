@@ -46,13 +46,13 @@ const AddItem = () => {
 
 
                 <div className={styles.innerModalWrapper} style={{display: modalView}}>
-                    <div className={styles.modealInnerContainer}>
+                    <div className={styles.modalInnerContainer}>
                         <div className={styles.modalContentContainer}>
 
-                        </div>
                         <button className={styles.modalCloseButton} onClick={() => switchViews()}>
                         Close
                         </button>
+                        </div>
                     </div>
                 </div>
             </div>
