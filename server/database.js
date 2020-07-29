@@ -32,6 +32,7 @@ client.connect((err) => {
       return insertResults;
     } catch (err) {
       console.log(err);
+      //throw error
       return null;
     }
   }
