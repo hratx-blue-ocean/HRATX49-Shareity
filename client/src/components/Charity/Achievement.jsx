@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { data } from './achievementData';
 import styles from '../../styles/CharityHeader.css';
 
-const Achievement = () => {
+const Achievement = (props) => {
 
     return (
 
@@ -10,13 +9,13 @@ const Achievement = () => {
             <div className={styles.achievement}>
                 <span className={styles.achievementImageWrapper}>
                     <img className={styles.achievementImage} 
-                        src={data[0].url}></img>
+                        src={props.data.url}></img>
                 </span>
                 <div className={styles.achievementInfoWrapper}>
-                    <h3 className={styles.achievementName}>{data[0].name}</h3>
-                    <p className={styles.achievementDescription}>{data[0].description}</p>
-                    <h3 className={styles.achievementValue}>{data[0].value}</h3>
+                    <h3 className={styles.achievementName}>{props.data.name}</h3>
+                    <p className={styles.achievementDescription}>{props.data.description}</p>
                 </div>
+                    <div className={styles.achievementValue}>{props.data.value}</div>
             </div>
         </div>
     ) 

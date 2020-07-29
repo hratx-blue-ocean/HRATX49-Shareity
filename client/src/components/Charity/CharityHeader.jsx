@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { data } from './achievementData';
 import styles from '../../styles/CharityHeader.css';
 import Achievement from './Achievement.jsx';
 
@@ -7,7 +8,12 @@ const CharityHeader = () => {
     return (
 
         <div className={styles.charityHeaderWrapper}>
-                <Achievement />
+            {data.map((achievement, i) => {
+
+                <Achievement
+                    key={i}
+                    data={achievement} />
+            })}
 
         </div>
     )

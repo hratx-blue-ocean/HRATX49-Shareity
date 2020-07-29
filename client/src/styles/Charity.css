@@ -9,8 +9,8 @@
 .charityWrapper {
 
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-auto-rows: minmax(100px, auto);
+    grid-template-columns: repeat(11, 1fr);
+    grid-auto-rows: minmax(10px, auto);
     grid-template-areas: 
         "a a e e e e e e"
         "a a e e e e e e"           
