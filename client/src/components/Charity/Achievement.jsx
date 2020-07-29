@@ -12,10 +12,10 @@ const Achievement = () => {
                     <img className={styles.achievementImage} 
                         src={data[0].url}></img>
                 </span>
-                <div>
+                <div className={styles.achievementInfoWrapper}>
                     <h3 className={styles.achievementName}>{data[0].name}</h3>
                     <p className={styles.achievementDescription}>{data[0].description}</p>
-                    <span className={styles.achievementValue}>{data[0].value}</span>
+                    <h3 className={styles.achievementValue}>{data[0].value}</h3>
                 </div>
             </div>
         </div>
