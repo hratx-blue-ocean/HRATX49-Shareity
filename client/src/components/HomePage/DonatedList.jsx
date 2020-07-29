@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import styles from '../../styles/lists.css';
 import { fakeData } from './fakeData.jsx';
 var _ = require('lodash');
 
-const DonatedList = ({ styles, charity, rawData }) => {
+const DonatedList = ({ charity, rawData }) => {
     rawData = rawData || fakeData;
     var data = [];
     var totalVal = 0;

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../../styles/Charity.css';
 import LogoAvatar from './LogoAvatar.jsx';
+import CharityHeader from './CharityHeader.jsx';
 // import Axios from 'axios';
 import PickupList from '../HomePage/PickupList.jsx';
 import DonatedList from '../HomePage/DonatedList.jsx';
@@ -39,7 +40,9 @@ const Charity = (props) => {
 
                     {/* header */}
                     <div className={styles.charityHeader}>
-
+                        <div className={styles.outHeaderWrapper}>
+                            <CharityHeader />
+                        </div>
                     </div>
                         {/* side nav */}
                         <div className={styles.charitySideNav}>
