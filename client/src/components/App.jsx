@@ -39,6 +39,7 @@ export default class App extends Component {
         </Route>
         <AddItem />
         <h1>Welcome to Blue Ocean!</h1>
+        <Login />
         </Switch>
         </Router>
       </>
