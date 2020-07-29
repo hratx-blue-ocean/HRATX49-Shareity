@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import styles from '../styles/Charity.css';
 import LogoAvatar from './LogoAvatar.jsx';
-<<<<<<< HEAD
-import PickupList from './HomePage/PickupList.jsx';
 import DonatedList from './HomePage/DonatedList.jsx';
-=======
+import PickupList from './HomePage/PickupList.jsx';
 import {
     BrowserRouter as Router,
     Switch,
@@ -13,7 +11,6 @@ import {
     BrowserRouter
   } from "react-router-dom";
 
->>>>>>> V2.0.0
 const Charity = (props) => {
 
     return (

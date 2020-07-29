@@ -36,7 +36,7 @@ const LogoAvatar = () => {
                 {/* container for image upload functionality */}
                 <div className={styles.charityInputAvatarContainer}>
                     <div className={styles.fileUploadLabelWrapper}>
-                        <label className={styles.fileUploadButtonLabel} for="fileUploadButton">Change Avatar</label>
+                        <label className={styles.fileUploadButtonLabel} htmlFor="fileUploadButton">Change Avatar</label>
                         <input 
 
                             id="fileUploadButton"

@@ -5,11 +5,6 @@ import Charity from './Charity.jsx';
 // import styles from '../styles/App.css';
 import styles from '../styles/App.css';
 import Login from './Landing/Login.jsx';
-<<<<<<< HEAD
-import Charity from './Charity.jsx';
-// import styles from '../styles/App.css';
-// import '../styles/App.css';
-=======
 import {
   BrowserRouter as Router,
   Switch,
@@ -17,7 +12,6 @@ import {
   Link
 } from "react-router-dom";
 
->>>>>>> V2.0.0
 
 export default class App extends Component {
   constructor(props) {
