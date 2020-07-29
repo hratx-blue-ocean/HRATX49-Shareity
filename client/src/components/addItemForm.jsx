@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const NewItem = ({ userName }) => {
+const NewItem = () => {
     const [itemName, onItemNameChange] = useState('')
     const [category, onCatChange] = useState('')
     const [zipcode, onZipChange] = useState('')
@@ -9,6 +9,13 @@ const NewItem = ({ userName }) => {
     const [description, onDescChange] = useState('')
     const [image, onImageChange] = useState('')
     const [estVal, onValChange] = useState('')
+    const [userEmail, setUserEmail] = useState('')
+    const [userName, setUserName] = useState('')
+    const date = new Date();
+
+    setUserEmail('test')
+    setUserName('test')
+    
 
     function onImageAdd() {
         //add image
@@ -17,21 +24,20 @@ const NewItem = ({ userName }) => {
 
         var data = {
             donor: {userName},
-            name: itemName,
-            claimedBy: null,
-            pickedUp: false,
-            Description: description,
-            pictures: image,
-            estimatedValue: estVal,
-            itemCondition: condition,
-            Location: zipcode,
-            dateCreated: new Date(),
-            category: category
+            name: {itemName},
+            Description: {description},
+            pictures: {image},
+            estimatedValue: {estVal} || 0,
+            itemCondition: {condition},
+            Location: {zipcode},
+            dateCreated: {date},
+            category: {category},
+            email: {userEmail}
         };
 
         axios.post('/items', data)
         .then(res=> {
-            console.log('your item has been added')
+            console.log('your item has been added', res.data)
         })
         .catch(err => {
             console.log('error posting on axios post request: ', err)
@@ -43,39 +49,50 @@ const NewItem = ({ userName }) => {
             <div>
                 <input
                     value={image}
-                    onChange={() => {onImageChange(image)}}
+                    type="text"
+                    onChange={e => onImageChange(e.target.value)}
                     placeholder="add Image URL"
+                    required
                 ></input>
                 <button
-                    onClick={() => {onImageAdd()}}
+                    onClick={() => onImageAdd()}
                     >add image </button>
             </div>
-            <form>
                 <input
                     value={itemName}
-                    onChange={(event) => {onItemNameChange(event.target.value)}}
+                    onChange={(event) => onItemNameChange(event.target.value)}
                     placeholder="item name"
+                    type="text"
+                    required
                 ></input>
                 <input
                     value={category}
-                    onChange={(event) => {onCatChange(event.target.value)}}
+                    onChange={event => onCatChange(event.target.value)}
                     placeholder="item category"
+                    type="text"
+                    required
                 ></input>
                 <input
                     value={estVal}
-                    onChange={(event) => {onValChange(event.target.value)}}
+                    onChange={event => onValChange(event.target.value)}
                     placeholder="estimated Value"
+                    type="number"
+                    required
                 ></input>
                 <input
                     value={zipcode}
-                    onChange={(event) => {onZipChange(event.target.value)}}
+                    onChange={event => onZipChange(event.target.value)}
                     placeholder="zipcode"
+                    type="number"
+                    required
                 ></input>
                 <select 
                     name="condition"
                     value={condition}
+                    type="text"
                     defaultValue='default'
-                    onBlur={(event) => onConditionChange(event.target.value)}
+                    required
+                    onBlur={event => onConditionChange(event.target.value)}
                 >
                         <option value='default' disabled>condition</option>
                         <option value='test'> test</option>
@@ -85,15 +102,16 @@ const NewItem = ({ userName }) => {
             
                 <input
                     value={description}
-                    onChange={(event) => {onDescChange(event.target.value)}}
+                    type="text"
+                    onChange={event => onDescChange(event.target.value)}
                     placeholder="brief description of your item"
+                    required
                 ></input>
                 <button
-                    onClick={() => {onDonateSubmit()}}
+                    onClick={() => onDonateSubmit()}
                 >
                     Submit Donation Item
                 </button>
-            </form>
         </div>
 
     )

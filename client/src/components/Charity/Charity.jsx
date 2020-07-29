@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../../styles/Charity.css';
-import listStyles from '../../styles/lists.css';
 import LogoAvatar from './LogoAvatar.jsx';
 import { CSVLink, CSVDownload } from "react-csv";
 // import Axios from 'axios';
 import PickupList from '../HomePage/PickupList.jsx';
 import DonatedList from '../HomePage/DonatedList.jsx';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from 'react-router-dom';
 const Charity = (props) => {
     const [taxData, changeTaxData] = useState([])
+    //const [listData, addListData] = useState([]);
     
     // const [listData, setListData] = useState([]);
 
@@ -50,7 +56,9 @@ const Charity = (props) => {
                             <div className={styles.charityButtonWrapper}>
 
                                 <div className={styles.buttonWrapper}>
+                                <Link to='/' className={styles.charityButton}>
                                     <button className={styles.charityButton}>HOME</button>
+                                </Link>
                                 </div>
 
                                 <div className={styles.buttonWrapper}>
@@ -71,7 +79,7 @@ const Charity = (props) => {
                         {/* list donated */}
                         <div className={styles.charityListDonated}>
                             <div className={styles.charityDonorListWrapper}>
-                                <DonatedList taxData={changeTaxData} styles={listStyles}/>
+                                <DonatedList taxData={changeTaxData} />
 
                             </div>
                         </div>
@@ -79,7 +87,7 @@ const Charity = (props) => {
                         {/* items to be picked up */}
                         <div className={styles.charityListItemsToBePickedUp}>
                             <div className={styles.charityUserListWrapper}>
-                                <PickupList styles={listStyles}/>
+                                <PickupList />
 
                             </div>
                         </div>

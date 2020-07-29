@@ -91,8 +91,10 @@ const DonatedList = ({ charity, rawData, taxData }) => {
                     </tr>
                 )}
             </tbody>
-            <tr><th>Total Value Donated: ${totalVal}</th>
-            <th>Total # of Items Donated: {filteredData.length}</th></tr>
+            <tfoot>
+                <tr><th>Total Value Donated: ${totalVal}</th>
+                <th>Total # of Items Donated: {filteredData.length}</th></tr>
+            </tfoot>
             </table>
         </div>
 
