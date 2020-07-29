@@ -21,13 +21,14 @@ export default class App extends Component {
   render() {
     return (
       <>
-        <AddItem />
+        
         <div className={styles.charityMainAppContainer}>
           <Charity />
         </div>
         
         <h1>Welcome to Blue Ocean!</h1>
         <LandingPage />
+        <AddItem />
         <h1>Welcome to Blue Ocean!</h1>
         <Login />
       </>

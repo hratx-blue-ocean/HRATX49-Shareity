@@ -26,11 +26,23 @@ const AddItem = () => {
         <div className={styles.modalWrapper}>
             
             <div>
-                <div className={styles.innerButtonWrapper}>
-                    <button className={styles.addItemButton} style={{display: buttonView}} onClick={() => switchViews()}>
-                    Press Me
-                    </button>
+                
+                <div className={styles.outerButtonWrapper}>
+                    <label 
+
+                        className={styles.modelButtonLabel} 
+                        style={{display: buttonView}} 
+                        onClick={() => switchViews()}
+                        htmlFor="modalButton"> 
+                        PUSH  
+                    </label>
+                    <div id="modalButton" className={styles.innerButtonWrapper} style={{diplay: 'none'}}>
+                        <button className={styles.addItemButton} style={{display: 'none'}}>
+
+                        </button>
+                    </div>
                 </div>
+
 
                 <div className={styles.innerModalWrapper} style={{display: modalView}}>
 
