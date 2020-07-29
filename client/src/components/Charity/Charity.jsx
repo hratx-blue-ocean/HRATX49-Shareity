@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../../styles/Charity.css';
+import listStyles from '../../styles/lists.css';
 import LogoAvatar from './LogoAvatar.jsx';
+import { CSVLink, CSVDownload } from "react-csv";
 // import Axios from 'axios';
 import PickupList from '../HomePage/PickupList.jsx';
 import DonatedList from '../HomePage/DonatedList.jsx';
 const Charity = (props) => {
+    const [taxData, changeTaxData] = useState([])
     
     // const [listData, setListData] = useState([]);
 
@@ -51,7 +54,11 @@ const Charity = (props) => {
                                 </div>
 
                                 <div className={styles.buttonWrapper}>
-                                    <button className={styles.charityButton}>STATEMENT</button>
+                                    <button className={styles.charityButton}>
+                                        <CSVLink 
+                                            data={taxData}>STATEMENT</CSVLink>
+                                    </button>
+                                    
                                 </div>
 
                                 <div className={styles.buttonWrapper}>
@@ -64,7 +71,7 @@ const Charity = (props) => {
                         {/* list donated */}
                         <div className={styles.charityListDonated}>
                             <div className={styles.charityDonorListWrapper}>
-                                <DonatedList />
+                                <DonatedList taxData={changeTaxData} styles={listStyles}/>
 
                             </div>
                         </div>
@@ -72,7 +79,7 @@ const Charity = (props) => {
                         {/* items to be picked up */}
                         <div className={styles.charityListItemsToBePickedUp}>
                             <div className={styles.charityUserListWrapper}>
-                                <PickupList />
+                                <PickupList styles={listStyles}/>
 
                             </div>
                         </div>
