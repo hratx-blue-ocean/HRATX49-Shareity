@@ -14,7 +14,7 @@ const LogoAvatar = () => {
 
         formData.append('charityCurrentAvatar', file, file.name)
         // sends the object containing the image object that is uploaded
-        Axios.post('http://cmurray-blue-ocean.s3-website-us-2.amazonaws.com/', formData)
+        Axios.post('./userAvatar', formData)
             .then( res => {
                 console.log(res.data);
             })
