@@ -21,39 +21,22 @@ const AddItem = () => {
         }
     }
 
-    const renderModal = () => {
-
-        return (
-
-            <div className={styles.innerModalWrapper} style={{display: modalView}}>
-            Modal
-            <button onClick={() => switchViews()} />
-            </div>
-        )
-    }
-
-    const renderButton = () => {
-
-        return (
-
-            <div className={styles.innerModalWrapper} style={{display: modalView}}>
-            Modal
-            <button onClick={() => switchViews()} />
-            </div>
-        )
-    }
-
     return (
 
         <div className={styles.modalWrapper}>
             
             <div>
-                <button className={styles.addItemButton} style={{display: buttonView}} onClick={() => switchViews()}>
-                Press Me
-                </button>
+                <div className={styles.innerButtonWrapper}>
+                    <button className={styles.addItemButton} style={{display: buttonView}} onClick={() => switchViews()}>
+                    Press Me
+                    </button>
+                </div>
+
                 <div className={styles.innerModalWrapper} style={{display: modalView}}>
-                Modal
-                <button onClick={() => switchViews()} />
+
+                    <button className={styles.modalCloseButton} onClick={() => switchViews()}>
+                    Close
+                    </button>
                 </div>
             </div>
 
