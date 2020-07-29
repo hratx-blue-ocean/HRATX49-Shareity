@@ -47,7 +47,7 @@ class Login extends Component {
         this.setState({ errMsg: 'missing fields' });
       } else {
         let login = await axios.post('/users/login', this.state.user);
-        console.log('this working?',login);;
+        console.log('this working?',login);
         localStorage.setItem('token', login.data.token);
         localStorage.setItem('user', login.data.user);
       }
@@ -95,7 +95,7 @@ class Login extends Component {
       return (
         <div className={styles.overlay}>
           <div className={styles.cardDetail}>
-            <p onClick={this.props.closeLogin} className={styles.closeBtn}>+</p>
+            <p onClick={()=>this.props.closeLogin()} className={styles.closeBtn}>+</p>
             <div className="">
               <form onSubmit={this.submitLogin}>
                 <div className="">
@@ -121,7 +121,7 @@ class Login extends Component {
         <>
           <div className={styles.overlay}>
             <div className={styles.cardDetail}>
-              <p onClick={this.props.closeLogin} className={styles.closeBtn}>+</p>
+              <p onClick={()=>this.props.closeLogin()} className={styles.closeBtn}>+</p>
               <form onSubmit={this.submitSignup}>
                 <div className="">
                   <label>Name</label>
