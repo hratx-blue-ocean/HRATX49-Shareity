@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import styles from '../../styles/Charity.css';
 import LogoAvatar from './LogoAvatar.jsx';
 // import Axios from 'axios';
-import PickupList from './HomePage/PickupList.jsx';
-import DonatedList from './HomePage/DonatedList.jsx';
+import PickupList from '../HomePage/PickupList.jsx';
+import DonatedList from '../HomePage/DonatedList.jsx';
 const Charity = (props) => {
     
     // const [listData, setListData] = useState([]);
