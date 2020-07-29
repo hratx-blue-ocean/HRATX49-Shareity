@@ -32,7 +32,6 @@ export default class App extends Component {
   render() {
     return (
       <>
-        
       <Router>
         <Switch>
           <Route path="/Charity">

@@ -1,0 +1,43 @@
+.listRowHeaders {
+    font-size: 9px;
+    font-weight: bold;
+}
+
+.listRowWrap {
+    font-size: 9px;
+    font-weight: bold;
+    text-align: left;
+}
+.listItemRow {
+    border-bottom: 1px;
+    border-style: solid;
+    border-radius: 10px;
+    padding: 3mm;
+}
+.colHeader {
+    margin: 2mm;
+    padding-top: 3mm;
+}
+.rowItem {
+    word-wrap: break-word;
+    margin: 2mm;
+    height: 40px;
+}
+.rowItemName {
+    word-wrap: break-word;
+    width: 10px;
+    margin: 2mm;
+    height: 40px;
+}
+.listSelector {
+    font-size: 10px;
+}
+
+.listTitle {
+    font-size: 12px;
+    text-align: center;
+}
+
+table {
+    border-spacing: 0.5rem;
+}

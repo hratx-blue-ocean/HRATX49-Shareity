@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from '../styles/Charity.css';
+import listStyles from '../styles/lists.css';
 import LogoAvatar from './LogoAvatar.jsx';
 import DonatedList from './HomePage/DonatedList.jsx';
 import PickupList from './HomePage/PickupList.jsx';
@@ -51,7 +52,7 @@ const Charity = (props) => {
                 {/* list donated */}
                 <div className={styles.charityListDonated}>
                     <div className={styles.charityDonorListWrapper}>
-                        <DonatedList />
+                        <DonatedList styles={listStyles} />
 
                     </div>
                 </div>
@@ -59,7 +60,7 @@ const Charity = (props) => {
                 {/* items to be picked up */}
                 <div className={styles.charityListItemsToBePickedUp}>
                     <div className={styles.charityUserListWrapper}>
-                        <PickupList />
+                        <PickupList styles={listStyles}/>
 
                     </div>
                 </div>
