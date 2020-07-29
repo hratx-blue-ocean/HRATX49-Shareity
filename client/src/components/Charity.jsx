@@ -33,11 +33,11 @@ const Charity = (props) => {
                 <div className={styles.charitySideNav}>
                     {/* this is where the side nav buttons start */}
                     <div className={styles.charityButtonWrapper}>
-                    <Link to={{pathname:"/"}}>
                         <div className={styles.buttonWrapper}>
+                    <Link to={{pathname:"/"}} className={styles.charityButton}>
                             <button className={styles.charityButton}>HOME</button>
-                        </div>
                     </Link>
+                        </div>
                         <div className={styles.buttonWrapper}>
                             <button className={styles.charityButton}>STATEMENT</button>
                         </div>

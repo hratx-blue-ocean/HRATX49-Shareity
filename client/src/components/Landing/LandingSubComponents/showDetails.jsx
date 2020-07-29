@@ -3,7 +3,9 @@ import styles from '../ShowDetails.css';
 import Item from 'antd/lib/list/Item';
 
 const ShowDetails = ({ card, closeCard }) => {
-  console.log(card)
+  if (card.pictures == null){
+    card.pictures = 'https://picsum.photos/200/300';
+  } 
   let arrOfPictures = card.pictures.split(',');
   let thumbnail = arrOfPictures[0];
 
@@ -38,7 +40,7 @@ const ShowDetails = ({ card, closeCard }) => {
         <div className={styles.imgArea}>
           {/* Image */}
           {/* {thumbnail} */}
-          <img src="./Alabama.jpg" alt={card.name} className={styles.cardImage}/>
+          <img src="https://picsum.photos/200/300" alt={card.name} className={styles.cardImage}/>
         </div>
         <div className={styles.rightSide}>
           {/* Right Side Details */}
