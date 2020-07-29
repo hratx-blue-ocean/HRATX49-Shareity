@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
     claimedBy: null,
     pickedUp: false,
     Description: req.query.Description,
-    pictures: null,
+    pictures: req.query.pictures || null,
     estimatedValue: req.query.estimatedValue,
     itemCondition: req.query.itemCondition,
     Location: req.query.Location,
