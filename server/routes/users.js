@@ -68,8 +68,9 @@ router.post("/signup", async (req, res) => {
   // make db queryies and res.json the data
   let userInfo = {
     user: null,
-    items: [],
-  };
+    items: []
+    //token: jwtToken
+  }
 
   //user does not exist yet
   try {
@@ -77,18 +78,17 @@ router.post("/signup", async (req, res) => {
     let hash = await bcrypt.hash(req.body.password, saltRounds);
     //insert the user data into the user collection
     let user = await db.createUser(req.body, hash);
-    userInfo.user = user.ops[0];
-    delete userInfo.user.password;
-    userInfo.token = jwt.sign(
-      {
+    //userINfo.user = user.rows[0]
+    if (user !== null) {
+      userInfo.user = user.ops[0];
+      delete userInfo.user.password;
+      userInfo.token = jwt.sign({
         data: {
           name: user.email,
-          type: user.userType,
-        },
-      },
-      jwtKey,
-      { expiresIn: "1h" }
-    );
+          type: user.userType
+        }
+      }, jwtKey, { expiresIn: '1h' });
+    }
   } catch (err) {
     console.log(err);
   }
