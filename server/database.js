@@ -6,7 +6,6 @@ const url = CONFIG.url;
 const dbName = CONFIG.dbName;
 const itemCollName = CONFIG.itemCollName;
 const userCollName = CONFIG.userCollName;
-// const ObjectID = require('mongodb').ObjectID;
 
 const client = new MongoClient(url, { useUnifiedTopology: true });
 
