@@ -7,9 +7,13 @@ const ShowDetails = ({ card, closeCard }) => {
   let arrOfPictures = card.pictures.split(',');
   let thumbnail = arrOfPictures[0];
 
+  const handleClose = (e) => {
+    event.stopPropagation();
+    closeCard();
+  };
   
   return (
-    <div className={styles.overlay} onClick={closeCard}>
+    <div className={styles.overlay} onClick={(e) => {handleClose(e)}}>
       <div className={styles.cardDetail}>
           <p className={styles.closeBtn} onClick={closeCard}>+</p>
         <div className={styles.leftSide}>

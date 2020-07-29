@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
-import styles from '../LandingSubComponents/navBar.css'
+import styles from '../LandingSubComponents/navBar.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  BrowserRouter
+} from "react-router-dom";
+import Greeting from '../Greeting.jsx';
 
 function NavBar ({login, user}){
   return(
@@ -7,16 +15,19 @@ function NavBar ({login, user}){
       <div className={styles.navBarMainContainer}>
         <div className={styles.navBarLogin}>
           {/* Log in Log our btn area */}
-          <button onClick={(event)=>login(event,"landingPageLoginBtn")} >Login</button>
+          <button onClick={(event)=>login(event,"landingPageLoginBtn")}>Login</button>
         </div>
         <div className={styles.navBarLogo}>
           {/* Logo Area */}
-          Logo
+        <Greeting/>
         </div>
+
+      <Link to={{pathname:"/Charity"}}>
         <div className={styles.navBarUserProfileArea}>
           {/* User Profile Area */}
           <img onClick={(event)=>user(event,"User")} src="#" alt="PLaceholder"/>
         </div>
+      </Link>
       </div>
     </div>
   )
