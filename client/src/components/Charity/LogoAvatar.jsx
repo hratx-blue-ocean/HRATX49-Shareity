@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
-import styles from '../styles/Charity.css';
+import styles from '../../styles/Charity.css';
 
 const LogoAvatar = () => {
 
@@ -14,7 +14,7 @@ const LogoAvatar = () => {
 
         formData.append('charityCurrentAvatar', file, file.name)
         // sends the object containing the image object that is uploaded
-        Axios.post('http://cmurray-blue-ocean.s3-website-us-2.amazonaws.com/', formData)
+        Axios.post('./userAvatar', formData)
             .then( res => {
                 console.log(res.data);
             })
@@ -65,7 +65,3 @@ const LogoAvatar = () => {
 }
 
 export default LogoAvatar;
-
-// AKIAWKLYQSF2TWV6AFAS
-// Secret access key
-// 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

@@ -1,0 +1,72 @@
+.modalWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    max-width: 400px;
+    height: auto;
+}
+
+.outerButtonWrapper {
+    width: 75px; 
+    height: 25px;
+
+    border: 2px solid black;
+    border-radius: 25px;
+}
+
+.innerButtonWrapper {
+    width: 75px; 
+    height: 25px;
+}
+
+.modalButtonLabel {
+    min-width: 75px; 
+    min-height: 25px;
+}
+
+.addItemButton {
+    width: 75px; 
+    height: 25px;
+
+    /* border: 2px solid black; */
+    border-radius: 25px;
+}
+
+.innerModalWrapper {
+    position: fixed;
+    top: 0px; 
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: hidden;
+}
+
+.modealInnerContainer {
+    box-sizing: border-box;
+    width: 600px; 
+    height: 400px;
+
+    background-color: ghostwhite;
+}
+
+.modalCloseButton {
+    position: relative;
+    top: 10px;
+    align-content: center;
+    
+    top: 10px;
+    width: 75px;
+    height: 25px;
+
+    border: 2px solid black;
+    border-radius: 25px;
+}
+

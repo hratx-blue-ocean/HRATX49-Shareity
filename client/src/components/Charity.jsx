@@ -9,7 +9,7 @@ import {
     Route,
     Link,
     BrowserRouter
-  } from "react-router-dom";
+} from "react-router-dom";
 
 const Charity = (props) => {
 

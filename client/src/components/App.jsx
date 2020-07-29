@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 // import '../styles/App.css';
 import LandingPage from './Landing/landingPage.jsx'
+import Charity from '../components/Charity/Charity.jsx';
+import AddItem from './Modals/AddItem.jsx'
+import styles from '../styles/App.css';
+import Login from './Landing/Login.jsx';
 import Charity from './Charity.jsx';
 // import styles from '../styles/App.css';
 import styles from '../styles/App.css';
@@ -28,15 +32,19 @@ export default class App extends Component {
   render() {
     return (
       <>
+        
       <Router>
         <Switch>
           <Route path="/Charity">
         <div className={styles.charityMainAppContainer}>
-          <Charity imageUploadHandler={this.imageUploadHandler}/>
+          <Charity />
         </div>
         </Route>
         <Route path="/">
         <LandingPage />
+        <AddItem />
+        <h1>Welcome to Blue Ocean!</h1>
+        <Login />
         </Route>
         </Switch>
         </Router>
