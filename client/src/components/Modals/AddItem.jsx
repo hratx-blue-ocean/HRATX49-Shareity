@@ -4,7 +4,8 @@ import styles from '../../styles/AddItem.css'
 const AddItem = () => {
 
     const [modalView, setModalView] = useState('none');
-    const [buttonView, setButtonView] = useState('block')
+    const [buttonView, setButtonView] = useState('block');
+    // const [buttonVis, setButtonVis] = useState('hidden');
 
     const switchViews = () => {
 
@@ -27,7 +28,7 @@ const AddItem = () => {
             
             <div>
                 
-                <div className={styles.outerButtonWrapper}>
+                <div className={styles.outerButtonWrapper} style={{display: buttonView}} >
                     <label 
 
                         className={styles.modelButtonLabel} 
@@ -45,10 +46,14 @@ const AddItem = () => {
 
 
                 <div className={styles.innerModalWrapper} style={{display: modalView}}>
+                    <div className={styles.modealInnerContainer}>
+                        <div className={styles.modalContentContainer}>
 
-                    <button className={styles.modalCloseButton} onClick={() => switchViews()}>
-                    Close
-                    </button>
+                        </div>
+                        <button className={styles.modalCloseButton} onClick={() => switchViews()}>
+                        Close
+                        </button>
+                    </div>
                 </div>
             </div>
 
