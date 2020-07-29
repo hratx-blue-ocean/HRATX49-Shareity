@@ -7,17 +7,17 @@ const CharityHeader = () => {
     return (
 
         <div className={styles.charityHeaderWrapper}>
-            <Achievement />
-            <Achievement />
-            <Achievement />
-            <Achievement />
-            <Achievement />
-            <Achievement />
-            <Achievement />
-            <Achievement />
-            <Achievement />
-            <Achievement />
-            <Achievement />
+                <Achievement />
+                <Achievement />
+                <Achievement />
+                <Achievement />
+                <Achievement />
+                <Achievement />
+                <Achievement />
+                <Achievement />
+                <Achievement />
+                <Achievement />
+                <Achievement />
         </div>
     )
 }
