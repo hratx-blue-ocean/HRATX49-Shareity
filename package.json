@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/selder18/blue-ocean-rewrite#readme",
   "dependencies": {
-    "antd": "^4.5.0",
+    "antd": "^4.5.1",
     "axios": "^0.19.2",
     "babel-loader": "^8.1.0",
     "bcrypt": "^5.0.0",

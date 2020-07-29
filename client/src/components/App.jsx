@@ -5,6 +5,9 @@ import Charity from './Charity/Charity.jsx';
 import AddItem from './Modals/AddItem.jsx'
 import styles from '../styles/App.css';
 import Login from './Landing/Login.jsx';
+import Charity from './Charity.jsx';
+// import styles from '../styles/App.css';
+// import '../styles/App.css';
 
 export default class App extends Component {
   constructor(props) {
