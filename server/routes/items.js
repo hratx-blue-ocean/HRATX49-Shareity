@@ -54,6 +54,6 @@ router.put('/', async (req, res) => {
     console.log(err);
   }
   res.json(userInfo);
-})
+});
 
 module.exports = router;
