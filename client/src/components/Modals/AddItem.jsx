@@ -3,19 +3,21 @@ import styles from '../../styles/AddItem.css'
 
 const AddItem = () => {
 
-    const [modalView, setModalView] = useState({display: 'block'});
-    const [buttonView, setButtonView] = useState({display: 'none'})
+    const [modalView, setModalView] = useState('none');
+    const [buttonView, setButtonView] = useState('block')
 
     const switchViews = () => {
 
-        if(modalView === {display: 'none'}) {
+        if(modalView === 'none') {
 
-            setModalView({display: 'block'});
-            setButtonView({display: 'none'});
+            setModalView('block');
+            setButtonView('none');
+            console.log(modalView);
+            console.log(buttonView);
         } else {
 
-            setModalView({display: 'none'});
-            setButtonView({display: 'block'});
+            setModalView('none');
+            setButtonView('block');
         }
     }
 
@@ -23,9 +25,9 @@ const AddItem = () => {
 
         return (
 
-            <div className={styles.innerModalWrapper}>
+            <div className={styles.innerModalWrapper} style={{display: modalView}}>
             Modal
-            <button onClick={() => setButtonView()} />
+            <button onClick={() => switchViews()} />
             </div>
         )
     }
@@ -34,18 +36,25 @@ const AddItem = () => {
 
         return (
 
-            <button className={styles.addItemButton} onClick={() => setModalView({display: })}>
-            Press Me
-            </button>
+            <div className={styles.innerModalWrapper} style={{display: modalView}}>
+            Modal
+            <button onClick={() => switchViews()} />
+            </div>
         )
     }
 
     return (
 
         <div className={styles.modalWrapper}>
-            {modalView === 'block' ? renderButton() : renderModal()}
-            <div style={modalView}>
-
+            
+            <div>
+                <button className={styles.addItemButton} style={{display: buttonView}} onClick={() => switchViews()}>
+                Press Me
+                </button>
+                <div className={styles.innerModalWrapper} style={{display: modalView}}>
+                Modal
+                <button onClick={() => switchViews()} />
+                </div>
             </div>
 
         </div>
