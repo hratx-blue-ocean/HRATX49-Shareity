@@ -34,6 +34,8 @@ export default class App extends Component {
         </div>
         </Route>
         <Route path="/">
+
+        <h1>Welcome to Blue Ocean!</h1>
         <LandingPage />
         </Route>
         <AddItem />

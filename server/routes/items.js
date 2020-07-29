@@ -39,17 +39,16 @@ router.post('/', async (req, res) => {
 });
 
 router.put('/', async (req, res) => {
-  console.log('put item', req.query)
   let userInfo = {
     user: req.query.user,
     userType: req.query.userType,
     items: [],
   }
-  let filter = req.query._id
-  let update = req.query.updates
+  let filter = req.query._id;
+  let update = req.query.item
   try {
-    let update = await db.editItem(req.query.item);
-    // userInfo.items = await db.getItems(userInfo.user, userInfo.userType);
+    let updateItem = await db.editItem(filter, update);
+    userInfo.items = await db.getItems(userInfo.user, userInfo.userType);
   }
   catch (err) {
     console.log(err);

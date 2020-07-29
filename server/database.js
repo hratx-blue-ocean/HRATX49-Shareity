@@ -1,11 +1,12 @@
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 const CONFIG = require('./config.js');
-const { ObjectID } = require('mongodb');
+const { ObjectID } = require('mongodb').ObjectID;
 const url = CONFIG.url;
 const dbName = CONFIG.dbName;
 const itemCollName = CONFIG.itemCollName;
 const userCollName = CONFIG.userCollName;
+// const ObjectID = require('mongodb').ObjectID;
 
 const client = new MongoClient(url, { useUnifiedTopology: true });
 
@@ -80,19 +81,29 @@ client.connect((err) => {
     try {
       let newItem = await itemCollection.insertOne(item);
       return newItem;
-    } catch (error) {
+    }
+    catch (error) {
       console.log(error);
       return null;
     }
   }
+
+  // edit item
+  client.editItem = async (filter, update) => {
+    // console.log('edit item filter', filter);
+    // console.log('edit item update', update);
+    try {
+      let updated = await itemCollection.updateOne({_id: ObjectID(filter)}, {$set:update});
+      return updated;
+    }
+    catch (error) {
+      console.log(error);
+      return null;
+    }
+  }
+  
 });
 
-client.editItem = async (item) => {
-  console.log('edit item', item);
-  // try {
-  //   let updatedItem = await itemCollection.updateOne({_id: {item.id}}, {$set:{}})
-  // }
-}
 
 
 module.exports = client;
