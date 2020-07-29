@@ -11,7 +11,6 @@
 }
 
 .outerButtonWrapper {
-
     width: 75px; 
     height: 25px;
 
@@ -22,14 +21,11 @@
 .innerButtonWrapper {
     width: 75px; 
     height: 25px;
-
-
 }
 
 .modalButtonLabel {
     min-width: 75px; 
     min-height: 25px;
-
 }
 
 .addItemButton {
@@ -51,7 +47,14 @@
     justify-content: center;
     align-items: center;
     overflow-y: hidden;
+}
 
+.modealInnerContainer {
+    box-sizing: border-box;
+    width: 600px; 
+    height: 400px;
+
+    background-color: ghostwhite;
 }
 
 .modalCloseButton {
