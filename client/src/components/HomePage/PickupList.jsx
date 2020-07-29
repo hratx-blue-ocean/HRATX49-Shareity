@@ -2,13 +2,27 @@ import React, { useState, useEffect } from 'react';
 import { fakeData } from './fakeData.jsx';
 var _ = require('lodash');
 
-const PickupList = ({ styles, charity }) => {
-    const [otherData, setData] = useState([])
+const PickupList = ({ styles, charity, rawData }) => {
+    rawData = rawData || fakeData
+    var data = [];
+    
+    const [filteredData, setData] = useState(data)
     const [sortType, setSortType] = useState('dateCreated');
 
     useEffect(() => {
         sortArray(sortType);
     }, [sortType]);
+
+    //filtering the data if it hasnt been picked up
+    if(rawData.length >= 1) {
+        
+        rawData.map((item) => {
+            if(item.pickedUp === "false") {
+                data.push(item);
+                
+            }
+        })
+    }
     
         //object keys for sorting the data
         const sortArray = type => {
@@ -24,7 +38,7 @@ const PickupList = ({ styles, charity }) => {
             //defines the option that was selected in the dropdown by user
             const sortProperty = types[type]; 
             //sorting function compares data from the fakeData file           
-            const sorted = _.orderBy(fakeData, [sortProperty, 'asc'])
+            const sorted = _.orderBy(data, [sortProperty, 'asc'])
             setData(sorted)
         };
     
@@ -57,7 +71,7 @@ const PickupList = ({ styles, charity }) => {
                     </tr>
                 </thead>
                 <tbody className={styles.listRowWrap}>   
-                    {otherData.map((item, i) => 
+                    {filteredData.map((item, i) => 
                         <tr key={i} className={styles.listItemRow}>
                             <td> ({item.dateCreated.slice(3,21) || ''}) </td>
                             <td> {item.name || ''} </td>
@@ -65,6 +79,7 @@ const PickupList = ({ styles, charity }) => {
                         </tr>
                     )}
                 </tbody>
+                <tr><th># of Items for Pickup: {filteredData.length}</th></tr>
             </table>
         </div>
     )

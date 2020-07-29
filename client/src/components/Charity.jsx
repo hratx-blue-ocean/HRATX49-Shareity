@@ -52,7 +52,7 @@ const Charity = (props) => {
                 {/* list donated */}
                 <div className={styles.charityListDonated}>
                     <div className={styles.charityDonorListWrapper}>
-                        <DonatedList styles={listStyles}/>
+                        <DonatedList styles={listStyles} />
 
                     </div>
                 </div>
