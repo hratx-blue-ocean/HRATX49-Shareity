@@ -12,8 +12,6 @@ const NewItem = (props) => {
     const [estVal, onValChange] = useState('')
     const date = new Date();
 
-
-
     function onImageAdd() {
         //add image
     }
@@ -103,6 +101,7 @@ const NewItem = (props) => {
                     required
                 ></input>
                 <select
+                    className={styles.addConditionInputField}
                     name="condition"
                     value={condition}
                     type="text"
@@ -118,20 +117,21 @@ const NewItem = (props) => {
                         <option className={styles.conditionOptions} value='test'>Should go in the trash</option>
                 </select >
 
-                <input
-                    value={description}
-                    type="text"
-                    onChange={(event) => onDescChange(event.target.value)}
-                    placeholder="brief description of your item"
-                    required
-                ></input>
-                <button
-                    className={styles.addItemSubmitButton}
-                    onClick={() => onDonateSubmit()}
-                    onClick={() => props.closeModal()}
-                >
-                    Submit Donation Item
-                </button>
+                <div>
+                    <button 
+                        className={styles.addItemCancelButton} 
+                        onClick={() => props.closeModal()}>
+                    Cancel
+                    </button>
+                    <button
+                        className={styles.addItemSubmitButton}
+                        onClick={() => onDonateSubmit()}
+                        onClick={() => props.closeModal()}
+                    >
+                        Submit Donation Item
+                    </button>
+                </div>
+                
             </div>
         </div>
 

@@ -6,8 +6,8 @@ import { CSVLink, CSVDownload } from "react-csv";
 import Axios from 'axios';
 import PickupList from '../HomePage/PickupList.jsx';
 import DonatedList from '../HomePage/DonatedList.jsx';
-import UpForDonateList from '../HomePage/UpForDonateList.jsx'
-import NewItem from '../Modals/AddItem.jsx'
+import UpForDonateList from '../HomePage/UpForDonateList.jsx';
+import NewItem from '../Modals/AddItem.jsx';
 import {
     BrowserRouter as Router,
     Switch,
@@ -19,6 +19,7 @@ const Charity = (props) => { //
     const [taxData, changeTaxData] = useState([]);
     //we need to set the type of user/charity
     const [userType, getType] = useState('user');
+
     //const [listData, addListData] = useState([]);
     
     // const [listData, setListData] = useState([]);
@@ -40,17 +41,19 @@ const Charity = (props) => { //
     // useEffect(() => {
     //     getListData();
     // }, []);
-    var leftList = '';
-    var addItemButton = ''
-        if(localStorage.user.userType !== 'Donor') {
-            addItemButton =
-                <div className={styles.buttonWrapper}>
-                    <NewItem className={styles.charityButton} buttonText={'ADD ITEM'}/>
-                </div>
-            leftList = <UpForDonateList rawData={listData} taxData={changeTaxData}/>
-        } else {
-            leftList = <DonatedList rawData={listData} taxData={changeTaxData}/>
-        }
+
+
+    // var leftList = '';
+    // var addItemButton = ''
+    //     if(localStorage.user.userType !== 'Donor') {
+    //         addItemButton =
+    //             <div className={styles.buttonWrapper}>
+    //                 <NewItem className={styles.charityButton} buttonText={'ADD ITEM'}/>
+    //             </div>
+    //         leftList = <UpForDonateList rawData={listData} taxData={changeTaxData}/>
+    //     } else {
+    //         leftList = <DonatedList rawData={listData} taxData={changeTaxData}/>
+    //     }
 
     return (
 
@@ -106,7 +109,7 @@ const Charity = (props) => { //
                         {/* items to be picked up */}
                         <div className={styles.charityListItemsToBePickedUp}>
                             <div className={styles.charityUserListWrapper}>
-                                <PickupList rawData={listData}/>
+                                {/* <PickupList rawData={listData}/> */}
 
                             </div>
                         </div>

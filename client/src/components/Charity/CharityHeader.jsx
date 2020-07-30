@@ -22,7 +22,7 @@ const CharityHeader = () => {
 
     useEffect(() => {
         getUserAchievements();
-    });
+    }, []);
 
     return (
 
