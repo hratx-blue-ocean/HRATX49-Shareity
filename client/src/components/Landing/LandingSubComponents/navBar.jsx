@@ -15,7 +15,7 @@ function NavBar ({login, user}){
       <div className={styles.navBarMainContainer}>
         <div className={styles.navBarLogin}>
           {/* Log in Log our btn area */}
-          <button onClick={(event)=>login(event,"landingPageLoginBtn")}>Login</button>
+        <button onClick={(event)=>login(event)}>{localStorage.getItem("token") ? 'Log out': "Login" }</button>
         </div>
         <div className={styles.navBarLogo}>
           {/* Logo Area */}

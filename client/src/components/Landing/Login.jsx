@@ -49,9 +49,10 @@ class Login extends Component {
         let login = await axios.post('/users/login', this.state.user);
         console.log('this working?',login);
         localStorage.setItem('token', login.data.token);
-        localStorage.setItem('user', login.data.user);
+        localStorage.setItem('user', JSON.stringify(login.data.user));
+        this.props.settingUser(login.data.user.type)
       }
-      this.props.closeLogin()
+      this.props.closeLogin(), this.props.isLoggedIn(true)
     } catch (err) { console.log(err) };
   }
 
@@ -78,7 +79,7 @@ class Login extends Component {
           // localStorage.removeItem('token');
           localStorage.setItem('token', result.token)
           localStorage.setItem('user', result.user);
-          this.props.closeLogin();
+          this.props.closeLogin(), this.props.isLoggedIn(true)
         }
       }
     } catch (err) { console.log(err) };

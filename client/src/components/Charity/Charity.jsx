@@ -69,7 +69,6 @@ const Charity = (props) => {
                         <div className={styles.charitySideNav}>
                             {/* this is where the side nav buttons start */}
                             <div className={styles.charityButtonWrapper}>
-
                                 <div className={styles.buttonWrapper}>
                                 <Link to='/' className={styles.charityButton}>
                                     <button className={styles.charityButton}>HOME</button>

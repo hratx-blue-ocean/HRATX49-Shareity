@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import IndivCards from './cardsSubComponents/indivCards.jsx';
 import styles from '../LandingSubComponents/Cards.css';
 
-const Cards = ({ items, loading, displayCard }) => {
+const Cards = ({ items, loading, displayCard}) => {
   if (loading) {
     return <h2>Loading...</h2>
   }

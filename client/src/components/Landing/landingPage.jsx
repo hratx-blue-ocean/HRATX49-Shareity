@@ -21,13 +21,12 @@ const LandingPage = () => {
   const [showDetails, setShowDetails] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
   const [loginClicked, setLoginClicked] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [signUpClicked, setSignUpClicked] = useState(false);
+  const [typeOfUser,setTypeOfUser] = useState(null);
 
   /*
   Functions to build
-  Click handlers for indiv cards ---> Pops up item details modal
-  Click handler for login ---> Pops up Sign in Modal
-  Click handler for user ---> Sends to user Page
   Click handler for the 4 sorting functions ---> Sort
   */
 
@@ -55,10 +54,25 @@ const LandingPage = () => {
     setShowDetails(false);
   };
 
-  const handlingLogin = (event, name) => {
+  const handlingLogin = (event) => {
     // This is the click handler for the login in modal
-    if (name) {
+
+    //check if user has valid token
+    // Handling Log Out
+    if(localStorage.getItem('token')){
+      //remove their token
+      // localStorage.setItem('token', '');
+      localStorage.clear();
+      //set state to not logged in
+      setIsLoggedIn(false);
+      console.log("user is no longer logged in");
+      //Handling Log In
+    } else {
+      //show pop up
       setLoginClicked(true);
+      //sets state to logged in
+      setIsLoggedIn(false);
+      // console.log("You are now logged in");
     }
   }
 
@@ -71,6 +85,17 @@ const LandingPage = () => {
     console.log(event)
     console.log(name)
   }
+
+  const handleClaimingItem = (event,card)=>{ // function to handle claiming unclaimed stuff
+    event.preventDefault();
+    console.log('Here was the card that was claimed',card)
+  }
+
+  const whoToMessage = (event, donor)=>{
+    event.preventDefault();
+    console.log('Here is the donor of this Donation',donor)
+  }
+
 
   //Get Current Items
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -87,8 +112,8 @@ const LandingPage = () => {
         < NavBar login={handlingLogin} user={handleGoingToUserProfile} />
       </div>
       <div>
-        {loginClicked && <Login closeLogin={closeLogin} />}
-        {showDetails && <ShowDetails card={selectedCard} closeCard={closeCard} />}
+        {loginClicked && <Login closeLogin={closeLogin} settingUser={setTypeOfUser} isLoggedIn={setIsLoggedIn}/>}
+        {showDetails && <ShowDetails who={whoToMessage} card={selectedCard} closeCard={closeCard} claim={handleClaimingItem} />}
         <Cards items={currentItems} displayCard={displayCard} loading={loading} />
         <Paginater
           paginate={paginate}
