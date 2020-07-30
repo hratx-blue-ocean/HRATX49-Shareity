@@ -10,23 +10,26 @@ router.get('/', async (req, res) => {
 
 // add new item
 router.post('/', async (req, res) => {
+  console.log('item post', req.body);
   let userInfo = {
-    user: req.query.donor,
+    user: req.body.donor,
     userType: 'donor',
     items: []
   }
   let newItem = {
-    donor: req.query.donor,
-    name: req.query.name,
+    donor: req.body.donor,
+    name: req.body.name,
     claimedBy: null,
     pickedUp: false,
-    Description: req.query.Description,
-    pictures: req.query.pictures || null,
-    estimatedValue: req.query.estimatedValue,
-    itemCondition: req.query.itemCondition,
-    Location: req.query.Location,
-    dateCreated: req.query.dateCreated,
-    category: req.query.category
+    Description: req.body.Description,
+    pictures: null,
+    estimatedValue: req.body.estimatedValue,
+    itemCondition: req.body.itemCondition,
+    Location: req.body.Location,
+    dateCreated: req.body.dateCreated,
+    category: req.body.category,
+    email: req.body.email,
+    charityEmail: null
   }
   try {
     let item = await db.addItem(newItem);
