@@ -11,16 +11,19 @@ const NewItem = () => {
     const [estVal, onValChange] = useState('')
     const date = new Date();
 
-    const userData = JSON.parse(localStorage.getItem('user'))
-    const userName = userData.name
-    const email = userData.email
-    console.log(userName, email)
-    
+
+
     function onImageAdd() {
         //add image
     }
     function onDonateSubmit() {
-
+        if(!localStorage.getItem('user')) {
+            return;
+        }
+        const userData = JSON.parse(localStorage.getItem('user'))
+        const userName = userData.name
+        const email = userData.email
+        console.log(userName, email)
         var data = {
             donor: userName,
             name: itemName,
@@ -85,7 +88,7 @@ const NewItem = () => {
                     type="number"
                     required
                 ></input>
-                <select 
+                <select
                     name="condition"
                     value={condition}
                     type="text"
@@ -98,7 +101,7 @@ const NewItem = () => {
                         <option value='test'> test</option>
                         <option value='test'> test</option>
                 </select >
-            
+
                 <input
                     value={description}
                     type="text"

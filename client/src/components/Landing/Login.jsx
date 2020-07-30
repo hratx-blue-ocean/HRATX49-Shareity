@@ -78,7 +78,7 @@ class Login extends Component {
           //delete old stored token, since old token could be expired
           // localStorage.removeItem('token');
           localStorage.setItem('token', result.token)
-          localStorage.setItem('user', result.user);
+          localStorage.setItem('user', JSON.Stringify(result.user));
           this.props.closeLogin(), this.props.isLoggedIn(true)
         }
       }

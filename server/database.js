@@ -26,7 +26,8 @@ client.connect((err) => {
     try {
       let insertData = {
         ...userInfo,
-        password: hash
+        password: hash,
+        profilePic: "https://blueoceancmurray.s3.us-east-2.amazonaws.com/Screen%20Shot%202020-07-25%20at%2011.02.07%20AM-1596071065433.jpg"
       };
       let insertResults = await userCollection.insertOne(insertData);
       return insertResults;
