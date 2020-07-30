@@ -14,8 +14,8 @@ const NewItem = (props) => {
     // const [userName, setUserName] = useState('')
     const date = new Date();
 
-    setUserEmail('test')
-    setUserName('test')
+    // setUserEmail('test')
+    // setUserName('test')
 
 
     function onImageAdd() {
