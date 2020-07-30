@@ -47,6 +47,16 @@ client.connect((err) => {
     }
   }
 
+  client.updateProfilePic = async (email, profilePic) => {
+    try {
+       let query = await userCollection.updateOne({email: email}, {$set: profilePic });
+       return query;
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
+  }
+
   //item queries
 
   client.getItems = async (userName, userType) => {
@@ -75,6 +85,7 @@ client.connect((err) => {
       throw new Error(err);
     }
   }
+
 
   // add item
   client.addItem = async (item) => {

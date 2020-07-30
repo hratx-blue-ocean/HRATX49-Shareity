@@ -2,8 +2,12 @@ const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const db = require('./database.js');
+const profile = require( './routes/api/profile' );
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+//image upload
+app.use( '/api/profile', profile );
 
 // open up CORS
 app.use((_, res, next) => {
@@ -20,7 +24,7 @@ app.use(express.static(path.join(__dirname, '..', 'client', 'dist')))
 const { users, items } = require('./routes');
 app.use('/users', users);
 app.use('/items', items);
-
+app.use( '/api/profile', profile)
 //User/Charity Routes
 // app.get('/test', async (req, res) => {
 //     let data = await db.getData();
