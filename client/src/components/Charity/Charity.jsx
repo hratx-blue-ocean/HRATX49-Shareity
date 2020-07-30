@@ -13,8 +13,8 @@ import {
     Switch,
     Route,
     Link
-} from 'react-router-dom';
-const Charity = (props) => {
+} from 'react-router-dom'; //
+const Charity = (props) => { //
     //sets the state of tax data on donation list to be used with csv export
     const [taxData, changeTaxData] = useState([])
     //we need to set the type of user/charity
