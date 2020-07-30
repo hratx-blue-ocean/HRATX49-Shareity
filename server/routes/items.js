@@ -19,16 +19,17 @@ router.post('/', async (req, res) => {
   let newItem = {
     donor: req.body.donor,
     name: req.body.name,
-    email: req.body.email,
     claimedBy: null,
     pickedUp: false,
     Description: req.body.Description,
-    pictures: req.body.pictures || null,
+    pictures: null,
     estimatedValue: req.body.estimatedValue,
     itemCondition: req.body.itemCondition,
     Location: req.body.Location,
     dateCreated: req.body.dateCreated,
-    category: req.body.category
+    category: req.body.category,
+    email: req.body.email,
+    charityEmail: null
   }
   try {
     let item = await db.addItem(newItem);
