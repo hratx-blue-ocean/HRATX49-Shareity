@@ -95,7 +95,7 @@ const Charity = (props) => { //
                                 <div className={styles.buttonWrapper}>
                                     <button className={styles.charityButton}>UPDATE PASSWORD</button>
                                 </div>
-
+                                {addItemButton}
                             </div>
                         </div>
 
