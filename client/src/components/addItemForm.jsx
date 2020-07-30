@@ -18,7 +18,6 @@ const NewItem = (props) => {
         //add image
     }
 
-    console.log(props);
     function onDonateSubmit() {
         if(!localStorage.getItem('user')) {
             return;
@@ -93,7 +92,7 @@ const NewItem = (props) => {
                         required
                     ></input>
                 </div>
-            
+
                 <input
                     className={styles.addDescriptionInputField}
                     value={description}
@@ -127,8 +126,7 @@ const NewItem = (props) => {
                 ></input>
                 <button
                     className={styles.addItemSubmitButton}
-                    onClick={() => onDonateSubmit()}
-                    onClick={() => props.closeModal()}
+                    onClick={() =>  {onDonateSubmit();props.closeModal();}}
                 >
                     Submit Donation Item
                 </button>
