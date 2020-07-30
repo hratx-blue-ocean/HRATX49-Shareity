@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import styles from '../styles/AddItemForm.css';
 import axios from 'axios';
 
-const NewItem = () => {
+const NewItem = (props) => {
     const [itemName, onItemNameChange] = useState('')
     const [category, onCatChange] = useState('')
     const [zipcode, onZipChange] = useState('')
@@ -16,6 +17,8 @@ const NewItem = () => {
     function onImageAdd() {
         //add image
     }
+
+    console.log(props);
     function onDonateSubmit() {
         if(!localStorage.getItem('user')) {
             return;
@@ -47,20 +50,15 @@ const NewItem = () => {
     }
 
     return (
-        <div>
-            <div>
-                <input
-                    value={image}
-                    type="text"
-                    onChange={(event) => onImageChange(event.target.value)}
-                    placeholder="add Image URL"
-                    required
-                ></input>
-                <button
-                    onClick={() => onImageAdd()}
-                    >add image </button>
+        <div className={styles.addItemFormWrapper}>
+            <div className={styles.addedItemImageWrapper}>
+                <img className={styles.addedItemImage} src={image}></img>
             </div>
+
+            <div className={styles.inputFieldWrapper}>
+
                 <input
+                    className={styles.addNameInputField}
                     value={itemName}
                     onChange={(event) => onItemNameChange(event.target.value)}
                     placeholder="item name"
@@ -68,24 +66,40 @@ const NewItem = () => {
                     required
                 ></input>
                 <input
+                    className={styles.addCategoryInputField}
                     value={category}
                     onChange={(event) => onCatChange(event.target.value)}
                     placeholder="item category"
                     type="text"
                     required
                 ></input>
+
+                <div>
+
+                    <input
+                        className={styles.addValueInputField}
+                        value={estVal}
+                        onChange={(event) => onValChange(event.target.value)}
+                        placeholder="estimated Value"
+                        type="number"
+                        required
+                    ></input>
+                    <input
+                        className={styles.addZipInputField}
+                        value={zipcode}
+                        onChange={(event) => onZipChange(event.target.value)}
+                        placeholder="zipcode"
+                        type="number"
+                        required
+                    ></input>
+                </div>
+            
                 <input
-                    value={estVal}
-                    onChange={(event) => onValChange(event.target.value)}
-                    placeholder="estimated Value"
-                    type="number"
-                    required
-                ></input>
-                <input
-                    value={zipcode}
-                    onChange={(event) => onZipChange(event.target.value)}
-                    placeholder="zipcode"
-                    type="number"
+                    className={styles.addDescriptionInputField}
+                    value={description}
+                    type="text"
+                    onChange={(event) => onDescChange(event.target.value)}
+                    placeholder="brief description of your item"
                     required
                 ></input>
                 <select
@@ -96,10 +110,12 @@ const NewItem = () => {
                     required
                     onBlur={(event) => onConditionChange(event.target.value)}
                 >
-                        <option value='default' disabled>condition</option>
-                        <option value='test'> test</option>
-                        <option value='test'> test</option>
-                        <option value='test'> test</option>
+                        <option className={styles.conditionOptions} value='default' disabled>condition</option>
+                        <option className={styles.conditionOptions} value='test'>New</option>
+                        <option className={styles.conditionOptions} value='test'>Excellent</option>
+                        <option className={styles.conditionOptions} value='test'>Good</option>
+                        <option className={styles.conditionOptions} value='test'>Rough</option>
+                        <option className={styles.conditionOptions} value='test'>Should go in the trash</option>
                 </select >
 
                 <input
@@ -110,10 +126,13 @@ const NewItem = () => {
                     required
                 ></input>
                 <button
+                    className={styles.addItemSubmitButton}
                     onClick={() => onDonateSubmit()}
+                    onClick={() => props.closeModal()}
                 >
                     Submit Donation Item
                 </button>
+            </div>
         </div>
 
     )

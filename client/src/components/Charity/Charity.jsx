@@ -16,18 +16,10 @@ import {
 } from 'react-router-dom'; //
 const Charity = (props) => { //
     //sets the state of tax data on donation list to be used with csv export
-    const [taxData, changeTaxData] = useState([])
+    const [taxData, changeTaxData] = useState([]);
     //we need to set the type of user/charity
-    const [userType, getType] = useState('user')
-    const [totalData, getTotal] = useState(0);
-    const [listData, addListData] = useState([]);
-
-    // function getItems() {
-    //     var data = {
-            
-    //     }
-    //     Axios.get('/items')
-    // }
+    const [userType, getType] = useState('user');
+    //const [listData, addListData] = useState([]);
     
     // const [listData, setListData] = useState([]);
 
@@ -82,9 +74,9 @@ const Charity = (props) => { //
                             {/* this is where the side nav buttons start */}
                             <div className={styles.charityButtonWrapper}>
                                 <div className={styles.buttonWrapper}>
-                                <Link to='/' className={styles.charityButton}>
-                                    <button className={styles.charityButton}>HOME</button>
-                                </Link>
+                                    <Link to='/' className={styles.charityButtonHomeLink}>
+                                        <button className={styles.charityButton}>HOME</button>
+                                    </Link>
                                 </div>
 
                                 <div className={styles.buttonWrapper}>
@@ -118,6 +110,7 @@ const Charity = (props) => { //
 
                             </div>
                         </div>
+                        
                 </div>
             </div>
 
