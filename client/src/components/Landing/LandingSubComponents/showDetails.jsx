@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import styles from '../ShowDetails.css';
 import Item from 'antd/lib/list/Item';
+import { without } from 'lodash';
 
-const ShowDetails = ({ card, closeCard }) => {
+const ShowDetails = ({ card, closeCard, claim , who }) => {
   if (card.pictures == null){
     card.pictures = 'https://picsum.photos/200/300';
   } 
@@ -15,7 +16,7 @@ const ShowDetails = ({ card, closeCard }) => {
   };
   
   return (
-    <div className={styles.overlay} onClick={(e) => {handleClose(e)}}>
+    <div className={styles.overlay}>
       <div className={styles.cardDetail}>
           <p className={styles.closeBtn} onClick={closeCard}>+</p>
         <div className={styles.leftSide}>
@@ -29,11 +30,11 @@ const ShowDetails = ({ card, closeCard }) => {
             {/* BUTTONS */}
             <div className={styles.msgBtn}>
               {/* Message */}
-              <button name="message">Message</button>
+              <button onClick={(event)=>who(event,card.donor)} name="message">Message</button>
             </div>
             <div className={styles.claimBtn}>
               {/* Claim */}
-              <button name="claim">Claim</button>
+              <button onClick={(event)=>claim(event,card)} name="claim">Claim</button>
             </div>
           </div>
         </div>

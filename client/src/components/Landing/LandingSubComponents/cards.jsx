@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import IndivCards from './cardsSubComponents/indivCards.jsx';
 import styles from '../LandingSubComponents/Cards.css';
 
-const Cards = ({ items, loading, displayCard }) => {
+const Cards = ({ items, loading, displayCard, sortBy}) => {
   if (loading) {
     return <h2>Loading...</h2>
   }
@@ -11,10 +11,10 @@ const Cards = ({ items, loading, displayCard }) => {
       <p>Cards</p>
       <div>
         {/* Sorting Buttons */}
-        <button>Name</button>
-        <button>Date</button>
-        <button>Distance</button>
-        <button>Category</button>
+        <button onClick={(e)=>sortBy(e,e.target.name)} name="name">Name</button>
+        <button onClick={(e)=>sortBy(e,e.target.name)} name="date">Date</button>
+        <button onClick={(e)=>sortBy(e,e.target.name)} name="location">Location</button>
+        <button onClick={(e)=>sortBy(e,e.target.name)} name="category">Category</button>
       </div>
       {/* {styles.cardsParent} */}
       <div className={styles.cardsParent}>
@@ -22,6 +22,7 @@ const Cards = ({ items, loading, displayCard }) => {
         {/* Mapping Component for the cards */}
         
         {items.map((item) => (
+          console.log(item),
           <IndivCards key={item._id} item={item} displayCard={displayCard} className="list-group-item" />
           // {item.name}
         ))}

@@ -50,8 +50,12 @@ class Login extends Component {
         console.log('this working?',login);
         localStorage.setItem('token', login.data.token);
         localStorage.setItem('user', JSON.stringify(login.data.user));
+<<<<<<< HEAD
+=======
+        this.props.settingUser(login.data.user.type)
+>>>>>>> 26e698e2ecbbeb6c8cded86287d1c09465351307
       }
-      this.props.closeLogin()
+      this.props.closeLogin(), this.props.isLoggedIn(true)
     } catch (err) { console.log(err) };
   }
 
@@ -77,8 +81,8 @@ class Login extends Component {
           //delete old stored token, since old token could be expired
           // localStorage.removeItem('token');
           localStorage.setItem('token', result.token)
-          localStorage.setItem('user', result.user);
-          this.props.closeLogin();
+          localStorage.setItem('user', JSON.stringify(result.user));
+          this.props.closeLogin(), this.props.isLoggedIn(true)
         }
       }
     } catch (err) { console.log(err) };

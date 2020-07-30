@@ -1,0 +1,149 @@
+.addItemFormWrapper {
+
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    width: 99%;
+    height: 99%;
+
+    margin-left: .5%;
+
+    border: 2px solid silver;
+    border-radius: 25px;
+
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+
+}
+
+.addedItemImageWrapper {
+
+    float: left;
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    width: 49%;
+    height: 95%;
+
+    margin-right: .5%;
+
+    border: 2px solid silver;
+    border-radius: 25px;
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+
+.addedItemImage {
+    box-sizing: border-box;
+
+    width: 85%;
+    height: 85%;
+
+    border: 2px solid silver;
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+
+.inputFieldWrapper {
+
+    float: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 49%;
+    height: 95%;
+
+    border: 2px solid silver;
+    border-radius: 25px;
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+
+.addImageInputField {
+
+    box-sizing: border-box;
+    margin: 5px 5px;
+}
+
+.addImageFormButton {
+
+    box-sizing: border-box;
+    margin: 5px 5px;
+}
+
+.addNameInputField {
+
+    box-sizing: border-box;
+
+    width: 80%;
+    margin: 5px 5px;
+}
+
+.addCategoryInputField {
+
+    box-sizing: border-box;
+
+    width: 80%;
+    margin: 5px 5px;
+}
+
+.addValueInputField {
+
+    box-sizing: border-box;
+
+    width: 40%;
+    margin: 5px 5px;
+}
+
+.addZipInputField {
+
+    box-sizing: border-box;
+
+    width: 40%;
+    margin: 5px 5px;
+}
+
+.addConditionInputField {
+
+    box-sizing: border-box;
+    display: inline-flex;
+    justify-content: center;
+
+    margin: 5px 5px;
+
+    border: 1px solid silver;
+    color: white;
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+
+}
+
+.conditionOptions {
+
+    display: inline-flex;
+    justify-content: center;
+}
+
+.addDescriptionInputField {
+
+    box-sizing: border-box;
+
+    width: 80%;
+    margin: 5px 5px;
+}
+
+.addItemSubmitButton {
+
+    box-sizing: border-box;
+    margin: 5px 5px;
+
+    border: 1px solid silver;
+    border-radius: 10px;
+    color: white;
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}

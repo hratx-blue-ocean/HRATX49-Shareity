@@ -64,8 +64,8 @@
 
     display: flex;
     justify-content: center;
-    align-items: flex-end;
-    width: 600px;
+    align-items: center;
+    width: 800px;
     height: 400px;
 
     background-color: ghostwhite;

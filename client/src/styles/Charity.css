@@ -281,6 +281,14 @@ input[type="file" i] {
     height: 60px;
 }
 
+.charityButtonHomeLink {
+
+    box-sizing: border-box; 
+    width: 100%;
+    height: 45px;
+
+}
+
 .charityButton {
     box-sizing: border-box; 
     width: 100%;

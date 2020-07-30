@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from '../../styles/AddItem.css'
 import Form from '../AdditemForm.jsx';
 
-const AddItem = () => {
+const AddItem = ({ buttonText }) => {
 
     const [modalView, setModalView] = useState('none');
     const [buttonView, setButtonView] = useState('block');
@@ -37,7 +37,7 @@ const AddItem = () => {
                         onClick={() => switchViews()}
                         htmlFor="modalButton"
                     > 
-                        PUSH  
+                        {buttonText || 'PUSH'}  
                     </label>
                     <div id="modalButton" className={styles.innerButtonWrapper} style={{diplay: 'none'}}>
                         <button className={styles.addItemButton} style={{display: 'none'}}>
@@ -50,12 +50,13 @@ const AddItem = () => {
                 <div className={styles.innerModalWrapper} style={{display: modalView}}>
                     <div className={styles.modalInnerContainer}>
                         <div className={styles.modalContentContainer}>
-                            <Form />
+                            <Form closeModal={switchViews}/>
 
-                        <button className={styles.modalCloseButton} onClick={() => switchViews()}>
-                            Close
-                        </button>
                         </div>
+                        {/* uncomment this button if you want to use this component without another way to close the modal */}
+                        {/* <button className={styles.modalCloseButton} onClick={() => switchViews()}>
+                            Close
+                        </button> */}
                     </div>
                 </div>
             </div>
