@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
 
 // add new item
 router.post('/', async (req, res) => {
-  console.log('item post', req.body);
+  console.log(req.body);
   let userInfo = {
     user: req.body.donor,
     userType: 'donor',
@@ -19,17 +19,16 @@ router.post('/', async (req, res) => {
   let newItem = {
     donor: req.body.donor,
     name: req.body.name,
+    email: req.body.email,
     claimedBy: null,
     pickedUp: false,
     Description: req.body.Description,
-    pictures: null,
+    pictures: req.body.pictures || null,
     estimatedValue: req.body.estimatedValue,
     itemCondition: req.body.itemCondition,
     Location: req.body.Location,
     dateCreated: req.body.dateCreated,
-    category: req.body.category,
-    email: req.body.email,
-    charityEmail: null
+    category: req.body.category
   }
   try {
     let item = await db.addItem(newItem);
@@ -43,12 +42,12 @@ router.post('/', async (req, res) => {
 
 router.put('/', async (req, res) => {
   let userInfo = {
-    user: req.query.user,
-    userType: req.query.userType,
+    user: req.body.user,
+    userType: req.body.userType,
     items: [],
   }
-  let filter = req.query._id;
-  let update = req.query.item
+  let filter = req.body._id;
+  let update = req.body.item
   try {
     let updateItem = await db.editItem(filter, update);
     userInfo.items = await db.getItems(userInfo.user, userInfo.userType);
@@ -58,5 +57,21 @@ router.put('/', async (req, res) => {
   }
   res.json(userInfo);
 });
+
+router.delete('/', async (req, res) => {
+  let userInfo = {
+    user: req.body.user,
+    userType: 'donor',
+    items: [],
+  }
+  try {
+    await db.deleteItem(req.body._id)
+    userInfo.items = await db.getItems(userInfo.user, userInfo.userType);
+  }
+  catch (err) {
+    console.log(err);
+  }
+  res.json(userInfo);
+})
 
 module.exports = router;

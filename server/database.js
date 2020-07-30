@@ -90,8 +90,9 @@ client.connect((err) => {
   // add item
   client.addItem = async (item) => {
     try {
-      let newItem = await itemCollection.insertOne(item);
-      return newItem;
+      console.log('item', item);
+      // let newItem = await itemCollection.insertOne(item);
+      // return newItem;
     }
     catch (error) {
       console.log(error);
@@ -106,6 +107,17 @@ client.connect((err) => {
     try {
       let updated = await itemCollection.updateOne({_id: ObjectID(filter)}, {$set:update});
       return updated;
+    }
+    catch (error) {
+      console.log(error);
+      return null;
+    }
+  }
+
+  client.deleteItem = async (id) => {
+    try {
+      let deleted = await itemCollection.deleteOne({_id: ObjectID(id)});
+      return deleted;
     }
     catch (error) {
       console.log(error);
