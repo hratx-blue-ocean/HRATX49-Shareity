@@ -7,6 +7,7 @@ import { CSVLink, CSVDownload } from "react-csv";
 import PickupList from '../HomePage/PickupList.jsx';
 import DonatedList from '../HomePage/DonatedList.jsx';
 import UpForDonateList from '../HomePage/UpForDonateList.jsx'
+import newItem from '../Modals/AddItem.jsx'
 import {
     BrowserRouter as Router,
     Switch,
@@ -40,7 +41,9 @@ const Charity = (props) => {
     //     getListData();
     // }, []);
     var leftList = '';
+    var addItemButton = ''
         if(userType === 'user') {
+            addItemButton = <newItem />
             leftList = <UpForDonateList taxData={changeTaxData}/>
         } else {
             leftList = <DonatedList taxData={changeTaxData}/>
@@ -76,13 +79,18 @@ const Charity = (props) => {
                                 <div className={styles.buttonWrapper}>
                                     <button className={styles.charityButton}>
                                         <CSVLink 
-                                            data={taxData}>STATEMENT</CSVLink>
+                                            data={taxData}>STATEMENT
+                                        </CSVLink>
                                     </button>
                                     
                                 </div>
 
                                 <div className={styles.buttonWrapper}>
                                     <button className={styles.charityButton}>UPDATE PASSWORD</button>
+                                </div>
+                                <div className={styles.buttonWrapper}>
+                                    <button className={styles.charityButton}>ADD NEW ITEM</button>
+                                    {addItemButton}
                                 </div>
 
                             </div>

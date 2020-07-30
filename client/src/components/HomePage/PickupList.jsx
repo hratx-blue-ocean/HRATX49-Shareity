@@ -50,7 +50,11 @@ const PickupList = ({ charity, rawData }) => {
         <div className='listWrap'>
             <div className='listHeaderWrap'>
                   {/* //its working but for some reason shows red line under it */}
-                <select className={styles.listSelector} value={sortType} onChange={(e) => setSortType(e.target.value)}>
+                <select 
+                    className={styles.listSelector} 
+                    value={sortType} 
+                    onChange={(e) => setSortType(e.target.value)}
+                >
                     {sortOptions.map((item, i) => 
                         <option key={i} value={item}>{item}</option>
                     )
@@ -70,7 +74,7 @@ const PickupList = ({ charity, rawData }) => {
                 </thead>
                 <tbody className={styles.listRowWrap}>   
                     {filteredData.map((item, i) => 
-                        <tr key={i} className={styles.listItemRow} onClick={() => onRowClick()}>
+                        <tr key={i} className={styles.listItemRow} onClick={() => alert('im clicked!')}>
                             <td> ({item.dateCreated.slice(3,21) || ''}) </td>
                             <td> {item.name || ''} </td>
                             <td> {item.Location = item.Location.toString().slice(0,5) || ''}</td>
