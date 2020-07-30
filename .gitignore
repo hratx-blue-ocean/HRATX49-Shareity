@@ -68,3 +68,6 @@ typings/
 bundle.js
 
 /server/config.js
+
+# Access for S3
+server/routes/api/access.js
