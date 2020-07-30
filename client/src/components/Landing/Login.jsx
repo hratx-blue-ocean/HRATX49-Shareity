@@ -50,7 +50,7 @@ class Login extends Component {
         console.log('this working?',login);
         localStorage.setItem('token', login.data.token);
         localStorage.setItem('user', JSON.stringify(login.data.user));
-        this.props.settingUser(login.data.user.type)
+        this.props.setTypeOfUser(login.data.user.type)
       }
       this.props.closeLogin(), this.props.isLoggedIn(true)
     } catch (err) { console.log(err) };
@@ -79,7 +79,7 @@ class Login extends Component {
           // localStorage.removeItem('token');
           localStorage.setItem('token', result.token)
           localStorage.setItem('user', JSON.stringify(result.user));
-          this.props.closeLogin(), this.props.isLoggedIn(true)
+          this.props.closeLogin(), this.props.isLoggedIn(true), this.props.setTypeOfUser(login.data.user.type)
         }
       }
     } catch (err) { console.log(err) };

@@ -15,18 +15,22 @@ import {
   Link
 } from "react-router-dom";
 
+let currentUser;
+if (localStorage.user){
+  currentUser = JSON.parse(localStorage.user).type;
+} 
+
 const LandingPage = () => {
   const [items, setItems] = useState([]);
-  const [unclaimedItems, setUnclaimedItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(5)
+  const [itemsPerPage] = useState(10)
   const [showDetails, setShowDetails] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
   const [loginClicked, setLoginClicked] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [typeOfUser,setTypeOfUser] = useState(null);
-  const [toSortBy,setToSortBy] = useState('date');
+  const [typeOfUser, setTypeOfUser] = useState(currentUser);
+  const [toSortBy, setToSortBy] = useState('date');
 
   /*
   Functions to build
@@ -36,12 +40,13 @@ const LandingPage = () => {
   useEffect(() => {
     const retrieveItems = async () => {
       setLoading(true);
-      // const res = await Axios.get('/items');
-      const res = AllItems;
-      console.log('Main',res)
+      const res = await Axios.get('/items');
       // filter function
-      // let unclaimedItems = res.filter(item=>console.log(item),item.claimedBy === null);
-      console.log(unclaimedItems)
+      let unclaimedItems = res.data.filter(item => {
+        return item.claimedBy === null;
+       }
+      );
+      // console.log('Done',unclaimedItems)
       // console.log(res.data)
       // setItems(res.data)
       setItems(unclaimedItems)
@@ -66,13 +71,14 @@ const LandingPage = () => {
 
   const handlingLogin = (event) => {
     // This is the click handler for the login in modal
-
+    
     //check if user has valid token
     // Handling Log Out
     if(localStorage.getItem('token')){
       //remove their token
       // localStorage.setItem('token', '');
       localStorage.clear();
+      setTypeOfUser(null)
       //set state to not logged in
       setIsLoggedIn(false);
       console.log("user is no longer logged in");
@@ -99,11 +105,29 @@ const LandingPage = () => {
   const handleClaimingItem = (event,card)=>{ // function to handle claiming unclaimed stuff
     event.preventDefault();
     console.log('Here was the card that was claimed',card)
-  }
-
-  const whoToMessage = (event, donor)=>{
-    event.preventDefault();
-    console.log('Here is the donor of this Donation',donor)
+    //get the user thats logged in
+    // if user type is charity
+    if (!isLoggedIn){
+      alert('Please log in as a Charity to claim this item');
+      return;
+    } else {
+      let charityInfo = JSON.parse(localStorage.user);
+      let charityEmail = charityInfo.email;
+      if (typeOfUser === 'charity'){
+        //logic
+        Axios.put('/items/',{
+          user: charityEmail,
+          usertype: 'charity',
+          _id: card._id,
+          item: { 
+            claimedBy: charityInfo.name,
+            charityEmail: charityEmail,
+          },
+        })
+      } else {
+        alert('Sorry, Only Charities can claim Items')
+      }
+    }
   }
 
   //Click handler for sort
@@ -115,7 +139,7 @@ const LandingPage = () => {
 
   //Function to sort
   const sortArray = type =>{
-    const types ={
+    const types = {
       name: 'name',
       date: 'dateCreated',
       category: 'category',
@@ -129,7 +153,6 @@ const LandingPage = () => {
   //Get Current Items
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  console.log('hi',items);
   const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
 
   //Change Page
@@ -142,8 +165,8 @@ const LandingPage = () => {
         < NavBar login={handlingLogin} user={handleGoingToUserProfile} />
       </div>
       <div>
-        {loginClicked && <Login closeLogin={closeLogin} settingUser={setTypeOfUser} isLoggedIn={setIsLoggedIn}/>}
-        {showDetails && <ShowDetails who={whoToMessage} card={selectedCard} closeCard={closeCard} claim={handleClaimingItem} />}
+        {loginClicked && <Login closeLogin={closeLogin} setTypeOfUser={setTypeOfUser} isLoggedIn={setIsLoggedIn}/>}
+        {showDetails && <ShowDetails card={selectedCard} closeCard={closeCard} claimItem={handleClaimingItem} />}
         <Cards items={currentItems} displayCard={displayCard} loading={loading} sortBy={handleSort} />
         <Paginater
           paginate={paginate}

@@ -26,6 +26,7 @@ function IndivCards({ item, displayCard }) {
   Just installed ant, get cards running, pagination,
   */
 
+<<<<<<< HEAD
   return (
     <div onClick={(event) => displayCard(event, item)}>
       <Card
@@ -38,6 +39,20 @@ function IndivCards({ item, displayCard }) {
           <span>{moment().fromNow(item.dateCreated)}</span>
         </div>
       </Card>
+=======
+  return(
+    <div onClick={(event)=>displayCard(event,item)}>
+    <Card
+    hoverable
+    style={{width:240}}
+    cover={<img src="https://picsum.photos/200/300" alt={item.name}/>}
+    >
+    <div>
+    <Meta title={item.name} description={item.Location}/>
+    <span>{moment().fromNow(item.dateCreated)}</span>
+    </div>
+    </Card>
+>>>>>>> V2.0.5
     </div>
   )
 }

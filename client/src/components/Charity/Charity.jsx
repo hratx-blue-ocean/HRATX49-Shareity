@@ -13,6 +13,7 @@ import {
     Switch,
     Route,
     Link
+<<<<<<< HEAD
 } from 'react-router-dom';
 const Charity = (props) => { //
 
@@ -96,10 +97,28 @@ const Charity = (props) => { //
             console.log(err)
         })
     }
+=======
+<<<<<<< HEAD
+
+} from 'react-router-dom';
+const Charity = (props) => { //
+=======
+} from 'react-router-dom';
+const Charity = (props) => { 
+>>>>>>> V2.0.5
+    //sets the state of tax data on donation list to be used with csv export
+    const [taxData, changeTaxData] = useState([]);
+    //we need to set the type of user/charity
+    const [userType, getType] = useState('user');
+<<<<<<< HEAD
+>>>>>>> V2.0.5
 
     // comment this section in when we are ready to retreive data from the db
     // still needs an endpoint to send request to
     //const [listData, addListData] = useState([]);
+=======
+    // const [listData, setListData] = useState([]);
+>>>>>>> V2.0.5
 
     // const getListData = () => {
 
