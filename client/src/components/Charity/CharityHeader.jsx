@@ -19,6 +19,7 @@ const CharityHeader = () => {
                 console.error(err);
             })
     }
+    
     // comment this back in when we are ready to make requests to the db
     // useEffect(() => {
     //     getUserAchievements();

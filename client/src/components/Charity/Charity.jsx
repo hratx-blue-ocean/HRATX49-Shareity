@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../../styles/Charity.css';
-import LogoAvatar from './LogoAvatar.jsx'
+import LogoAvatar from './LogoAvatar.jsx';
 import CharityHeader from './CharityHeader.jsx';
 import { CSVLink, CSVDownload } from "react-csv";
 import Axios from 'axios';
