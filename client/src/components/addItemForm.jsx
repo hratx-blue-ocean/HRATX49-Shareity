@@ -45,6 +45,7 @@ const NewItem = (props) => {
 
         axios.post('/items', data)
         .then(res=> {
+            getUserItemData(res.data.items)
             console.log('your item has been added', res.data)
         })
         .catch(err => {

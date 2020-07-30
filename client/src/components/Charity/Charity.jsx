@@ -3,7 +3,7 @@ import styles from '../../styles/Charity.css';
 import LogoAvatar from './LogoAvatar.jsx';
 import CharityHeader from './CharityHeader.jsx';
 import { CSVLink, CSVDownload } from "react-csv";
-import Axios from 'axios';
+//import Axios from 'axios';
 import PickupList from '../HomePage/PickupList.jsx';
 import DonatedList from '../HomePage/DonatedList.jsx';
 import UpForDonateList from '../HomePage/UpForDonateList.jsx';
@@ -13,9 +13,9 @@ import {
     Switch,
     Route,
     Link
-
 } from 'react-router-dom';
-const Charity = (props) => { //
+
+const Charity = (props) => { 
     //sets the state of tax data on donation list to be used with csv export
     const [taxData, changeTaxData] = useState([]);
     //we need to set the type of user/charity
@@ -43,10 +43,9 @@ const Charity = (props) => { //
     //     getListData();
     // }, []);
 
-
-    // var leftList = '';
-    var addItemButton = ''
-        if(localStorage.user.userType !== 'Donor') {
+    var leftList = '';
+    var addItemButton = '';
+        if( userData.userType !== 'donor') {
             addItemButton =
                 <div className={styles.buttonWrapper}>
                     <NewItem className={styles.charityButton} buttonText={'ADD ITEM'}/>
@@ -89,7 +88,6 @@ const Charity = (props) => { //
                                             data={taxData}>STATEMENT
                                         </CSVLink>
                                     </button>
-
                                 </div>
 
                                 <div className={styles.buttonWrapper}>
