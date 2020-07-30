@@ -5,7 +5,7 @@ var _ = require('lodash');
 
 
 const DonatedList = ({ charity, rawData, taxData }) => {
-    rawData = rawData || fakeData;
+    rawData = rawData || fakeData
     var data = [];
     var totalVal = 0;
     var csvData = [['date', 'name', 'category', 'estimated value']]

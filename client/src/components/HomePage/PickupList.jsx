@@ -2,25 +2,46 @@ import React, { useState, useEffect } from 'react';
 import styles from '../../styles/lists.css';
 import { fakeData } from './fakeData.jsx';
 var _ = require('lodash');
+import Axios from 'axios'
 
-const PickupList = ({ charity, rawData }) => {
-    rawData = rawData || fakeData
-    var data = [];
-    
-    const [filteredData, setData] = useState(data)
+const PickupList = ({ charity }) => {
+
     const [sortType, setSortType] = useState('dateCreated');
+    const [pickupData, addListData] = useState([]);
 
-    useEffect(() => {
-        sortArray(sortType);
-    }, [sortType]);
-
-    //filtering the data if it hasnt been picked up
-    if(rawData.length >= 1) {
-        rawData.map((item) => {
-            if(item.pickedUp === "false" && item.claimedBy !== "") {
-                data.push(item);
+        useEffect(() => {
+            getUserItemsData ()
+        }, [])
+        function getUserItemsData () {
+            var arrayforPickupData = []
+            const userData = JSON.parse(localStorage.getItem('user'))
+            var userDataObj = {
+                userType: userData.userType,
+                email: userData.email
             }
-        })
+    
+            Axios.get('/items/items', userDataObj)
+            .then(res => {
+                //pushed to data array if item hasnt been picked up, but HAS been claimed
+                if(item.pickedUp === "false" && item.claimedBy !== "") {
+                    res.data.map((item) => {
+                        arrayforPickupData.push(item);
+                    })
+                }
+            })
+            .then(res => {
+                //sets state of pickupdata
+                addListData(arrayforPickupData)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        }
+
+    const handleSort = (event, name) => {
+        event.preventDefault();
+        setSortType(name);
+        sortArray(sortType)
     }
     
     //object keys for sorting the data
@@ -36,8 +57,8 @@ const PickupList = ({ charity, rawData }) => {
         //defines the option that was selected in the dropdown by user
         const sortProperty = types[type]; 
         //sorting function compares data from the fakeData file           
-        const sorted = _.orderBy(data, [sortProperty, 'asc'])
-        setData(sorted)
+        const sorted = _.orderBy(pickupData, [sortProperty, 'asc'])
+        addListData(sorted)
     };
     
     var title = 'Items for Pickup';
@@ -53,7 +74,7 @@ const PickupList = ({ charity, rawData }) => {
                 <select 
                     className={styles.listSelector} 
                     value={sortType} 
-                    onChange={(e) => setSortType(e.target.value)}
+                    onChange={(e) => handleSort(e, e.target.value)}
                 >
                     {sortOptions.map((item, i) => 
                         <option key={i} value={item}>{item}</option>
@@ -74,16 +95,16 @@ const PickupList = ({ charity, rawData }) => {
                         </tr>
                     </thead>
                     <tbody className={styles.listRowWrap}>   
-                        {filteredData.map((item, i) => 
+                        {pickupData.map((item, i) => 
                             <tr key={i} className={styles.listItemRow} onClick={() => alert('im clicked!')}>
-                                <td> {item.dateCreated.slice(3,21)} </td>
+                                <td> {item.dateCreated.slice(5,16)} </td>
                                 <td> {item.name} </td>
                                 <td> {item.Location = item.Location.toString().slice(0,5) || ''}</td>
                             </tr>
                         )}
                     </tbody>
                     <tfoot>
-                        <tr><th># of Items for Pickup: {filteredData.length}</th></tr>
+                        <tr><th># of Items for Pickup: {pickupData.length}</th></tr>
                     </tfoot>
                 </table>
             </div>
