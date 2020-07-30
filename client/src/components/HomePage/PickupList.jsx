@@ -17,7 +17,7 @@ const PickupList = ({ charity, rawData }) => {
     //filtering the data if it hasnt been picked up
     if(rawData.length >= 1) {
         rawData.map((item) => {
-            if(item.pickedUp === "false") {
+            if(item.pickedUp === "false" && item.claimedBy !== "") {
                 data.push(item);
             }
         })

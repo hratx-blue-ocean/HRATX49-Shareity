@@ -5,14 +5,18 @@ import { CSVLink, CSVDownload } from "react-csv";
 // import Axios from 'axios';
 import PickupList from '../HomePage/PickupList.jsx';
 import DonatedList from '../HomePage/DonatedList.jsx';
+import UpForDonateList from '../HomePage/UpForDonateList.jsx'
 import {
     BrowserRouter as Router,
     Switch,
     Route,
     Link
-  } from 'react-router-dom';
+} from 'react-router-dom';
 const Charity = (props) => {
+    //sets the state of tax data on donation list to be used with csv export
     const [taxData, changeTaxData] = useState([])
+    //we need to set the type of user/charity
+    const [userType, getType] = useState('user')
     //const [listData, addListData] = useState([]);
     
     // const [listData, setListData] = useState([]);
@@ -34,7 +38,12 @@ const Charity = (props) => {
     // useEffect(() => {
     //     getListData();
     // }, []);
-
+    var leftList = '';
+        if(userType === 'user') {
+            leftList = <UpForDonateList taxData={changeTaxData}/>
+        } else {
+            leftList = <DonatedList taxData={changeTaxData}/>
+        }
     return (
 
         <>
@@ -79,8 +88,7 @@ const Charity = (props) => {
                         {/* list donated */}
                         <div className={styles.charityListDonated}>
                             <div className={styles.charityDonorListWrapper}>
-                                <DonatedList taxData={changeTaxData} />
-
+                                {leftList}
                             </div>
                         </div>
 
