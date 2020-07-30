@@ -20,9 +20,9 @@ const CharityHeader = () => {
             })
     }
 
-    useEffect(() => {
-        getUserAchievements();
-    });
+    // useEffect(() => {
+    //     getUserAchievements();
+    // });
 
     return (
 

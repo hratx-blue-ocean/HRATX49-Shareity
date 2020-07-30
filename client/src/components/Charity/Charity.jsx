@@ -20,7 +20,7 @@ const Charity = (props) => { //
     //we need to set the type of user/charity
     const [userType, getType] = useState('user');
     //const [listData, addListData] = useState([]);
-    
+
     // const [listData, setListData] = useState([]);
 
     // const getListData = () => {
@@ -47,9 +47,9 @@ const Charity = (props) => { //
                 <div className={styles.buttonWrapper}>
                     <NewItem className={styles.charityButton} buttonText={'ADD ITEM'}/>
                 </div>
-            leftList = <UpForDonateList rawData={listData} taxData={changeTaxData}/>
+            //leftList = <UpForDonateList rawData={listData} taxData={changeTaxData}/>
         } else {
-            leftList = <DonatedList rawData={listData} taxData={changeTaxData}/>
+            //leftList = <DonatedList rawData={listData} taxData={changeTaxData}/>
         }
 
     return (
@@ -81,11 +81,11 @@ const Charity = (props) => { //
 
                                 <div className={styles.buttonWrapper}>
                                     <button className={styles.charityButton}>
-                                        <CSVLink 
+                                        <CSVLink
                                             data={taxData}>STATEMENT
                                         </CSVLink>
                                     </button>
-                                    
+
                                 </div>
 
                                 <div className={styles.buttonWrapper}>
@@ -106,11 +106,11 @@ const Charity = (props) => { //
                         {/* items to be picked up */}
                         <div className={styles.charityListItemsToBePickedUp}>
                             <div className={styles.charityUserListWrapper}>
-                                <PickupList rawData={listData}/>
+                                {/* <PickupList rawData={listData}/> */}
 
                             </div>
                         </div>
-                        
+
                 </div>
             </div>
 
