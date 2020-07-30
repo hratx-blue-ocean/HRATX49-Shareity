@@ -1,18 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../../styles/Charity.css';
-<<<<<<< HEAD
-// import LogoAvatar from './LogoAvatar.jsx';
 import LogoAvatar from './LogoAvatar.jsx'
-=======
-import LogoAvatar from './LogoAvatar.jsx';
 import CharityHeader from './CharityHeader.jsx';
 import { CSVLink, CSVDownload } from "react-csv";
-<<<<<<< HEAD
->>>>>>> 13a4ffaa481687114417238f2bbe512d97b46573
-// import Axios from 'axios';
-=======
 import Axios from 'axios';
->>>>>>> 26e698e2ecbbeb6c8cded86287d1c09465351307
 import PickupList from '../HomePage/PickupList.jsx';
 import DonatedList from '../HomePage/DonatedList.jsx';
 import UpForDonateList from '../HomePage/UpForDonateList.jsx';
@@ -22,29 +13,15 @@ import {
     Switch,
     Route,
     Link
-<<<<<<< HEAD
-} from 'react-router-dom';
-const Charity = (props) => {
-<<<<<<< HEAD
 
-=======
-=======
-} from 'react-router-dom'; //
+} from 'react-router-dom';
 const Charity = (props) => { //
->>>>>>> 26e698e2ecbbeb6c8cded86287d1c09465351307
     //sets the state of tax data on donation list to be used with csv export
     const [taxData, changeTaxData] = useState([]);
     //we need to set the type of user/charity
     const [userType, getType] = useState('user');
 
     //const [listData, addListData] = useState([]);
-<<<<<<< HEAD
-    
->>>>>>> 13a4ffaa481687114417238f2bbe512d97b46573
-=======
-
->>>>>>> 26e698e2ecbbeb6c8cded86287d1c09465351307
-    // const [listData, setListData] = useState([]);
 
     // const getListData = () => {
 
