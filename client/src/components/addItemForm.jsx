@@ -10,7 +10,13 @@ const NewItem = (props) => {
     const [description, onDescChange] = useState('')
     const [image, onImageChange] = useState('')
     const [estVal, onValChange] = useState('')
-    const date = new Date();     
+    // const [userEmail, setUserEmail] = useState('')
+    // const [userName, setUserName] = useState('')
+    const date = new Date();
+
+    // setUserEmail('test')
+    // setUserName('test')
+
 
     function onImageAdd() {
         //add image
