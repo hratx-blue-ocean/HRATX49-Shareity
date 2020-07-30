@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from '../../styles/AddItem.css'
 import Form from '../AdditemForm.jsx';
 
-const AddItem = () => {
+const AddItem = (props) => {
 
     const [modalView, setModalView] = useState('none');
     const [buttonView, setButtonView] = useState('block');
@@ -50,12 +50,12 @@ const AddItem = () => {
                 <div className={styles.innerModalWrapper} style={{display: modalView}}>
                     <div className={styles.modalInnerContainer}>
                         <div className={styles.modalContentContainer}>
-                            <Form />
+                            <Form closeModal={switchViews}/>
 
-                        <button className={styles.modalCloseButton} onClick={() => switchViews()}>
-                            Close
-                        </button>
                         </div>
+                        {/* <button className={styles.modalCloseButton} onClick={() => switchViews()}>
+                            Close
+                        </button> */}
                     </div>
                 </div>
             </div>

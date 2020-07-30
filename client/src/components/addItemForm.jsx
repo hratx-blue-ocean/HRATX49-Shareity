@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from '../styles/AddItemForm.css';
 import axios from 'axios';
 
-const NewItem = () => {
+const NewItem = (props) => {
     const [itemName, onItemNameChange] = useState('')
     const [category, onCatChange] = useState('')
     const [zipcode, onZipChange] = useState('')
@@ -17,6 +17,8 @@ const NewItem = () => {
     function onImageAdd() {
         //add image
     }
+
+    console.log(props);
     function onDonateSubmit() {
 
         var data = {
@@ -115,6 +117,7 @@ const NewItem = () => {
                 <button
                     className={styles.addItemSubmitButton}
                     onClick={() => onDonateSubmit()}
+                    onClick={() => props.closeModal()}
                 >
                     Submit Donation Item
                 </button>
