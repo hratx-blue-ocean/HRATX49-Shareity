@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from '../../styles/AddItem.css'
+import Form from '../AdditemForm.jsx';
 
 const AddItem = () => {
 
@@ -49,6 +50,7 @@ const AddItem = () => {
                 <div className={styles.innerModalWrapper} style={{display: modalView}}>
                     <div className={styles.modalInnerContainer}>
                         <div className={styles.modalContentContainer}>
+                            <Form />
 
                         <button className={styles.modalCloseButton} onClick={() => switchViews()}>
                             Close

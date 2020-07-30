@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import styles from '../../styles/lists.css';
 import { fakeData } from './fakeData.jsx';
 import styles from '../../styles/lists.css';
 var _ = require('lodash');
 
-<<<<<<< HEAD
-const DonatedList = ({ charity, rawData }) => {
-=======
-const DonatedList = ({ charity, rawData, taxData }) => {
->>>>>>> 1f447370cdcc7f36633c9533e95ad629ec4382e1
+const DonatedList = ({ rawData, taxData }) => {
     rawData = rawData || fakeData;
     var data = [];
     var totalVal = 0;
@@ -24,12 +19,15 @@ const DonatedList = ({ charity, rawData, taxData }) => {
     if(rawData.length >= 1) {
         var csvRow = [];
         rawData.map((item) => {
-            if(item.pickedUp === "true") {
+            if(item.claimedBy === "" && item.pickedUp === 'false') {
                 data.push(item);
                 totalVal += item.estimatedValue;
+            }
+            if(item.claimedBy !== "" && item.pickedUp === 'true') {
                 csvRow.push(item.dateCreated.slice(3,21), item.name, item.category, item.estimatedValue);
                 csvData.push(csvRow);
                 csvRow = [];
+                totalVal += item.estimatedValue;
             }
         })
     }
@@ -51,16 +49,8 @@ const DonatedList = ({ charity, rawData, taxData }) => {
         taxData(csvData)
     };
 
-    var title = 'test';
-    var sortOptions = [];
-    //if the user is a charity or donor, this sets sorting options and titles for each list
-    if(charity) {
-        title='Items Donated'
-        sortOptions = ['dateCreated', 'name', 'estimatedValue'];
-    } else {
-        title='Items Donated'
-        sortOptions = ['claimedBy', 'dateCreated', 'estimatedValue', 'name', 'category'];
-    }
+    var title='Items Available for Donation'
+    var sortOptions = ['dateCreated', 'estimatedValue', 'name', 'category'];
 
     return (
         <div className='listWrap'>
@@ -97,10 +87,11 @@ const DonatedList = ({ charity, rawData, taxData }) => {
                 )}
             </tbody>
             <tfoot>
-                <tr><th>Total Value Donated: ${totalVal}</th>
-                <th>Total # of Items Donated: {filteredData.length}</th></tr>
+                <tr><th>Total # of Items up for Donation: {filteredData.length}</th></tr>
             </tfoot>
             </table>
+                <div>Total # Donated: {csvData.length}</div>
+                <div>Total $ Donated: {totalVal}</div>
         </div>
 
     )

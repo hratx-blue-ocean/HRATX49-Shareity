@@ -1,11 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../../styles/Charity.css';
 import LogoAvatar from './LogoAvatar.jsx';
+<<<<<<< HEAD
 import CharityHeader from './CharityHeader.jsx';
+=======
+import { CSVLink, CSVDownload } from "react-csv";
+>>>>>>> 1f447370cdcc7f36633c9533e95ad629ec4382e1
 // import Axios from 'axios';
 import PickupList from '../HomePage/PickupList.jsx';
 import DonatedList from '../HomePage/DonatedList.jsx';
+import UpForDonateList from '../HomePage/UpForDonateList.jsx'
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from 'react-router-dom';
 const Charity = (props) => {
+    //sets the state of tax data on donation list to be used with csv export
+    const [taxData, changeTaxData] = useState([])
+    //we need to set the type of user/charity
+    const [userType, getType] = useState('user')
+    //const [listData, addListData] = useState([]);
     
     // const [listData, setListData] = useState([]);
 
@@ -26,7 +42,12 @@ const Charity = (props) => {
     // useEffect(() => {
     //     getListData();
     // }, []);
-
+    var leftList = '';
+        if(userType === 'user') {
+            leftList = <UpForDonateList taxData={changeTaxData}/>
+        } else {
+            leftList = <DonatedList taxData={changeTaxData}/>
+        }
     return (
 
         <>
@@ -50,11 +71,17 @@ const Charity = (props) => {
                             <div className={styles.charityButtonWrapper}>
 
                                 <div className={styles.buttonWrapper}>
+                                <Link to='/' className={styles.charityButton}>
                                     <button className={styles.charityButton}>HOME</button>
+                                </Link>
                                 </div>
 
                                 <div className={styles.buttonWrapper}>
-                                    <button className={styles.charityButton}>STATEMENT</button>
+                                    <button className={styles.charityButton}>
+                                        <CSVLink 
+                                            data={taxData}>STATEMENT</CSVLink>
+                                    </button>
+                                    
                                 </div>
 
                                 <div className={styles.buttonWrapper}>
@@ -67,8 +94,7 @@ const Charity = (props) => {
                         {/* list donated */}
                         <div className={styles.charityListDonated}>
                             <div className={styles.charityDonorListWrapper}>
-                                <DonatedList />
-
+                                {leftList}
                             </div>
                         </div>
 
