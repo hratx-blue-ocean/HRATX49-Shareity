@@ -19,7 +19,8 @@
     float: left;
     display: flex;
     box-sizing: border-box;
-
+    justify-content: center;
+    align-items: center;
     width: 49%;
     height: 95%;
 
@@ -32,12 +33,21 @@
 
 .addedItemImage {
     box-sizing: border-box;
+
+    width: 75%;
+    height: 75%;
+
+    border: 2px solid black;
     background-color: lawngreen;
 }
 
 .inputFieldWrapper {
 
     float: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     box-sizing: border-box;
     width: 49%;
     height: 95%;
@@ -50,44 +60,63 @@
 .addImageInputField {
 
     box-sizing: border-box;
+    margin: 5px 5px;
 }
 
 .addImageFormButton {
 
     box-sizing: border-box;
+    margin: 5px 5px;
 }
 
 .addNameInputField {
 
     box-sizing: border-box;
+
+    width: 80%;
+    margin: 5px 5px;
 }
 
 .addCategoryInputField {
 
     box-sizing: border-box;
+
+    width: 80%;
+    margin: 5px 5px;
 }
 
 .addValueInputField {
 
     box-sizing: border-box;
+
+    width: 40%;
+    margin: 5px 5px;
 }
 
 .addZipInputField {
 
     box-sizing: border-box;
+
+    width: 40%;
+    margin: 5px 5px;
 }
 
 .addConditionInputField {
 
     box-sizing: border-box;
+    margin: 5px 5px;
 }
 
 .addDescriptionInputField {
 
     box-sizing: border-box;
+
+    width: 80%;
+    margin: 5px 5px;
 }
 
 .addItemSubmitButton {
 
     box-sizing: border-box;
+    margin: 5px 5px;
 }
