@@ -5,6 +5,7 @@ import Axios from 'axios';
 import Paginater from './LandingSubComponents/paginate.jsx';
 import ShowDetails from './LandingSubComponents/showDetails.jsx';
 import Login from './Login.jsx';
+var _ = require('lodash');
 
 import {
   BrowserRouter as Router,
@@ -21,13 +22,12 @@ const LandingPage = () => {
   const [showDetails, setShowDetails] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
   const [loginClicked, setLoginClicked] = useState(false);
-  const [signUpClicked, setSignUpClicked] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [typeOfUser,setTypeOfUser] = useState(null);
+  const [toSortBy,setToSortBy] = useState('date');
 
   /*
   Functions to build
-  Click handlers for indiv cards ---> Pops up item details modal
-  Click handler for login ---> Pops up Sign in Modal
-  Click handler for user ---> Sends to user Page
   Click handler for the 4 sorting functions ---> Sort
   */
 
@@ -55,10 +55,25 @@ const LandingPage = () => {
     setShowDetails(false);
   };
 
-  const handlingLogin = (event, name) => {
+  const handlingLogin = (event) => {
     // This is the click handler for the login in modal
-    if (name) {
+
+    //check if user has valid token
+    // Handling Log Out
+    if(localStorage.getItem('token')){
+      //remove their token
+      // localStorage.setItem('token', '');
+      localStorage.clear();
+      //set state to not logged in
+      setIsLoggedIn(false);
+      console.log("user is no longer logged in");
+      //Handling Log In
+    } else {
+      //show pop up
       setLoginClicked(true);
+      //sets state to logged in
+      setIsLoggedIn(false);
+      // console.log("You are now logged in");
     }
   }
 
@@ -72,6 +87,36 @@ const LandingPage = () => {
     console.log(name)
   }
 
+  const handleClaimingItem = (event,card)=>{ // function to handle claiming unclaimed stuff
+    event.preventDefault();
+    console.log('Here was the card that was claimed',card)
+  }
+
+  const whoToMessage = (event, donor)=>{
+    event.preventDefault();
+    console.log('Here is the donor of this Donation',donor)
+  }
+
+  //Click handler for sort
+  const handleSort = (event, name) =>{
+    event.preventDefault();
+    setToSortBy(name)
+    sortArray(toSortBy)
+  }
+
+  //Function to sort
+  const sortArray = type =>{
+    const types ={
+      name: 'name',
+      date: 'dateCreated',
+      category: 'category',
+      location: 'Location'
+    }
+    const sortProperty = types[type];
+    const sorted = _.orderBy(items, [sortProperty, 'asc'])
+    setItems(sorted);
+  }
+
   //Get Current Items
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -79,7 +124,7 @@ const LandingPage = () => {
 
   //Change Page
   const paginate = (event, pageNumber) => { event.preventDefault(), setCurrentPage(pageNumber) };
- 
+
   return (
     <div>
       <p>Landing Page</p>
@@ -87,9 +132,9 @@ const LandingPage = () => {
         < NavBar login={handlingLogin} user={handleGoingToUserProfile} />
       </div>
       <div>
-        {loginClicked && <Login closeLogin={closeLogin} />}
-        {showDetails && <ShowDetails card={selectedCard} closeCard={closeCard} />}
-        <Cards items={currentItems} displayCard={displayCard} loading={loading} />
+        {loginClicked && <Login closeLogin={closeLogin} settingUser={setTypeOfUser} isLoggedIn={setIsLoggedIn}/>}
+        {showDetails && <ShowDetails who={whoToMessage} card={selectedCard} closeCard={closeCard} claim={handleClaimingItem} />}
+        <Cards items={currentItems} displayCard={displayCard} loading={loading} sortBy={handleSort} />
         <Paginater
           paginate={paginate}
           itemsPerPage={itemsPerPage}

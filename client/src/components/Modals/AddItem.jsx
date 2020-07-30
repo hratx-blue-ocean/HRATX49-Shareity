@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from '../../styles/AddItem.css'
 import Form from '../AdditemForm.jsx';
 
-const AddItem = (props) => {
+const AddItem = ({ buttonText }) => {
 
     const [modalView, setModalView] = useState('none');
     const [buttonView, setButtonView] = useState('block');
@@ -37,7 +37,7 @@ const AddItem = (props) => {
                         onClick={() => switchViews()}
                         htmlFor="modalButton"
                     > 
-                        PUSH  
+                        {buttonText || 'PUSH'}  
                     </label>
                     <div id="modalButton" className={styles.innerButtonWrapper} style={{diplay: 'none'}}>
                         <button className={styles.addItemButton} style={{display: 'none'}}>

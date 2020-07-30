@@ -10,28 +10,34 @@ const NewItem = (props) => {
     const [description, onDescChange] = useState('')
     const [image, onImageChange] = useState('')
     const [estVal, onValChange] = useState('')
-    const [userEmail, setUserEmail] = useState('test')
-    const [userName, setUserName] = useState('test')
     const date = new Date();
-    
+
+
+
     function onImageAdd() {
         //add image
     }
 
     console.log(props);
     function onDonateSubmit() {
-
+        if(!localStorage.getItem('user')) {
+            return;
+        }
+        const userData = JSON.parse(localStorage.getItem('user'))
+        const userName = userData.name
+        const email = userData.email
+        console.log(userName, email)
         var data = {
-            donor: {userName},
-            name: {itemName},
-            Description: {description},
-            pictures: {image},
-            estimatedValue: {estVal} || 0,
-            itemCondition: {condition},
-            Location: {zipcode},
-            dateCreated: {date},
-            category: {category},
-            email: {userEmail}
+            donor: userName,
+            name: itemName,
+            Description: description,
+            pictures: image,
+            estimatedValue: estVal || 0,
+            itemCondition: condition || 'test',
+            Location: zipcode,
+            dateCreated: date,
+            category: category,
+            email: email
         };
 
         axios.post('/items', data)
@@ -96,10 +102,7 @@ const NewItem = (props) => {
                     placeholder="brief description of your item"
                     required
                 ></input>
-
-                <select 
-                    id="selectCondition"
-                    className={styles.addConditionInputField}
+                <select
                     name="condition"
                     value={condition}
                     type="text"
@@ -115,20 +118,13 @@ const NewItem = (props) => {
                         <option className={styles.conditionOptions} value='test'>Should go in the trash</option>
                 </select >
 
-                <div className={styles.addItemImageWrapper}>
-                    <input
-                        className={styles.addImageInputField}
-                        value={image}
-                        type="text"
-                        onChange={(event) => onImageChange(event.target.value)}
-                        placeholder="add Image URL"
-                        required
-                    ></input>
-                    <button
-                        className={styles.addImageFormButton}
-                        onClick={() => onImageAdd()}
-                        >add image </button>
-                </div>
+                <input
+                    value={description}
+                    type="text"
+                    onChange={(event) => onDescChange(event.target.value)}
+                    placeholder="brief description of your item"
+                    required
+                ></input>
                 <button
                     className={styles.addItemSubmitButton}
                     onClick={() => onDonateSubmit()}
