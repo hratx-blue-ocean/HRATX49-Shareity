@@ -15,7 +15,9 @@ const Achievement = (props) => {
                     <h3 className={styles.achievementName}>{props.data.name}</h3>
                     <p className={styles.achievementDescription}>{props.data.description}</p>
                 </div>
+                <div className={styles.achievementValueContainer}>
                     <div className={styles.achievementValue}>{props.data.value}</div>
+                </div>
             </div>
         </div>
     ) 

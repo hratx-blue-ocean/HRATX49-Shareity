@@ -9,10 +9,12 @@ const CharityHeader = () => {
 
         <div className={styles.charityHeaderWrapper}>
             {data.map((achievement, i) => {
-
-                <Achievement
-                    key={i}
-                    data={achievement} />
+                return (
+                    <Achievement
+                        key={i}
+                        data={achievement}
+                    />
+                )
             })}
 
         </div>

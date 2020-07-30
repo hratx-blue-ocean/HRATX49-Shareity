@@ -13,27 +13,26 @@
     border-radius: 25px;
 
     overflow: auto;
-
 }
 
-.achievementContainer {
+/* .achievementContainer {
     width: 100%;
     height: 100%;
     margin-top: 5px;
-}
+} */
 
 .achievementWrapper {
     display: grid;
+    justify-content: center;
     grid-template-columns: repeat(11, 1fr);
     grid-auto-rows: minmax(7px, auto);
     grid-template-areas: 
-        ". . d d d d d v v v v"
-        "i i d d d d d v v v v"
-        "i i d d d d d v v v v"
-        ". . d d d d d v v v v"
-    ;
+        ". . d d d d d d d . ."
+        "i i d d d d d d d v v"
+        "i i d d d d d d d v v"
+        ". . d d d d d d d . .";
 
-    max-width: 200px;
+    max-width: 250px;
     max-height: 50px;
 
     margin: 1%;
@@ -44,7 +43,7 @@
     justify-content: center;
     align-items: center;
     width: 200px;
-    min-width: 200px;
+    min-width: 250px;
     height: 50px;
 
     border: 2px solid black;
@@ -55,6 +54,8 @@
 
 .achievementImageWrapper {
     grid-area: i;
+    justify-content: space-evenly;
+    margin-left: 1px;
 }
 
 .achievementImage {
@@ -71,35 +72,50 @@
 
 .achievementInfoWrapper {
     grid-area: d;
+    width: 75%;
+    height: 50px;
 }
 
 .achievementName {
     display: inline-flex;
     box-sizing: border-box;
-    background-color: green;
+
+    margin-bottom: 3px;
+
+    border-bottom: 1px solid black;
     
     font-size: 10px;
 }
 
 .achievementDescription {
     box-sizing: border-box;
-    background-color: hotpink;
 
-    font-size: 10px;
+    height: 40%;
+
+    margin-bottom: 0;
+    font-size: 8px;
 }
 
-.achievementValue {
+.achievementValueContainer {
+
     grid-area: v;
     box-sizing: border-box;
-    text-align: center;
+    /* text-align: center; */
 
     /* background-color: indigo; */
 
     width: 35px;
+    min-width: 35px;
     height: 35px;
+
+    margin-right: 1px;
 
     border: 2px solid black;
     border-radius: 25px;
-    font-size: 24px;
+}
+
+.achievementValue {
+
+    font-size: 20px;
 }
 
