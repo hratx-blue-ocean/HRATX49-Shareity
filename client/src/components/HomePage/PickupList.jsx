@@ -47,8 +47,8 @@ const PickupList = ({ charity, rawData }) => {
     }
 
     return (
-        <div className='listWrap'>
-            <div className='listHeaderWrap'>
+        <div className={styles.listWrap}>
+            <div className={styles.listWrapHeader}>
                   {/* //its working but for some reason shows red line under it */}
                 <select 
                     className={styles.listSelector} 
@@ -64,27 +64,29 @@ const PickupList = ({ charity, rawData }) => {
                 <span className={styles.listTitle}>  {title}</span>
 
             </div>
-            <table>
-                <thead className={styles.listRowHeaders}>
-                    <tr>
-                    <th> date </th>
-                    <th> name</th>
-                    <th> zip </th>
-                    </tr>
-                </thead>
-                <tbody className={styles.listRowWrap}>   
-                    {filteredData.map((item, i) => 
-                        <tr key={i} className={styles.listItemRow} onClick={() => alert('im clicked!')}>
-                            <td> ({item.dateCreated.slice(3,21) || ''}) </td>
-                            <td> {item.name || ''} </td>
-                            <td> {item.Location = item.Location.toString().slice(0,5) || ''}</td>
+            <div className={styles.tableWrap}>
+                <table className={styles.pickupTable}>
+                    <thead className={styles.listRowHeaders}>
+                        <tr>
+                        <th> date </th>
+                        <th> name</th>
+                        <th> zip </th>
                         </tr>
-                    )}
-                </tbody>
-                <tfoot>
-                    <tr><th># of Items for Pickup: {filteredData.length}</th></tr>
-                </tfoot>
-            </table>
+                    </thead>
+                    <tbody className={styles.listRowWrap}>   
+                        {filteredData.map((item, i) => 
+                            <tr key={i} className={styles.listItemRow} onClick={() => alert('im clicked!')}>
+                                <td> {item.dateCreated.slice(3,21)} </td>
+                                <td> {item.name} </td>
+                                <td> {item.Location = item.Location.toString().slice(0,5) || ''}</td>
+                            </tr>
+                        )}
+                    </tbody>
+                    <tfoot>
+                        <tr><th># of Items for Pickup: {filteredData.length}</th></tr>
+                    </tfoot>
+                </table>
+            </div>
         </div>
     )
 }

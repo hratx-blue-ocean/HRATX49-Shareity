@@ -19,16 +19,16 @@ const NewItem = () => {
     function onDonateSubmit() {
 
         var data = {
-            donor: {userName},
-            name: {itemName},
-            Description: {description},
-            pictures: {image},
-            estimatedValue: {estVal} || 0,
-            itemCondition: {condition},
-            Location: {zipcode},
-            dateCreated: {date},
-            category: {category},
-            email: {userEmail}
+            donor: 'John Doe',
+            name: itemName,
+            Description: description,
+            pictures: image,
+            estimatedValue: estVal || 0,
+            itemCondition: condition || 'test',
+            Location: zipcode,
+            dateCreated: date,
+            category: category,
+            email: 'test5@gmail.com'
         };
 
         axios.post('/items', data)

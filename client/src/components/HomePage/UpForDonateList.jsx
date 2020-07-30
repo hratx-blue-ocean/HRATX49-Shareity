@@ -77,9 +77,14 @@ const DonatedList = ({ rawData, taxData }) => {
     };
 
     return (
-        <div className='listWrap'>
+        <div className={styles.listWrap}>
             {popup}
-            <div className='listHeaderWrap'>
+            <div className={styles.listWrapHeader}>
+                <div className={styles.totals}>                
+                    <span>Total # Donated: {csvData.length}</span>
+                    <span> Total $ Donated: {totalVal}</span>
+                </div>
+            
                   {/* //its working but for some reason shows red line under it */}
                 <select 
                     className={styles.listSelector}  
@@ -94,33 +99,31 @@ const DonatedList = ({ rawData, taxData }) => {
                 <span className={styles.listTitle}>   {title}</span>
 
             </div>
-            <table>
-                <thead className={styles.listRowHeaders}>
-                    <tr>
-                        <th>date</th>
-                        <th> name</th>
-                        <th>category</th>
-                        <th>value</th>
-                    </tr>
-                </thead>
-                <tbody className={styles.listRowWrap}>  
-                    {filteredData.map((item, i) => 
-                        <tr key={i} value={item} className={styles.listItemRow} onClick={ e => onItemClick(e.target.value)}>
-                            <td>{item.dateCreated.slice(3,21)}</td>
-                            <td>{item.name} </td>
-                            <td> {item.category} </td>
-                            <td> ${item.estimatedValue} </td>
-                            <td><button value={item} onClick={e => onDeleteItem(e.target.value)}>X</button></td>
+            <div className={styles.tableWrap}>
+                <table>
+                    <thead className={styles.listRowHeaders}>
+                        <tr>
+                            <th>date</th>
+                            <th> name</th>
+                            <th>category</th>
+                            <th>value</th>
                         </tr>
-                    )}
-                </tbody>
-                <tfoot>
-                    <tr><th>Items up for Donation: {filteredData.length}</th></tr>
-                </tfoot>
-            </table>
-            <div>                
-                <span>Total # Donated: {csvData.length}</span>
-                <span> Total $ Donated: {totalVal}</span>
+                    </thead>
+                    <tbody className={styles.listRowWrap}>  
+                        {filteredData.map((item, i) => 
+                            <tr key={i} value={item} className={styles.listItemRow} onClick={ e => onItemClick(e.target.value)}>
+                                <td>{item.dateCreated.slice(3,21)}</td>
+                                <td>{item.name} </td>
+                                <td> {item.category} </td>
+                                <td> ${item.estimatedValue} </td>
+                                <td><button value={item} onClick={e => onDeleteItem(e.target.value)}>X</button></td>
+                            </tr>
+                        )}
+                    </tbody>
+                    <tfoot>
+                        <tr><th>Items up for Donation: {filteredData.length}</th></tr>
+                    </tfoot>
+                </table>
             </div>
         </div>
 
