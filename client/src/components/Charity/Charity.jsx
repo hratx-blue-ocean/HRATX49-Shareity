@@ -106,12 +106,8 @@ const Charity = (props) => { //
                         {/* items to be picked up */}
                         <div className={styles.charityListItemsToBePickedUp}>
                             <div className={styles.charityUserListWrapper}>
-<<<<<<< HEAD
-                                <PickupList />
-=======
                                 <PickupList rawData={listData}/>
 
->>>>>>> ec8b6d5f4565916ec95a9374b765ddec4ae11d61
                             </div>
                         </div>
                         
