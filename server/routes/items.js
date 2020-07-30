@@ -33,13 +33,13 @@ router.post('/', async (req, res) => {
   try {
     let item = await db.addItem(newItem);
     userInfo.items = await db.getItems(userInfo.user, userInfo.userType);
-  }
-  catch (err) {
+  } catch (err) {
     console.log(err);
   }
   res.json(userInfo);
 });
 
+//update an item
 router.put('/', async (req, res) => {
   let userInfo = {
     user: req.body.user,
@@ -51,13 +51,13 @@ router.put('/', async (req, res) => {
   try {
     let updateItem = await db.editItem(filter, update);
     userInfo.items = await db.getItems(userInfo.user, userInfo.userType);
-  }
-  catch (err) {
+  } catch (err) {
     console.log(err);
   }
   res.json(userInfo);
 });
 
+//delete an item
 router.delete('/', async (req, res) => {
   let userInfo = {
     user: req.body.user,
@@ -67,8 +67,7 @@ router.delete('/', async (req, res) => {
   try {
     await db.deleteItem(req.body._id)
     userInfo.items = await db.getItems(userInfo.user, userInfo.userType);
-  }
-  catch (err) {
+  } catch (err) {
     console.log(err);
   }
   res.json(userInfo);

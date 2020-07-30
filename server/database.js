@@ -93,8 +93,7 @@ client.connect((err) => {
       console.log('item', item);
       // let newItem = await itemCollection.insertOne(item);
       // return newItem;
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error);
       return null;
     }
@@ -107,8 +106,7 @@ client.connect((err) => {
     try {
       let updated = await itemCollection.updateOne({_id: ObjectID(filter)}, {$set:update});
       return updated;
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error);
       return null;
     }
@@ -118,8 +116,7 @@ client.connect((err) => {
     try {
       let deleted = await itemCollection.deleteOne({_id: ObjectID(id)});
       return deleted;
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error);
       return null;
     }
