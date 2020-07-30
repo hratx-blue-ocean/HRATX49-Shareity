@@ -3,11 +3,11 @@ import styles from '../../styles/Charity.css';
 import LogoAvatar from './LogoAvatar.jsx';
 import CharityHeader from './CharityHeader.jsx';
 import { CSVLink, CSVDownload } from "react-csv";
-// import Axios from 'axios';
+import Axios from 'axios';
 import PickupList from '../HomePage/PickupList.jsx';
 import DonatedList from '../HomePage/DonatedList.jsx';
 import UpForDonateList from '../HomePage/UpForDonateList.jsx'
-import newItem from '../Modals/AddItem.jsx'
+import NewItem from '../Modals/AddItem.jsx'
 import {
     BrowserRouter as Router,
     Switch,
@@ -19,7 +19,15 @@ const Charity = (props) => { //
     const [taxData, changeTaxData] = useState([])
     //we need to set the type of user/charity
     const [userType, getType] = useState('user')
-    //const [listData, addListData] = useState([]);
+    const [totalData, getTotal] = useState(0);
+    const [listData, addListData] = useState([]);
+
+    // function getItems() {
+    //     var data = {
+            
+    //     }
+    //     Axios.get('/items')
+    // }
     
     // const [listData, setListData] = useState([]);
 
@@ -42,12 +50,16 @@ const Charity = (props) => { //
     // }, []);
     var leftList = '';
     var addItemButton = ''
-        if(userType === 'user') {
-            addItemButton = <newItem />
-            leftList = <UpForDonateList taxData={changeTaxData}/>
+        if(localStorage.user.userType !== 'Donor') {
+            addItemButton =
+                <div className={styles.buttonWrapper}>
+                    <NewItem className={styles.charityButton} buttonText={'ADD ITEM'}/>
+                </div>
+            leftList = <UpForDonateList rawData={listData} taxData={changeTaxData}/>
         } else {
-            leftList = <DonatedList taxData={changeTaxData}/>
+            leftList = <DonatedList rawData={listData} taxData={changeTaxData}/>
         }
+
     return (
 
         <>
@@ -87,10 +99,7 @@ const Charity = (props) => { //
                                 <div className={styles.buttonWrapper}>
                                     <button className={styles.charityButton}>UPDATE PASSWORD</button>
                                 </div>
-                                <div className={styles.buttonWrapper}>
-                                    <button className={styles.charityButton}>ADD NEW ITEM</button>
-                                    {addItemButton}
-                                </div>
+                                {addItemButton}
 
                             </div>
                         </div>
@@ -105,7 +114,7 @@ const Charity = (props) => { //
                         {/* items to be picked up */}
                         <div className={styles.charityListItemsToBePickedUp}>
                             <div className={styles.charityUserListWrapper}>
-                                <PickupList />
+                                <PickupList rawData={listData}/>
 
                             </div>
                         </div>

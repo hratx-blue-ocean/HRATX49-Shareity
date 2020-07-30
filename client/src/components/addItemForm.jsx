@@ -9,9 +9,12 @@ const NewItem = () => {
     const [description, onDescChange] = useState('')
     const [image, onImageChange] = useState('')
     const [estVal, onValChange] = useState('')
-    const [userEmail, setUserEmail] = useState('test')
-    const [userName, setUserName] = useState('test')
     const date = new Date();
+
+    const userData = JSON.parse(localStorage.getItem('user'))
+    const userName = userData.name
+    const email = userData.email
+    console.log(userName, email)
     
     function onImageAdd() {
         //add image
@@ -19,16 +22,16 @@ const NewItem = () => {
     function onDonateSubmit() {
 
         var data = {
-            donor: {userName},
-            name: {itemName},
-            Description: {description},
-            pictures: {image},
-            estimatedValue: {estVal} || 0,
-            itemCondition: {condition},
-            Location: {zipcode},
-            dateCreated: {date},
-            category: {category},
-            email: {userEmail}
+            donor: userName,
+            name: itemName,
+            Description: description,
+            pictures: image,
+            estimatedValue: estVal || 0,
+            itemCondition: condition || 'test',
+            Location: zipcode,
+            dateCreated: date,
+            category: category,
+            email: email
         };
 
         axios.post('/items', data)

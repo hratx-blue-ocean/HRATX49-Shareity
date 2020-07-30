@@ -59,8 +59,8 @@ const DonatedList = ({ charity, rawData, taxData }) => {
     }
 
     return (
-        <div className='listWrap'>
-            <div className='listHeaderWrap'>
+        <div className={styles.listWrap}>
+            <div className={styles.listWrapHeader}>
                   {/* //its working but for some reason shows red line under it */}
                 <select className={styles.listSelector}  value={sortType} onChange={(e) => setSortType(e.target.value)}>
                     {sortOptions.map((item, i) => 
@@ -72,31 +72,33 @@ const DonatedList = ({ charity, rawData, taxData }) => {
                 <span className={styles.listTitle}>   {title}</span>
 
             </div>
-            <table>
-            <thead className={styles.listRowHeaders}>
-                <tr>
-                    <th> date </th>
-                    <th> name</th>
-                    <th> cat </th>
-                    <th> est. val</th>
-                </tr>
-            </thead>
-            <tbody className={styles.listRowWrap}>  
-                {filteredData.map((item, i) =>  
+            <div className={styles.tableWrap}>
+                <table>
+                    <thead className={styles.listRowHeaders}>
+                        <tr>
+                            <th> date </th>
+                            <th> name</th>
+                            <th> cat </th>
+                            <th> est. val</th>
+                        </tr>
+                    </thead>
+                    <tbody className={styles.listRowWrap}>  
+                        {filteredData.map((item, i) =>  
 
-                    <tr key={i} className={styles.listItemRow} onClick={() => alert('im clicked!')}>
-                        <td>({item.dateCreated.slice(3,21) || ''})</td>
-                        <td> {item.name || ''} </td>
-                        <td> {item.category || ''} </td>
-                        <td> ${item.estimatedValue || ''} </td>
-                    </tr>
-                )}
-            </tbody>
-            <tfoot>
-                <tr><th>Total Value Donated: ${totalVal}</th>
-                <th>Total # of Items Donated: {filteredData.length}</th></tr>
-            </tfoot>
-            </table>
+                            <tr key={i} className={styles.listItemRow} onClick={() => alert('im clicked!')}>
+                                <td>({item.dateCreated.slice(3,21) || ''})</td>
+                                <td> {item.name || ''} </td>
+                                <td> {item.category || ''} </td>
+                                <td> ${item.estimatedValue || ''} </td>
+                            </tr>
+                        )}
+                    </tbody>
+                    <tfoot>
+                        <tr><th>Total Value Donated: ${totalVal}</th>
+                        <th>Total # of Items Donated: {filteredData.length}</th></tr>
+                    </tfoot>
+                </table>
+            </div>
         </div>
 
     )
