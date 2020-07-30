@@ -135,8 +135,11 @@ const NewItem = (props) => {
                     </button>
                     <button
                         className={styles.addItemSubmitButton}
-                        onClick={() => onDonateSubmit()}
-                        onClick={() => props.closeModal()}
+                        onClick={() => {
+                            onDonateSubmit();
+                            props.closeModal();
+                        }}
+
                     >
                         Donate
                     </button>

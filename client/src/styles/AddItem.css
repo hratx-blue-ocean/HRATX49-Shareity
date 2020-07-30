@@ -3,37 +3,42 @@
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    justify-content: center;
-    align-items: center;
     border-radius: 25px;
+    width: 100%;
     max-width: 400px;
     height: auto;
 }
 
 .outerButtonWrapper {
-    width: 75px; 
-    height: 25px;
-
-    border: 2px solid black;
-    border-radius: 25px;
+    
+    box-sizing: border-box; 
+    width: 200px;
+    height: 45px;
 }
 
 .innerButtonWrapper {
-    width: 75px; 
-    height: 25px;
+    
 }
 
 .modalButtonLabel {
-    min-width: 75px; 
-    min-height: 25px;
+
+    box-sizing: border-box; 
+    width: 100%;
+    max-width: 185px;
+    height: 45px;
+    padding-top: 8px;
+    margin: auto;
+    border: 2px solid black;
+    border-radius: 10px;
+
+    cursor: pointer;
 }
 
 .addItemButton {
-    width: 75px; 
-    height: 25px;
 
-    /* border: 2px solid black; */
-    border-radius: 25px;
+    box-sizing: border-box; 
+    width: 100%;
+    height: 45px;
 }
 
 .innerModalWrapper {

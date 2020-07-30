@@ -7,7 +7,7 @@ import Axios from 'axios';
 import PickupList from '../HomePage/PickupList.jsx';
 import DonatedList from '../HomePage/DonatedList.jsx';
 import UpForDonateList from '../HomePage/UpForDonateList.jsx';
-import NewItem from '../Modals/AddItem.jsx';
+import AddItem from '../Modals/AddItem.jsx';
 import {
     BrowserRouter as Router,
     Switch,
@@ -49,7 +49,7 @@ const Charity = (props) => { //
         if(localStorage.user.userType !== 'Donor') {
             addItemButton =
                 <div className={styles.buttonWrapper}>
-                    <NewItem className={styles.charityButton} buttonText={'ADD ITEM'}/>
+                    <AddItem className={styles.charityButton} buttonText={'ADD ITEM'}/>
                 </div>
             // leftList = <UpForDonateList rawData={listData} taxData={changeTaxData}/>
         } else {

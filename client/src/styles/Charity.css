@@ -57,18 +57,20 @@
 
 .imageWrapper {
 
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     box-sizing: border-box; 
 
     width: 95%;
-
     max-width: 200px;
     height: 70%;
     max-height: 180px;
     min-height: 150px;
 
     margin-top: 1%;
-    border: 2px solid black;
-    border-radius: 10%;
+    /* border: 2px solid black;
+    border-radius: 50%; */
 }
 
 .charityCurrentAvatar {
@@ -76,7 +78,12 @@
     box-sizing: border-box;
 
     width: 70%;
-    height: auto;
+    max-width: 140px;
+    height: 70%;
+    max-height: 140px;
+    border: 3px solid silver;
+    border-radius: 50%;
+
 }
 
 .fileUploadLabelWrapper {
@@ -274,7 +281,7 @@ input[type="file" i] {
 
 .buttonWrapper {
 
-    display: flex;
+    display: inline-flex;
     box-sizing: border-box; 
     align-items: center;
     width: 95%;
@@ -290,8 +297,13 @@ input[type="file" i] {
 }
 
 .charityButton {
+
+    display: flex;
     box-sizing: border-box; 
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    max-width: 185px;
     height: 45px;
     border: 2px solid black;
     border-radius: 10px;
