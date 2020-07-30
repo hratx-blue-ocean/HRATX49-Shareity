@@ -15,9 +15,9 @@ import {
 } from 'react-router-dom';
 const Charity = (props) => {
     //sets the state of tax data on donation list to be used with csv export
-    const [taxData, changeTaxData] = useState([])
+    const [taxData, changeTaxData] = useState([]);
     //we need to set the type of user/charity
-    const [userType, getType] = useState('user')
+    const [userType, getType] = useState('user');
     //const [listData, addListData] = useState([]);
     
     // const [listData, setListData] = useState([]);
@@ -68,15 +68,17 @@ const Charity = (props) => {
                             <div className={styles.charityButtonWrapper}>
 
                                 <div className={styles.buttonWrapper}>
-                                <Link to='/' className={styles.charityButton}>
-                                    <button className={styles.charityButton}>HOME</button>
-                                </Link>
+                                    <Link to='/' className={styles.charityButtonHomeLink}>
+                                        <button className={styles.charityButton}>HOME</button>
+                                    </Link>
                                 </div>
 
                                 <div className={styles.buttonWrapper}>
                                     <button className={styles.charityButton}>
                                         <CSVLink 
-                                            data={taxData}>STATEMENT</CSVLink>
+                                            data={taxData}>
+                                            STATEMENT
+                                        </CSVLink>
                                     </button>
                                     
                                 </div>
@@ -99,9 +101,9 @@ const Charity = (props) => {
                         <div className={styles.charityListItemsToBePickedUp}>
                             <div className={styles.charityUserListWrapper}>
                                 <PickupList />
-
                             </div>
                         </div>
+                        
                 </div>
             </div>
 
