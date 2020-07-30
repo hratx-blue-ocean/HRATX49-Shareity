@@ -91,8 +91,8 @@ client.connect((err) => {
   client.addItem = async (item) => {
     try {
       console.log('item', item);
-      // let newItem = await itemCollection.insertOne(item);
-      // return newItem;
+      let newItem = await itemCollection.insertOne(item);
+      return newItem;
     } catch (error) {
       console.log(error);
       return null;
@@ -101,8 +101,6 @@ client.connect((err) => {
 
   // edit item
   client.editItem = async (filter, update) => {
-    // console.log('edit item filter', filter);
-    // console.log('edit item update', update);
     try {
       let updated = await itemCollection.updateOne({_id: ObjectID(filter)}, {$set:update});
       return updated;
