@@ -3,7 +3,6 @@ import { Card } from 'antd';
 // import 'antd/dist/antd.css';
 import Styles from '../../LandingSubComponents/Cards.css'
 import moment from 'moment';
-
 const { Meta } = Card;
 
 function IndivCards ({ item, displayCard }){
@@ -19,7 +18,7 @@ function IndivCards ({ item, displayCard }){
   We just items from db.
   Need to set up images
   need to move things in the right areas
-  Just installed ant, get cards running, pagination, 
+  Just installed ant, get cards running, pagination,
   */
 
   return(

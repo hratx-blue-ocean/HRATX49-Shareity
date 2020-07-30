@@ -5,42 +5,63 @@ import styles from '../../styles/Charity.css';
 const LogoAvatar = () => {
 
     const [imageFile, setImageFile] = useState('');
-    const [currentAvatar, setCurrentAvatar] = useState('some Image');
+    const user = JSON.parse(localStorage.user)
+    const [currentAvatar, setCurrentAvatar] = useState(user.profilePic);
 
     const uploadImage = (file) => {
         console.log(file);
         // format the image data before posting it
         let formData = new FormData();
-
         formData.append('charityCurrentAvatar', file, file.name)
         // sends the object containing the image object that is uploaded
-        Axios.post('./userAvatar', formData)
+        Axios.post('/api/profile/profile-img-upload', formData)
             .then( res => {
-                console.log(res.data);
+                console.log(res.data.location);
+                let imageUrl = res.data.location
+                setCurrentAvatar(imageUrl)
+                user.profilePic = imageUrl
+                localStorage.removeItem('user');
+                localStorage.setItem('user', JSON.stringify(user));
+                console.log(localStorage.user)
+                // console.log(JSON.parse(localStorage.user.email))
+
+                let email = user.email
+                console.log(email)
+
+                Axios.put('/users/updateProfilePic', {
+                    email: email,
+                    profilePic: imageUrl })
+                    .then( res => {
+                        console.log(res)
+                    })
+                    .catch( err => {
+                        console.error(err);
             })
             .catch( err => {
                 console.error(err);
             })
+
+        })
     }
 
     return (
-        
+
         <>
             <div className={styles.logoAvatarWrapper}>
-                
+
                 {/* image container */}
                 <div className={styles.imageWrapper}>
-                        <img className={styles.charityCurrentAvatar} src={currentAvatar}/>
+                        <img className={styles.charityCurrentAvatar} src={currentAvatar} alt=''/>
                 </div>
 
                 {/* container for image upload functionality */}
                 <div className={styles.charityInputAvatarContainer}>
                     <div className={styles.fileUploadLabelWrapper}>
                         <label className={styles.fileUploadButtonLabel} htmlFor="fileUploadButton">Change Avatar</label>
-                        <input 
+                        <input
 
                             id="fileUploadButton"
-                            className={styles.charityInputButton} type="file" 
+                            className={styles.charityInputButton} type="file"
                             style={{display: 'none'}}
                             onChange={() => setImageFile(event.target.files[0])}
                         />
