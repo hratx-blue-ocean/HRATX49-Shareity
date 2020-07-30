@@ -53,6 +53,7 @@ const AddItem = (props) => {
                             <Form closeModal={switchViews}/>
 
                         </div>
+                        {/* uncomment this button if you want to use this component without another way to close the modal */}
                         {/* <button className={styles.modalCloseButton} onClick={() => switchViews()}>
                             Close
                         </button> */}
