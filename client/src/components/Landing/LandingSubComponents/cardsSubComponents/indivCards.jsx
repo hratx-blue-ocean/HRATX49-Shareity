@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card } from 'antd';
-// import 'antd/dist/antd.css';
+import 'antd/dist/antd.css';
 import Styles from '../../LandingSubComponents/Cards.css'
 import moment from 'moment';
 const { Meta } = Card;

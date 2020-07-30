@@ -6,6 +6,7 @@ import Paginater from './LandingSubComponents/paginate.jsx';
 import ShowDetails from './LandingSubComponents/showDetails.jsx';
 import Login from './Login.jsx';
 var _ = require('lodash');
+import AllItems from './data'
 
 import {
   BrowserRouter as Router,
@@ -16,9 +17,10 @@ import {
 
 const LandingPage = () => {
   const [items, setItems] = useState([]);
+  const [unclaimedItems, setUnclaimedItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(40)
+  const [itemsPerPage] = useState(5)
   const [showDetails, setShowDetails] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
   const [loginClicked, setLoginClicked] = useState(false);
@@ -34,8 +36,15 @@ const LandingPage = () => {
   useEffect(() => {
     const retrieveItems = async () => {
       setLoading(true);
-      const res = await Axios.get('/items');
-      setItems(res.data)
+      // const res = await Axios.get('/items');
+      const res = AllItems;
+      console.log('Main',res)
+      // filter function
+      // let unclaimedItems = res.filter(item=>console.log(item),item.claimedBy === null);
+      console.log(unclaimedItems)
+      // console.log(res.data)
+      // setItems(res.data)
+      setItems(unclaimedItems)
       setLoading(false)
     };
     retrieveItems();
@@ -44,7 +53,7 @@ const LandingPage = () => {
   const displayCard = (event, item) => {
     //This is the Click Handler for displaying an item on click
     //To be continued
-    console.log("item", item.name)
+    // console.log("item", item.name)
     setSelectedCard(item);
     setShowDetails(true);
   }
@@ -120,6 +129,7 @@ const LandingPage = () => {
   //Get Current Items
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  console.log('hi',items);
   const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
 
   //Change Page

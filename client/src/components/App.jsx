@@ -37,9 +37,13 @@ export default class App extends Component {
           </Route>
           <Route path="/">
           <LandingPage />
+<<<<<<< HEAD
           <h1>Welcome to Blue Ocean!</h1>
+=======
+>>>>>>> updating self
           {/* <Login /> */}
           </Route>
+          {/* <AddItem /> */}
           </Switch>
         </Router>
       </>
