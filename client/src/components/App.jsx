@@ -3,6 +3,7 @@ import LandingPage from './Landing/landingPage.jsx'
 import Charity from '../components/Charity/Charity.jsx';
 import AddItem from './Modals/AddItem.jsx'
 import styles from '../styles/App.css';
+import Login from './Landing/Login.jsx';
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,21 +21,23 @@ export default class App extends Component {
   render() {
     return (
       <>
-      <Router>
-        <Switch>
-          <Route path="/Charity">
-        <div className={styles.charityMainAppContainer}>
-          <Charity />
-        </div>
-        </Route>
-        <Route path="/">
-        <LandingPage />
-        </Route>
-        <AddItem />
-        <h1>Welcome to Blue Ocean!</h1>
-        </Switch>
+        <Router>
+          <Switch>
+            <Route path="/Charity">
+          <div className={styles.charityMainAppContainer}>
+            <Charity />
+          </div>
+          </Route>
+          <Route path="/">
+          <LandingPage />
+          <AddItem />
+          <h1>Welcome to Blue Ocean!</h1>
+          {/* <Login /> */}
+          </Route>
+          </Switch>
         </Router>
       </>
     );
   }
 }
+

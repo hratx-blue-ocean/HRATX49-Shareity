@@ -38,34 +38,47 @@
 
 .innerModalWrapper {
     position: fixed;
-    top: 0px; 
+    top: 0px;
     left: 0px;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0,0,0,0.7);
     height: 100vh;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow-y: hidden;
+    z-index: 100;
 }
 
-.modealInnerContainer {
+.modalInnerContainer {
+
     box-sizing: border-box;
-    width: 600px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 20%;
+}
+
+.modalContentContainer {
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 600px;
     height: 400px;
 
     background-color: ghostwhite;
+    border: 2px solid black;
+    border-radius: 25px;
+    z-index: 110;
 }
 
 .modalCloseButton {
-    position: relative;
-    top: 10px;
-    align-content: center;
-    
-    top: 10px;
     width: 75px;
     height: 25px;
 
+    margin-bottom: 10px;
     border: 2px solid black;
     border-radius: 25px;
 }

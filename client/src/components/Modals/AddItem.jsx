@@ -16,6 +16,7 @@ const AddItem = () => {
             setButtonView('none');
             console.log(modalView);
             console.log(buttonView);
+
         } else {
 
             setModalView('none');
@@ -31,11 +32,11 @@ const AddItem = () => {
                 
                 <div className={styles.outerButtonWrapper} style={{display: buttonView}} >
                     <label 
-
                         className={styles.modelButtonLabel} 
                         style={{display: buttonView}} 
                         onClick={() => switchViews()}
-                        htmlFor="modalButton"> 
+                        htmlFor="modalButton"
+                    > 
                         PUSH  
                     </label>
                     <div id="modalButton" className={styles.innerButtonWrapper} style={{diplay: 'none'}}>
@@ -47,14 +48,14 @@ const AddItem = () => {
 
 
                 <div className={styles.innerModalWrapper} style={{display: modalView}}>
-                    <div className={styles.modealInnerContainer}>
+                    <div className={styles.modalInnerContainer}>
                         <div className={styles.modalContentContainer}>
                             <Form />
 
-                        </div>
                         <button className={styles.modalCloseButton} onClick={() => switchViews()}>
-                        Close
+                            Close
                         </button>
+                        </div>
                     </div>
                 </div>
             </div>
