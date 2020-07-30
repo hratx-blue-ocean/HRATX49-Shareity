@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../../styles/lists.css';
 import { fakeData } from './fakeData.jsx';
-import styles from '../../styles/lists.css';
 var _ = require('lodash');
 
 const PickupList = ({ charity, rawData }) => {

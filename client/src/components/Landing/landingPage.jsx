@@ -5,6 +5,7 @@ import Axios from 'axios';
 import Paginater from './LandingSubComponents/paginate.jsx';
 import ShowDetails from './LandingSubComponents/showDetails.jsx';
 import Login from './Login.jsx';
+var _ = require('lodash');
 
 import {
   BrowserRouter as Router,
@@ -22,8 +23,8 @@ const LandingPage = () => {
   const [selectedCard, setSelectedCard] = useState(null);
   const [loginClicked, setLoginClicked] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [signUpClicked, setSignUpClicked] = useState(false);
   const [typeOfUser,setTypeOfUser] = useState(null);
+  const [toSortBy,setToSortBy] = useState('date');
 
   /*
   Functions to build
@@ -96,6 +97,25 @@ const LandingPage = () => {
     console.log('Here is the donor of this Donation',donor)
   }
 
+  //Click handler for sort
+  const handleSort = (event, name) =>{
+    event.preventDefault();
+    setToSortBy(name)
+    sortArray(toSortBy)
+  }
+
+  //Function to sort
+  const sortArray = type =>{
+    const types ={
+      name: 'name',
+      date: 'dateCreated',
+      category: 'category',
+      location: 'Location'
+    }
+    const sortProperty = types[type];
+    const sorted = _.orderBy(items, [sortProperty, 'asc'])
+    setItems(sorted);
+  }
 
   //Get Current Items
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -104,7 +124,7 @@ const LandingPage = () => {
 
   //Change Page
   const paginate = (event, pageNumber) => { event.preventDefault(), setCurrentPage(pageNumber) };
- 
+
   return (
     <div>
       <p>Landing Page</p>
@@ -114,7 +134,7 @@ const LandingPage = () => {
       <div>
         {loginClicked && <Login closeLogin={closeLogin} settingUser={setTypeOfUser} isLoggedIn={setIsLoggedIn}/>}
         {showDetails && <ShowDetails who={whoToMessage} card={selectedCard} closeCard={closeCard} claim={handleClaimingItem} />}
-        <Cards items={currentItems} displayCard={displayCard} loading={loading} />
+        <Cards items={currentItems} displayCard={displayCard} loading={loading} sortBy={handleSort} />
         <Paginater
           paginate={paginate}
           itemsPerPage={itemsPerPage}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from '../../styles/lists.css';
 import { fakeData } from './fakeData.jsx';
 var _ = require('lodash');
-import styles from '../../styles/lists.css';
+
 
 const DonatedList = ({ charity, rawData, taxData }) => {
     rawData = rawData || fakeData;
