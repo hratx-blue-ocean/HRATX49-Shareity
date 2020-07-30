@@ -30,7 +30,7 @@ const NewItem = (props) => {
             Description: description,
             pictures: image,
             estimatedValue: estVal || 0,
-            itemCondition: condition || 'test',
+            itemCondition: condition,
             Location: zipcode,
             dateCreated: date,
             category: category,
