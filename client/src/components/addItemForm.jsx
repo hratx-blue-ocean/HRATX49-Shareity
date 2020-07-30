@@ -44,21 +44,26 @@ const NewItem = (props) => {
     }
 
     return (
-        <div className={styles.addItemFormContainer}>
-            <div className={styles.addItemImageContainer}>
-                <input
-                    className={styles.addImageInputField}
-                    value={image}
-                    type="text"
-                    onChange={(event) => onImageChange(event.target.value)}
-                    placeholder="add Image URL"
-                    required
-                ></input>
-                <button
-                    className={styles.addImageFormButton}
-                    onClick={() => onImageAdd()}
-                    >add image </button>
+        <div className={styles.addItemFormWrapper}>
+            <div className={styles.addedItemImageWrapper}>
+                <img className={styles.addedItemImage} src={image}></img>
             </div>
+
+            <div className={styles.inputFieldWrapper}>
+                <div className={styles.addItemImageWrapper}>
+                    <input
+                        className={styles.addImageInputField}
+                        value={image}
+                        type="text"
+                        onChange={(event) => onImageChange(event.target.value)}
+                        placeholder="add Image URL"
+                        required
+                    ></input>
+                    <button
+                        className={styles.addImageFormButton}
+                        onClick={() => onImageAdd()}
+                        >add image </button>
+                </div>
                 <input
                     className={styles.addNameInputField}
                     value={itemName}
@@ -121,6 +126,7 @@ const NewItem = (props) => {
                 >
                     Submit Donation Item
                 </button>
+            </div>
         </div>
 
     )

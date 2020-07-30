@@ -1,54 +1,93 @@
-.addItemFormContainer {
+.addItemFormWrapper {
 
-    width: 95%;
-    height: 95%;
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    width: 99%;
+    height: 99%;
+
+    margin-left: .5%;
 
     border: 2px solid black;
     border-radius: 25px;
 
 }
 
+.addedItemImageWrapper {
+
+    float: left;
+    display: flex;
+    box-sizing: border-box;
+
+    width: 49%;
+    height: 95%;
+
+    margin-right: .5%;
+
+    border: 2px solid black;
+    border-radius: 25px;
+    background-color: lightcoral;
+}
+
+.addedItemImage {
+    box-sizing: border-box;
+    background-color: lawngreen;
+}
+
+.inputFieldWrapper {
+
+    float: right;
+    box-sizing: border-box;
+    width: 49%;
+    height: 95%;
+
+    border: 2px solid black;
+    border-radius: 25px;
+    background-color: lightseagreen;
+}
+
 .addImageInputField {
 
-    
+    box-sizing: border-box;
 }
 
 .addImageFormButton {
 
-
+    box-sizing: border-box;
 }
 
 .addNameInputField {
 
-
+    box-sizing: border-box;
 }
 
 .addCategoryInputField {
 
-
+    box-sizing: border-box;
 }
 
 .addValueInputField {
 
-
+    box-sizing: border-box;
 }
 
 .addZipInputField {
 
-
+    box-sizing: border-box;
 }
 
 .addConditionInputField {
 
-
+    box-sizing: border-box;
 }
 
 .addDescriptionInputField {
 
-
+    box-sizing: border-box;
 }
 
 .addItemSubmitButton {
 
-
+    box-sizing: border-box;
 }
