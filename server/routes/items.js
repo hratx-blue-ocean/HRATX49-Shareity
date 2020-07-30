@@ -10,27 +10,47 @@ router.get('/', async (req, res) => {
 
 // add new item
 router.post('/', async (req, res) => {
-  console.log('item post', req.query);
+  console.log('item post', req.body);
   let userInfo = {
-    user: req.query.donor,
+    user: req.body.donor,
     userType: 'donor',
     items: []
   }
   let newItem = {
-    donor: req.query.donor,
-    name: req.query.name,
+    donor: req.body.donor,
+    name: req.body.name,
     claimedBy: null,
     pickedUp: false,
-    Description: req.query.Description,
+    Description: req.body.Description,
     pictures: null,
-    estimatedValue: req.query.estimatedValue,
-    itemCondition: req.query.itemCondition,
-    Location: req.query.Location,
-    dateCreated: req.query.dateCreated,
-    category: req.query.category
+    estimatedValue: req.body.estimatedValue,
+    itemCondition: req.body.itemCondition,
+    Location: req.body.Location,
+    dateCreated: req.body.dateCreated,
+    category: req.body.category,
+    email: req.body.email,
+    charityEmail: null
   }
   try {
     let item = await db.addItem(newItem);
+    userInfo.items = await db.getItems(userInfo.user, userInfo.userType);
+  }
+  catch (err) {
+    console.log(err);
+  }
+  res.json(userInfo);
+});
+
+router.put('/', async (req, res) => {
+  let userInfo = {
+    user: req.query.user,
+    userType: req.query.userType,
+    items: [],
+  }
+  let filter = req.query._id;
+  let update = req.query.item
+  try {
+    let updateItem = await db.editItem(filter, update);
     userInfo.items = await db.getItems(userInfo.user, userInfo.userType);
   }
   catch (err) {

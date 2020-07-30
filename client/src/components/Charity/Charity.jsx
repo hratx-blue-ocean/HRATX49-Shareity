@@ -1,12 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../../styles/Charity.css';
+<<<<<<< HEAD
 // import LogoAvatar from './LogoAvatar.jsx';
 import LogoAvatar from './LogoAvatar.jsx'
+=======
+import LogoAvatar from './LogoAvatar.jsx';
+import CharityHeader from './CharityHeader.jsx';
+import { CSVLink, CSVDownload } from "react-csv";
+>>>>>>> 13a4ffaa481687114417238f2bbe512d97b46573
 // import Axios from 'axios';
 import PickupList from '../HomePage/PickupList.jsx';
 import DonatedList from '../HomePage/DonatedList.jsx';
+import UpForDonateList from '../HomePage/UpForDonateList.jsx'
+import newItem from '../Modals/AddItem.jsx'
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from 'react-router-dom';
 const Charity = (props) => {
+<<<<<<< HEAD
 
+=======
+    //sets the state of tax data on donation list to be used with csv export
+    const [taxData, changeTaxData] = useState([])
+    //we need to set the type of user/charity
+    const [userType, getType] = useState('user')
+    //const [listData, addListData] = useState([]);
+    
+>>>>>>> 13a4ffaa481687114417238f2bbe512d97b46573
     // const [listData, setListData] = useState([]);
 
     // const getListData = () => {
@@ -26,7 +49,14 @@ const Charity = (props) => {
     // useEffect(() => {
     //     getListData();
     // }, []);
-
+    var leftList = '';
+    var addItemButton = ''
+        if(userType === 'user') {
+            addItemButton = <newItem />
+            leftList = <UpForDonateList taxData={changeTaxData}/>
+        } else {
+            leftList = <DonatedList taxData={changeTaxData}/>
+        }
     return (
 
         <>
@@ -40,7 +70,9 @@ const Charity = (props) => {
 
                     {/* header */}
                     <div className={styles.charityHeader}>
-
+                        <div className={styles.outHeaderWrapper}>
+                            <CharityHeader />
+                        </div>
                     </div>
                         {/* side nav */}
                         <div className={styles.charitySideNav}>
@@ -48,15 +80,26 @@ const Charity = (props) => {
                             <div className={styles.charityButtonWrapper}>
 
                                 <div className={styles.buttonWrapper}>
+                                <Link to='/' className={styles.charityButton}>
                                     <button className={styles.charityButton}>HOME</button>
+                                </Link>
                                 </div>
 
                                 <div className={styles.buttonWrapper}>
-                                    <button className={styles.charityButton}>STATEMENT</button>
+                                    <button className={styles.charityButton}>
+                                        <CSVLink 
+                                            data={taxData}>STATEMENT
+                                        </CSVLink>
+                                    </button>
+                                    
                                 </div>
 
                                 <div className={styles.buttonWrapper}>
                                     <button className={styles.charityButton}>UPDATE PASSWORD</button>
+                                </div>
+                                <div className={styles.buttonWrapper}>
+                                    <button className={styles.charityButton}>ADD NEW ITEM</button>
+                                    {addItemButton}
                                 </div>
 
                             </div>
@@ -65,8 +108,7 @@ const Charity = (props) => {
                         {/* list donated */}
                         <div className={styles.charityListDonated}>
                             <div className={styles.charityDonorListWrapper}>
-                                <DonatedList />
-
+                                {leftList}
                             </div>
                         </div>
 

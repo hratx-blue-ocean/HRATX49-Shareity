@@ -1,7 +1,7 @@
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 const CONFIG = require('./config.js');
-const { ObjectID } = require('mongodb');
+const { ObjectID } = require('mongodb').ObjectID;
 const url = CONFIG.url;
 const dbName = CONFIG.dbName;
 const itemCollName = CONFIG.itemCollName;
@@ -88,17 +88,32 @@ client.connect((err) => {
 
   // add item
   client.addItem = async (item) => {
-    console.log('add item', item);
     try {
       let newItem = await itemCollection.insertOne(item);
       return newItem;
-    } catch (error) {
+    }
+    catch (error) {
+      console.log(error);
+      return null;
+    }
+  }
+
+  // edit item
+  client.editItem = async (filter, update) => {
+    // console.log('edit item filter', filter);
+    // console.log('edit item update', update);
+    try {
+      let updated = await itemCollection.updateOne({_id: ObjectID(filter)}, {$set:update});
+      return updated;
+    }
+    catch (error) {
       console.log(error);
       return null;
     }
   }
 
 });
+
 
 
 module.exports = client;

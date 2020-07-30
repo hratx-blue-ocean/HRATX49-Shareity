@@ -6,8 +6,9 @@ import moment from 'moment';
 const { Meta } = Card;
 
 function IndivCards ({ item, displayCard }){
-
-  if (item.pictures.length === 1){
+  if (item.pictures === null){
+    let arrofImages = ["https://picsum.photos/200/300"];
+  } else if (item.pictures.length === 1){
     let arrofImages = item.pictures
   } else {
     let arrofImages = item.pictures.split(',');
@@ -26,7 +27,7 @@ function IndivCards ({ item, displayCard }){
     <Card
     hoverable
     style={{width:240}}
-    cover={<img src="./Alabama.jpg" atl={item.name}/>}
+    cover={<img src="https://picsum.photos/200/300" atl={item.name}/>}
     >
     <div>
     <Meta title={item.name} description={item.Location}/>
