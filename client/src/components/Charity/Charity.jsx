@@ -21,7 +21,7 @@ const Charity = (props) => { //
     const [userType, getType] = useState('user');
 
     //const [listData, addListData] = useState([]);
-    
+
     // const [listData, setListData] = useState([]);
 
     // const getListData = () => {
@@ -44,16 +44,16 @@ const Charity = (props) => { //
 
 
     // var leftList = '';
-    // var addItemButton = ''
-    //     if(localStorage.user.userType !== 'Donor') {
-    //         addItemButton =
-    //             <div className={styles.buttonWrapper}>
-    //                 <NewItem className={styles.charityButton} buttonText={'ADD ITEM'}/>
-    //             </div>
-    //         leftList = <UpForDonateList rawData={listData} taxData={changeTaxData}/>
-    //     } else {
-    //         leftList = <DonatedList rawData={listData} taxData={changeTaxData}/>
-    //     }
+    var addItemButton = ''
+        if(localStorage.user.userType !== 'Donor') {
+            addItemButton =
+                <div className={styles.buttonWrapper}>
+                    <NewItem className={styles.charityButton} buttonText={'ADD ITEM'}/>
+                </div>
+            // leftList = <UpForDonateList rawData={listData} taxData={changeTaxData}/>
+        } else {
+            // leftList = <DonatedList rawData={listData} taxData={changeTaxData}/>
+        }
 
     return (
 
@@ -84,17 +84,16 @@ const Charity = (props) => { //
 
                                 <div className={styles.buttonWrapper}>
                                     <button className={styles.charityButton}>
-                                        <CSVLink 
+                                        <CSVLink
                                             data={taxData}>STATEMENT
                                         </CSVLink>
                                     </button>
-                                    
+
                                 </div>
 
                                 <div className={styles.buttonWrapper}>
                                     <button className={styles.charityButton}>UPDATE PASSWORD</button>
                                 </div>
-                                {addItemButton}
 
                             </div>
                         </div>
@@ -113,7 +112,7 @@ const Charity = (props) => { //
 
                             </div>
                         </div>
-                        
+
                 </div>
             </div>
 
