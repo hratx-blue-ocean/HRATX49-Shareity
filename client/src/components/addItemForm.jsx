@@ -67,36 +67,26 @@ const NewItem = (props) => {
                     type="text"
                     required
                 ></input>
-                <input
-                    className={styles.addValueInputField}
-                    value={estVal}
-                    onChange={(event) => onValChange(event.target.value)}
-                    placeholder="estimated Value"
-                    type="number"
-                    required
-                ></input>
-                <input
-                    className={styles.addZipInputField}
-                    value={zipcode}
-                    onChange={(event) => onZipChange(event.target.value)}
-                    placeholder="zipcode"
-                    type="number"
-                    required
-                ></input>
-                <select 
-                    className={styles.addConditionInputField}
-                    name="condition"
-                    value={condition}
-                    type="text"
-                    defaultValue='default'
-                    required
-                    onBlur={(event) => onConditionChange(event.target.value)}
-                >
-                        <option value='default' disabled>condition</option>
-                        <option value='test'> test</option>
-                        <option value='test'> test</option>
-                        <option value='test'> test</option>
-                </select >
+
+                <div>
+
+                    <input
+                        className={styles.addValueInputField}
+                        value={estVal}
+                        onChange={(event) => onValChange(event.target.value)}
+                        placeholder="estimated Value"
+                        type="number"
+                        required
+                    ></input>
+                    <input
+                        className={styles.addZipInputField}
+                        value={zipcode}
+                        onChange={(event) => onZipChange(event.target.value)}
+                        placeholder="zipcode"
+                        type="number"
+                        required
+                    ></input>
+                </div>
             
                 <input
                     className={styles.addDescriptionInputField}
@@ -106,6 +96,25 @@ const NewItem = (props) => {
                     placeholder="brief description of your item"
                     required
                 ></input>
+
+                <select 
+                    id="selectCondition"
+                    className={styles.addConditionInputField}
+                    name="condition"
+                    value={condition}
+                    type="text"
+                    defaultValue='default'
+                    required
+                    onBlur={(event) => onConditionChange(event.target.value)}
+                >
+                        <option className={styles.conditionOptions} value='default' disabled>condition</option>
+                        <option className={styles.conditionOptions} value='test'>New</option>
+                        <option className={styles.conditionOptions} value='test'>Excellent</option>
+                        <option className={styles.conditionOptions} value='test'>Good</option>
+                        <option className={styles.conditionOptions} value='test'>Rough</option>
+                        <option className={styles.conditionOptions} value='test'>Should go in the trash</option>
+                </select >
+
                 <div className={styles.addItemImageWrapper}>
                     <input
                         className={styles.addImageInputField}
