@@ -9,7 +9,7 @@ const CharityHeader = () => {
     const [currentUser, setCurrentUser] = useState('');
     const [achievements, setAchievements] = useState(data);
     const getUserAchievements = () => {
-
+        // needs to have it's end point added
         Axios.get('./', currentUser)
             .then( res => {
                 console.log(res.data)
@@ -19,10 +19,10 @@ const CharityHeader = () => {
                 console.error(err);
             })
     }
-
-    useEffect(() => {
-        getUserAchievements();
-    }, []);
+    // comment this back in when we are ready to make requests to the db
+    // useEffect(() => {
+    //     getUserAchievements();
+    // }, []);
 
     return (
 

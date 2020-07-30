@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../styles/AddItemForm.css';
 import axios from 'axios';
 
@@ -10,7 +10,7 @@ const NewItem = (props) => {
     const [description, onDescChange] = useState('')
     const [image, onImageChange] = useState('')
     const [estVal, onValChange] = useState('')
-    const date = new Date();
+    const date = new Date();     
 
     function onImageAdd() {
         //add image
@@ -102,32 +102,37 @@ const NewItem = (props) => {
                 <select
                     className={styles.addConditionInputField}
                     name="condition"
-                    value={condition}
+                    // this line was breaking the condition dropdown
+                    // value={condition}
                     type="text"
                     defaultValue='default'
                     required
-                    onBlur={(event) => onConditionChange(event.target.value)}
+                    // grabs condition from the dropdown box
+                    onBlur={(event) => {
+                        onConditionChange(event.target.value);
+                        console.log(event.target.value);
+                    }}
                 >
-                        <option className={styles.conditionOptions} value='default' disabled>condition</option>
-                        <option className={styles.conditionOptions} value='test'>New</option>
-                        <option className={styles.conditionOptions} value='test'>Excellent</option>
-                        <option className={styles.conditionOptions} value='test'>Good</option>
-                        <option className={styles.conditionOptions} value='test'>Rough</option>
-                        <option className={styles.conditionOptions} value='test'>Should go in the trash</option>
+                    <option className={styles.conditionOptions} value='default' disabled>condition</option>
+                    <option className={styles.conditionOptions} value='New'>New</option>
+                    <option className={styles.conditionOptions} value='Excellent'>Excellent</option>
+                    <option className={styles.conditionOptions} value='Good'>Good</option>
+                    <option className={styles.conditionOptions} value='Rough'>Rough</option>
+                    <option className={styles.conditionOptions} value='Trash'>Trash</option>
                 </select >
 
                 <div>
                     <button 
                         className={styles.addItemCancelButton} 
                         onClick={() => props.closeModal()}>
-                    Cancel
+                        Cancel
                     </button>
                     <button
                         className={styles.addItemSubmitButton}
                         onClick={() => onDonateSubmit()}
                         onClick={() => props.closeModal()}
                     >
-                        Submit Donation Item
+                        Donate
                     </button>
                 </div>
                 
