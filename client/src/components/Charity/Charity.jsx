@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../../styles/Charity.css';
 import LogoAvatar from './LogoAvatar.jsx';
-<<<<<<< HEAD
 import CharityHeader from './CharityHeader.jsx';
-=======
 import { CSVLink, CSVDownload } from "react-csv";
->>>>>>> 1f447370cdcc7f36633c9533e95ad629ec4382e1
 // import Axios from 'axios';
 import PickupList from '../HomePage/PickupList.jsx';
 import DonatedList from '../HomePage/DonatedList.jsx';

@@ -9,14 +9,10 @@ const NewItem = () => {
     const [description, onDescChange] = useState('')
     const [image, onImageChange] = useState('')
     const [estVal, onValChange] = useState('')
-    const [userEmail, setUserEmail] = useState('')
-    const [userName, setUserName] = useState('')
+    const [userEmail, setUserEmail] = useState('test')
+    const [userName, setUserName] = useState('test')
     const date = new Date();
-
-    setUserEmail('test')
-    setUserName('test')
     
-
     function onImageAdd() {
         //add image
     }
@@ -50,7 +46,7 @@ const NewItem = () => {
                 <input
                     value={image}
                     type="text"
-                    onChange={e => onImageChange(e.target.value)}
+                    onChange={(event) => onImageChange(event.target.value)}
                     placeholder="add Image URL"
                     required
                 ></input>
@@ -67,21 +63,21 @@ const NewItem = () => {
                 ></input>
                 <input
                     value={category}
-                    onChange={event => onCatChange(event.target.value)}
+                    onChange={(event) => onCatChange(event.target.value)}
                     placeholder="item category"
                     type="text"
                     required
                 ></input>
                 <input
                     value={estVal}
-                    onChange={event => onValChange(event.target.value)}
+                    onChange={(event) => onValChange(event.target.value)}
                     placeholder="estimated Value"
                     type="number"
                     required
                 ></input>
                 <input
                     value={zipcode}
-                    onChange={event => onZipChange(event.target.value)}
+                    onChange={(event) => onZipChange(event.target.value)}
                     placeholder="zipcode"
                     type="number"
                     required
@@ -92,7 +88,7 @@ const NewItem = () => {
                     type="text"
                     defaultValue='default'
                     required
-                    onBlur={event => onConditionChange(event.target.value)}
+                    onBlur={(event) => onConditionChange(event.target.value)}
                 >
                         <option value='default' disabled>condition</option>
                         <option value='test'> test</option>
@@ -103,7 +99,7 @@ const NewItem = () => {
                 <input
                     value={description}
                     type="text"
-                    onChange={event => onDescChange(event.target.value)}
+                    onChange={(event) => onDescChange(event.target.value)}
                     placeholder="brief description of your item"
                     required
                 ></input>
