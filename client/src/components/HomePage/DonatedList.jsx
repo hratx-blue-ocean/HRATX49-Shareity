@@ -83,7 +83,7 @@ const DonatedList = ({ charity, rawData, taxData }) => {
             <tbody className={styles.listRowWrap}>  
                 {filteredData.map((item, i) =>  
 
-                    <tr key={i} className={styles.listItemRow}>
+                    <tr key={i} className={styles.listItemRow} onClick={() => alert('im clicked!')}>
                         <td>({item.dateCreated.slice(3,21) || ''})</td>
                         <td> {item.name || ''} </td>
                         <td> {item.category || ''} </td>
