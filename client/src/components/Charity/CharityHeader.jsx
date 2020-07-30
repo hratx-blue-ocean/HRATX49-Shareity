@@ -6,10 +6,11 @@ import Achievement from './Achievement.jsx';
 
 const CharityHeader = () => {
 
+    const [currentUser, setCurrentUser] = useState('');
     const [achievements, setAchievements] = useState(data);
     const getUserAchievements = () => {
 
-        Axios.get('./')
+        Axios.get('./', currentUser)
             .then( res => {
                 console.log(res.data)
                 setAchievements(res.data);

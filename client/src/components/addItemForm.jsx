@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from '../styles/AddItemForm.css';
 import axios from 'axios';
 
 const NewItem = () => {
@@ -41,9 +42,10 @@ const NewItem = () => {
     }
 
     return (
-        <div>
-            <div>
+        <div className={styles.addItemFormContainer}>
+            <div className={styles.addItemImageContainer}>
                 <input
+                    className={styles.addImageInputField}
                     value={image}
                     type="text"
                     onChange={(event) => onImageChange(event.target.value)}
@@ -51,10 +53,12 @@ const NewItem = () => {
                     required
                 ></input>
                 <button
+                    className={styles.addImageFormButton}
                     onClick={() => onImageAdd()}
                     >add image </button>
             </div>
                 <input
+                    className={styles.addNameInputField}
                     value={itemName}
                     onChange={(event) => onItemNameChange(event.target.value)}
                     placeholder="item name"
@@ -62,6 +66,7 @@ const NewItem = () => {
                     required
                 ></input>
                 <input
+                    className={styles.addCategoryInputField}
                     value={category}
                     onChange={(event) => onCatChange(event.target.value)}
                     placeholder="item category"
@@ -69,6 +74,7 @@ const NewItem = () => {
                     required
                 ></input>
                 <input
+                    className={styles.addValueInputField}
                     value={estVal}
                     onChange={(event) => onValChange(event.target.value)}
                     placeholder="estimated Value"
@@ -76,6 +82,7 @@ const NewItem = () => {
                     required
                 ></input>
                 <input
+                    className={styles.addZipInputField}
                     value={zipcode}
                     onChange={(event) => onZipChange(event.target.value)}
                     placeholder="zipcode"
@@ -83,6 +90,7 @@ const NewItem = () => {
                     required
                 ></input>
                 <select 
+                    className={styles.addConditionInputField}
                     name="condition"
                     value={condition}
                     type="text"
@@ -97,6 +105,7 @@ const NewItem = () => {
                 </select >
             
                 <input
+                    className={styles.addDescriptionInputField}
                     value={description}
                     type="text"
                     onChange={(event) => onDescChange(event.target.value)}
@@ -104,6 +113,7 @@ const NewItem = () => {
                     required
                 ></input>
                 <button
+                    className={styles.addItemSubmitButton}
                     onClick={() => onDonateSubmit()}
                 >
                     Submit Donation Item
