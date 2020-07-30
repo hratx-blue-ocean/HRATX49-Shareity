@@ -3,7 +3,7 @@ import styles from '../../styles/lists.css';
 import { fakeData } from './fakeData.jsx';
 var _ = require('lodash');
 
-const DonatedList = ({ charity, rawData }) => {
+const DonatedList = ({ charity, rawData, taxData }) => {
     rawData = rawData || fakeData;
     var data = [];
     var totalVal = 0;
