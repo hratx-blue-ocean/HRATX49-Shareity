@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const db = require('../database');
 
+
 router.get('/', async (req, res) => {
   // make db queries and res.json the data
   //push to reset github branch
@@ -8,11 +9,23 @@ router.get('/', async (req, res) => {
   res.json(result);
 });
 
+// get user's items
+router.get('/items', async (req, res) => {
+  let userInfo = {
+    userEmail: req.body.email,
+    userType: req.body.userType,
+    items: []
+  }
+  userInfo.items = await db.getUserItems(req.body.email, req.body.userType)
+  res.json(userInfo);
+});
+
 // add new item
 router.post('/', async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   let userInfo = {
     user: req.body.donor,
+    userEmail: req.body.email,
     userType: 'donor',
     items: []
   }
@@ -33,7 +46,7 @@ router.post('/', async (req, res) => {
   }
   try {
     let item = await db.addItem(newItem);
-    userInfo.items = await db.getItems(userInfo.user, userInfo.userType);
+    userInfo.items = await db.getUserItems(userInfo.userEmail, userInfo.userType);
   } catch (err) {
     console.log(err);
   }
@@ -51,7 +64,7 @@ router.put('/', async (req, res) => {
   let update = req.body.item
   try {
     let updateItem = await db.editItem(filter, update);
-    userInfo.items = await db.getItems(userInfo.user, userInfo.userType);
+    userInfo.items = await db.getUserItems(userInfo.user, userInfo.userType);
   } catch (err) {
     console.log(err);
   }
@@ -67,7 +80,7 @@ router.delete('/', async (req, res) => {
   }
   try {
     await db.deleteItem(req.body._id)
-    userInfo.items = await db.getItems(userInfo.user, userInfo.userType);
+    userInfo.items = await db.getUserItems(userInfo.user, userInfo.userType);
   } catch (err) {
     console.log(err);
   }

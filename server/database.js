@@ -58,6 +58,14 @@ client.connect((err) => {
   }
 
   //item queries
+  client.getData = async () => {
+    try {
+      let result = await itemCollection.find().toArray();
+      return result;
+    } catch(err) {
+      throw new Error(err);
+    }
+  }
 
   client.getItems = async (userName, userType) => {
     try {
@@ -77,12 +85,22 @@ client.connect((err) => {
     }
   }
 
-  client.getData = async () => {
+
+  client.getUserItems = async (userEmail, userType) => {
     try {
-      let result = await itemCollection.find().toArray();
+      //set up query based on donor vs charity
+      let query = {};
+      if (userType === "donor") {
+        query.email = userEmail;
+      } else {
+        query.charityEmail = userEmail;
+      }
+      //find items associated with user or charity
+      let result = await itemCollection.find( query ).toArray();
       return result;
     } catch(err) {
-      throw new Error(err);
+      console.log(err);
+      return [];
     }
   }
 
@@ -90,7 +108,7 @@ client.connect((err) => {
   // add item
   client.addItem = async (item) => {
     try {
-      console.log('item', item);
+      // console.log('item', item);
       let newItem = await itemCollection.insertOne(item);
       return newItem;
     } catch (error) {
