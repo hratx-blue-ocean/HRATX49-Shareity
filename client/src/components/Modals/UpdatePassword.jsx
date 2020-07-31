@@ -6,10 +6,7 @@ const AddItem = ({ buttonText, addAchievement }) => {
 
     const [modalView, setModalView] = useState('none');
     const [buttonView, setButtonView] = useState('block');
-    // this state may be needed when we get to styling
-    // const [buttonVis, setButtonVis] = useState('hidden');
 
-    // function that toggle whether the modal is visible or it's button is
     const switchViews = () => {
 
         if (modalView === 'none') {

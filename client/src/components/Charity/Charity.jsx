@@ -43,7 +43,7 @@ const Charity = (props) => { //
         if(localStorage.user.userType !== 'Donor') {
             addItemButton =
                 <div className={styles.buttonWrapper}>
-                    <AddItem className={styles.charityButton} buttonText={'ADD ITEM'}/>
+                    <AddItem className={styles.charityButton} buttonText={'ADD ITEM'} addAchievement={addAchievement}/>
                 </div>
             // leftList = <UpForDonateList rawData={listData} taxData={changeTaxData}/>
         } else {
