@@ -12,7 +12,7 @@ const UpdatePassForm = (props) => {
 
     const updatePassword = () => {
 
-        Axios.put('./user/updatePassword', {
+        Axios.put('/users/updatePassword', {
 
             password: newPassword,
             userEmail: email
@@ -48,6 +48,7 @@ const UpdatePassForm = (props) => {
                     <button
                         className={styles.addItemSubmitButton}
                         onClick={() => {
+
                             updatePassword();
                             props.closeModal();
                         }}
