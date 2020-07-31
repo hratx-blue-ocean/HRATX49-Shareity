@@ -21,29 +21,6 @@ const Charity = (props) => { //
     //we need to set the type of user/charity
     const [userType, getType] = useState('user');
 
-    // comment this section in when we are ready to retreive data from the db
-    // still needs an endpoint to send request to
-    //const [listData, addListData] = useState([]);
-
-    // const getListData = () => {
-
-    //     Axios.get('./')
-    //         .then( res => {
-
-    //             let newListData = res.data;
-    //             setListData(newListData);
-    //         })
-    //         .catch( err => {
-
-    //             console.error(err);
-    //         })
-    // }
-    // calls the function to get list data on page load
-    // useEffect(() => {
-    //     getListData();
-    // }, []);
-
-
     // var leftList = '';
     var addItemButton = ''
         if(localStorage.user.userType !== 'Donor') {
