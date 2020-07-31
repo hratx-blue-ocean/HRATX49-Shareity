@@ -132,7 +132,7 @@ class Login extends Component {
                 </div>
                 <div className="">
                   <label>Location</label>
-                  <input type="text" pattern="[0-9]" value={this.state.user.location} onChange={(e) => this.handleChange(e, 'location')} required />
+                  <input type="text" pattern="[0-9]{5}" value={this.state.user.location} onChange={(e) => this.handleChange(e, 'location')} required />
                 </div>
                 <button type="submit">Sign up</button>
               </form>

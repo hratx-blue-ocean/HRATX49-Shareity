@@ -8,7 +8,9 @@ const Cards = ({ items, loading, displayCard, sortBy}) => {
   }
   return (
     <div>
-      <p>Cards</p>
+      <div className={styles.sortTitleContainer}>
+      <span className={styles.sortTitle}> How would you like to sort your donations?</span>
+      </div>
       <div>
         {/* Sorting Buttons */}
         <button className={styles.sortBtn} onClick={(e) => sortBy(e, e.target.name)} name="name">Name</button>
