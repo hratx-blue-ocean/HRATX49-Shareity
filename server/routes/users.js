@@ -105,4 +105,19 @@ router.put("/updateProfilePic", async (req, res) => {
   res.sendStatus(200);
 });
 
+router.put("/updatePassword", async (req, res) => {
+  try {
+    //hash the provided password password
+    let hash = await bcrypt.hash(req.body.password, saltRounds);
+    //insert the user data into the user collection
+    let user = await db.updatePassword(req.body.email, hash);
+    user = user.ops[0];
+    delete user.password;
+  } catch (err) {
+    console.log(err);
+  }
+  //return the user data with items: null
+  res.json(user);
+});
+
 module.exports = router;
