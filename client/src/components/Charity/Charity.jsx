@@ -7,12 +7,7 @@ import Axios from 'axios';
 import PickupList from '../HomePage/PickupList.jsx';
 import DonatedList from '../HomePage/DonatedList.jsx';
 import UpForDonateList from '../HomePage/UpForDonateList.jsx';
-<<<<<<< HEAD
-import NewItem from '../Modals/AddItem.jsx';
-import data from './achievementData';
-=======
 import AddItem from '../Modals/AddItem.jsx';
->>>>>>> update-josh
 import {
     BrowserRouter as Router,
     Switch,
