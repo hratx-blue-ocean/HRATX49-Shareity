@@ -48,7 +48,8 @@ const PickupList = () => {
             .then(res => {
                 //pushed to data array if item hasnt been picked up, but HAS been claimed
                 res.data.items.map((item) => {
-                    if(item.pickedUp === false && item.claimedBy !== "") {
+                    if(item.pickedUp === false && item.claimedBy !== null && item.charityEmail !== null) {
+                    
                         //makes the date look pretty
                         item.date =  `${item.dateCreated.slice(5,7)}/${item.dateCreated.slice(8,9)}/${item.dateCreated.slice(0,4)} at ${item.dateCreated.slice(11,16)}`
                     
@@ -70,19 +71,26 @@ const PickupList = () => {
         sortArray(name)
     }
 
-    const handlePickupItem = (event, id) => {
-        event.preventDefault();
+    function handlePickupItem (event) {
+        //if no local storage exists, then do nothing
+        if(!localStorage.getItem('user')) {
+            return;
+        }
+        //event.preventDefault();
         if(charity) {
-            let charityInfo = JSON.parse(localStorage.user);
+            let charityInfo = JSON.parse(localStorage.getItem('user'));
             let charityEmail = charityInfo.email;
+
             Axios.put('/items/', {
                 user: charityEmail,
                 userType: 'charity',
-                _id: id,
+                _id: event,
                 item: {
                     pickedUp: true,
                 }
             }), getUserItemsData()
+        } else {
+            alert('only Charities can complete items as picked up')
         }
     }
     
@@ -107,12 +115,10 @@ const PickupList = () => {
     //assigns title and sortoptions for list
     var title = 'Items for Pickup';
     var sortOptions = ['date', 'name', 'Location']
-    var pickupItem = ''
 
     //different selectors for a charity
     if(charity) {
     sortOptions = ['date', 'name', 'Location', 'estimatedValue'];
-    pickupItem = <button onclick={event => handlePickupItem()}>pickup</button>
     }
 
     return (
@@ -147,7 +153,7 @@ const PickupList = () => {
                                 <td> {item.date} </td>
                                 <td> {item.name} </td>
                                 <td> {item.Location = item.Location.toString().slice(0,5) || ''}</td>
-                                <td> {pickupItem}</td>
+                                <td> <button value={item._id} onClick={(event) => handlePickupItem(event.target.value)}>pickup</button></td>
                             </tr>
                         )}
                     </tbody>
