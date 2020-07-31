@@ -14,6 +14,7 @@ import {
     Route,
     Link
 <<<<<<< HEAD
+<<<<<<< HEAD
 } from 'react-router-dom';
 const Charity = (props) => { //
 
@@ -103,17 +104,15 @@ const Charity = (props) => { //
 } from 'react-router-dom';
 const Charity = (props) => { //
 =======
-} from 'react-router-dom';
-<<<<<<< HEAD
-const Charity = (props) => { 
->>>>>>> V2.0.5
 =======
+>>>>>>> V2.0.7
+} from 'react-router-dom';
 const Charity = (props) => {
->>>>>>> V.2.0.5
     //sets the state of tax data on donation list to be used with csv export
     const [taxData, changeTaxData] = useState([]);
     //we need to set the type of user/charity
     const [userType, getType] = useState('user');
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> V2.0.5
 
@@ -121,8 +120,9 @@ const Charity = (props) => {
     // still needs an endpoint to send request to
     //const [listData, addListData] = useState([]);
 =======
+=======
+>>>>>>> V2.0.7
     // const [listData, setListData] = useState([]);
->>>>>>> V2.0.5
 
     // const getListData = () => {
 
@@ -151,6 +151,7 @@ const Charity = (props) => {
 
     // var leftList = '';
     var addItemButton = ''
+<<<<<<< HEAD
 <<<<<<< HEAD
         if(localStorage.user.userType !== 'Donor') {
             addItemButton =
@@ -183,17 +184,22 @@ const Charity = (props) => {
             // leftList = <DonatedList rawData={listData} taxData={changeTaxData}/>
         }
 =======
+=======
+>>>>>>> V2.0.7
     if (localStorage.user.userType !== 'Donor') {
         addItemButton =
             <div className={styles.buttonWrapper}>
                 <NewItem className={styles.charityButton} buttonText={'ADD ITEM'} />
             </div>
-        //leftList = <UpForDonateList rawData={listData} taxData={changeTaxData}/>
+        // leftList = <UpForDonateList rawData={listData} taxData={changeTaxData}/>
     } else {
-        //leftList = <DonatedList rawData={listData} taxData={changeTaxData}/>
+        // leftList = <DonatedList rawData={listData} taxData={changeTaxData}/>
     }
+<<<<<<< HEAD
 >>>>>>> V.2.0.5
 >>>>>>> V.2.0.5
+=======
+>>>>>>> V2.0.7
 
     return (
 
@@ -240,6 +246,7 @@ const Charity = (props) => {
 >>>>>>> V.2.0.5
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                                 <div className={styles.buttonWrapper}>
                                     <button className={styles.charityButton}>UPDATE PASSWORD</button>
                                 </div>
@@ -248,18 +255,23 @@ const Charity = (props) => {
 =======
                                 {addItemButton}
 =======
+=======
+>>>>>>> V2.0.7
                             </div>
 
                             <div className={styles.buttonWrapper}>
                                 <button className={styles.charityButton}>UPDATE PASSWORD</button>
+<<<<<<< HEAD
 >>>>>>> V.2.0.5
 >>>>>>> V.2.0.5
+=======
+>>>>>>> V2.0.7
                             </div>
                             {addItemButton}
-
                         </div>
                     </div>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
                         {/* list donated */}
                         <div className={styles.charityListDonated}>
@@ -267,11 +279,12 @@ const Charity = (props) => {
                                 {leftList}
                             </div>
 =======
+=======
+>>>>>>> V2.0.7
                     {/* list donated */}
                     <div className={styles.charityListDonated}>
                         <div className={styles.charityDonorListWrapper}>
-                            {leftList}
->>>>>>> V.2.0.5
+                            {/* {leftList} */}
                         </div>
                     </div>
 

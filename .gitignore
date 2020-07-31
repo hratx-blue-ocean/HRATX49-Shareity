@@ -1,4 +1,5 @@
-.config.js
+config.js
+superSecretAccess.js
 # Logs
 logs
 *.log

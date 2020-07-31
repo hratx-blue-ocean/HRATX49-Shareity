@@ -3,4 +3,25 @@
   width: 100%;
   overflow: scroll;
   flex-flow: wrap;
+  padding-top: 5%;
+}
+
+.cardStyle {
+  box-shadow: -10px 10px 12px -1px rgba(0,0,0,0.59);
+  background-color: white;
+  padding: 7px;
+  margin-left: 20px;
+}
+
+.cardStyle:hover {
+  transform: translate(-1%, -1%) scale(1.1);
+}
+
+.cardImage {
+  width: 200px;
+  height: auto;
+}
+
+.sortBtn{
+  
 }

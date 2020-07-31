@@ -8,6 +8,7 @@
 
 .navBarLogin{
   padding-left: 20px;
+  font-size: 60px;
 }
 
 .navBarLogo{
@@ -21,4 +22,8 @@
 .navBarUserImage{
   max-width: 150px;
   max-height: 150px;
+}
+
+.logBtn{
+
 }

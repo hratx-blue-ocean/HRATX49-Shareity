@@ -21,16 +21,20 @@ const NavBar = ({ login, isLoggedIn }) => {
     alert('Please Log in to visit Profiles')
   }
 
-
+let log;
+  if (isLoggedIn){
+    log = <i className="fas fa-sign-out-alt" onClick={(event) => login(event)}></i>
+  } else {
+    log = <i className="fas fa-sign-in-alt" onClick={(event) => login(event)}></i>
+  }
 
   return (
     <div>
       <div className={styles.navBarMainContainer}>
         <div className={styles.navBarLogin}>
           {/* Log in || Log out btn */}
-          <button className={styles.logBtn} onClick={(event) => login(event)}>{localStorage.getItem("token") ? 'Log out' : "Login"}</button>
+        {log}
         </div>
-        <i className="fas fa-sign-in-alt"></i>
         <div className={styles.navBarLogo}>
           {/* Logo Area */}
           <Greeting />

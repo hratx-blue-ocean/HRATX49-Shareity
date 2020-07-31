@@ -1,3 +1,5 @@
+
+
 .pageContainer{
   margin: 0;
   padding: 0;
@@ -10,17 +12,22 @@
   right: 0;
   top: 0;
   bottom: 0;
+  background-color: #e36387;
 }
 
 .navBarContainer{
   min-height: 15%;
+  background-color: #e36387;
 }
 
 .bodyContainer{
   min-height: 80%;
+  background-color: #e36387;
 }
 
 .paginaterContainer{
   min-height: 5%;
   align-self: center;
   margin-top: 2%;
+  background-color: #e36387;
+}
