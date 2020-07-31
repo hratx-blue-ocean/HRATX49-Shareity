@@ -2,11 +2,10 @@
 import Axios from 'axios';
 import data from '../Charity/achievementData';
 
-
 const addAchievement = (userEmail, achievement) => {
 
-    let newAchievement = data.name === data.name.achievement;
-    
+    let newAchievement = data.name === data.name[achievement];
+
     Axios.post('./newAchievement',{ 
         email: userEmail,
         achievement: newAchievement  
@@ -17,4 +16,8 @@ const addAchievement = (userEmail, achievement) => {
         .catch( err => {
             console.error(err);
         })
+}
+
+module.exports = {
+    newAchievement
 }
