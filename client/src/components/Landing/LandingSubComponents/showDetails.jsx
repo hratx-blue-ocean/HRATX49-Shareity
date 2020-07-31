@@ -3,8 +3,7 @@ import styles from '../ShowDetails.css';
 import Item from 'antd/lib/list/Item';
 import { without } from 'lodash';
 
-const ShowDetails = ({ card, closeCard, claim , who }) => {
-
+const ShowDetails = ({ card, closeCard, claimItem }) => {
   if (card.pictures == null){
     card.pictures = 'https://picsum.photos/200/300';
   }
@@ -21,7 +20,10 @@ const ShowDetails = ({ card, closeCard, claim , who }) => {
   return (
     <div className={styles.overlay}>
       <div className={styles.cardDetail}>
-          <p className={styles.closeBtn} onClick={closeCard}>+</p>
+        <div className="alert alert-primary" role="alert">
+          Item successfully claimed!
+        </div>
+        <p className={styles.closeBtn} onClick={closeCard}>+</p>
         <div className={styles.leftSide}>
           {/* Left Side */}
           <div className={styles.userArea}>
@@ -33,11 +35,15 @@ const ShowDetails = ({ card, closeCard, claim , who }) => {
             {/* BUTTONS */}
             <div className={styles.msgBtn}>
               {/* Message */}
-              <button onClick={(event)=>who(event,card.donor)} name="message">Message</button>
+              <button name="message">
+                <a href={`mailto:${card.donorEmail}?subject=Interested In ${card.name}`}>
+                  Message
+                </a>
+              </button>
             </div>
             <div className={styles.claimBtn}>
               {/* Claim */}
-              <button onClick={(event)=>claim(event,card)} name="claim">Claim</button>
+              <button onClick={(event)=>claimItem(event,card)} name="claim">Claim</button>
             </div>
           </div>
         </div>
