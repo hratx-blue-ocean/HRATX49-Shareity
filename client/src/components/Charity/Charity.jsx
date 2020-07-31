@@ -6,22 +6,24 @@ import { CSVLink, CSVDownload } from "react-csv";
 import Axios from 'axios';
 import PickupList from '../HomePage/PickupList.jsx';
 import DonatedList from '../HomePage/DonatedList.jsx';
-import UpForDonateList from '../HomePage/UpForDonateList.jsx'
-import NewItem from '../Modals/AddItem.jsx'
+import UpForDonateList from '../HomePage/UpForDonateList.jsx';
+import NewItem from '../Modals/AddItem.jsx';
 import {
     BrowserRouter as Router,
     Switch,
     Route,
     Link
-} from 'react-router-dom'; //
+
+} from 'react-router-dom';
 const Charity = (props) => { //
     //sets the state of tax data on donation list to be used with csv export
     const [taxData, changeTaxData] = useState([]);
     //we need to set the type of user/charity
     const [userType, getType] = useState('user');
-    //const [listData, addListData] = useState([]);
 
-    // const [listData, setListData] = useState([]);
+    // comment this section in when we are ready to retreive data from the db
+    // still needs an endpoint to send request to
+    //const [listData, addListData] = useState([]);
 
     // const getListData = () => {
 
@@ -36,20 +38,22 @@ const Charity = (props) => { //
     //             console.error(err);
     //         })
     // }
-
+    // calls the function to get list data on page load
     // useEffect(() => {
     //     getListData();
     // }, []);
-    var leftList = '';
+
+
+    // var leftList = '';
     var addItemButton = ''
         if(localStorage.user.userType !== 'Donor') {
             addItemButton =
                 <div className={styles.buttonWrapper}>
                     <NewItem className={styles.charityButton} buttonText={'ADD ITEM'}/>
                 </div>
-            //leftList = <UpForDonateList rawData={listData} taxData={changeTaxData}/>
+            // leftList = <UpForDonateList rawData={listData} taxData={changeTaxData}/>
         } else {
-            //leftList = <DonatedList rawData={listData} taxData={changeTaxData}/>
+            // leftList = <DonatedList rawData={listData} taxData={changeTaxData}/>
         }
 
     return (
@@ -92,14 +96,13 @@ const Charity = (props) => { //
                                     <button className={styles.charityButton}>UPDATE PASSWORD</button>
                                 </div>
                                 {addItemButton}
-
                             </div>
                         </div>
 
                         {/* list donated */}
                         <div className={styles.charityListDonated}>
                             <div className={styles.charityDonorListWrapper}>
-                                {leftList}
+                                {/* {leftList} */}
                             </div>
                         </div>
 

@@ -57,6 +57,7 @@ const LogoAvatar = () => {
                 {/* container for image upload functionality */}
                 <div className={styles.charityInputAvatarContainer}>
                     <div className={styles.fileUploadLabelWrapper}>
+                        {/* the label allows for the custom button styling of the standard input button */}
                         <label className={styles.fileUploadButtonLabel} htmlFor="fileUploadButton">Change Avatar</label>
                         <input
 

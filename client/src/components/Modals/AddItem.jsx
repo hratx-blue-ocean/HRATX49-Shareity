@@ -6,8 +6,10 @@ const AddItem = ({ buttonText }) => {
 
     const [modalView, setModalView] = useState('none');
     const [buttonView, setButtonView] = useState('block');
-    // const [buttonVis, setButtonVis] = useState('hidden');
+    // this state may be needed when we get to styling
+    // const [buttonVis, setButtonVis] = useState('hidden'); 
 
+    // function that toggle whether the modal is visible or it's button is
     const switchViews = () => {
 
         if(modalView === 'none') {
@@ -31,6 +33,7 @@ const AddItem = ({ buttonText }) => {
             <div>
                 
                 <div className={styles.outerButtonWrapper} style={{display: buttonView}} >
+                    {/* this label allows for custom styling of modal button */}
                     <label 
                         className={styles.modelButtonLabel} 
                         style={{display: buttonView}} 
@@ -50,12 +53,13 @@ const AddItem = ({ buttonText }) => {
                 <div className={styles.innerModalWrapper} style={{display: modalView}}>
                     <div className={styles.modalInnerContainer}>
                         <div className={styles.modalContentContainer}>
+                            {/* passing in the visibilty toggle to the form */}
                             <Form closeModal={switchViews}/>
 
                         </div>
                         {/* uncomment this button if you want to use this component without another way to close the modal */}
                         {/* <button className={styles.modalCloseButton} onClick={() => switchViews()}>
-                            Close
+                            Cancel
                         </button> */}
                     </div>
                 </div>

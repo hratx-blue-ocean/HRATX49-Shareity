@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../styles/AddItemForm.css';
 import axios from 'axios';
 
@@ -36,7 +36,7 @@ const NewItem = (props) => {
             Description: description,
             pictures: image,
             estimatedValue: estVal || 0,
-            itemCondition: condition || 'test',
+            itemCondition: condition,
             Location: zipcode,
             dateCreated: date,
             category: category,
@@ -106,34 +106,42 @@ const NewItem = (props) => {
                     required
                 ></input>
                 <select
+                    className={styles.addConditionInputField}
                     name="condition"
-                    value={condition}
+                    // this line was breaking the condition dropdown
+                    // value={condition}
                     type="text"
                     defaultValue='default'
                     required
-                    onBlur={(event) => onConditionChange(event.target.value)}
+                    // grabs condition from the dropdown box
+                    onBlur={(event) => {
+                        onConditionChange(event.target.value);
+                        console.log(event.target.value);
+                    }}
                 >
-                        <option className={styles.conditionOptions} value='default' disabled>condition</option>
-                        <option className={styles.conditionOptions} value='test'>New</option>
-                        <option className={styles.conditionOptions} value='test'>Excellent</option>
-                        <option className={styles.conditionOptions} value='test'>Good</option>
-                        <option className={styles.conditionOptions} value='test'>Rough</option>
-                        <option className={styles.conditionOptions} value='test'>Should go in the trash</option>
+                    <option className={styles.conditionOptions} value='default' disabled>condition</option>
+                    <option className={styles.conditionOptions} value='New'>New</option>
+                    <option className={styles.conditionOptions} value='Excellent'>Excellent</option>
+                    <option className={styles.conditionOptions} value='Good'>Good</option>
+                    <option className={styles.conditionOptions} value='Rough'>Rough</option>
+                    <option className={styles.conditionOptions} value='Trash'>Trash</option>
                 </select >
 
-                <input
-                    value={description}
-                    type="text"
-                    onChange={(event) => onDescChange(event.target.value)}
-                    placeholder="brief description of your item"
-                    required
-                ></input>
-                <button
-                    className={styles.addItemSubmitButton}
-                    onClick={() =>  {onDonateSubmit();props.closeModal();}}
-                >
-                    Submit Donation Item
-                </button>
+                <div>
+                    <button 
+                        className={styles.addItemCancelButton} 
+                        onClick={() => props.closeModal()}>
+                        Cancel
+                    </button>
+                    <button
+                        className={styles.addItemSubmitButton}
+                        onClick={() => onDonateSubmit()}
+                        onClick={() => props.closeModal()}
+                    >
+                        Donate
+                    </button>
+                </div>
+                
             </div>
         </div>
 
