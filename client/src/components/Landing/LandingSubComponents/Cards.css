@@ -11,6 +11,7 @@
   background-color: white;
   padding: 7px;
   margin-left: 20px;
+  width: 220px;
 }
 
 .cardStyle:hover {
@@ -18,7 +19,7 @@
 }
 
 .cardImage {
-  width: 200px;
+  width: 90%;
   height: auto;
 }
 
