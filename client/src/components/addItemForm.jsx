@@ -45,7 +45,7 @@ const NewItem = (props) => {
 
         axios.post('/items', data)
         .then(res=> {
-            getUserItemData(res.data.items)
+            props.closeModal()
             console.log('your item has been added', res.data)
         })
         .catch(err => {
@@ -137,7 +137,6 @@ const NewItem = (props) => {
                     <button
                         className={styles.addItemSubmitButton}
                         onClick={() => onDonateSubmit()}
-                        onClick={() => props.closeModal()}
                     >
                         Donate
                     </button>
