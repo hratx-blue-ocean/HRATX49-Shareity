@@ -6,6 +6,7 @@ const url = CONFIG.url;
 const dbName = CONFIG.dbName;
 const itemCollName = CONFIG.itemCollName;
 const userCollName = CONFIG.userCollName;
+const achievementCollName = CONFIG.achievementCollName;
 
 const client = new MongoClient(url, { useUnifiedTopology: true });
 
@@ -18,6 +19,7 @@ client.connect((err) => {
   const db = client.db(dbName);
   const userCollection = db.collection(userCollName);
   const itemCollection = db.collection(itemCollName);
+  const achievementCollection = db.collection(achievementCollName);
 
   //queries go here
 
@@ -33,6 +35,7 @@ client.connect((err) => {
       return insertResults;
     } catch (err) {
       console.log(err);
+      //throw error
       return null;
     }
   }
@@ -51,6 +54,15 @@ client.connect((err) => {
     try {
        let query = await userCollection.updateOne({email: email}, {$set: profilePic });
        return query;
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
+  }
+
+  client.updatePassword = async (email, hash) => {
+    try {
+      let user = await userCollection.updateOne({email: email}, {$set: {password: hash}});
     } catch (err) {
       console.log(err);
       return null;
@@ -138,8 +150,16 @@ client.connect((err) => {
     }
   }
 
-});
+  // achievement queries go here
+  client.getAchievements = async (email) => {
 
+  }
+
+  client.createAchivement = async (email, achievement) => {
+
+  }
+
+});
 
 
 module.exports = client;

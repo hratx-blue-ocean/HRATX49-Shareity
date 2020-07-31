@@ -4,12 +4,16 @@ import Axios from 'axios';
 import styles from '../../styles/CharityHeader.css';
 import Achievement from './Achievement.jsx';
 
+
 const CharityHeader = () => {
 
     const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('user')));
     const [achievements, setAchievements] = useState(data);
     const getUserAchievements = () => {
+<<<<<<< HEAD
         // needs to have it's end point added
+=======
+>>>>>>> update-josh
         Axios.get('./achievements', currentUser)
             .then( res => {
                 console.log(res.data)
