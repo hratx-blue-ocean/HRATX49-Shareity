@@ -5,6 +5,7 @@ import Styles from '../../LandingSubComponents/Cards.css'
 import moment from 'moment';
 const { Meta } = Card;
 
+<<<<<<< HEAD
 function IndivCards({ item, displayCard }) {
   let image
   if (item.pictures === null) {
@@ -40,16 +41,26 @@ function IndivCards({ item, displayCard }) {
         </div>
       </Card>
 =======
+=======
+function IndivCards ({ item, displayCard }){
+  if (item.pictures === null){
+    var arrofImages = ["https://picsum.photos/200/300"];
+  } else if (item.pictures.length === 1){
+    var arrofImages = item.pictures;
+  } else {
+    var arrofImages = item.pictures.split(',');
+  }
+>>>>>>> V.2.0.5
   return(
     <div onClick={(event)=>displayCard(event,item)}>
     <Card
-    hoverable
+    hoverable={true}
     style={{width:240}}
-    cover={<img src="https://picsum.photos/200/300" alt={item.name}/>}
+    cover={<img src={arrofImages[0]} alt={item.name}/>}
     >
     <div>
     <Meta title={item.name} description={item.Location}/>
-    <span>{moment().fromNow(item.dateCreated)}</span>
+    <span>{moment().startOf('day').from(item.dateCreated)}</span>
     </div>
     </Card>
 >>>>>>> V2.0.5

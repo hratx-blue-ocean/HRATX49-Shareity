@@ -22,11 +22,7 @@ const Cards = ({ items, loading, displayCard, sortBy}) => {
         {/* Mapping Component for the cards */}
         
         {items.map((item) => (
-<<<<<<< HEAD
-          //console.log(item),
-=======
           // console.log(item),
->>>>>>> V2.0.5
           <IndivCards key={item._id} item={item} displayCard={displayCard} className="list-group-item" />
           // {item.name}
         ))}

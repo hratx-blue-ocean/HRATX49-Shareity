@@ -3,12 +3,7 @@ import styles from '../ShowDetails.css';
 import Item from 'antd/lib/list/Item';
 import { without } from 'lodash';
 
-<<<<<<< HEAD
-const ShowDetails = ({ card, closeCard, claim , who }) => {
-
-=======
 const ShowDetails = ({ card, closeCard, claimItem }) => {
->>>>>>> V2.0.5
   if (card.pictures == null){
     card.pictures = 'https://picsum.photos/200/300';
   }

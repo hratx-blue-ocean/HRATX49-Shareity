@@ -104,8 +104,12 @@ const Charity = (props) => { //
 const Charity = (props) => { //
 =======
 } from 'react-router-dom';
+<<<<<<< HEAD
 const Charity = (props) => { 
 >>>>>>> V2.0.5
+=======
+const Charity = (props) => {
+>>>>>>> V.2.0.5
     //sets the state of tax data on donation list to be used with csv export
     const [taxData, changeTaxData] = useState([]);
     //we need to set the type of user/charity
@@ -138,13 +142,23 @@ const Charity = (props) => {
     //     getListData();
     // }, []);
 
+<<<<<<< HEAD
     //toggles various lists or buttons depending on user types
     if(!charity) {
         donorButtons =
             <div>
+=======
+
+    // var leftList = '';
+    var addItemButton = ''
+<<<<<<< HEAD
+        if(localStorage.user.userType !== 'Donor') {
+            addItemButton =
+>>>>>>> V.2.0.5
                 <div className={styles.buttonWrapper}>
                     <AddItem className={styles.charityButton} buttonText={'ADD ITEM'}/>
                 </div>
+<<<<<<< HEAD
             <div className={styles.buttonWrapper}>
                 <div className={styles.buttonWrapper}>
                     <button className={styles.charityButton}>
@@ -163,6 +177,23 @@ const Charity = (props) => {
     } else {
         leftList = <DonatedList />
     }
+=======
+            // leftList = <UpForDonateList rawData={listData} taxData={changeTaxData}/>
+        } else {
+            // leftList = <DonatedList rawData={listData} taxData={changeTaxData}/>
+        }
+=======
+    if (localStorage.user.userType !== 'Donor') {
+        addItemButton =
+            <div className={styles.buttonWrapper}>
+                <NewItem className={styles.charityButton} buttonText={'ADD ITEM'} />
+            </div>
+        //leftList = <UpForDonateList rawData={listData} taxData={changeTaxData}/>
+    } else {
+        //leftList = <DonatedList rawData={listData} taxData={changeTaxData}/>
+    }
+>>>>>>> V.2.0.5
+>>>>>>> V.2.0.5
 
     return (
 
@@ -181,16 +212,17 @@ const Charity = (props) => {
                             <CharityHeader />
                         </div>
                     </div>
-                        {/* side nav */}
-                        <div className={styles.charitySideNav}>
-                            {/* this is where the side nav buttons start */}
-                            <div className={styles.charityButtonWrapper}>
-                                <div className={styles.buttonWrapper}>
-                                    <Link to='/' className={styles.charityButtonHomeLink}>
-                                        <button className={styles.charityButton}>HOME</button>
-                                    </Link>
-                                </div>
+                    {/* side nav */}
+                    <div className={styles.charitySideNav}>
+                        {/* this is where the side nav buttons start */}
+                        <div className={styles.charityButtonWrapper}>
+                            <div className={styles.buttonWrapper}>
+                                <Link to='/' className={styles.charityButtonHomeLink}>
+                                    <button className={styles.charityButton}>HOME</button>
+                                </Link>
+                            </div>
 
+<<<<<<< HEAD
                                 <div className={styles.buttonWrapper}>
                                     <button className={styles.charityButton}>
                                         <CSVLink
@@ -198,28 +230,69 @@ const Charity = (props) => {
                                         </CSVLink>
                                     </button>
                                 </div>
+=======
+                            <div className={styles.buttonWrapper}>
+                                <button className={styles.charityButton}>
+                                    <CSVLink
+                                        data={taxData}>STATEMENT
+                                        </CSVLink>
+                                </button>
+>>>>>>> V.2.0.5
 
+<<<<<<< HEAD
                                 <div className={styles.buttonWrapper}>
                                     <button className={styles.charityButton}>UPDATE PASSWORD</button>
                                 </div>
+<<<<<<< HEAD
                                 {donorButtons}
+=======
+                                {addItemButton}
+=======
                             </div>
-                        </div>
 
+                            <div className={styles.buttonWrapper}>
+                                <button className={styles.charityButton}>UPDATE PASSWORD</button>
+>>>>>>> V.2.0.5
+>>>>>>> V.2.0.5
+                            </div>
+                            {addItemButton}
+
+                        </div>
+                    </div>
+
+<<<<<<< HEAD
                         {/* list donated */}
                         <div className={styles.charityListDonated}>
                             <div className={styles.charityDonorListWrapper}>
                                 {leftList}
                             </div>
+=======
+                    {/* list donated */}
+                    <div className={styles.charityListDonated}>
+                        <div className={styles.charityDonorListWrapper}>
+                            {leftList}
+>>>>>>> V.2.0.5
                         </div>
+                    </div>
 
+<<<<<<< HEAD
                         {/* items to be picked up */}
                         <div className={styles.charityListItemsToBePickedUp}>
                             <div className={styles.charityUserListWrapper}>
                                 <PickupList />
+=======
+                    {/* items to be picked up */}
+                    <div className={styles.charityListItemsToBePickedUp}>
+                        <div className={styles.charityUserListWrapper}>
+                            {/* <PickupList rawData={listData}/> */}
+>>>>>>> V.2.0.5
 
-                            </div>
                         </div>
+<<<<<<< HEAD
+=======
+                    </div>
+
+>>>>>>> V.2.0.5
                 </div>
             </div>
 
