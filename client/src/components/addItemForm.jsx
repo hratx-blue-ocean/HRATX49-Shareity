@@ -103,7 +103,7 @@ const NewItem = (props) => {
     return (
         <div className={styles.addItemFormWrapper}>
             <div className={styles.addedItemImageWrapper}>
-                <img className={styles.addedItemImage} src={selectedFile} alt=''></img>
+                <img className={styles.addedItemImage} src={image} alt=''></img>
             </div>
 
             <div className={styles.inputFieldWrapper}>
