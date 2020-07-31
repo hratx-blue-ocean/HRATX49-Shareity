@@ -35,7 +35,7 @@ router.post('/', async (req, res) => {
     claimedBy: null,
     pickedUp: false,
     Description: req.body.Description,
-    pictures: null,
+    pictures: req.body.pictures,
     estimatedValue: req.body.estimatedValue,
     itemCondition: req.body.itemCondition,
     Location: req.body.Location,
