@@ -25,7 +25,7 @@ const { users, items, achievements } = require('./routes');
 app.use('/users', users);
 app.use('/items', items);
 app.use('/achievements', achievements);
-app.use( '/api/profile', profile)
+app.use('/api/profile', profile)
 //User/Charity Routes
 // app.get('/test', async (req, res) => {
 //     let data = await db.getData();

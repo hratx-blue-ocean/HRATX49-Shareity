@@ -128,20 +128,19 @@ const NewItem = (props) => {
                 </select >
 
                 <div>
-                    <button 
-                        className={styles.addItemCancelButton} 
+                    <button
+                        className={styles.addItemCancelButton}
                         onClick={() => props.closeModal()}>
                         Cancel
                     </button>
                     <button
                         className={styles.addItemSubmitButton}
-                        onClick={() => onDonateSubmit()}
-                        onClick={() => props.closeModal()}
+                        onClick={() => {onDonateSubmit(); props.closeModal();}}
                     >
                         Donate
                     </button>
                 </div>
-                
+
             </div>
         </div>
 
