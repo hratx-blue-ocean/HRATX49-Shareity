@@ -64,6 +64,7 @@ client.connect((err) => {
   client.updatePassword = async (email, hash) => {
     try {
       let user = await userCollection.updateOne({email: email}, {$set: {password: hash}});
+      return user;
     } catch (err) {
       console.log(err);
       return null;
