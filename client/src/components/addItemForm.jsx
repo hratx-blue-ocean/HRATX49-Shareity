@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../styles/AddItemForm.css';
 import axios from 'axios';
-<<<<<<< HEAD
 // import { addAchievement } from './addAchievement';
 
 
 
-=======
->>>>>>> pickup button on, but not yet functioning
 const NewItem = (props) => {
     const [itemName, onItemNameChange] = useState('')
     const [category, onCatChange] = useState('')
