@@ -46,7 +46,7 @@ const DonatedList = ( ) => {
             //pushed to data array if has been picked up and claimed
             res.data.items.map((item) => {
                 //if data is not picked up or claimed
-                if(item.pickedUp === false && item.claimedBy === "" ) {
+                if(item.pickedUp === false  && item.claimedBy == null ) {
 
                     //makes the date look pretty
                     item.date =  `${item.dateCreated.slice(5,7)}/\

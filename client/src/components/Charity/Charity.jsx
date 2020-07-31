@@ -184,7 +184,7 @@ const Charity = (props) => { //
                         {/* list donated */}
                         <div className={styles.charityListDonated}>
                             <div className={styles.charityDonorListWrapper}>
-                                {/* {leftList} */}
+                                {leftList}
                             </div>
                         </div>
 
