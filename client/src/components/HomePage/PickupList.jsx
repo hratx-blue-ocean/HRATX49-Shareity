@@ -1,33 +1,96 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../../styles/lists.css';
-import { fakeData } from './fakeData.jsx';
+import Axios from 'axios';
+import { Card } from 'react-bootstrap';
+
 var _ = require('lodash');
 
-const PickupList = ({ charity, rawData }) => {
-    rawData = rawData || fakeData
-    var data = [];
-    
-    const [filteredData, setData] = useState(data)
-    const [sortType, setSortType] = useState('dateCreated');
 
-    useEffect(() => {
-        sortArray(sortType);
-    }, [sortType]);
+const PickupList = () => {
 
-    //filtering the data if it hasnt been picked up
-    if(rawData.length >= 1) {
-        rawData.map((item) => {
-            if(item.pickedUp === "false" && item.claimedBy !== "") {
-                data.push(item);
+    //set users pickup data, sorting options and boolean if charity
+    const [sortType, setSortType] = useState('date');
+    const [pickupData, addListData] = useState([]);
+    const [charity, isCharity] = useState(false)
+
+        useEffect(() => {
+            getUserItemsData()
+        }, [])
+        //gets the user data for the items available for pickup
+        function getUserItemsData () {
+
+            //if no local storage exists, then do nothing
+            if(!localStorage.getItem('user')) {
+                return;
             }
-        })
+            //to push data from get request
+            var arrayforPickupData = []
+
+            //user info from local storage
+            const userData = JSON.parse(localStorage.getItem('user'))
+            var userType = userData.type;
+
+            //if not user then change to donor for db query
+            // and then make charity boolean true
+            if(userType === "user") {
+                userType = "donor"
+            }
+            if(userType === "charity") {
+                isCharity(true)
+            }
+            //user info to use with get request
+            var userDataObj = {
+                userType: userType,
+                email: userData.email
+            }
+
+            Axios.get('/items/items', {params: userDataObj})
+            .then(res => {
+                //pushed to data array if item hasnt been picked up, but HAS been claimed
+                res.data.items.map((item) => {
+                    if(item.pickedUp === false && item.claimedBy !== "") {
+                        //makes the date look pretty
+                        item.date =  `${item.dateCreated.slice(5,7)}/${item.dateCreated.slice(8,9)}/${item.dateCreated.slice(0,4)} at ${item.dateCreated.slice(11,16)}`
+                    
+                        arrayforPickupData.push(item);
+                    }
+                })    
+            }) //sets state of pickupdata
+            .then(res => {
+                addListData(arrayforPickupData)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        }
+    //handles the sorting of the selector
+    const handleSort = (event, name) => {
+        event.preventDefault();
+        setSortType(name);
+        sortArray(name)
+    }
+
+    const handlePickupItem = (event, id) => {
+        event.preventDefault();
+        if(charity) {
+            let charityInfo = JSON.parse(localStorage.user);
+            let charityEmail = charityInfo.email;
+            Axios.put('/items/', {
+                user: charityEmail,
+                userType: 'charity',
+                _id: id,
+                item: {
+                    pickedUp: true,
+                }
+            }), getUserItemsData()
+        }
     }
     
     //object keys for sorting the data
     const sortArray = type => {
         const types = {
             claimedBy: 'claimedBy', 
-            dateCreated:'dateCreated', 
+            date:'dateCreated', 
             estimatedValue: 'estimatedValue', 
             name: 'name', 
             category: 'category',
@@ -36,24 +99,29 @@ const PickupList = ({ charity, rawData }) => {
         //defines the option that was selected in the dropdown by user
         const sortProperty = types[type]; 
         //sorting function compares data from the fakeData file           
-        const sorted = _.orderBy(data, [sortProperty, 'asc'])
-        setData(sorted)
+        const sorted = _.orderBy(pickupData, [sortProperty, 'asc'])
+        addListData(sorted)
+        
     };
     
+    //assigns title and sortoptions for list
     var title = 'Items for Pickup';
-    var sortOptions = ['dateCreated', 'name', 'Location']
+    var sortOptions = ['date', 'name', 'Location']
+    var pickupItem = ''
+
+    //different selectors for a charity
     if(charity) {
-    sortOptions = ['dateCreated', 'name', 'estimatedValue'];
+    sortOptions = ['date', 'name', 'Location', 'estimatedValue'];
+    pickupItem = <button onclick={event => handlePickupItem()}>pickup</button>
     }
 
     return (
         <div className={styles.listWrap}>
             <div className={styles.listWrapHeader}>
-                  {/* //its working but for some reason shows red line under it */}
                 <select 
                     className={styles.listSelector} 
                     value={sortType} 
-                    onChange={(e) => setSortType(e.target.value)}
+                    onChange={(e) => handleSort(e, e.target.value)}
                 >
                     {sortOptions.map((item, i) => 
                         <option key={i} value={item}>{item}</option>
@@ -74,16 +142,17 @@ const PickupList = ({ charity, rawData }) => {
                         </tr>
                     </thead>
                     <tbody className={styles.listRowWrap}>   
-                        {filteredData.map((item, i) => 
-                            <tr key={i} className={styles.listItemRow} onClick={() => alert('im clicked!')}>
-                                <td> {item.dateCreated.slice(3,21)} </td>
+                        {pickupData.map((item, i) => 
+                            <tr key={i} className={styles.listItemRow} >
+                                <td> {item.date} </td>
                                 <td> {item.name} </td>
                                 <td> {item.Location = item.Location.toString().slice(0,5) || ''}</td>
+                                <td> {pickupItem}</td>
                             </tr>
                         )}
                     </tbody>
                     <tfoot>
-                        <tr><th># of Items for Pickup: {filteredData.length}</th></tr>
+                        <tr><th># of Items for Pickup: {pickupData.length}</th></tr>
                     </tfoot>
                 </table>
             </div>

@@ -1,66 +1,117 @@
 import React, { useState, useEffect } from 'react';
-import { fakeData } from './fakeData.jsx';
 import styles from '../../styles/lists.css';
 import ItemPopUp from '../Landing/LandingSubComponents/showDetails.jsx'
 import Axios from 'axios';
 
 var _ = require('lodash');
 
-const DonatedList = ({ rawData, taxData }) => {
-    rawData = rawData || fakeData;
-    var data = [];
-    var totalVal = 0;
+const DonatedList = ( ) => {
+
     var title='Items Available for Donation'
     var sortOptions = ['dateCreated', 'estimatedValue', 'name', 'category'];
-    var csvData = [['date', 'name', 'category', 'estimated value']]
-
-    const [filteredData, setData] = useState(data)
+    //set states of data and sort options
+    const [filteredData, setData] = useState([])
     const [sortType, setSortType] = useState('dateCreated');
     
     useEffect(() => {
-        sortArray(sortType);
-    }, [sortType]);
-    
-    //filters incoming data
-    if(rawData.length >= 1) {
+        getUserItemsData()
+    }, []);
+    //gets the data of user items taht are available for donation
+    function getUserItemsData () {
+
+        //if no local storage exists, then do nothing
+        if(!localStorage.getItem('user')) {
+            return;
+        }
+        //to push data from get request and tax rows
+        var arrayToDonateData = []
         var csvRow = [];
-        rawData.map((item) => {
-            //pushes rawdata into state if unclaimed and not picked p
-            if(item.claimedBy === "" && item.pickedUp === 'false') {
-                data.push(item);
-            }
-            //adds rawdata to tax csv data array if they have been claimed and picked up
-            if(item.claimedBy !== "" && item.pickedUp === 'true') {
-                csvRow.push(item.dateCreated.slice(3,21), item.name, item.category, item.estimatedValue);
-                csvData.push(csvRow);
-                csvRow = [];
-                totalVal += item.estimatedValue;
-            }
+
+        //user info from local storage
+        const userData = JSON.parse(localStorage.getItem('user'))
+        var userType = userData.type;
+
+        //if not user then change to donor for db query
+        if(userType === "user") {
+            userType = "donor"
+        }
+        //user info to use with get request
+        var userDataObj = {
+            userType: userType,
+            email: userData.email
+        }
+        //request to database with user data
+        Axios.get('/items/items', {params: userDataObj})
+        .then(res => {
+            //pushed to data array if has been picked up and claimed
+            res.data.items.map((item) => {
+                //if data is not picked up or claimed
+                if(item.pickedUp === false  && item.claimedBy == null ) {
+
+                    //makes the date look pretty
+                    item.date =  `${item.dateCreated.slice(5,7)}/\
+                    ${item.dateCreated.slice(8,9)}/${item.dateCreated.slice(0,4)}\
+                    at ${item.dateCreated.slice(11,16)}`
+                    
+                    //push data into storage array
+                    arrayToDonateData.push(item);
+                }
+            })    
+        }) //sets state of pickup data with storage array data
+        .then(res => {
+            setData(arrayToDonateData)
+        })
+        .catch(err => {
+            console.log(err)
         })
     }
-    var popup = '';
-    //item popup
-    function onItemClick (val) {
-        popup = <itemPopUp cart={val}/>
+
+    //handles the sorting of the selector
+    const handleSort = (event, name) => {
+        event.preventDefault();
+        setSortType(name);
+        sortArray(name)
     }
-    function onDeleteItem (item) {
-        var data = {
-            _id: item._id,
-            email: item.email
+
+    var popup = '';
+    //item popup(not working yet)
+    function onItemClick (val) {
+        popup = <ItemPopUp cart={val}/>
+    }
+    //deletes an item that user no longer wishes to donate
+    function onDeleteItem (id) {
+        //if no local storage exists, then do nothing
+        if(!localStorage.getItem('user')) {
+            return;
         }
-        Axios.delete('/items', data)
+        //user info from local storage
+        const userData = JSON.parse(localStorage.getItem('user'))
+        
+        var data = {
+            _id: id,
+            email: userData.email,
+            userType: userData.userType
+        }
+        console.log('client side', data, typeof data)
+        Axios.delete('/items', 
+        {params: { 
+            _id: id,
+            email: userData.email,
+            userType: userData.userType
+        }} )
         .then(res => {
-            setData(data)
+            getUserItemsData();
         })
         .catch(err => {
             console.log('axios error deleting item from the DB: ', err)
         })
     }
+
     //object keys for sorting the data
     const sortArray = type => {
         const types = {
             claimedBy: 'claimedBy', 
-            dateCreated:'dateCreated', 
+            date:'dateCreated', 
             estimatedValue: 'estimatedValue', 
             name: 'name', 
             category: 'category',
@@ -69,27 +120,20 @@ const DonatedList = ({ rawData, taxData }) => {
 
         //defines the option that was selected in the dropdown by user
         const sortProperty = types[type]; 
-
         //sorting function compares data from the fakeData file           
-        const sorted = _.orderBy(data, [sortProperty, 'asc'])
+        const sorted = _.orderBy(filteredData, [sortProperty, 'asc'])
         setData(sorted)
-        taxData(csvData)
     };
 
     return (
         <div className={styles.listWrap}>
             {popup}
             <div className={styles.listWrapHeader}>
-                <div className={styles.totals}>                
-                    <span>Total # Donated: {csvData.length}</span>
-                    <span> Total $ Donated: {totalVal}</span>
-                </div>
-            
-                  {/* //its working but for some reason shows red line under it */}
+                    <div>Items up for Donation: {filteredData.length}</div>
                 <select 
                     className={styles.listSelector}  
                     value={sortType} 
-                    onChange={(e) => setSortType(e.target.value)}
+                    onChange={(e) => handleSort(e, e.target.value)}
                 >
                     {sortOptions.map((item, i) => 
                         <option key={i} value={item}>{item}</option>
@@ -112,17 +156,14 @@ const DonatedList = ({ rawData, taxData }) => {
                     <tbody className={styles.listRowWrap}>  
                         {filteredData.map((item, i) => 
                             <tr key={i} value={item} className={styles.listItemRow} onClick={ e => onItemClick(e.target.value)}>
-                                <td>{item.dateCreated.slice(3,21)}</td>
+                                <td>{item.date}</td>
                                 <td>{item.name} </td>
                                 <td> {item.category} </td>
                                 <td> ${item.estimatedValue} </td>
-                                <td><button value={item} onClick={e => onDeleteItem(e.target.value)}>X</button></td>
+                                <td><button value={item._id } onClick={(event) => onDeleteItem(event.target.value)}>X</button></td>
                             </tr>
                         )}
                     </tbody>
-                    <tfoot>
-                        <tr><th>Items up for Donation: {filteredData.length}</th></tr>
-                    </tfoot>
                 </table>
             </div>
         </div>

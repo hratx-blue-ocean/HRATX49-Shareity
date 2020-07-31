@@ -1,18 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import runtime from 'regenerator-runtime';
 import styles from './Login.css';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
 
-/*
-kpeyton95@gmail.com
-Hackreactor1
-*/
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -22,7 +11,7 @@ class Login extends Component {
         name: '',
         email: '',
         password: '',
-        type: 'user',
+        type: 'donor',
         location: ''
       },
       errMsg: '',
@@ -39,7 +28,7 @@ class Login extends Component {
     user[field] = e.target.value;
     this.setState({ user });
   }
-
+  //Handling Login
   async submitLogin(e) {
     try {
       e.preventDefault();
@@ -47,15 +36,15 @@ class Login extends Component {
         this.setState({ errMsg: 'missing fields' });
       } else {
         let login = await axios.post('/users/login', this.state.user);
-        console.log('this working?',login);
         localStorage.setItem('token', login.data.token);
         localStorage.setItem('user', JSON.stringify(login.data.user));
-        this.props.settingUser(login.data.user.type)
+        this.props.setTypeOfUser(login.data.user.type)
       }
-      this.props.closeLogin(), this.props.isLoggedIn(true)
+      this.props.isLoggedIn(true),this.props.closeLogin()
     } catch (err) { console.log(err) };
   }
 
+  //Handling Sign-Up
   async submitSignup(e) {
     try {
       e.preventDefault();
@@ -73,18 +62,15 @@ class Login extends Component {
         if (result.user === null) {
           this.setState({ emailError: 'email is already in use' });
         }
-        else { // word, so whats up? What about it
-          console.log("what dis?",result);
-          //delete old stored token, since old token could be expired
-          // localStorage.removeItem('token');
+        else { 
           localStorage.setItem('token', result.token)
           localStorage.setItem('user', JSON.stringify(result.user));
-          this.props.closeLogin(), this.props.isLoggedIn(true)
+          this.props.isLoggedIn(true), this.props.closeLogin(), this.props.setTypeOfUser(result.user.type)
         }
       }
     } catch (err) { console.log(err) };
   }
-
+  //Toggling Signup and Login
   switchToSignUpLogin() {
     this.setState({
       login: !this.state.login
@@ -92,7 +78,7 @@ class Login extends Component {
   }
 
   render() {
-    if (this.state.login) {
+    if (this.state.login) { 
       return (
         <div className={styles.overlay}>
           <div className={styles.cardDetail}>
@@ -141,12 +127,12 @@ class Login extends Component {
                   <label>Type</label>
                   <select value={this.state.user.type} onChange={(e) => this.handleChange(e, 'type')} required>
                     <option value="charity">Charity</option>
-                    <option value="user">User</option>
+                    <option value="donor">Donor</option>
                   </select>
                 </div>
                 <div className="">
                   <label>Location</label>
-                  <input type="text" value={this.state.user.location} onChange={(e) => this.handleChange(e, 'location')} required />
+                  <input type="text" pattern="[0-9]" value={this.state.user.location} onChange={(e) => this.handleChange(e, 'location')} required />
                 </div>
                 <button type="submit">Sign up</button>
               </form>

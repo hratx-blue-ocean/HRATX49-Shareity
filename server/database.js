@@ -103,11 +103,13 @@ client.connect((err) => {
     try {
       //set up query based on donor vs charity
       let query = {};
-      if (userType === "donor") {
+  
+      if (userType === 'donor') {
         query.email = userEmail;
       } else {
         query.charityEmail = userEmail;
       }
+  
       //find items associated with user or charity
       let result = await itemCollection.find( query ).toArray();
       return result;
@@ -153,10 +155,34 @@ client.connect((err) => {
 
   // achievement queries go here
   client.getAchievements = async (email) => {
-
+    try {
+      //set up query
+      let query = {
+        email
+      };
+      //find items associated with user or charity
+      let result = await achievementCollection.find( query ).toArray();
+      return result;
+    } catch(err) {
+      console.log(err);
+      return [];
+    }
   }
 
-  client.createAchivement = async (email, achievement) => {
+  client.createAchivement = async ({email, achievement}) => {
+    try {
+      let insertData = {
+        email,
+        ...achievement
+      };
+
+      let insertResults = await userCollection.insertOne(insertData);
+      return insertResults;
+    } catch (err) {
+      console.log(err);
+      //throw error
+      return null;
+    }
 
   }
 

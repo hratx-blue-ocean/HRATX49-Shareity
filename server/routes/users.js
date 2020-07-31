@@ -107,7 +107,6 @@ router.put("/updateProfilePic", async (req, res) => {
 
 router.put("/updatePassword", async (req, res) => {
   let user = null;
-  console.log('we got here')
   try {
     //hash the provided password password
     let hash = await bcrypt.hash(req.body.password, saltRounds);
