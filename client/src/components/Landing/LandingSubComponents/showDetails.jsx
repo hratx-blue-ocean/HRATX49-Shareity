@@ -4,17 +4,20 @@ import Item from 'antd/lib/list/Item';
 import { without } from 'lodash';
 
 const ShowDetails = ({ card, closeCard, claim , who }) => {
+
   if (card.pictures == null){
     card.pictures = 'https://picsum.photos/200/300';
-  } 
+  }
+  console.log(card.pictures)
   let arrOfPictures = card.pictures.split(',');
   let thumbnail = arrOfPictures[0];
+
 
   const handleClose = (e) => {
     event.stopPropagation();
     closeCard();
   };
-  
+
   return (
     <div className={styles.overlay}>
       <div className={styles.cardDetail}>
@@ -41,7 +44,8 @@ const ShowDetails = ({ card, closeCard, claim , who }) => {
         <div className={styles.imgArea}>
           {/* Image */}
           {/* {thumbnail} */}
-          <img src="https://picsum.photos/200/300" alt={card.name} className={styles.cardImage}/>
+
+          <img src={card.pictures} alt={card.name} className={styles.cardImage}/>
         </div>
         <div className={styles.rightSide}>
           {/* Right Side Details */}

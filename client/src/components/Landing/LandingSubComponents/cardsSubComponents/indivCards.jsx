@@ -5,13 +5,17 @@ import Styles from '../../LandingSubComponents/Cards.css'
 import moment from 'moment';
 const { Meta } = Card;
 
-function IndivCards ({ item, displayCard }){
-  if (item.pictures === null){
-    let arrofImages = ["https://picsum.photos/200/300"];
-  } else if (item.pictures.length === 1){
-    let arrofImages = item.pictures
+function IndivCards({ item, displayCard }) {
+  let image
+  if (item.pictures === null) {
+    image = ["https://picsum.photos/200/300"];
+    // } else if (item.pictures.length === 1){
+    //   let arrofImages = item.pictures
+    // } else {
+    //   console.log("items.pictures", item.pictures)
+    //   let arrofImages = item.pictures.split(',');
   } else {
-    let arrofImages = item.pictures.split(',');
+    image = item.pictures
   }
   // console.log(arrofImages);
 
@@ -22,18 +26,18 @@ function IndivCards ({ item, displayCard }){
   Just installed ant, get cards running, pagination,
   */
 
-  return(
-    <div onClick={(event)=>displayCard(event,item)}>
-    <Card
-    hoverable
-    style={{width:240}}
-    cover={<img src="https://picsum.photos/200/300" atl={item.name}/>}
-    >
-    <div>
-    <Meta title={item.name} description={item.Location}/>
-    <span>{moment().fromNow(item.dateCreated)}</span>
-    </div>
-    </Card>
+  return (
+    <div onClick={(event) => displayCard(event, item)}>
+      <Card
+        hoverable
+        style={{ width: 240 }}
+        cover={<img src={image} alt="https://picsum.photos/200/300" />}
+      >
+        <div>
+          <Meta title={item.name} description={item.Location} />
+          <span>{moment().fromNow(item.dateCreated)}</span>
+        </div>
+      </Card>
     </div>
   )
 }
