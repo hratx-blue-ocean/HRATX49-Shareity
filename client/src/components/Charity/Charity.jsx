@@ -34,7 +34,7 @@ const Charity = (props) => { //
 
     //sets the state of tax data on donation list to be used with csv export
     const [taxData, changeTaxData] = useState([]);
-    const [charity, isCharity] = useState(false)
+    const [charity, isCharity] = useState(false);
     var csvData = [['date', 'name', 'category', 'estimated value']]
     var totalVal = 0;
     var leftList = '';
@@ -91,8 +91,6 @@ const Charity = (props) => { //
         })
     }
 
-
-    
     // comment this section in when we are ready to retreive data from the db
     // still needs an endpoint to send request to
     //const [listData, addListData] = useState([]);

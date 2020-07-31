@@ -91,13 +91,13 @@ const NewItem = (props) => {
         };
 
         axios.post('/items', data)
-            .then(res => {
-                console.log('your item has been added', res.data)
-            })
-            .catch(err => {
-                console.log('error posting on axios post request: ', err)
-            })
-
+        .then(res=> {
+            props.closeModal()
+            console.log('your item has been added', res.data)
+        })
+        .catch(err => {
+            console.log('error posting on axios post request: ', err)
+        })
     }
 
     return (
@@ -194,12 +194,16 @@ const NewItem = (props) => {
                     </button>
                     <button
                         className={styles.addItemSubmitButton}
+<<<<<<< HEAD
                         onClick={() => {
                             onDonateSubmit();
                             props.closeModal();
                             // addAchievement(email, 'Donate your first item');
                         }}
 
+=======
+                        onClick={() => onDonateSubmit()}
+>>>>>>> post request for new item is working with modal button fix
                     >
                         Donate
                     </button>
