@@ -96,30 +96,7 @@ const Charity = (props) => { //
             console.log(err)
         })
     }
-
-    // comment this section in when we are ready to retreive data from the db
-    // still needs an endpoint to send request to
-    //const [listData, addListData] = useState([]);
-
-    // const getListData = () => {
-
-    //     Axios.get('./')
-    //         .then( res => {
-
-    //             let newListData = res.data;
-    //             setListData(newListData);
-    //         })
-    //         .catch( err => {
-
-    //             console.error(err);
-    //         })
-    // }
-    // calls the function to get list data on page load
-    // useEffect(() => {
-    //     getListData();
-    // }, []);
-
-    //toggles various lists or buttons depending on user types
+    
     if(!charity) {
         donorButtons =
             <div>
