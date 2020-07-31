@@ -1,5 +1,5 @@
 const secretAccess= {
-  accessKeyId:'AKIAWKLYQSF2T7LARQTX',
-  secretAccessKey: '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',
+  accessKeyId:'AKIAWKLYQSF2WUI3ZEZA',
+  secretAccessKey: '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',
 }
 module.exports = secretAccess
