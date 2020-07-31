@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../styles/AddItemForm.css';
 import axios from 'axios';
-import { addAchievement } from './addAchievement';
+// import { addAchievement } from './addAchievement';
+
 
 const NewItem = (props) => {
     const [itemName, onItemNameChange] = useState('')
@@ -139,7 +140,7 @@ const NewItem = (props) => {
                         onClick={() => {
                             onDonateSubmit();
                             props.closeModal();
-                            addAchievement(email, 'Donate your first item');
+                            // addAchievement(email, 'Donate your first item');
                         }}
 
                     >
