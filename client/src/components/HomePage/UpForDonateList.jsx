@@ -79,10 +79,17 @@ const DonatedList = ( ) => {
         popup = <ItemPopUp cart={val}/>
     }
     //deletes an item that user no longer wishes to donate
-    function onDeleteItem (item) {
+    function onDeleteItem (id) {
+        //if no local storage exists, then do nothing
+        if(!localStorage.getItem('user')) {
+            return;
+        }
+        //user info from local storage
+        const userData = JSON.parse(localStorage.getItem('user'))
+        
         var data = {
-            _id: item._id,
-            email: item.email
+            _id: id,
+            email: userData.email
         }
         Axios.delete('/items', {params: { data }})
         .then(res => {
@@ -146,7 +153,7 @@ const DonatedList = ( ) => {
                                 <td>{item.name} </td>
                                 <td> {item.category} </td>
                                 <td> ${item.estimatedValue} </td>
-                                <td><button value={item} onClick={e => onDeleteItem(e.target.value)}>X</button></td>
+                                <td><button value={item._id } onClick={(event) => onDeleteItem(event.target.value)}>X</button></td>
                             </tr>
                         )}
                     </tbody>
