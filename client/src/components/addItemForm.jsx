@@ -137,16 +137,12 @@ const NewItem = (props) => {
                     </button>
                     <button
                         className={styles.addItemSubmitButton}
-<<<<<<< HEAD
-                        onClick={() => {onDonateSubmit(); props.closeModal();}}
-=======
                         onClick={() => {
                             onDonateSubmit();
                             props.closeModal();
                             // addAchievement(email, 'Donate your first item');
                         }}
 
->>>>>>> master
                     >
                         Donate
                     </button>
