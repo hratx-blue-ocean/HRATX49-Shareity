@@ -67,4 +67,9 @@ typings/
 # Webpack
 bundle.js
 
+#config
+app.yaml
 /server/config.js
+
+# Access for S3
+server/routes/api/access.js

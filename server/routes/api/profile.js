@@ -4,6 +4,7 @@ const multerS3 = require( 'multer-s3' );
 const multer = require('multer');
 const path = require( 'path' );
 const url = require('url');
+const access = require('./access.js')
 /**
  * express.Router() creates modular, mountable route handlers
  * A Router instance is a complete middleware and routing system; for this reason, it is often referred to as a “mini-app”.
@@ -13,16 +14,16 @@ const router = express.Router();
  * PROFILE IMAGE STORING STARTS
  */
 const s3 = new aws.S3({
- accessKeyId: 'AKIAWKLYQSF2SYS2LVD3',
- secretAccessKey: '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',
- Bucket: 'blueoceancmurray'
+ accessKeyId: access.accessKeyId,
+ secretAccessKey: access.secretAccessKey,
+ Bucket: 'sharitybo'
 });
 /* Single Upload
 */
 const profileImgUpload = multer({
 storage: multerS3({
  s3: s3,
- bucket: 'blueoceancmurray',
+ bucket: 'sharitybo',
  acl: 'public-read',
  key: function (req, file, cb) {
   cb(null, path.basename( file.originalname, path.extname( file.originalname ) ) + '-' + Date.now() + path.extname( file.originalname ) )
@@ -91,7 +92,7 @@ res.json( {
 const uploadsBusinessGallery = multer({
 storage: multerS3({
  s3: s3,
- bucket: 'blueoceancmurray',
+ bucket: 'sharitybo',
  acl: 'public-read',
  key: function (req, file, cb) {
   cb( null, path.basename( file.originalname, path.extname( file.originalname ) ) + '-' + Date.now() + path.extname( file.originalname ) )
