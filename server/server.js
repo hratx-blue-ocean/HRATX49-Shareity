@@ -21,10 +21,11 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'client', 'dist')))
 
 //Login Routes
-const { users, items } = require('./routes');
+const { users, items, achievements } = require('./routes');
 app.use('/users', users);
 app.use('/items', items);
-app.use( '/api/profile', profile)
+app.use('/achievements', achievements);
+app.use('/api/profile', profile)
 //User/Charity Routes
 // app.get('/test', async (req, res) => {
 //     let data = await db.getData();
