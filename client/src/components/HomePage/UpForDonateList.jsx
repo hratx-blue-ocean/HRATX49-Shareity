@@ -12,7 +12,7 @@ const DonatedList = ( ) => {
     //set states of data and sort options
     const [filteredData, setData] = useState([])
     const [sortType, setSortType] = useState('dateCreated');
-    
+
     useEffect(() => {
         getUserItemsData()
     }, []);
@@ -46,15 +46,17 @@ const DonatedList = ( ) => {
             //pushed to data array if has been picked up and claimed
             res.data.items.map((item) => {
                 //if data is not picked up or claimed
-                if(item.pickedUp === false  && item.claimedBy == null ) {
+                if(item.pickedUp === false  && item.claimedBy === null ) {
 
                     //makes the date look pretty
-                    item.date =  `${item.dateCreated.slice(5,7)}/${item.dateCreated.slice(8,10)}/${item.dateCreated.slice(2,4)}@${item.dateCreated.slice(11,16)}`
-                    
+                    item.date =  `${item.dateCreated.slice(5,7)}/\
+                    ${item.dateCreated.slice(8,9)}/${item.dateCreated.slice(0,4)}\
+                    at ${item.dateCreated.slice(11,16)}`
+
                     //push data into storage array
                     arrayToDonateData.push(item);
                 }
-            })    
+            })
         }) //sets state of pickup data with storage array data
         .then(res => {
             setData(arrayToDonateData)
@@ -84,16 +86,21 @@ const DonatedList = ( ) => {
         }
         //user info from local storage
         const userData = JSON.parse(localStorage.getItem('user'))
-        
+
         var data = {
             _id: id,
             email: userData.email,
             userType: userData.userType
         }
         console.log('client side', data, typeof data)
+<<<<<<< HEAD
 
-        Axios.delete('/items', 
-        {params: { 
+        Axios.delete('/items',
+        {params: {
+=======
+        Axios.delete('/items',
+        {params: {
+>>>>>>> rebase
             _id: id,
             email: userData.email,
             userType: userData.userType
@@ -109,17 +116,17 @@ const DonatedList = ( ) => {
     //object keys for sorting the data
     const sortArray = type => {
         const types = {
-            claimedBy: 'claimedBy', 
-            date:'dateCreated', 
-            estimatedValue: 'estimatedValue', 
-            name: 'name', 
+            claimedBy: 'claimedBy',
+            date:'dateCreated',
+            estimatedValue: 'estimatedValue',
+            name: 'name',
             category: 'category',
             Location: 'Location'
         };
 
         //defines the option that was selected in the dropdown by user
-        const sortProperty = types[type]; 
-        //sorting function compares data from the fakeData file           
+        const sortProperty = types[type];
+        //sorting function compares data from the fakeData file
         const sorted = _.orderBy(filteredData, [sortProperty, 'asc'])
         setData(sorted)
     };
@@ -128,12 +135,19 @@ const DonatedList = ( ) => {
         <div className={styles.listWrap}>
             {popup}
             <div className={styles.listWrapHeader}>
-                <select 
-                    className={styles.listSelector}  
-                    value={sortType} 
+<<<<<<< HEAD
+                <select
+                    className={styles.listSelector}
+                    value={sortType}
+=======
+                    <div>Items up for Donation: {filteredData.length}</div>
+                <select
+                    className={styles.listSelector}
+                    value={sortType}
+>>>>>>> rebase
                     onChange={(e) => handleSort(e, e.target.value)}
                 >
-                    {sortOptions.map((item, i) => 
+                    {sortOptions.map((item, i) =>
                         <option key={i} value={item}>{item}</option>
                     )}
                 </select>
@@ -152,8 +166,8 @@ const DonatedList = ( ) => {
                             <th>X</th>
                         </tr>
                     </thead>
-                    <tbody className={styles.listRowWrap}>  
-                        {filteredData.map((item, i) => 
+                    <tbody className={styles.listRowWrap}>
+                        {filteredData.map((item, i) =>
                             <tr key={i} value={item} className={styles.listItemRow} onClick={ e => onItemClick(e.target.value)}>
                                 <td>{item.date}</td>
                                 <td>{item.name} </td>
