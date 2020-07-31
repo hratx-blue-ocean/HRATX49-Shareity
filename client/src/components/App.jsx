@@ -28,21 +28,19 @@ export default class App extends Component {
   render() {
     return (
       <>
-
-      <Router>
-        <Switch>
-          <Route path="/Charity">
-        <div className={styles.charityMainAppContainer}>
-          <Charity />
-        </div>
-        </Route>
-        <Route path="/">
-        <LandingPage />
-        <AddItem />
-        <h1>Welcome to Blue Ocean!</h1>
-        {/* <Login /> */}
-        </Route>
-        </Switch>
+        <Router>
+          <Switch>
+            <Route path="/Charity">
+          <div className={styles.charityMainAppContainer}>
+            <Charity />
+          </div>
+          </Route>
+          <Route path="/">
+          <LandingPage />
+          <h1>Welcome to Blue Ocean!</h1>
+          {/* <Login /> */}
+          </Route>
+          </Switch>
         </Router>
       </>
     );

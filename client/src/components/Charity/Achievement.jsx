@@ -9,7 +9,7 @@ const Achievement = (props) => {
             <div className={styles.achievement}>
                 <span className={styles.achievementImageWrapper}>
                     <img className={styles.achievementImage} 
-                        src={props.data.url}></img>
+                        src={props.data.icon}></img>
                 </span>
                 <div className={styles.achievementInfoWrapper}>
                     <h3 className={styles.achievementName}>{props.data.name}</h3>
