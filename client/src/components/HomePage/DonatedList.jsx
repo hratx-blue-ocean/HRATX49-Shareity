@@ -1,39 +1,82 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../../styles/lists.css';
-import { fakeData } from './fakeData.jsx';
+import Axios from 'axios';
 var _ = require('lodash');
 
 
-const DonatedList = ({ charity, rawData, taxData }) => {
-    rawData = rawData || fakeData;
-    var data = [];
-    var totalVal = 0;
-    var csvData = [['date', 'name', 'category', 'estimated value']]
+const DonatedList = ( ) => {
+    //Charity  sorting options and list title
+    var title='List of Donations'
+    var sortOptions = ['dateCreated', 'name', 'category', 'estimatedValue'];
 
-    const [filteredData, setData] = useState(data)
+    const [donatedData, addToDonatedData] = useState([])
     const [sortType, setSortType] = useState('dateCreated');
     
     useEffect(() => {
-        sortArray(sortType);
-    }, [sortType]);
+        getUserItemsData()
+    }, []);
 
-    if(rawData.length >= 1) {
+    function getUserItemsData () {
+
+        //if no local storage exists, then do nothing
+        if(!localStorage.getItem('user')) {
+            return;
+        }
+        //to push data from get request and tax rows
+        var arrayforDonatedData = []
         var csvRow = [];
-        rawData.map((item) => {
-            if(item.pickedUp === "true") {
-                data.push(item);
-                totalVal += item.estimatedValue;
-                csvRow.push(item.dateCreated.slice(3,21), item.name, item.category, item.estimatedValue);
-                csvData.push(csvRow);
-                csvRow = [];
-            }
+
+        //user info from local storage
+        const userData = JSON.parse(localStorage.getItem('user'))
+        var userType = userData.type;
+
+        //if not user then change to donor for db query
+        // and then make charity boolean true
+        if(userType === "user") {
+            userType = "donor"
+        }
+        //user info to use with get request
+        var userDataObj = {
+            userType: userType,
+            email: userData.email
+        }
+
+        Axios.get('/items/items', {params: userDataObj})
+        .then(res => {
+            //pushed to data array if has been picked up and claimed
+            res.data.items.map((item) => {
+                if(item.pickedUp === true ) {
+
+                    //makes the date look pretty
+                    item.date =  `${item.dateCreated.slice(5,7)}\
+                        /${item.dateCreated.slice(8,9)}/${item.dateCreated.slice(0,4)}\
+                        at ${item.dateCreated.slice(11,16)}`
+                    
+                    //push data into storage array
+                    arrayforDonatedData.push(item);
+                }
+            })    
+        }) //sets state of pickupdata
+        .then(res => {
+            addToDonatedData(arrayforDonatedData)
+        })
+        .catch(err => {
+            console.log('donated list axios error: ', err)
         })
     }
+    //handles the sorting of the selector
+    const handleSort = (event, name) => {
+        event.preventDefault();
+        setSortType(name);
+        sortArray(name)
+    }
+
     //object keys for sorting the data
     const sortArray = type => {
+
         const types = {
             claimedBy: 'claimedBy', 
-            dateCreated:'dateCreated', 
+            date:'dateCreated', 
             estimatedValue: 'estimatedValue', 
             name: 'name', 
             category: 'category',
@@ -42,34 +85,27 @@ const DonatedList = ({ charity, rawData, taxData }) => {
         //defines the option that was selected in the dropdown by user
         const sortProperty = types[type]; 
         //sorting function compares data from the fakeData file           
-        const sorted = _.orderBy(data, [sortProperty, 'asc'])
-        setData(sorted)
-        taxData(csvData)
+        const sorted = _.orderBy(donatedData, [sortProperty, 'asc'])
+        //updates data to be remapped over
+        addToDonatedData(sorted)
     };
-
-    var title = 'test';
-    var sortOptions = [];
-    //if the user is a charity or donor, this sets sorting options and titles for each list
-    if(charity) {
-        title='Items Donated'
-        sortOptions = ['dateCreated', 'name', 'estimatedValue'];
-    } else {
-        title='Items Donated'
-        sortOptions = ['claimedBy', 'dateCreated', 'estimatedValue', 'name', 'category'];
-    }
 
     return (
         <div className={styles.listWrap}>
             <div className={styles.listWrapHeader}>
-                  {/* //its working but for some reason shows red line under it */}
-                <select className={styles.listSelector}  value={sortType} onChange={(e) => setSortType(e.target.value)}>
+
+                <select 
+                    className={styles.listSelector}  
+                    value={sortType} 
+                    onChange={(e) => handleSort(e, e.target.value)}
+                >
                     {sortOptions.map((item, i) => 
                         <option key={i} value={item}>{item}</option>
                         )
                     }
                 </select>
 
-                <span className={styles.listTitle}>   {title}</span>
+                <span className={styles.listTitle}> {title}</span>
 
             </div>
             <div className={styles.tableWrap}>
@@ -79,23 +115,23 @@ const DonatedList = ({ charity, rawData, taxData }) => {
                             <th> date </th>
                             <th> name</th>
                             <th> cat </th>
-                            <th> est. val</th>
+                            <th> est. value</th>
                         </tr>
                     </thead>
                     <tbody className={styles.listRowWrap}>  
-                        {filteredData.map((item, i) =>  
+                        {donatedData.map((item, i) =>  
 
                             <tr key={i} className={styles.listItemRow} onClick={() => alert('im clicked!')}>
-                                <td>({item.dateCreated.slice(3,21) || ''})</td>
-                                <td> {item.name || ''} </td>
-                                <td> {item.category || ''} </td>
-                                <td> ${item.estimatedValue || ''} </td>
+                                <td>{item.date}</td>
+                                <td> {item.name} </td>
+                                <td> {item.category} </td>
+                                <td> ${item.estimatedValue} </td>
                             </tr>
                         )}
                     </tbody>
                     <tfoot>
-                        <tr><th>Total Value Donated: ${totalVal}</th>
-                        <th>Total # of Items Donated: {filteredData.length}</th></tr>
+                        <tr>
+                        <th>Total # of Items Donated: {donatedData.length}</th></tr>
                     </tfoot>
                 </table>
             </div>

@@ -21,7 +21,7 @@
   "homepage": "https://github.com/selder18/blue-ocean-rewrite#readme",
   "dependencies": {
     "antd": "^4.5.1",
-    "aws-sdk": "^2.722.0",
+    "aws-sdk": "^2.724.0",
     "axios": "^0.19.2",
     "babel-loader": "^8.1.0",
     "bcrypt": "^5.0.0",
