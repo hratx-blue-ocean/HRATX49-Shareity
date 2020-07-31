@@ -53,6 +53,7 @@ client.connect((err) => {
   client.updateProfilePic = async (email, profilePic) => {
     try {
        let query = await userCollection.updateOne({email: email}, {$set: profilePic });
+       console.log("schwing!")
        return query;
     } catch (err) {
       console.log(err);

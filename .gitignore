@@ -72,4 +72,4 @@ app.yaml
 /server/config.js
 
 # Access for S3
-server/routes/api/access.js
+/server/routes/api/superSecretAccess.js

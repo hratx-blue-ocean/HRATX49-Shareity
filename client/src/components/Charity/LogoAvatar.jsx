@@ -60,7 +60,6 @@ const LogoAvatar = () => {
                         {/* the label allows for the custom button styling of the standard input button */}
                         <label className={styles.fileUploadButtonLabel} htmlFor="fileUploadButton">Change Avatar</label>
                         <input
-
                             id="fileUploadButton"
                             className={styles.charityInputButton} type="file"
                             style={{display: 'none'}}
