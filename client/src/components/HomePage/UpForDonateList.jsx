@@ -89,11 +89,18 @@ const DonatedList = ( ) => {
         
         var data = {
             _id: id,
-            email: userData.email
+            email: userData.email,
+            userType: userData.userType
         }
-        Axios.delete('/items', {params: { data }})
+        console.log('client side', data, typeof data)
+        Axios.delete('/items', 
+        {params: { 
+            _id: id,
+            email: userData.email,
+            userType: userData.userType
+        }} )
         .then(res => {
-            setData(filteredData)
+            getUserItemsData();
         })
         .catch(err => {
             console.log('axios error deleting item from the DB: ', err)

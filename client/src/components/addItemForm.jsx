@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../styles/AddItemForm.css';
 import axios from 'axios';
+<<<<<<< HEAD
 // import { addAchievement } from './addAchievement';
 
 
 
+=======
+>>>>>>> pickup button on, but not yet functioning
 const NewItem = (props) => {
     const [itemName, onItemNameChange] = useState('')
     const [category, onCatChange] = useState('')
@@ -194,16 +197,7 @@ const NewItem = (props) => {
                     </button>
                     <button
                         className={styles.addItemSubmitButton}
-<<<<<<< HEAD
-                        onClick={() => {
-                            onDonateSubmit();
-                            props.closeModal();
-                            // addAchievement(email, 'Donate your first item');
-                        }}
-
-=======
                         onClick={() => onDonateSubmit()}
->>>>>>> post request for new item is working with modal button fix
                     >
                         Donate
                     </button>

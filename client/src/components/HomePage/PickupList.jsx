@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../../styles/lists.css';
 import Axios from 'axios';
+import { Card } from 'react-bootstrap';
 
 var _ = require('lodash');
 
@@ -68,6 +69,22 @@ const PickupList = () => {
         setSortType(name);
         sortArray(name)
     }
+
+    const handlePickupItem = (event, id) => {
+        event.preventDefault();
+        if(charity) {
+            let charityInfo = JSON.parse(localStorage.user);
+            let charityEmail = charityInfo.email;
+            Axios.put('/items/', {
+                user: charityEmail,
+                userType: 'charity',
+                _id: id,
+                item: {
+                    pickedUp: true,
+                }
+            }), getUserItemsData()
+        }
+    }
     
     //object keys for sorting the data
     const sortArray = type => {
@@ -90,10 +107,12 @@ const PickupList = () => {
     //assigns title and sortoptions for list
     var title = 'Items for Pickup';
     var sortOptions = ['date', 'name', 'Location']
+    var pickupItem = ''
 
     //different selectors for a charity
     if(charity) {
-    sortOptions = ['date', 'name', 'estimatedValue'];
+    sortOptions = ['date', 'name', 'Location', 'estimatedValue'];
+    pickupItem = <button onclick={event => handlePickupItem()}>pickup</button>
     }
 
     return (
@@ -124,10 +143,11 @@ const PickupList = () => {
                     </thead>
                     <tbody className={styles.listRowWrap}>   
                         {pickupData.map((item, i) => 
-                            <tr key={i} className={styles.listItemRow} onClick={() => alert('im clicked!')}>
+                            <tr key={i} className={styles.listItemRow} >
                                 <td> {item.date} </td>
                                 <td> {item.name} </td>
                                 <td> {item.Location = item.Location.toString().slice(0,5) || ''}</td>
+                                <td> {pickupItem}</td>
                             </tr>
                         )}
                     </tbody>

@@ -74,18 +74,13 @@ router.put('/', async (req, res) => {
 
 //delete an item
 router.delete('/', async (req, res) => {
-  let userInfo = {
-    user: req.body.user,
-    userType: 'donor',
-    items: [],
-  }
+
   try {
-    await db.deleteItem(req.body._id)
-    userInfo.items = await db.getUserItems(userInfo.user, userInfo.userType);
+    await db.deleteItem(req.query._id)
   } catch (err) {
     console.log(err);
   }
-  res.json(userInfo);
+  res.json();
 })
 
 module.exports = router;

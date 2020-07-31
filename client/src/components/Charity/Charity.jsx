@@ -74,6 +74,7 @@ const Charity = (props) => { //
         .then(res => {
             //pushed to data array if has been picked up and claimed
             res.data.items.map((item) => {
+                console.log('items before if: 0', item)
                 if(item.pickedUp === true ) {
                     //assigns tax date to be exported
                     csvRow.push(item.date, item.name, item.category, item.estimatedValue)
@@ -84,7 +85,12 @@ const Charity = (props) => { //
             })    
         }) //sets state of pickupdata
         .then(res => {
-            setTimeout(() => changeTaxData(csvData), 500)
+            console.log("data from axios req, ", csvData)
+            if(csvData.length === 1) {
+                csvData.push (["you haven't donated any items yet", 0, 0, 0])
+            }
+            changeTaxData(csvData)
+            console.log("on Tax Data state: ", taxData)
         })
         .catch(err => {
             console.log(err)
