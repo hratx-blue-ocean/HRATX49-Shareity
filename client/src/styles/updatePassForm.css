@@ -1,14 +1,67 @@
 .updatePassFormWrapper {
 
-    background-color: springgreen;
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 100px;
+
+    margin-left: .5%;
+
+    border: 2px solid silver;
+    border-radius: 25px;
+
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
 }
 
 .updatePassFieldWrapper {
 
-    background-color: thistle;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+
 }
 
 .updatePassInputField {
 
-    background-color: tomato;
+    box-sizing: border-box;
+    text-align: center;
+
+    width: 80%;
+    margin: 5px 5px;
+
+    background-color: floralwhite;
+    border: 2px solid silver;
+    border-radius: 10px;
+}
+
+
+.passUpdateCancelButton {
+
+    float: left;
+    box-sizing: border-box;
+    margin: 5px 5px;
+
+    border: 2px solid silver;
+    border-radius: 10px;
+    color: white;
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+
+.passUpdateSubmitButton {
+
+    float: right;
+    box-sizing: border-box;
+    margin: 5px 5px;
+
+    border: 2px solid silver;
+    border-radius: 10px;
+    color: white;
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
 }

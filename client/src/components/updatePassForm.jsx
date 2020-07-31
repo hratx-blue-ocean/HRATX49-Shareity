@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from '../styles/AddItemForm.css';
+import styles from '../styles/updatePassForm.css';
 import Axios from 'axios';
 // import { addAchievement } from './addAchievement';
 
@@ -41,16 +41,16 @@ const UpdatePassForm = (props) => {
 
                 <div>
                     <button
-                        className={styles.addItemCancelButton}
+                        className={styles.passUpdateCancelButton}
                         onClick={() => props.closeModal()}>
                         Cancel
                     </button>
                     <button
-                        className={styles.addItemSubmitButton}
+                        className={styles.passUpdateSubmitButton}
                         onClick={() => {
-
                             updatePassword();
                             props.closeModal();
+                            setNewPassword('');
                         }}
                     >
                         Update

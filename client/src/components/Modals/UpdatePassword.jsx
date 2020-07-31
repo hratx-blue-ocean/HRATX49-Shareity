@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from '../../styles/AddItem.css'
+import styles from '../../styles/updatePass.css'
 import UpdatePassForm from '../updatePassForm.jsx'
 
 const UpdatePassword = ({ buttonText, addAchievement }) => {
@@ -25,22 +25,22 @@ const UpdatePassword = ({ buttonText, addAchievement }) => {
 
     return (
 
-        <div className={styles.modalWrapper}>
+        <div className={styles.passModalWrapper}>
 
             <div>
 
-                <div className={styles.outerButtonWrapper} style={{display: buttonView}} >
+                <div className={styles.outerPassButtonWrapper} style={{display: buttonView}} >
                     {/* this label allows for custom styling of modal button */}
                     <label
-                        className={styles.modelButtonLabel}
+                        className={styles.passModelButtonLabel}
                         style={{display: buttonView}}
                         onClick={() => switchViews()}
                         htmlFor="modalButton"
                     >
                         {buttonText || 'PUSH'}
                     </label>
-                    <div id="modalButton" className={styles.innerButtonWrapper} style={{ diplay: 'none' }}>
-                        <button className={styles.addItemButton} style={{ display: 'none' }}>
+                    <div id="modalButton" className={styles.innerPassButtonWrapper} style={{ diplay: 'none' }}>
+                        <button className={styles.updatePassButton} style={{ display: 'none' }}>
 
                         </button>
                     </div>
