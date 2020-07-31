@@ -47,9 +47,9 @@ const UpdatePassword = ({ buttonText, addAchievement }) => {
                 </div>
 
 
-                <div className={styles.innerModalWrapper} style={{ display: modalView }}>
-                    <div className={styles.modalInnerContainer}>
-                        <div className={styles.modalContentContainer}>
+                <div className={styles.innerPassModalWrapper} style={{ display: modalView }}>
+                    <div className={styles.passModalInnerContainer}>
+                        <div className={styles.passModalContentContainer}>
                             {/* passing in the visibilty toggle to the form */}
                             <UpdatePassForm closeModal={switchViews}/>
 
