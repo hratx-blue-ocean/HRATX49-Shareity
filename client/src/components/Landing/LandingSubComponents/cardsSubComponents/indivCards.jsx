@@ -1,9 +1,6 @@
-import React, { useState } from 'react';
-import { Card } from 'antd';
-import 'antd/dist/antd.css';
+import React from 'react';
 import Styles from '../../LandingSubComponents/Cards.css'
 import moment from 'moment';
-// const { Meta } = Card;
 
 function IndivCards ({ item, displayCard }){
   let image;
@@ -29,7 +26,8 @@ function IndivCards ({ item, displayCard }){
     </Card>
     </Card> */}
       <img className={Styles.cardImage} src={image}/>
-      <p>{item.name}</p>
+      <p className={Styles.cardName}>{item.name}</p>
+      <p>{moment().from(item.dateCreated)}</p>
     </div>
   )
 }
