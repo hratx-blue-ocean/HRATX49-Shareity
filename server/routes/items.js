@@ -12,11 +12,12 @@ router.get('/', async (req, res) => {
 // get user's items
 router.get('/items', async (req, res) => {
   let userInfo = {
-    userEmail: req.body.email,
-    userType: req.body.userType,
+    userEmail: req.query.email,
+    userType: req.query.userType,
     items: []
   }
-  userInfo.items = await db.getUserItems(req.body.email, req.body.userType)
+
+  userInfo.items = await db.getUserItems(req.query.email, req.query.userType)
   res.json(userInfo);
 });
 

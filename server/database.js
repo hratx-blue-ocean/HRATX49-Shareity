@@ -90,11 +90,13 @@ client.connect((err) => {
     try {
       //set up query based on donor vs charity
       let query = {};
-      if (userType === "donor") {
+  
+      if (userType === 'donor') {
         query.email = userEmail;
       } else {
         query.charityEmail = userEmail;
       }
+  
       //find items associated with user or charity
       let result = await itemCollection.find( query ).toArray();
       return result;

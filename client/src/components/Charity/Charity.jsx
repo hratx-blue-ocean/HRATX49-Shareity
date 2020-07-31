@@ -3,7 +3,7 @@ import styles from '../../styles/Charity.css';
 import LogoAvatar from './LogoAvatar.jsx';
 import CharityHeader from './CharityHeader.jsx';
 import { CSVLink, CSVDownload } from "react-csv";
-//import Axios from 'axios';
+import Axios from 'axios';
 import PickupList from '../HomePage/PickupList.jsx';
 import DonatedList from '../HomePage/DonatedList.jsx';
 import UpForDonateList from '../HomePage/UpForDonateList.jsx';
@@ -18,8 +18,63 @@ import {
 const Charity = (props) => { 
     //sets the state of tax data on donation list to be used with csv export
     const [taxData, changeTaxData] = useState([]);
-    //we need to set the type of user/charity
-    const [userType, getType] = useState('user');
+    const [charity, isCharity] = useState(false)
+    var csvData = [['date', 'name', 'category', 'estimated value']]
+    var totalVal = 0;
+    var leftList = '';
+    var donorButtons = '';
+
+    useEffect(() => {
+        getUserItemsData()
+    }, []);
+    //gathers user items data for tax info
+    function getUserItemsData () {
+
+        //if no local storage exists, then do nothing
+        if(!localStorage.getItem('user')) {
+            return;
+        }
+        var csvRow = [];
+
+        //user info from local storage
+        const userData = JSON.parse(localStorage.getItem('user'))
+        var userType = userData.type;
+
+        //if not user then change to donor for db query
+        // and then make charity boolean true
+        if(userType === "user") {
+            userType = "donor"
+        }
+        if(userType === "charity") {
+            isCharity(true)
+        }
+        //user info to use with get request
+        var userDataObj = {
+            userType: userType,
+            email: userData.email
+        }
+
+        Axios.get('/items/items', {params: userDataObj})
+        .then(res => {
+            //pushed to data array if has been picked up and claimed
+            res.data.items.map((item) => {
+                if(item.pickedUp === true ) {
+                    //assigns tax date to be exported
+                    csvRow.push(item.date, item.name, item.category, item.estimatedValue)
+                    csvData.push(csvRow);
+                    csvRow = [];
+                    totalVal += item.estimatedValue;
+                }
+            })    
+        }) //sets state of pickupdata
+        .then(res => {
+            setTimeout(() => changeTaxData(csvData), 500)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+
 
     // comment this section in when we are ready to retreive data from the db
     // still needs an endpoint to send request to
@@ -43,17 +98,31 @@ const Charity = (props) => {
     //     getListData();
     // }, []);
 
-    var leftList = '';
-    var addItemButton = '';
-        if( userData.userType !== 'donor') {
-            addItemButton =
+    //toggles various lists or buttons depending on user types
+    if(!charity) {
+        donorButtons =
+            <div>
                 <div className={styles.buttonWrapper}>
                     <NewItem className={styles.charityButton} buttonText={'ADD ITEM'}/>
                 </div>
-            // leftList = <UpForDonateList rawData={listData} taxData={changeTaxData}/>
-        } else {
-            // leftList = <DonatedList rawData={listData} taxData={changeTaxData}/>
-        }
+            <div className={styles.buttonWrapper}>
+                <div className={styles.buttonWrapper}>
+                    <button className={styles.charityButton}>
+                        <div> Items Donated: {csvData.length - 1}</div>
+                    </button>
+                </div>
+                <div className={styles.buttonWrapper}>
+                    <button className={styles.charityButton}>
+                        <div> $ amount: {totalVal}</div>
+                    </button>
+                </div>
+            </div>
+            </div>
+
+        leftList = <UpForDonateList />
+    } else {
+        leftList = <DonatedList />
+    }
 
     return (
 
@@ -85,7 +154,7 @@ const Charity = (props) => {
                                 <div className={styles.buttonWrapper}>
                                     <button className={styles.charityButton}>
                                         <CSVLink
-                                            data={taxData}>STATEMENT
+                                            data={taxData}>DOWNLOAD STATEMENT
                                         </CSVLink>
                                     </button>
                                 </div>
@@ -93,7 +162,7 @@ const Charity = (props) => {
                                 <div className={styles.buttonWrapper}>
                                     <button className={styles.charityButton}>UPDATE PASSWORD</button>
                                 </div>
-                                {addItemButton}
+                                {donorButtons}
                             </div>
                         </div>
 
@@ -107,11 +176,10 @@ const Charity = (props) => {
                         {/* items to be picked up */}
                         <div className={styles.charityListItemsToBePickedUp}>
                             <div className={styles.charityUserListWrapper}>
-                                {/* <PickupList rawData={listData}/> */}
+                                <PickupList />
 
                             </div>
                         </div>
-
                 </div>
             </div>
 
