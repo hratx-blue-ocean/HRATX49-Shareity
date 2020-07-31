@@ -6,13 +6,13 @@ import Axios from 'axios';
 const userData = JSON.parse(localStorage.getItem('user'));
 const email = userData.email;
 
-const NewItem = (props) => {
+const UpdatePassForm = (props) => {
 
     const [newPassword, setNewPassword] = useState('');
 
     const updatePassword = () => {
 
-        Axios.post('./user/updatePassword', {
+        Axios.put('./user/updatePassword', {
 
             password: newPassword,
             userEmail: email
@@ -26,15 +26,15 @@ const NewItem = (props) => {
     }
 
     return (
-        <div className={styles.addItemFormWrapper}>
+        <div className={styles.updatePassFormWrapper}>
 
-            <div className={styles.inputFieldWrapper}>
+            <div className={styles.updatePassFieldWrapper}>
 
                 <input
-                    className={styles.addNameInputField}
-                    value={itemName}
+                    className={styles.updatePassInputField}
+                    value={newPassword}
                     onChange={(event) => setNewPassword(event.target.value)}
-                    placeholder="item name"
+                    placeholder="new password"
                     type="text"
                     required
                 ></input>
@@ -51,9 +51,8 @@ const NewItem = (props) => {
                             updatePassword();
                             props.closeModal();
                         }}
-
                     >
-                        Donate
+                        Update
                     </button>
                 </div>
 
@@ -63,4 +62,4 @@ const NewItem = (props) => {
     )
 }
 
-export default NewItem;
+export default UpdatePassForm;

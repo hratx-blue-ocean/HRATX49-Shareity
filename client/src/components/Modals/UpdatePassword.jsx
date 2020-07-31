@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styles from '../../styles/AddItem.css'
-import Form from '../addItemForm.jsx';
+import UpdatePassForm from '../updatePassForm.jsx'
 
-const AddItem = ({ buttonText, addAchievement }) => {
+const UpdatePassword = ({ buttonText, addAchievement }) => {
 
     const [modalView, setModalView] = useState('none');
     const [buttonView, setButtonView] = useState('block');
@@ -51,7 +51,7 @@ const AddItem = ({ buttonText, addAchievement }) => {
                     <div className={styles.modalInnerContainer}>
                         <div className={styles.modalContentContainer}>
                             {/* passing in the visibilty toggle to the form */}
-                            <Form closeModal={switchViews}/>
+                            <UpdatePassForm closeModal={switchViews}/>
 
                         </div>
                         {/* uncomment this button if you want to use this component without another way to close the modal */}
@@ -66,4 +66,4 @@ const AddItem = ({ buttonText, addAchievement }) => {
     )
 }
 
-export default AddItem;
+export default UpdatePassword;

@@ -8,6 +8,7 @@ import PickupList from '../HomePage/PickupList.jsx';
 import DonatedList from '../HomePage/DonatedList.jsx';
 import UpForDonateList from '../HomePage/UpForDonateList.jsx';
 import AddItem from '../Modals/AddItem.jsx';
+import UpdatePassword from '../Modals/UpdatePassword.jsx';
 import {
     BrowserRouter as Router,
     Switch,
@@ -87,7 +88,8 @@ const Charity = (props) => { //
                                 </div>
 
                                 <div className={styles.buttonWrapper}>
-                                    <button className={styles.charityButton}>UPDATE PASSWORD</button>
+                                    {/* <button className={styles.charityButton}>UPDATE PASSWORD</button> */}
+                                    <UpdatePassword />
                                 </div>
                                 {addItemButton}
                             </div>
