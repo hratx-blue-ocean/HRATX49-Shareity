@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from '../../styles/AddItem.css'
-import Form from '../AdditemForm.jsx';
+import Form from '../addItemForm.jsx';
 
 const AddItem = ({ buttonText }) => {
 
