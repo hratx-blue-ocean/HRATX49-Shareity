@@ -136,8 +136,22 @@
     margin: 5px 5px;
 }
 
+.addItemCancelButton {
+
+    float: left;
+    box-sizing: border-box;
+    margin: 5px 5px;
+
+    border: 1px solid silver;
+    border-radius: 10px;
+    color: white;
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+
 .addItemSubmitButton {
 
+    float: right;
     box-sizing: border-box;
     margin: 5px 5px;
 
