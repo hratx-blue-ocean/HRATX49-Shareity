@@ -6,11 +6,11 @@ import Achievement from './Achievement.jsx';
 
 const CharityHeader = () => {
 
-    const [currentUser, setCurrentUser] = useState('');
+    const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('user')));
     const [achievements, setAchievements] = useState(data);
     const getUserAchievements = () => {
         // needs to have it's end point added
-        Axios.get('./', currentUser)
+        Axios.get('./achievements', currentUser)
             .then( res => {
                 console.log(res.data)
                 setAchievements(res.data);
@@ -32,7 +32,7 @@ const CharityHeader = () => {
                 return (
                     <Achievement
                         key={i}
-                        data={achievement}
+                        data={achievements}
                     />
                 )
             })}

@@ -8,6 +8,7 @@ import PickupList from '../HomePage/PickupList.jsx';
 import DonatedList from '../HomePage/DonatedList.jsx';
 import UpForDonateList from '../HomePage/UpForDonateList.jsx';
 import NewItem from '../Modals/AddItem.jsx';
+import data from './achievementData';
 import {
     BrowserRouter as Router,
     Switch,
@@ -16,33 +17,27 @@ import {
 
 } from 'react-router-dom';
 const Charity = (props) => { //
+
+    const addAchievement = (userEmail, achievement) => {
+        // compares the passed in value to the target achievements name
+        let newAchievement = data.name === data.name[achievement];
+        // post the new achievement to the users profile
+        Axios.post('./newAchievement',{ 
+            email: userEmail,
+            achievement: newAchievement  
+        })
+            .then( res => {
+                console.log(res.data);
+            })
+            .catch( err => {
+                console.error(err);
+            })
+    }
+
     //sets the state of tax data on donation list to be used with csv export
     const [taxData, changeTaxData] = useState([]);
     //we need to set the type of user/charity
     const [userType, getType] = useState('user');
-
-    // comment this section in when we are ready to retreive data from the db
-    // still needs an endpoint to send request to
-    //const [listData, addListData] = useState([]);
-
-    // const getListData = () => {
-
-    //     Axios.get('./')
-    //         .then( res => {
-
-    //             let newListData = res.data;
-    //             setListData(newListData);
-    //         })
-    //         .catch( err => {
-
-    //             console.error(err);
-    //         })
-    // }
-    // calls the function to get list data on page load
-    // useEffect(() => {
-    //     getListData();
-    // }, []);
-
 
     // var leftList = '';
     var addItemButton = ''
