@@ -3,11 +3,11 @@ import styles from '../styles/updatePassForm.css';
 import Axios from 'axios';
 // import { addAchievement } from './addAchievement';
 
-const userData = JSON.parse(localStorage.getItem('user'));
-const email = userData.email;
+
 
 const UpdatePassForm = (props) => {
-
+    const userData = JSON.parse(localStorage.getItem('user'));
+    const email = userData.email || '';
     const [newPassword, setNewPassword] = useState('');
 
     const updatePassword = () => {
