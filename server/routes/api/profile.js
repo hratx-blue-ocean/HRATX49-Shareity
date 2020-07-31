@@ -4,7 +4,7 @@ const multerS3 = require( 'multer-s3' );
 const multer = require('multer');
 const path = require( 'path' );
 const url = require('url');
-const secretAccess = require('./secretAccess.js')
+const secretAccess = require('./superSecretAccess.js')
 /**
  * express.Router() creates modular, mountable route handlers
  * A Router instance is a complete middleware and routing system; for this reason, it is often referred to as a “mini-app”.

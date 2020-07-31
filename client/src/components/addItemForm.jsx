@@ -184,19 +184,21 @@ const NewItem = (props) => {
                         className={styles.charityInputSubmitButton}
                         onClick={() => { uploadHandler(selectedFile) }}>Upload!</button>
                 </div>
-                <div>
-                    <button
-                        className={styles.addItemCancelButton}
-                        onClick={() => props.closeModal()}>
-                        Cancel
-                    </button>
-                    <button
-                        className={styles.addItemSubmitButton}
-                        onClick={() => {onDonateSubmit(); props.closeModal();}}
-                    >
-                        Donate
-                    </button>
-                </div>
+
+                {/* ************************************* */}
+                <input
+                    value={description}
+                    type="text"
+                    onChange={(event) => onDescChange(event.target.value)}
+                    placeholder="brief description of your item"
+                    required
+                ></input>
+                <button
+                    className={styles.addItemSubmitButton}
+                    onClick={() => { onDonateSubmit(); props.closeModal(); }}
+                >
+                    Submit Donation Item
+                </button>
             </div>
         </div>
 
