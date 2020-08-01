@@ -4,7 +4,7 @@
   "description": "Congratulations and welcome to your first day at Blue Ocean! We are literally an underwater agile software development company.",
   "main": "index.js",
   "scripts": {
-    "setup": "npm install && cd ./client && npm install ; cd ../server && npm install",
+    "setup": "npm install && webpack --mode=production",
     "test": "cd ./client && npm test",
     "dev-s": "nodemon server/server.js",
     "dev-c": "webpack -d -w",
