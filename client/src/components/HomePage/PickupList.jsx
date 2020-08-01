@@ -50,7 +50,7 @@ const PickupList = () => {
                     if(item.pickedUp === false && item.claimedBy !== null && item.charityEmail !== null) {
                     
                         //makes the date look pretty
-                        item.date =  `${item.dateCreated.slice(5,7)}/${item.dateCreated.slice(8,10)}/${item.dateCreated.slice(2,4)}@${item.dateCreated.slice(11,16)}`
+                        item.date =  `${item.dateCreated.slice(5,7)}/${item.dateCreated.slice(8,10)}/${item.dateCreated.slice(2,4)} @${item.dateCreated.slice(11,16)}`
                     
                         arrayforPickupData.push(item);
                     }
@@ -120,12 +120,12 @@ const PickupList = () => {
     //assigns title and sortoptions for list
     var title = 'Items for Pickup';
     var sortOptions = ['date', 'name', 'Location']
-    var pickupCol = <th>Claimed By</th>
+    var pickupCol = <th><i class="fas fa-hands-helping"></i></th>
 
     //different selectors for a charity
     if(charity) {
     sortOptions = ['date', 'name', 'Location', 'estimatedValue'];
-    pickupCol = <th>Donor</th>
+    pickupCol = <th><i class="fas fa-hands-helping"></i></th>
     }
 
     return (
@@ -149,11 +149,11 @@ const PickupList = () => {
                 <table className={styles.pickupTable}>
                     <thead className={styles.listRowHeaders}>
                         <tr>
-                        <th> Date </th>
-                        <th> Name</th>
-                        <th> Zip </th>
+                        <th> <i class="far fa-clock"></i></th>
+                        <th> <i class="fas fa-heart"></i></th>
+                        <th> <i class="fas fa-location-arrow"></i></th>
                         {pickupCol}
-                        <th>Pickedup?</th>
+                        <th><i class="fas fa-truck"></i></th>
                         </tr>
                     </thead>
                     <tbody className={styles.listRowWrap}>   
@@ -163,7 +163,7 @@ const PickupList = () => {
                                 <td> {item.name} </td>
                                 <td> {item.Location = item.Location.toString().slice(0,5) || ''}</td>
                                 <td> {item.pickingUp}</td>
-                                <td> <button value={item._id} onClick={(event) => handlePickupItem(event.target.value)}>pickedUp</button></td>
+                                <td className={styles.deleteButton}> <button className={styles.deleteButton} value={item._id} onClick={(event) => handlePickupItem(event.target.value)}>complete</button></td>
                             </tr>
                         )}
                     </tbody>
