@@ -5,17 +5,18 @@
     width: 97%;
     height: 99%;
     min-height: 180px;
-    max-height: 280px;
+    max-height: 220px;
     margin: 3px auto;
-    border: 2px solid antiquewhite;
+    border: 2px solid #FF01BF;
+    color: black;
     border-radius: 7px;
     overflow: auto;
-    background: rgb(166,220,239);
-    background: radial-gradient(circle, rgba(166,220,239,1) 0%, rgba(221,243,245,1) 100%);
 }
 
-/* .achievementContainer {
-} */
+.outterHeaderWrapper {
+
+    height: 100%;
+}
 
 .achievementWrapper {
     display: grid;
@@ -29,7 +30,7 @@
         ". . d d d d d d d . .";
     max-width: 250px;
     max-height: 50px;
-    margin: 1%;
+    margin: 1.175%;
 }
 
 .achievement {
@@ -39,16 +40,17 @@
     width: 200px;
     min-width: 250px;
     height: 50px;
-    border: 2px solid #f2aaaa;
     border-radius: 7px;
     margin: 1.5%;
-    background-color: #ffe9e9;
+    background: rgb(255,170,255);
+    background: radial-gradient(circle, rgba(255,170,255,1) 0%, rgba(255,0,191,0.196516106442577) 100%);
 }
 
 .achievementImageWrapper {
     grid-area: i;
     justify-content: space-evenly;
     margin-left: 1px;
+    padding-left: 3px;
 }
 
 .achievementImage {
@@ -56,7 +58,9 @@
     box-sizing: border-box;
     width: 35px;
     height: 35px;
-    border: 2px solid antiquewhite;
+    border: 2px solid #FF01BF;
+    background-color: whitesmoke;
+    color: black;
     border-radius: 7px;
 }
 
@@ -70,7 +74,6 @@
     display: inline-flex;
     box-sizing: border-box;
     margin-bottom: 3px;
-    border: 2px solid antiquewhite;
     font-size: 10px;
 }
 
@@ -88,13 +91,13 @@
     min-width: 35px;
     height: 35px;
     margin-right: 1px;
-    border: 2px solid antiquewhite;
-    background-color: #a6dcef;
+    padding-top: 2px;
+    color: black;
     border-radius: 7px;
 }
 
 .achievementValue {
     font-size: 20px;
-    color: red;
+    color: #880088;
 }
 

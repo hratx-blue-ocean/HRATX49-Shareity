@@ -1,6 +1,9 @@
 body {
   text-align: center;
-  justify-content: center;
+}
+
+a, a:hover {
+  color: black;
 }
 
 .charityMainAppContainer {

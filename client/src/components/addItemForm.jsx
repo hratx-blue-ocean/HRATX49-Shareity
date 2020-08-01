@@ -131,7 +131,7 @@ const NewItem = (props) => {
                         className={styles.addValueInputField}
                         value={estVal}
                         onChange={(event) => onValChange(event.target.value)}
-                        placeholder="estimated Value"
+                        placeholder="Estimated Value"
                         type="number"
                         required
                     ></input>
@@ -176,14 +176,14 @@ const NewItem = (props) => {
                 </select >
                 {/* ************************************* */}
                 {/* ************Upload Image************* */}
-                <div className="card-body">
+                <div className={styles.addItemUploadBody}>
                     <input
-                        className={styles.charityInputButton}
+                        className={styles.addItemUploadInputButton}
                         type="file"
                         onChange={() => { addImageHandler(event.target.files[0]) }} />
                     <br />
                     <button
-                        className={styles.charityInputSubmitButton}
+                        className={styles.addItemUploadSubmitButton}
                         onClick={() => { uploadHandler(selectedFile) }}>Upload!</button>
                 </div>
                 <div>

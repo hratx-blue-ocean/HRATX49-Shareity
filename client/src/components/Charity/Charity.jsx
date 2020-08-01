@@ -9,6 +9,7 @@ import DonatedList from '../HomePage/DonatedList.jsx';
 import UpForDonateList from '../HomePage/UpForDonateList.jsx';
 import AddItem from '../Modals/AddItem.jsx';
 import UpdatePassword from '../Modals/UpdatePassword.jsx';
+
 import {
     BrowserRouter as Router,
     Switch,
@@ -143,10 +144,11 @@ const Charity = (props) => { //
 
                     {/* header */}
                     <div className={styles.charityHeader}>
-                        <div className={styles.outHeaderWrapper}>
+                        <div className={styles.outterHeaderWrapper}>
                             <CharityHeader />
                         </div>
                     </div>
+                    
                         {/* side nav */}
                         <div className={styles.charitySideNav}>
                             {/* this is where the side nav buttons start */}
@@ -159,7 +161,7 @@ const Charity = (props) => { //
 
                                 <div className={styles.buttonWrapper}>
                                     <Link to='/chat' className={styles.charityButtonHomeLink}>
-                                        <button className={styles.charityButton}>Messages</button>
+                                        <button className={styles.charityButton}>MESSAGES</button>
                                     </Link>
                                 </div>
 
@@ -180,6 +182,7 @@ const Charity = (props) => { //
                                 {donorButtons}
                             </div>
                         </div>
+
 
                         {/* list donated */}
                         <div className={styles.charityListDonated}>
