@@ -9,6 +9,7 @@ import DonatedList from '../HomePage/DonatedList.jsx';
 import UpForDonateList from '../HomePage/UpForDonateList.jsx';
 import AddItem from '../Modals/AddItem.jsx';
 import UpdatePassword from '../Modals/UpdatePassword.jsx';
+
 import {
     BrowserRouter as Router,
     Switch,
@@ -155,6 +156,12 @@ const Charity = (props) => { //
                                 <div className={styles.buttonWrapper}>
                                     <Link to='/' className={styles.charityButtonHomeLink}>
                                         <button className={styles.charityButton}>HOME</button>
+                                    </Link>
+                                </div>
+
+                                <div className={styles.buttonWrapper}>
+                                    <Link to='/chat' className={styles.charityButtonHomeLink}>
+                                        <button className={styles.charityButton}>MESSAGES</button>
                                     </Link>
                                 </div>
 
