@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import LandingPage from './Landing/landingPage.jsx'
+import LandingPage from './Landing/landingPage.jsx';
 import Charity from '../components/Charity/Charity.jsx';
-import AddItem from './Modals/AddItem.jsx'
 import styles from '../styles/App.css';
+import AboutUs from './aboutUs.jsx';
 
 import {
   BrowserRouter as Router,
@@ -25,16 +25,19 @@ export default class App extends Component {
     return (
       <>
         <Router>
-          <Switch>
+          {/* <Switch> */}
             <Route path="/Charity">
               <div className={styles.charityMainAppContainer}>
                 <Charity />
               </div>
             </Route>
-            <Route path="/">
+            <Route exact path="/">
               <LandingPage />
             </Route>
-          </Switch>
+            <Route path="/aboutUs">
+              <AboutUs />
+            </Route>
+          {/* </Switch> */}
         </Router>
       </>
     );
