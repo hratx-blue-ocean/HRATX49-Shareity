@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import Talk from 'talkjs';
-import Nav from '../Landing/LandingSubComponents/navBar';
+import Nav from '../Landing/LandingSubComponents/navBar.jsx';
 
 class Chat extends Component {
     constructor(props) {
@@ -49,5 +49,5 @@ class Chat extends Component {
       )
     }
 };
- 
+
 export default Chat;
