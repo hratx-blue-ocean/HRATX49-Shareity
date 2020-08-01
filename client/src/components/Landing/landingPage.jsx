@@ -8,6 +8,7 @@ import Footer from './LandingSubComponents/footer.jsx';
 import styles from './landingPage.css';
 import Axios from 'axios';
 var _ = require('lodash');
+require("regenerator-runtime/runtime");
 
 let currentUser;
 let logged;
@@ -165,10 +166,10 @@ const LandingPage = () => {
           itemsPerPage={itemsPerPage}
           totalItems={items.length}
         />
-        <div>
-        <Footer />
-        </div>
       </div>
+        <div className={styles.footerContainer}>
+        <Footer typeOfUser={typeOfUser}/>
+        </div>
     </div>
   );
 };
