@@ -10,7 +10,8 @@ var _ = require('lodash');
 
 let currentUser;
 let logged;
-if (localStorage.user) {
+
+if (localStorage.user.length !== 0) {
   currentUser = JSON.parse(localStorage.user).type;
   logged = true;
 } else {
@@ -78,7 +79,6 @@ const LandingPage = () => {
 
   //Click Handler for logging in
   const closeLogin = () => {
-
     setLoginClicked(false);
     if (isLoggedIn) {
       ///show wlcome message

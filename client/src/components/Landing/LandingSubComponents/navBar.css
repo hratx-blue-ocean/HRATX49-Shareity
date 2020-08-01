@@ -21,7 +21,12 @@
 
 .navBarUserImage{
   max-width: 150px;
+  width: 100%;
   max-height: 150px;
+  height: 100%;
+  box-sizing: border-box;
+  border: 3px solid silver;
+  border-radius: 50%;
 }
 
 .logBtn{
