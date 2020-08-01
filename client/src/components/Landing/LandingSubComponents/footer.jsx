@@ -38,7 +38,7 @@ const Footer = ({ typeOfUser }) => {
       <div className={styles.center}>
         {/* Empty */}
         <div className={styles.imgArea}>
-          <img className={styles.img} src="./navLogo.png"></img>
+          <img className={styles.img} src="./sharity.png"></img>
         </div>
       </div>
       <div className={styles.rightSide}>
