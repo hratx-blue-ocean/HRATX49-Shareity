@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import NavBar from './LandingSubComponents/navBar.jsx';
-import Cards from './LandingSubComponents/cards.jsx';
-import Axios from 'axios';
-import Paginater from './LandingSubComponents/paginate.jsx';
-import ShowDetails from './LandingSubComponents/showDetails.jsx';
 import Login from './Login.jsx';
-import styles from './landingPage.css'
+import Cards from './LandingSubComponents/cards.jsx';
+import ShowDetails from './LandingSubComponents/showDetails.jsx';
+import Paginater from './LandingSubComponents/paginate.jsx';
+import Footer from './LandingSubComponents/footer.jsx';
+import styles from './landingPage.css';
+import Axios from 'axios';
 var _ = require('lodash');
+require("regenerator-runtime/runtime");
 
 let currentUser;
 let logged;
-
-
 
 if (localStorage.token) {
   currentUser = JSON.parse(localStorage.user).type;
@@ -25,7 +25,7 @@ const LandingPage = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(20)
+  const [itemsPerPage] = useState(18)
   const [showDetails, setShowDetails] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
   const [loginClicked, setLoginClicked] = useState(false);
@@ -138,9 +138,9 @@ const LandingPage = () => {
   const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
 
   //Change Page
-  const paginate = (event, pageNumber) => { 
-    event.preventDefault(); 
-    setCurrentPage(pageNumber); 
+  const paginate = (event, pageNumber) => {
+    event.preventDefault();
+    setCurrentPage(pageNumber);
   };
 
   return (
@@ -157,13 +157,16 @@ const LandingPage = () => {
         {loginClicked && <Login closeLogin={closeLogin} setTypeOfUser={setTypeOfUser} isLoggedIn={setIsLoggedIn} />}
         {showDetails && <ShowDetails card={selectedCard} closeCard={closeCard} claimItem={handleClaimingItem} />}
         <Cards items={currentItems} displayCard={displayCard} loading={loading} sortBy={handleSort} />
-        </div>
-        <div className={styles.paginaterContainer}>
+      </div>
+      <div className={styles.paginaterContainer}>
         <Paginater
           paginate={paginate}
           itemsPerPage={itemsPerPage}
           totalItems={items.length}
         />
+      </div>
+      <div className={styles.footerContainer}>
+        <Footer typeOfUser={typeOfUser} />
       </div>
     </div>
   );

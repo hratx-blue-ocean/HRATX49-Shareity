@@ -7,25 +7,14 @@ import {
 } from "react-router-dom";
 import Greeting from '../Greeting.jsx';
 
-
-//If theres an Image in local storage
 let profilePic;
+//If theres an Image in local storage
 
-// if(!localStorage.user){
-//  console.log("not defined");
-// }else {
-//   if (!user) {
-//     profilePic = './userIcon.png';
-//   } else { //Make one
-//     profilePic = JSON.parse(localStorage.user).profilePic;
-//   }
-// }
 if (localStorage.length === 0 || JSON.parse(localStorage.user).profilePic === null || JSON.parse(localStorage.user).profilePic === undefined || JSON.parse(localStorage.user).profilePic === "") {
   profilePic = './userIcon.png';
 } else { //Make one
   profilePic = JSON.parse(localStorage.user).profilePic;
 }
-
 
 const NavBar = ({ login, isLoggedIn, setSearchItems }) => {
   //Alert 
@@ -34,8 +23,8 @@ const NavBar = ({ login, isLoggedIn, setSearchItems }) => {
     alert('Please Log in to visit Profiles')
   }
 
-let log;
-  if (isLoggedIn){
+  let log;
+  if (isLoggedIn) {
     log = <i className="fas fa-sign-out-alt" onClick={(event) => login(event)}></i>
   } else {
     log = <i className="fas fa-sign-in-alt" onClick={(event) => login(event)}></i>
@@ -48,14 +37,12 @@ let log;
         <div className={styles.navBarLogo}>
           <Greeting />
         </div>
-        <Search setSearchItems={setSearchItems}/>
+        <Search setSearchItems={setSearchItems} />
         <div className={styles.navBarLogin}>
           {/* Log in || Log out btn */}
-        {log}
+          {log}
         </div>
-        
         <div>
-          
         </div>
         {/* If Someone IS Logged In */}
         {isLoggedIn ?

@@ -1,10 +1,9 @@
 import React from 'react';
-import styles from './Greeting.css'; 
 
 const Greeting = () => {
-  return(
+  return (
     <div>
-      <img src="./sharity.png"/>
+      <img src="./sharity.png" />
     </div>
   );
 };
