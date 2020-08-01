@@ -27,10 +27,12 @@ app.use('/items', items);
 app.use('/achievements', achievements);
 app.use('/api/profile', profile)
 //User/Charity Routes
-// app.get('/test', async (req, res) => {
-//     let data = await db.getData();
-//     res.status(200).send(data);
-// });
+app.get('/Charity', async (req, res) => {
+    res.redirect('/');
+});
+app.get('/aboutUs', async (req, res) => {
+    res.redirect('/');
+});
 
 // Item Routes
 
