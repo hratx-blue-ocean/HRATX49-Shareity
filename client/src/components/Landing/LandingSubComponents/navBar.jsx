@@ -10,12 +10,22 @@ import Greeting from '../Greeting.jsx';
 
 //If theres an Image in local storage
 let profilePic;
-let user = JSON.parse(localStorage.user);
-if (!user) {
+
+// if(!localStorage.user){
+//  console.log("not defined");
+// }else {
+//   if (!user) {
+//     profilePic = './userIcon.png';
+//   } else { //Make one
+//     profilePic = JSON.parse(localStorage.user).profilePic;
+//   }
+// }
+if (localStorage.length === 0 || JSON.parse(localStorage.user).profilePic === null || JSON.parse(localStorage.user).profilePic === undefined || JSON.parse(localStorage.user).profilePic === "") {
   profilePic = './userIcon.png';
 } else { //Make one
   profilePic = JSON.parse(localStorage.user).profilePic;
 }
+
 
 const NavBar = ({ login, isLoggedIn, setSearchItems }) => {
   //Alert 

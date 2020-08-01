@@ -4,6 +4,8 @@
   overflow: scroll;
   flex-flow: wrap;
   padding-top: 2%;
+  display: flex;
+  justify-content: center;
 }
 
 .cardStyle {
