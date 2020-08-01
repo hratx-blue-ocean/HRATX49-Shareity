@@ -7,8 +7,6 @@ import styles from './footer.css';
 
 let comp;
 
-
-
 const Footer = ({ typeOfUser }) => {
   if (typeOfUser === null) {
     comp = <span className={styles.linkTags}>Sign in to go to Profile Page</span>
@@ -22,10 +20,9 @@ const Footer = ({ typeOfUser }) => {
     </Link>
   }
 
-  const handleExternalLink = (event,name)=>{
+  const handleExternalLink = (event, name) => {
     event.preventDefault();
   }
-
 
   return (
     <div className={styles.footerContainer}>

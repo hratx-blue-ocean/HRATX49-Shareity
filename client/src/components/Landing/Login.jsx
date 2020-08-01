@@ -83,23 +83,26 @@ class Login extends Component {
       return (
         <div className={styles.overlay}>
           <div className={styles.cardDetail}>
-            <p onClick={()=>this.props.closeLogin()} className={styles.closeBtn}>+</p>
-            <div className="">
-              <form onSubmit={this.submitLogin}>
-                <div className="">
-                  <label>Email</label>
-                  <input type="email" onChange={(e) => this.handleChange(e, 'email')} required />
+            <div className={styles.closeBtn}>
+            <i onClick={()=>this.props.closeLogin()} className="fas fa-times-circle"></i>
+            </div>
+            <div className={styles.formContainerMain}>
+              <form className={styles.formContainer} onSubmit={this.submitLogin}>
+                <div className={styles.input}>
+                  <input type="email" placeholder="Email" onChange={(e) => this.handleChange(e, 'email')} required />
                 </div>
-                <div className="">
-                  <label>Password</label>
-                  <input type="password" onChange={(e) => this.handleChange(e, 'password')} required />
+                <div className={styles.input}>     
+                  <input type="password" placeholder="Password" onChange={(e) => this.handleChange(e, 'password')} required />
                 </div>
-                <button type="submit">Login</button>
+                <button className={styles.submitBtn} type="submit">Login</button>
               </form>
+              <div className={styles.closeContainer}>
               <span style={{ color: "red" }}>{this.state.errMsg}</span>
-              <span onClick={() => this.switchToSignUpLogin()}>
-                Don't have an account? <span>Signup</span>
-              </span>
+              <div className={styles.accountOptions} onClick={() => this.switchToSignUpLogin()}>
+                <span className={styles.accountText}>Don't have an account?</span>
+                <span className={styles.accountText}>Signup</span>
+              </div>
+              </div>
             </div>
           </div>
         </div>
@@ -109,38 +112,40 @@ class Login extends Component {
         <>
           <div className={styles.overlay}>
             <div className={styles.cardDetail}>
-              <p onClick={()=>this.props.closeLogin()} className={styles.closeBtn}>+</p>
-              <form onSubmit={this.submitSignup}>
-                <div className="">
-                  <label>Name</label>
-                  <input type="text" value={this.state.user.name} onChange={(e) => this.handleChange(e, 'name')} required />
+            <div className={styles.closeBtn}>
+            <i onClick={()=>this.props.closeLogin()} className="fas fa-times-circle"></i>
+            </div>
+            <div className={styles.formContainerMain}>
+              <form className={styles.formContainer} onSubmit={this.submitSignup}>
+                <div className={styles.input}>
+                  <input type="text" placeholder="Name" value={this.state.user.name} onChange={(e) => this.handleChange(e, 'name')} required />
                 </div>
-                <div className="">
-                  <label>Email</label>
-                  <input type="email" value={this.state.user.email} onChange={(e) => this.handleChange(e, 'email')} required />
+                <div className={styles.input}>
+                  <input type="email" placeholder="Email" value={this.state.user.email} onChange={(e) => this.handleChange(e, 'email')} required />
                   <span style={{ color: "red" }}>{this.state.emailError}</span>
                 </div>
-                <div className="">
-                  <label>Password</label>
-                  <input type="password" value={this.state.user.password} onChange={(e) => this.handleChange(e, 'password')} required />
+                <div className={styles.input}>
+                  <input type="password" placeholder="Password" value={this.state.user.password} onChange={(e) => this.handleChange(e, 'password')} required />
                 </div>
-                <div className="">
-                  <label>Type</label>
+                <div className={styles.input}>
                   <select value={this.state.user.type} onChange={(e) => this.handleChange(e, 'type')} required>
                     <option value="charity">Charity</option>
                     <option value="donor">Donor</option>
                   </select>
                 </div>
-                <div className="">
-                  <label>Location</label>
-                  <input type="text" pattern="[0-9]{5}" value={this.state.user.location} onChange={(e) => this.handleChange(e, 'location')} required />
+                <div className={styles.input}>
+                  <input type="text" placeholder="Zip Code" pattern="[0-9]{5}" value={this.state.user.location} onChange={(e) => this.handleChange(e, 'location')} required />
                 </div>
-                <button type="submit">Sign up</button>
+                <button className={styles.submitBtn} type="submit">Sign up</button>
               </form>
+              </div>
+              <div className={styles.closeContainer}>
               <span style={{ color: "red" }}>{this.state.errMsg}</span>
-              <span onClick={() => this.switchToSignUpLogin()}>
-                Already have an account? <span>Sign in</span>
+              <span className={styles.accountOptions} onClick={() => this.switchToSignUpLogin()}>
+                <span className={styles.accountText}>Already have an account?</span>
+                <span className={styles.accountText}>Sign in</span>
               </span>
+              </div>
             </div>
           </div>
         </>

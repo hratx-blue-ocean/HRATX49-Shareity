@@ -13,8 +13,6 @@ require("regenerator-runtime/runtime");
 let currentUser;
 let logged;
 
-
-
 if (localStorage.token) {
   currentUser = JSON.parse(localStorage.user).type;
   logged = true;
@@ -140,9 +138,9 @@ const LandingPage = () => {
   const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
 
   //Change Page
-  const paginate = (event, pageNumber) => { 
-    event.preventDefault(); 
-    setCurrentPage(pageNumber); 
+  const paginate = (event, pageNumber) => {
+    event.preventDefault();
+    setCurrentPage(pageNumber);
   };
 
   return (
@@ -159,17 +157,17 @@ const LandingPage = () => {
         {loginClicked && <Login closeLogin={closeLogin} setTypeOfUser={setTypeOfUser} isLoggedIn={setIsLoggedIn} />}
         {showDetails && <ShowDetails card={selectedCard} closeCard={closeCard} claimItem={handleClaimingItem} />}
         <Cards items={currentItems} displayCard={displayCard} loading={loading} sortBy={handleSort} />
-        </div>
-        <div className={styles.paginaterContainer}>
+      </div>
+      <div className={styles.paginaterContainer}>
         <Paginater
           paginate={paginate}
           itemsPerPage={itemsPerPage}
           totalItems={items.length}
         />
       </div>
-        <div className={styles.footerContainer}>
-        <Footer typeOfUser={typeOfUser}/>
-        </div>
+      <div className={styles.footerContainer}>
+        <Footer typeOfUser={typeOfUser} />
+      </div>
     </div>
   );
 };
