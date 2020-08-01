@@ -8,6 +8,7 @@ class Chat extends Component {
         this.inbox = undefined;
         this.state = {
           currentUser: {}
+        }
     }
 
   async componentDidMount() {
@@ -35,7 +36,7 @@ class Chat extends Component {
         this.inbox = window.talkSession.createInbox();
         this.inbox.mount(this.container);
     } catch(e) { console.error(e) };
-  }
+  };
 
     render() {
       return (
@@ -47,6 +48,6 @@ class Chat extends Component {
       </>
       )
     }
-}
+};
  
 export default Chat;
