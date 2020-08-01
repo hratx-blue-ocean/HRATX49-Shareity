@@ -13,19 +13,57 @@
 
 .cardDetail {
   width: 800px;
-  height: 500px;
+  height: 450px;
   background-color: white;
   border-radius: 3px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
 .closeBtn{
-  font-size: 42px;
-   transform: rotate(45deg);
-   color: black;
+  font-size: 30px;
+  text-align: right;
+  color: red;
+  padding-right: 10px;
  }
+
+.formContainer{
+  margin-top: 3%;
+}
+
+.formContainerMain{
+  text-align-last: center;
+}
 
  .cardImage {
   height: 230px;
   width: 220px;
+ }
+
+ .input{
+   margin: 12px 0px;
+ }
+
+ .submitBtn{
+  border: none;
+  border-radius: 5px;
+  padding: 10px 50px;
+  margin-top: 10px;
+ }
+
+ .closeContainer{
+  display: flex;
+  flex-direction: column;
+  margin-top: 5%;
+ }
+
+ .accountOptions{
+   display: flex;
+   flex-direction: column;
+ }
+
+ .accountText{
+  font-weight: bold;
+  font-style: italic;
  }

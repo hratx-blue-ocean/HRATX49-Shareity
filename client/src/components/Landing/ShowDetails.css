@@ -47,19 +47,26 @@
     flex-direction: column;
    }
 
+   .userAreaInner{
+     display: flex;
+     flex-direction: column;
+     margin-top: 40%;
+   }
+
    .cardDonor{
-    height: 20%;
-    display: flex;
     align-self: center;
     align-items: center;
+    font-weight: bold;
+    width: 75%;
+    margin-top: 10%;
    }
 
    .cardCreated{
-
+    font-style: italic;
    }
 
    .btnArea{
-    /* test btn Area */
+    margin-top: 30%;
 
    }
 
@@ -72,11 +79,34 @@
      border-radius: 10px;
      margin-bottom: 10px;
      padding: 10px 40px;
+     background-color: white;
+     color: #FF01BF;
+     border: 2px solid #FF01BF;
    }
 
    .msgBtnA{
-     color: black;
+    background-color: white;
+    color: #FF01BF;
+    border: 2px solid #FF01BF;
    }
+
+   .msgBtn:hover{
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 10px 40px;
+    background-color: #FF01BF;
+    color: white;
+  }
+
+  .msgBtnA:hover{
+   background-color: #FF01BF;
+   color: white;
+  }
+
+  .claimSpacing{
+    margin-top: 15px;
+  }
 
    .imgArea{
     /* test img area */
@@ -92,7 +122,9 @@
    }
 
    .titleDescriptor{
-     
+    font-weight: bold;
+    margin: 5px 0px
+
    }
 
    .productNameTitle{
@@ -106,15 +138,17 @@
    .productNameContainer{
     display: flex;
     flex-direction: column;
+    margin-top: 20%;
    }
 
    .productName{
-    /* test product name */
+    font-style: italic;
    }
 
    .productCategoryContainer{
     display: flex;
     flex-direction: column;
+    margin: 10px 0px;
    }
 
    .productCategory{
@@ -125,6 +159,10 @@
     /* test condition and zip container */
     display: flex;
     flex-direction: column;
+   }
+
+   .conditionAndZipContainerInner{
+     display: flex;
    }
 
    .productConditionAndLocationTitle{
@@ -149,5 +187,6 @@
    }
 
    .description{
-     /* test description */
+     display: flex;
+     flex-direction: column;
    }

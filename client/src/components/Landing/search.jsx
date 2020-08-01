@@ -3,44 +3,35 @@ import Axios from 'axios';
 import styles from './search.css';
 
 const Search = ({ setSearchItems }) => {
-   
-    //const [searchData, setSearchData] = useState([]);
     const [search, setSearch] = useState('');
-
-    const getItems =  (event) => {
+    const getItems = (event) => {
         event.preventDefault();
         var searchedWord = search.toLowerCase();
-        //console.log(this.state.search)
         var searchArr = [];
-
         Axios.get(`/items/`)
-        .then(res => {
-            res.data.map(item => {
-                if(item.name.toLowerCase().includes(searchedWord)
-                 || item.Description.toLowerCase().includes(searchedWord)) {
-                     
-                    searchArr.push(item);
-                }
+            .then(res => {
+                res.data.map(item => {
+                    if (item.name.toLowerCase().includes(searchedWord)
+                        || item.Description.toLowerCase().includes(searchedWord)) {
+                        searchArr.push(item);
+                    }
+                })
             })
-        }) 
-        .then(res => {
-            
-            //setSearchData(searchArr);
-            setSearch('');
-            setSearchItems(searchArr)
-
-        })
-        .catch(err => {
-            console.log(err)
-        })
+            .then(res => {
+                //setSearchData(searchArr);
+                setSearch('');
+                setSearchItems(searchArr)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     };
 
-    const onSearchChange =  (event) => {
+    const onSearchChange = (event) => {
         event.preventDefault();
         setSearch(event.target.value);
     };
 
-    
     return (
         <div>
             <span className="searchBarWrap">
@@ -57,11 +48,11 @@ const Search = ({ setSearchItems }) => {
                         value={search}
                         aria-label="Search: suggestions appear below"
                     />
-                    <button 
-                      onClick={(event) => getItems(event)}
-                      className={styles.searchButton}
+                    <button
+                        onClick={(event) => getItems(event)}
+                        className={styles.searchButton}
                     >
-                      search
+                        search
                     </button>
                 </form>
             </span>
