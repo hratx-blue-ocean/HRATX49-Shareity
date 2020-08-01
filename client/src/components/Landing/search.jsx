@@ -43,7 +43,7 @@ const Search = ({ setSearchItems }) => {
                         onChange={(event) => onSearchChange(event)}
                         type="search"
                         id="search"
-                        placeholder="Search"
+                        placeholder="Search for donations.."
                         name="search"
                         value={search}
                         aria-label="Search: suggestions appear below"
@@ -52,7 +52,7 @@ const Search = ({ setSearchItems }) => {
                         onClick={(event) => getItems(event)}
                         className={styles.searchButton}
                     >
-                        search
+                      <i className="fas fa-search"></i>
                     </button>
                 </form>
             </span>

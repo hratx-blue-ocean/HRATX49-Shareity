@@ -23,9 +23,9 @@
 
   .closeBtn{
     font-size: 30px;
-    color: red;
-    text-align: right;
-    padding-right: 10px;
+     color: #ff01bf;
+     text-align: right;
+     padding-right: 10px;
    }
 
    .cardImage {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from '../LandingSubComponents/navBar.css';
 import Search from '../search.jsx';
 import {
@@ -9,7 +9,6 @@ import Greeting from '../Greeting.jsx';
 
 let profilePic;
 //If theres an Image in local storage
-
 if (localStorage.length === 0 || JSON.parse(localStorage.user).profilePic === null || JSON.parse(localStorage.user).profilePic === undefined || JSON.parse(localStorage.user).profilePic === "") {
   profilePic = './userIcon.png';
 } else { //Make one
@@ -20,7 +19,7 @@ const NavBar = ({ login, isLoggedIn, setSearchItems }) => {
   //Alert 
   const alertToLogIn = (event) => {
     event.preventDefault();
-    alert('Please Log in to visit Profiles')
+    alert('Please Log in to visit Profiles');
   }
 
   let log;
@@ -37,27 +36,27 @@ const NavBar = ({ login, isLoggedIn, setSearchItems }) => {
         <div className={styles.navBarLogo}>
           <Greeting />
         </div>
-        <Search setSearchItems={setSearchItems} />
-        <div className={styles.navBarLogin}>
-          {/* Log in || Log out btn */}
-          {log}
-        </div>
+        <Search setSearchItems={setSearchItems}/>
         <div>
-        </div>
-        {/* If Someone IS Logged In */}
-        {isLoggedIn ?
-          <Link to={{ pathname: "/Charity" }}>
-            <div className={styles.navBarUserProfileArea}>
+          {/* User's picture or default avatar */}
+          {isLoggedIn ?
+            <Link to={{ pathname: "/Charity" }} >
+              <div className={styles.navBarUserProfileArea}>
+                {/* User Profile Area */}
+                <img className={styles.navBarUserImage} src={profilePic} alt="PLaceholder" />
+              </div>
+            </Link>
+            : //If Someone is Not Logged in
+            <div className={styles.navBarUserProfileArea} >
               {/* User Profile Area */}
-              <img className={styles.navBarUserImage} src={profilePic} alt="PLaceholder" />
+              <img className={styles.navBarUserImage} onClick={(e) => alertToLogIn(e)} src="./userIcon.png" alt="Placeholder" />
             </div>
-          </Link>
-          : //If Someone is Not Logged in
-          <div className={styles.navBarUserProfileArea}>
-            {/* User Profile Area */}
-            <img className={styles.navBarUserImage} onClick={(e) => alertToLogIn(e)} src="./userIcon.png" alt="PLaceholder" />
+          }
+          {/* Log in and Log out button */}
+          <div className={styles.navBarLogin}>
+            {log}
           </div>
-        }
+        </div>
       </div>
     </div>
   )

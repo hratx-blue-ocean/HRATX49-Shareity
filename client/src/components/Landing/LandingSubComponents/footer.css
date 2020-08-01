@@ -3,7 +3,7 @@
   flex-direction: row;
   width: 100%;
   justify-content: space-between;
-  background-color: #ff01bf;
+  background-image: linear-gradient(to right, #ff01bf, #ff01bf, #ff01bf, #880088);
 }
 
 .leftSide{
@@ -28,10 +28,6 @@
 
 .imgArea{
   align-self: center;
-}
-
-.img{
-
 }
 
 .rightSide{

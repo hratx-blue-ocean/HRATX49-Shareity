@@ -45,12 +45,24 @@
 .aboutBtn{
   border: none;
   margin: 0px 20px;
-  padding: 15px 30px;
-  border-radius: 15px;
+  padding: 10px 50px;
+  border-radius: 10px;
+  border: 1px solid #ff01bf;
+  color: #ff01bf;
+  font-style: italic;
+}
+.sortBtn:hover {
   background-color: #ff01bf;
   color: white;
+  border: 1px solid white;
   font-weight: bold;
-  font-style: italic;
+}
+
+.aboutBtn:hover {
+  background-color: #ff01bf;
+  color: white;
+  border: 1px solid white;
+  
 }
 
 .btnContainer{
