@@ -26,7 +26,6 @@ export default class App extends Component {
     return (
       <>
         <Router>
-          {/* <Switch> */}
             <Route path="/Charity">
               <div className={styles.charityMainAppContainer}>
                 <Charity />

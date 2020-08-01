@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import styles from './Login.css';
+require("regenerator-runtime/runtime");
 
 class Login extends Component {
   constructor(props) {
