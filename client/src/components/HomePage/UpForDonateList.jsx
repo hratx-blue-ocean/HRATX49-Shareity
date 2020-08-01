@@ -49,7 +49,7 @@ const DonatedList = ( ) => {
                 if(item.pickedUp === false  && item.claimedBy == null ) {
 
                     //makes the date look pretty
-                    item.date =  `${item.dateCreated.slice(5,7)}/${item.dateCreated.slice(8,10)}/${item.dateCreated.slice(2,4)}@${item.dateCreated.slice(11,16)}`
+                    item.date =  `${item.dateCreated.slice(5,7)}/${item.dateCreated.slice(8,10)}/${item.dateCreated.slice(2,4)} @${item.dateCreated.slice(11,16)}`
                     
                     //push data into storage array
                     arrayToDonateData.push(item);
@@ -159,7 +159,7 @@ const DonatedList = ( ) => {
                                 <td>{item.name} </td>
                                 <td> {item.category} </td>
                                 <td> ${item.estimatedValue} </td>
-                                <td><button className={styles.deleteButton} value={item._id } onClick={(event) => onDeleteItem(event.target.value)}>x</button></td>
+                                <td className={styles.deleteButton}><button className={styles.deleteButton} value={item._id } onClick={(event) => onDeleteItem(event.target.value)}>X</button></td>
                             </tr>
                         )}
                     </tbody>

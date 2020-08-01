@@ -12,6 +12,7 @@
     border-bottom: 1px;
     border-style: solid;
     border-radius: 7px;  
+    border-color: #ff01bf;
     padding: 3mm;
 }
 .colHeader {
@@ -37,18 +38,21 @@
     padding: 1mm;
     border-width: 2px;
     font-weight: bolder;
-    background: beige;
+    border-color: #ff01bf;
 }
 
 .listTitle {
     font-weight: bolder;
+    color: #ff01bf;;
     font-size: 22px;
-    border-radius: 7px;
+    font: impact;
 }
 
 table {
     border-spacing: 1 rem;
     width: fit-content;
+    border-color: #ff01bf;
+    font: impact;
 }
 tr {
     font-size: 10px;
@@ -59,15 +63,19 @@ tr {
     border-bottom: medium;
     border-width: .5px;
     padding: 5mm;
+    border-color: #ff01bf;
+
+
 }
 td {
     padding: 2px;
-    background-color: rgb(227, 246, 244);}
+}
 th {
     font-size: medium;
-    font-weight: bolder;
     padding: 2px;
-    background-color: rgb(227, 246, 244);}
+    background-color: #ff01bf;
+    color: white;
+}
 
 .tableWrap {
     height: 258px;
@@ -95,14 +103,19 @@ th {
     font-size: 20;
     font-weight: bolder;
     border: 1px solid antiquewhite;
-    background-color: rgb(227, 246, 244);
     border-radius: 1px;
     width: 270px;
     margin-left: 5mm;
+    color: white;
+    background-color: #ff01bf;
+    border-color: #ff01bf;
 }
 
 .deleteButton {
-    border-radius: 1px;
-    background: darkgray;
-
+    border-style: solid;
+    color: white;
+    border-color: #ff01bf;
+    background: transparent;
+    background-color: #ff01bf;
+    
 }

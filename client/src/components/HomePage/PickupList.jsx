@@ -50,7 +50,7 @@ const PickupList = () => {
                     if(item.pickedUp === false && item.claimedBy !== null && item.charityEmail !== null) {
                     
                         //makes the date look pretty
-                        item.date =  `${item.dateCreated.slice(5,7)}/${item.dateCreated.slice(8,10)}/${item.dateCreated.slice(2,4)}@${item.dateCreated.slice(11,16)}`
+                        item.date =  `${item.dateCreated.slice(5,7)}/${item.dateCreated.slice(8,10)}/${item.dateCreated.slice(2,4)} @${item.dateCreated.slice(11,16)}`
                     
                         arrayforPickupData.push(item);
                     }
@@ -163,7 +163,7 @@ const PickupList = () => {
                                 <td> {item.name} </td>
                                 <td> {item.Location = item.Location.toString().slice(0,5) || ''}</td>
                                 <td> {item.pickingUp}</td>
-                                <td> <button value={item._id} onClick={(event) => handlePickupItem(event.target.value)}>pickedUp</button></td>
+                                <td className={styles.deleteButton}> <button className={styles.deleteButton} value={item._id} onClick={(event) => handlePickupItem(event.target.value)}>complete</button></td>
                             </tr>
                         )}
                     </tbody>
