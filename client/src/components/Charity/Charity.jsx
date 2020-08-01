@@ -158,6 +158,12 @@ const Charity = (props) => { //
                                 </div>
 
                                 <div className={styles.buttonWrapper}>
+                                    <Link to='/chat' className={styles.charityButtonHomeLink}>
+                                        <button className={styles.charityButton}>Messages</button>
+                                    </Link>
+                                </div>
+
+                                <div className={styles.buttonWrapper}>
                                     <button className={styles.charityButton}>
                                         <div className={styles.downloadStatement}>
                                         <CSVLink
