@@ -3,6 +3,7 @@ import LandingPage from './Landing/landingPage.jsx';
 import Charity from '../components/Charity/Charity.jsx';
 import styles from '../styles/App.css';
 import AboutUs from './aboutUs.jsx';
+import Chat from './HomePage/Chat.jsx';
 
 import {
   BrowserRouter as Router,
@@ -36,6 +37,9 @@ export default class App extends Component {
             </Route>
             <Route path="/aboutUs">
               <AboutUs />
+            </Route>
+            <Route path="/chat">
+              <Chat />
             </Route>
           {/* </Switch> */}
         </Router>
