@@ -14,7 +14,7 @@ const data = [
     {
         name: 'Donornator',
         description: 'Donate 10 items',
-        icon: 'https://media0.giphy.com/media/LNkjG1IS3AgPtzSUcw/giphy.gif',
+        icon: 'https://media1.tenor.com/images/17ce8ad3cd8fed5ca160e6d8fc2ada8d/tenor.gif?itemid=9499425',
         value: 10,
     },
     {
@@ -43,7 +43,7 @@ const data = [
     {
         name: 'Donornator',
         description: 'Donate 10 items',
-        icon: 'https://media0.giphy.com/media/LNkjG1IS3AgPtzSUcw/giphy.gif',
+        icon: 'https://media1.tenor.com/images/17ce8ad3cd8fed5ca160e6d8fc2ada8d/tenor.gif?itemid=9499425',
         value: 10,
     },
     {
@@ -72,7 +72,7 @@ const data = [
     {
         name: 'Donornator',
         description: 'Donate 10 items',
-        icon: 'https://media0.giphy.com/media/LNkjG1IS3AgPtzSUcw/giphy.gif',
+        icon: 'https://media1.tenor.com/images/17ce8ad3cd8fed5ca160e6d8fc2ada8d/tenor.gif?itemid=9499425',
         value: 10,
     },
     {

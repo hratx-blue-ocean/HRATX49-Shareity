@@ -1,202 +1,170 @@
-
 .charityContainer {
-
     max-width: 1300px;
     min-width: 800px;
     width: 100%;
-    height: 100vh;
-    margin: 10% auto;
 }
 
 .charityWrapper {
-
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-auto-rows: minmax(100px, auto);
     grid-template-areas: 
-        "a a e e e e e e"
+
         "a a e e e e e e"           
         "b b c c c d d d"
         "b b c c c d d d"
         "b b c c c d d d"            
         "b b c c c d d d";
+    height: 100vh;
 }
 
 /* =====================================  */
 
 .charityInputAvatarContainer {
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     width: 100%;
-
 }
 
 .charityLogo {
     grid-area: a;
     box-sizing: border-box;  
-    /* background-color: aqua; */
     width: 100%;
     min-width: 180px;
     height: 100%;
+    padding-top: 30px;
 
 }
 
 .logoAvatarWrapper {
-
     display: flex;
     box-sizing: border-box; 
     flex-direction: column;
     align-items: center;
     justify-content: end;
-
     width: 100%;
 }
 
 .imageWrapper {
-
     display: inline-flex;
     justify-content: center;
     align-items: center;
     box-sizing: border-box; 
-
     width: 95%;
     max-width: 200px;
     height: 70%;
     max-height: 180px;
     min-height: 150px;
-
     margin-top: 1%;
-    /* border: 2px solid black;
-    border-radius: 50%; */
 }
 
 .charityCurrentAvatar {
-
     box-sizing: border-box;
-
     width: 70%;
     max-width: 140px;
     height: 70%;
     max-height: 140px;
-    border: 3px solid silver;
+    border: 2px solid antiquewhite;
     border-radius: 50%;
 
 }
 
-.fileUploadLabelWrapper {
-
+.nameWrapper {
     box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
+    line-height: 20px;
     width: 70%;
     max-width: 200px;
     height: 25px;
-
-    border: 2px solid black;
-    border-radius: 25px;
+    border: 2px solid antiquewhite;
+    border-radius: 7px;
     margin-top: 1%;
-
-    padding-top: 5px;
-
+    margin-bottom: 0.5%;
     font-size: 16px;
     font-style:  11px system-ui;
+    color: white;
+    background: rgb(227,99,135);
+    background: radial-gradient(circle, rgba(227,99,135,1) 0%, rgba(242,170,170,1) 100%);
+}
 
+.avatarName {
+    display: flex;
+    box-sizing: border-box; 
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 16px;
+}
 
+.fileUploadLabelWrapper {
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 20px;
+    width: 70%;
+    max-width: 200px;
+    height: 25px;
+    border: 2px solid antiquewhite;
+    border-radius: 7px;
+    margin-top: 1%;
+    font-size: 16px;
     color: white;
     background: rgb(227,99,135);
     background: radial-gradient(circle, rgba(227,99,135,1) 0%, rgba(242,170,170,1) 100%);
 }
 
 .fileUploadButtonLabel {
-
     box-sizing: border-box; 
     width: 100%;
     max-width: 200px;
     height: 25px;
     max-height: 25px;
-
     font-size: 16px;
-    font-style:  11px system-ui;
-
     cursor: pointer;
-
-
 }
 
 .charityInputButton > input {
-
     display: "none";
 }
 
-input[type="file" i] {
-
-    width: 70%;
-    height: 25px;
-
-    border: 2px solid black;
-    border-radius: 25px;
-    margin-top: 1%;
-
-}
-
-.charityInputSubmitButton {
+.submitImageLabelWrapper {
 
     box-sizing: border-box; 
     width: 70%;
     max-width: 200px;
     height: 25px;
+}
 
-    border: 2px solid black;
-    border-radius: 25px;
-    margin-top: 1.5%;
-
+.charityInputSubmitButton {
+    box-sizing: border-box; 
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    max-width: 200px;
+    height: 25px;
+    border: 2px solid antiquewhite;
+    border-radius: 7px;
+    margin-top: 2%;
+    line-height: 20px;
     cursor: pointer;
-
     color: white;
     background: rgb(227,99,135);
     background: radial-gradient(circle, rgba(227,99,135,1) 0%, rgba(242,170,170,1) 100%);
 }
 
-.nameWrapper {
 
-    display: flex;
-    box-sizing: border-box; 
-    align-items: center;
-    justify-content: end;
-    width: 70%;
-    height: 40px; 
-
-    font-size: 24px;
-}
-
-.avatarName {
-    
-    display: flex;
-    box-sizing: border-box; 
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 40px; 
-
-    font-size: 16px;
-    font-style:  11px system-ui;
-}
 
 /* =====================================  */
 
 .charityHeader {
     grid-area: e;
     box-sizing: border-box; 
-    justify-content: center;
-    align-items: center;
     width: 100%;
     height: 100%;
-    /* background-color: blue; */
+    max-height: 250px;
+    padding-top: 30px;
 }
 
 .outerHeaderWrapper {
@@ -213,24 +181,20 @@ input[type="file" i] {
 .charityListDonated {
     grid-area: c;
     box-sizing: border-box; 
-
+    max-height: 530px;
 }
 
 .charityDonorListWrapper { 
-    
     display: flex;
     box-sizing: border-box; 
     justify-content: center;
     align-items: center;
-
     width: 95%;
-    /* min-width: 250px; */
     height: 96%;
     margin: auto;
     margin-top: 1.5%;
-    border: 2px solid black;
-    border-radius: 25px;
-
+    border: 2px solid antiquewhite;
+    border-radius: 7px;
     background: rgb(166,220,239);
     background: radial-gradient(circle, rgba(166,220,239,1) 0%, rgba(221,243,245,1) 100%);
 }
@@ -240,24 +204,20 @@ input[type="file" i] {
 .charityListItemsToBePickedUp {
     grid-area: d;
     box-sizing: border-box; 
-    /* background-color: red; */
+    max-height: 530px;
 }
 
 .charityUserListWrapper {
-
     display: flex;
     box-sizing: border-box; 
     justify-content: center;
     align-items: center;
-
     width: 95%;
-    /* min-width: 250px; */
     height: 96%;
     margin: auto;
     margin-top: 1.5%;
-    border: 2px solid black;
-    border-radius: 25px;
-
+    border: 2px solid antiquewhite;
+    border-radius: 7px;
     background: rgb(166,220,239);
     background: radial-gradient(circle, rgba(166,220,239,1) 0%, rgba(221,243,245,1) 100%);
 }
@@ -267,42 +227,35 @@ input[type="file" i] {
 .charitySideNav {
     grid-area: b;
     box-sizing: border-box; 
-    /* background-color: pink; */
     justify-content: center;
-
     background: rgb(166,220,239);
     background: radial-gradient(circle, rgba(166,220,239,1) 0%, rgba(221,243,245,1) 100%);
 }
 
 .charitySideNav {
-
     display: flex;
     box-sizing: border-box; 
     justify-content: center;
     width: 95%;
     min-width: 180px;
     max-width: 200px;
+    max-height: 510px;
     height: 95%;
-    margin: auto;
-
-    border: 2px solid black;
-    border-radius: 15px;
+    margin: 1.5% auto 0 auto;
+    border: 2px solid antiquewhite;
+    border-radius: 7px;
 }
 
 .charityButtonWrapper {
-
     display: flex;
     box-sizing: border-box; 
     flex-direction: column;
     justify-content: start;
     align-items: center;
     width: 100%;
-
-    margin-top: 15px;
 }
 
 .buttonWrapper {
-
     display: inline-flex;
     box-sizing: border-box; 
     align-items: center;
@@ -310,16 +263,18 @@ input[type="file" i] {
     height: 60px;
 }
 
-.charityButtonHomeLink {
+.donatedButtonText {
+    font-size: 12px;
+    width: 185px;
+}
 
+.charityButtonHomeLink {
     box-sizing: border-box; 
     width: 100%;
     height: 45px;
-
 }
 
 .charityButton {
-
     display: flex;
     box-sizing: border-box; 
     justify-content: center;
@@ -327,12 +282,15 @@ input[type="file" i] {
     width: 100%;
     max-width: 185px;
     height: 45px;
-    border: 2px solid black;
-    border-radius: 10px;
-
+    border: 2px solid antiquewhite;
+    border-radius: 7px;
     cursor: pointer;
-
     color: white;
     background: rgb(227,99,135);
     background: radial-gradient(circle, rgba(227,99,135,1) 0%, rgba(242,170,170,1) 100%);
 }
+
+.downloadStatement {
+    font-size: 12px;
+}
+

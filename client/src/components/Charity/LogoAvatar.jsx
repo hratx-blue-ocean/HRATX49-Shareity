@@ -53,7 +53,10 @@ const LogoAvatar = () => {
                 <div className={styles.imageWrapper}>
                         <img className={styles.charityCurrentAvatar} src={currentAvatar} alt=''/>
                 </div>
-
+                {/* avatar name section */}
+                <div className={styles.nameWrapper}>
+                    <h2 className={styles.avatarName}>{user.name}</h2>
+                </div>
                 {/* container for image upload functionality */}
                 <div className={styles.charityInputAvatarContainer}>
                     <div className={styles.fileUploadLabelWrapper}>
@@ -66,20 +69,15 @@ const LogoAvatar = () => {
                             onChange={() => setImageFile(event.target.files[0])}
                         />
                     </div>
-
-                    {/* button to upload the selected file to the s3 bucket */}
+                {/* button to upload the selected file to the s3 bucket */}
+                </div>
+                <div className={styles.submitImageLabelWrapper}>
+                    {/* the label allows for the custom button styling of the standard input button */}
                     <button className={styles.charityInputSubmitButton} onClick={() =>
                         uploadImage(imageFile)}>
                         Upload
                     </button>
-
                 </div>
-
-                {/* avatar name section */}
-                <div className={styles.nameWrapper}>
-                    <h2 className={styles.avatarName}>Sir Stickenbottoms</h2>
-                </div>
-
             </div>
         </>
     )

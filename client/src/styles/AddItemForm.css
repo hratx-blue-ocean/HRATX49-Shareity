@@ -9,8 +9,8 @@
 
     margin-left: .5%;
 
-    border: 2px solid silver;
-    border-radius: 25px;
+    border: 2px solid antiquewhite;
+    border-radius: 7px;
 
     background: rgb(238,174,202);
     background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
@@ -29,8 +29,8 @@
 
     margin-right: .5%;
 
-    border: 2px solid silver;
-    border-radius: 25px;
+    border: 2px solid antiquewhite;
+    border-radius: 7px;
     background: rgb(238,174,202);
     background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
 }
@@ -41,7 +41,7 @@
     width: 85%;
     height: 85%;
 
-    border: 2px solid silver;
+    border: 2px solid antiquewhite;
     background: rgb(238,174,202);
     background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
 }
@@ -57,8 +57,8 @@
     width: 49%;
     height: 95%;
 
-    border: 2px solid silver;
-    border-radius: 25px;
+    border: 2px solid antiquewhite;
+    border-radius: 7px;
     background: rgb(238,174,202);
     background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
 }
@@ -115,7 +115,7 @@
 
     margin: 5px 5px;
 
-    border: 1px solid silver;
+    border: 2px solid antiquewhite;
     color: white;
     background: rgb(238,174,202);
     background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
@@ -142,8 +142,8 @@
     box-sizing: border-box;
     margin: 5px 5px;
 
-    border: 1px solid silver;
-    border-radius: 10px;
+    border: 2px solid antiquewhite;
+    border-radius: 7px;
     color: white;
     background: rgb(238,174,202);
     background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
@@ -155,8 +155,8 @@
     box-sizing: border-box;
     margin: 5px 5px;
 
-    border: 1px solid silver;
-    border-radius: 10px;
+    border: 2px solid antiquewhite;
+    border-radius: 7px;
     color: white;
     background: rgb(238,174,202);
     background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);

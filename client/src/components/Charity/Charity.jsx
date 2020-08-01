@@ -8,6 +8,7 @@ import PickupList from '../HomePage/PickupList.jsx';
 import DonatedList from '../HomePage/DonatedList.jsx';
 import UpForDonateList from '../HomePage/UpForDonateList.jsx';
 import AddItem from '../Modals/AddItem.jsx';
+import UpdatePassword from '../Modals/UpdatePassword.jsx';
 import {
     BrowserRouter as Router,
     Switch,
@@ -106,17 +107,21 @@ const Charity = (props) => { //
         donorButtons =
             <div>
                 <div className={styles.buttonWrapper}>
-                    <AddItem className={styles.charityButton} buttonText={'ADD ITEM'}/>
+                    <AddItem className={styles.charityButton} buttonText={'ADD ITEM'} addAchievement={addAchievement}/>
                 </div>
                 <div className={styles.buttonWrapper}>
+                    <div className={styles.donatedButtonText}>
                         <button className={styles.charityButton}>
                             <div> Items Donated <div className={styles.winningText}> {itemQty}</div></div>
                         </button>
                     </div>
-                    <div className={styles.buttonWrapper}>
+                </div>
+                <div className={styles.buttonWrapper}>
+                    <div className={styles.donatedButtonText}>
                         <button className={styles.charityButton}>
                             <div> Amount <div className={styles.winningText}>${itemVal.toFixed(0)}</div></div>
                         </button>
+                    </div>
                 </div>
             </div>
 
@@ -154,14 +159,17 @@ const Charity = (props) => { //
 
                                 <div className={styles.buttonWrapper}>
                                     <button className={styles.charityButton}>
+                                        <div className={styles.downloadStatement}>
                                         <CSVLink
                                             data={taxData}>DOWNLOAD STATEMENT
                                         </CSVLink>
+                                        </div>
                                     </button>
                                 </div>
 
                                 <div className={styles.buttonWrapper}>
-                                    <button className={styles.charityButton}>UPDATE PASSWORD</button>
+                                    {/* <button className={styles.charityButton}>UPDATE PASSWORD</button> */}
+                                    <UpdatePassword />
                                 </div>
                                 {donorButtons}
                             </div>

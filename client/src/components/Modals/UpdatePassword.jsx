@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
-import styles from '../../styles/AddItem.css'
-import Form from '../addItemForm.jsx';
+import styles from '../../styles/updatePass.css'
+import UpdatePassForm from '../updatePassForm.jsx'
 
-const AddItem = ({ buttonText, addAchievement }) => {
+const UpdatePassword = ({ buttonText, addAchievement }) => {
 
     const [modalView, setModalView] = useState('none');
     const [buttonView, setButtonView] = useState('block');
-    // this state may be needed when we get to styling
-    // const [buttonVis, setButtonVis] = useState('hidden');
 
-    // function that toggle whether the modal is visible or it's button is
     const switchViews = () => {
 
         if (modalView === 'none') {
@@ -28,33 +25,33 @@ const AddItem = ({ buttonText, addAchievement }) => {
 
     return (
 
-        <div className={styles.modalWrapper}>
+        <div className={styles.passModalWrapper}>
 
             <div>
 
-                <div className={styles.outerButtonWrapper} style={{display: buttonView}} >
+                <div className={styles.outerPassButtonWrapper} style={{display: buttonView}} >
                     {/* this label allows for custom styling of modal button */}
                     <label
-                        className={styles.modelButtonLabel}
+                        className={styles.passModelButtonLabel}
                         style={{display: buttonView}}
                         onClick={() => switchViews()}
                         htmlFor="modalButton"
                     >
-                        {buttonText || 'PUSH'}
+                        {buttonText || 'UPDATE PASSWORD'}
                     </label>
-                    <div id="modalButton" className={styles.innerButtonWrapper} style={{ diplay: 'none' }}>
-                        <button className={styles.addItemButton} style={{ display: 'none' }}>
+                    <div id="modalButton" className={styles.innerPassButtonWrapper} style={{ diplay: 'none' }}>
+                        <button className={styles.updatePassButton} style={{ display: 'none' }}>
 
                         </button>
                     </div>
                 </div>
 
 
-                <div className={styles.innerModalWrapper} style={{ display: modalView }}>
-                    <div className={styles.modalInnerContainer}>
-                        <div className={styles.modalContentContainer}>
+                <div className={styles.innerPassModalWrapper} style={{ display: modalView }}>
+                    <div className={styles.passModalInnerContainer}>
+                        <div className={styles.passModalContentContainer}>
                             {/* passing in the visibilty toggle to the form */}
-                            <Form closeModal={switchViews}/>
+                            <UpdatePassForm closeModal={switchViews}/>
 
                         </div>
                         {/* uncomment this button if you want to use this component without another way to close the modal */}
@@ -69,4 +66,4 @@ const AddItem = ({ buttonText, addAchievement }) => {
     )
 }
 
-export default AddItem;
+export default UpdatePassword;
