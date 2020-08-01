@@ -35,7 +35,7 @@ const AddItem = ({ buttonText, addAchievement }) => {
                 <div className={styles.outerButtonWrapper} style={{display: buttonView}} >
                     {/* this label allows for custom styling of modal button */}
                     <label
-                        className={styles.modelButtonLabel}
+                        className={styles.modalButtonLabel}
                         style={{display: buttonView}}
                         onClick={() => switchViews()}
                         htmlFor="modalButton"
