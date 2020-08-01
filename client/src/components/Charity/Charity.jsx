@@ -104,7 +104,7 @@ const Charity = (props) => { //
                 <div className={styles.buttonWrapper}>
                     <AddItem className={styles.charityButton} buttonText={'ADD ITEM'} addAchievement={addAchievement}/>
                 </div>
-            <div className={styles.buttonWrapper}>
+
                 <div className={styles.buttonWrapper}>
                     <button className={styles.charityButton}>
                         <div> Items Donated: {csvData.length - 1}</div>
@@ -115,7 +115,7 @@ const Charity = (props) => { //
                         <div> $ amount: {totalVal}</div>
                     </button>
                 </div>
-            </div>
+
             </div>
 
         leftList = <UpForDonateList />
@@ -152,9 +152,11 @@ const Charity = (props) => { //
 
                                 <div className={styles.buttonWrapper}>
                                     <button className={styles.charityButton}>
+                                        <div className={styles.downloadStatement}>
                                         <CSVLink
                                             data={taxData}>DOWNLOAD STATEMENT
                                         </CSVLink>
+                                        </div>
                                     </button>
                                 </div>
 

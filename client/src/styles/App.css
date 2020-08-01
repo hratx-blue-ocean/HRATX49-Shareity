@@ -3,10 +3,10 @@ body {
   display: flex;
   justify-content: center;
 
-  /* -webkit-animation: bgcolor 20s infinite;
+  -webkit-animation: bgcolor 20s infinite;
   animation: bgcolor 10s infinite;
   -webkit-animation-direction: alternate;
-  animation-direction: alternate; */
+  animation-direction: alternate;
   
 }
 
@@ -18,7 +18,7 @@ body {
   max-width: 1300px;
   margin: auto;
 }
-/* 
+
 @keyframes bgcolor {
   0% {
     
@@ -45,4 +45,4 @@ body {
     background-color: #faecfd;
   }
 }
- */
+
