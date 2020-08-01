@@ -42,7 +42,7 @@
  }
 
  .input{
-   margin: 12px 0px;
+  margin: 12px 0px;
  }
 
  .submitBtn{
@@ -59,8 +59,8 @@
  }
 
  .accountOptions{
-   display: flex;
-   flex-direction: column;
+  display: flex;
+  flex-direction: column;
  }
 
  .accountText{

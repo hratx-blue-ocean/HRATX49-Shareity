@@ -23,9 +23,9 @@
 
   .closeBtn{
     font-size: 30px;
-     color: red;
-     text-align: right;
-     padding-right: 10px;
+    color: red;
+    text-align: right;
+    padding-right: 10px;
    }
 
    .cardImage {
@@ -48,9 +48,9 @@
    }
 
    .userAreaInner{
-     display: flex;
-     flex-direction: column;
-     margin-top: 40%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 40%;
    }
 
    .cardDonor{
@@ -71,13 +71,13 @@
 
 
    .msgBtn{
-     border: none;
-     border-radius: 10px;
-     margin-bottom: 10px;
-     padding: 10px 40px;
-     background-color: white;
-     color: #FF01BF;
-     border: 2px solid #FF01BF;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 10px 40px;
+    background-color: white;
+    color: #FF01BF;
+    border: 2px solid #FF01BF;
    }
 
    .msgBtnA{
@@ -96,8 +96,8 @@
   }
 
   .msgBtnA:hover{
-   background-color: #FF01BF;
-   color: white;
+  background-color: #FF01BF;
+  color: white;
   }
 
   .claimSpacing{
@@ -144,7 +144,7 @@
    }
 
    .conditionAndZipContainerInner{
-     display: flex;
+    display: flex;
    }
 
    .productDescriptionTitle{
@@ -153,6 +153,6 @@
    }
 
    .description{
-     display: flex;
-     flex-direction: column;
+    display: flex;
+    flex-direction: column;
    }
