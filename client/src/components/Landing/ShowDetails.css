@@ -67,12 +67,8 @@
 
    .btnArea{
     margin-top: 30%;
-
    }
 
-   .msgBtnContainer{
-    /* test msg btn */
-   }
 
    .msgBtn{
      border: none;
@@ -109,12 +105,10 @@
   }
 
    .imgArea{
-    /* test img area */
     width: 45%;
    }
 
    .rightSide{
-    /* test right side */
     width: 30%;
     display: flex;
     flex-direction: column;
@@ -124,16 +118,8 @@
    .titleDescriptor{
     font-weight: bold;
     margin: 5px 0px
-
    }
 
-   .productNameTitle{
-
-   }
-
-   .productCategoryTitle{
-
-   }
 
    .productNameContainer{
     display: flex;
@@ -151,10 +137,6 @@
     margin: 10px 0px;
    }
 
-   .productCategory{
-    /* test product category */
-   }
-
    .conditionAndZipContainer{
     /* test condition and zip container */
     display: flex;
@@ -165,25 +147,9 @@
      display: flex;
    }
 
-   .productConditionAndLocationTitle{
-
-   }
-
-   .condition{
-    /* test condition */
-   }
-
-   .zip{
-    /* test zip */
-   }
-
    .productDescriptionTitle{
     display: flex;
     flex-direction: column;
-   }
-
-   .cardDescription{
-
    }
 
    .description{
