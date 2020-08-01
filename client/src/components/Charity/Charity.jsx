@@ -143,10 +143,11 @@ const Charity = (props) => { //
 
                     {/* header */}
                     <div className={styles.charityHeader}>
-                        <div className={styles.outHeaderWrapper}>
+                        <div className={styles.outterHeaderWrapper}>
                             <CharityHeader />
                         </div>
                     </div>
+                    
                         {/* side nav */}
                         <div className={styles.charitySideNav}>
                             {/* this is where the side nav buttons start */}
@@ -174,6 +175,7 @@ const Charity = (props) => { //
                                 {donorButtons}
                             </div>
                         </div>
+
 
                         {/* list donated */}
                         <div className={styles.charityListDonated}>
