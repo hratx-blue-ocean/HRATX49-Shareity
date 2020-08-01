@@ -28,9 +28,9 @@ const Footer = ({ typeOfUser }) => {
     <div className={styles.footerContainer}>
       <div className={styles.leftSide}>
         {/* Info Area */}
-        <a className={styles.aTags} href="https://www.hackreactor.com/campuses">Designed By HRATX49</a>
-        <a className={styles.aTags} href="https://github.com/hratx-blue-ocean/HRATX49-Sharity">GitHub</a>
-        <a className={styles.aTags} href="https://www.hackreactor.com/">HackReactor</a>
+        <a className={styles.aTags} href="https://www.hackreactor.com/campuses" target="_blank">Designed By HRATX49</a>
+        <a className={styles.aTags} href="https://github.com/hratx-blue-ocean/HRATX49-Sharity" target="_blank">GitHub</a>
+        <a className={styles.aTags} href="https://www.hackreactor.com/" target="_blank">HackReactor</a>
       </div>
       <div className={styles.center}>
         {/* Empty */}
