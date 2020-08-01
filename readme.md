@@ -1,6 +1,5 @@
-![Logo]()
+![Logo](client/dist/sharity.png)
 
-<img src="https://imgur.com/a/qCFLQvv" alt="Logo" />
 _________________________
 # Welcome To Sharity
 Sharity is a Online, Donor to Charity, Web Application that allows for individuals to sign up and donate their unwanted items for Charities to then claim. Our team of Full Stack Software Engineers was approached by a client who asked us to build the Sharity web application. We were given feedback throughout and a little over a week to develop and deploy the application. 
@@ -80,11 +79,11 @@ Go to localhost:5000/
 _______________________
 # Wire Frames
 
- Landing Page:(https://imgur.com/a75QRxe)
- Charity Page:(https://imgur.com/02MzkSt)
- User Page:(https://imgur.com/S16jalV)
- Login & SignUp Modal:(https://imgur.com/RkkHa3b)
- Items Details:(https://imgur.com/T95HqkY)
+ ![Landing Page](demo/landing.png)
+ ![Charity Page](demo/chartiyProfile.png)
+ ![User Page](demo/userProfile.png)
+ ![Login & SignUp Modal](demo/loginSignUpModal.png)
+ ![Items Details](demo/itemDetails/png)
 
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
