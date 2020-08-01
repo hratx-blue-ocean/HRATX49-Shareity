@@ -8,12 +8,17 @@
 
 .navBarLogin{
   padding-left: 20px;
-  font-size: 45px;
+  font-size: 30px;
   color: white;
   display: inline-block;
   margin-right: 29px;
   margin-top: 20px;
 }
+
+.aTag {
+  margin-bottom: 100px;
+}
+
 
 .navBarUserProfileArea{
   padding-right: 20px;
