@@ -13,9 +13,9 @@ const Cards = ({ items, loading, displayCard, sortBy }) => {
   return (
     <div>
       <div className={styles.sortTitleContainer}>
-        <div>
+        <div className={styles.linkContainer}>
           <Link to={{ pathname: "/aboutUs" }}>
-            <button onClick={() => { event.preventDefault() }}>About Us</button>
+            <button className={styles.aboutBtn} onClick={() => { event.preventDefault() }}>About Us</button>
           </Link>
         </div>
         <div className={styles.btnContainer}>

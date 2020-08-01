@@ -39,9 +39,21 @@
   font-style: italic;
 }
 
-.sortBtn{
+.sortBtn,
+.aboutBtn{
   border: none;
   margin: 0px 20px;
   padding: 15px 30px;
   border-radius: 15px;
+}
+
+.btnContainer{
+  display: inline-block;
+  width: 80%;
+}
+
+.linkContainer{
+  display: inline-block;
+  width: 20%;
+  border-right: 1px solid black;
 }
