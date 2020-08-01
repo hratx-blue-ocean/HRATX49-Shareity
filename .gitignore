@@ -71,6 +71,7 @@ bundle.js
 #config
 app.yaml
 /server/config.js
+package-lock.json
 
 # Access for S3
 /server/routes/api/superSecretAccess.js

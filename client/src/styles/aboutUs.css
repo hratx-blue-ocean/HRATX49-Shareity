@@ -1,0 +1,33 @@
+.header {
+  border: 2px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  width: 100%;
+  top: 0;
+  background-color: #e36387;
+}
+
+.link {
+  border: none;
+  margin: 0px 20px;
+  padding: 15px 30px;
+  border-radius: 15px;
+}
+
+.container {
+  box-shadow: -10px 10px 12px -1px rgba(0,0,0,0.59);
+  background-color: white;
+  padding: 7px;
+  margin: 15px auto;
+  width: 60%;
+}
+
+.image {
+  width:80%;
+}
+
+.marginTop {
+  margin-top: 10px;
+}
