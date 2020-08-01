@@ -1,0 +1,16 @@
+.searchBar {
+    width: 450px;
+    height: 45px;
+    padding: 8px;
+    border-radius:  7px  0 0 7px ;
+    outline: none;
+    border: none;
+}
+
+.searchButton {
+    height: 45px;
+    outline: none;
+    background-color: #fff;
+    border: none;
+    border-radius:  0 7px 7px 0;
+}
