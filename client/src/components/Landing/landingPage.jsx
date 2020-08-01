@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import NavBar from './LandingSubComponents/navBar.jsx';
-import Cards from './LandingSubComponents/cards.jsx';
-import Axios from 'axios';
-import Paginater from './LandingSubComponents/paginate.jsx';
-import ShowDetails from './LandingSubComponents/showDetails.jsx';
 import Login from './Login.jsx';
-import styles from './landingPage.css'
+import Cards from './LandingSubComponents/cards.jsx';
+import ShowDetails from './LandingSubComponents/showDetails.jsx';
+import Paginater from './LandingSubComponents/paginate.jsx';
+import Footer from './LandingSubComponents/footer.jsx';
+import styles from './landingPage.css';
+import Axios from 'axios';
 var _ = require('lodash');
 
 let currentUser;
@@ -164,6 +165,9 @@ const LandingPage = () => {
           itemsPerPage={itemsPerPage}
           totalItems={items.length}
         />
+        <div>
+        <Footer />
+        </div>
       </div>
     </div>
   );
