@@ -93,14 +93,8 @@ const DonatedList = ( ) => {
             userType: userData.userType
         }
         console.log('client side', data, typeof data)
-<<<<<<< HEAD
-
         Axios.delete('/items',
         {params: {
-=======
-        Axios.delete('/items',
-        {params: {
->>>>>>> rebase
             _id: id,
             email: userData.email,
             userType: userData.userType
@@ -135,16 +129,10 @@ const DonatedList = ( ) => {
         <div className={styles.listWrap}>
             {popup}
             <div className={styles.listWrapHeader}>
-<<<<<<< HEAD
-                <select
-                    className={styles.listSelector}
-                    value={sortType}
-=======
                     <div>Items up for Donation: {filteredData.length}</div>
                 <select
                     className={styles.listSelector}
                     value={sortType}
->>>>>>> rebase
                     onChange={(e) => handleSort(e, e.target.value)}
                 >
                     {sortOptions.map((item, i) =>
