@@ -13,4 +13,5 @@
     background-color: #fff;
     border: none;
     border-radius:  0 7px 7px 0;
+    border-left: 1px solid lightgray;
 }

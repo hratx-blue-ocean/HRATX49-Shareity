@@ -40,14 +40,10 @@ const NavBar = ({ login, isLoggedIn, setSearchItems }) => {
         <Search setSearchItems={setSearchItems}/>
     
         <div>
-          {/* Log in and Log out button */}
-          <div className={styles.navBarLogin}>
-            {log}
-          </div>
           
           {/* User's picture or default avatar */}
           {isLoggedIn ?
-            <Link to={{ pathname: "/Charity" }}>
+            <Link to={{ pathname: "/Charity" }} className="">
               <div className={styles.navBarUserProfileArea}>
                 {/* User Profile Area */}
                 <img className={styles.navBarUserImage} src={profilePic} alt="PLaceholder" />
@@ -59,6 +55,10 @@ const NavBar = ({ login, isLoggedIn, setSearchItems }) => {
               <img className={styles.navBarUserImage} onClick={(e) => alertToLogIn(e)} src="./userIcon.png" alt="Placeholder" />
             </div>
           }
+          {/* Log in and Log out button */}
+          <div className={styles.navBarLogin}>
+            {log}
+          </div>
         </div>
       </div>
     </div>
