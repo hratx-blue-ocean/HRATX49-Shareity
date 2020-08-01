@@ -37,27 +37,29 @@ const NavBar = ({ login, isLoggedIn, setSearchItems }) => {
         <div className={styles.navBarLogo}>
           <Greeting />
         </div>
-        <Search setSearchItems={setSearchItems} />
-        <div className={styles.navBarLogin}>
-          {/* Log in || Log out btn */}
-          {log}
-        </div>
+        <Search setSearchItems={setSearchItems}/>
+    
         <div>
-        </div>
-        {/* If Someone IS Logged In */}
-        {isLoggedIn ?
-          <Link to={{ pathname: "/Charity" }}>
+          {/* Log in and Log out button */}
+          <div className={styles.navBarLogin}>
+            {log}
+          </div>
+          
+          {/* User's picture or default avatar */}
+          {isLoggedIn ?
+            <Link to={{ pathname: "/Charity" }}>
+              <div className={styles.navBarUserProfileArea}>
+                {/* User Profile Area */}
+                <img className={styles.navBarUserImage} src={profilePic} alt="PLaceholder" />
+              </div>
+            </Link>
+            : //If Someone is Not Logged in
             <div className={styles.navBarUserProfileArea}>
               {/* User Profile Area */}
-              <img className={styles.navBarUserImage} src={profilePic} alt="PLaceholder" />
+              <img className={styles.navBarUserImage} onClick={(e) => alertToLogIn(e)} src="./userIcon.png" alt="Placeholder" />
             </div>
-          </Link>
-          : //If Someone is Not Logged in
-          <div className={styles.navBarUserProfileArea}>
-            {/* User Profile Area */}
-            <img className={styles.navBarUserImage} onClick={(e) => alertToLogIn(e)} src="./userIcon.png" alt="PLaceholder" />
-          </div>
-        }
+          }
+        </div>
       </div>
     </div>
   )

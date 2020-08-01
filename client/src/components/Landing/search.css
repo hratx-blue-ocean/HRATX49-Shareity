@@ -1,6 +1,6 @@
 .searchBar {
     width: 450px;
-    height: 45px;
+    height: 30px;
     padding: 8px;
     border-radius:  7px  0 0 7px ;
     outline: none;
@@ -8,7 +8,7 @@
 }
 
 .searchButton {
-    height: 45px;
+    height: 30px;
     outline: none;
     background-color: #fff;
     border: none;
