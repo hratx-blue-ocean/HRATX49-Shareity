@@ -53,7 +53,10 @@ const LogoAvatar = () => {
                 <div className={styles.imageWrapper}>
                         <img className={styles.charityCurrentAvatar} src={currentAvatar} alt=''/>
                 </div>
-
+                {/* avatar name section */}
+                <div className={styles.nameWrapper}>
+                    <h2 className={styles.avatarName}>{user.name}</h2>
+                </div>
                 {/* container for image upload functionality */}
                 <div className={styles.charityInputAvatarContainer}>
                     <div className={styles.fileUploadLabelWrapper}>
@@ -74,12 +77,6 @@ const LogoAvatar = () => {
                     </button>
 
                 </div>
-
-                {/* avatar name section */}
-                <div className={styles.nameWrapper}>
-                    <h2 className={styles.avatarName}>Sir Stickenbottoms</h2>
-                </div>
-
             </div>
         </>
     )
