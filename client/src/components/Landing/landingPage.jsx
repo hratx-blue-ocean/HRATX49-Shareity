@@ -11,7 +11,7 @@ var _ = require('lodash');
 let currentUser;
 let logged;
 
-if (!localStorage.length === 0) {
+if (localStorage.token) {
   currentUser = JSON.parse(localStorage.user).type;
   logged = true;
 } else {
