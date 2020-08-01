@@ -110,6 +110,11 @@
     background-color: whitesmoke;;
 }
 
+.fileUploadLabelWrapper:hover {
+    background-color: #FF01BF;
+    transition: .3s;
+}
+
 .fileUploadButtonLabel {
     box-sizing: border-box; 
     width: 100%;
@@ -132,6 +137,7 @@
     height: 25px;
 }
 
+
 .charityInputSubmitButton {
     box-sizing: border-box; 
     display: flex;
@@ -147,6 +153,11 @@
     border: 2px solid #FF01BF;
     color: black;
     background-color: whitesmoke;
+}
+
+.charityInputSubmitButton:hover {
+    background-color: #FF01BF;
+    transition: .3s;
 }
 
 
@@ -280,6 +291,12 @@
     background-color: whitesmoke;
     color: black;
     cursor: pointer;
+}
+
+.charityButton:hover {
+    background-color: #FF01BF;
+    transition: .3s;
+    text-decoration: underline;
 }
 
 .downloadStatement {
