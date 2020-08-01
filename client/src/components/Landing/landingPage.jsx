@@ -10,7 +10,8 @@ var _ = require('lodash');
 
 let currentUser;
 let logged;
-if (localStorage.user) {
+
+if (localStorage.token) {
   currentUser = JSON.parse(localStorage.user).type;
   logged = true;
 } else {
@@ -78,7 +79,6 @@ const LandingPage = () => {
 
   //Click Handler for logging in
   const closeLogin = () => {
-
     setLoginClicked(false);
     if (isLoggedIn) {
       ///show wlcome message
@@ -146,7 +146,7 @@ const LandingPage = () => {
        </div>
       }
       <div className={styles.navBarContainer}>
-        < NavBar login={handlingLogin} isLoggedIn={isLoggedIn} />
+        < NavBar setSearchItems={setItems} login={handlingLogin} isLoggedIn={isLoggedIn} />
       </div>
       <div className={styles.bodyContainer}>
         {loginClicked && <Login closeLogin={closeLogin} setTypeOfUser={setTypeOfUser} isLoggedIn={setIsLoggedIn} />}

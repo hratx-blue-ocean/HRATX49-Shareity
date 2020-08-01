@@ -30,12 +30,21 @@
     height: 40px;
 }
 .listSelector {
-    font-size: 10px;
+    font-size: 13px;
+    border-radius: 2px;
+    float: right;
+    margin-top: 3px;
+    padding: 1mm;
+    border-width: 2px;
+    font-weight: bolder;
+    background: beige;
+   
 }
 
 .listTitle {
-    font-size: 12px;
-    text-align: center;
+    font-weight: bolder;
+    font-size: 22px;
+    border-radius: 10px;
 }
 
 table {
@@ -43,18 +52,36 @@ table {
     width: fit-content;
 }
 tr {
-    font-size: 8px;
+    font-size: 10px;
+    text-align: center;
     width: fit-content;
+    font-style: italic;
+    word-wrap: break-word;
+    border-bottom: medium;
+    border-width: .5px;
+    padding: 5mm;
 }
+td {
+    padding: 2px;
+    background-color: rgb(227, 246, 244);}
+th {
+    font-size: medium;
+    font-weight: bolder;
+    padding: 2px;
+    background-color: rgb(227, 246, 244);}
 
 .tableWrap {
-    height: 280px;
-    overflow: hidden scroll;
+    height: 258px;
+    overflow: hidden scroll;    
 }
+
 .listWrap {
-    height: 300px;
+    height: 371px;
 }
 .listWrapHeader {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 10px
 
 }
 .pickupTable {
@@ -63,5 +90,22 @@ tr {
 
 .totals {
     font-size: large;
+
+}
+.totalPickup {
+    font-size: 20;
+    font-weight: bolder;
+    border: solid;
+    border-width: 1px;
+    background-color: rgb(227, 246, 244);
+    border-color: black;
+    border-radius: 1px;
+    width: 270px;
+    margin-left: 5mm;
+}
+
+.deleteButton {
+    border-radius: 1px;
+    background: darkgray;
 
 }

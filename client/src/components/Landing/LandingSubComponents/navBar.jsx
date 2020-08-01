@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from '../LandingSubComponents/navBar.css';
+import Search from '../search.jsx';
 import {
   BrowserRouter as Router,
   Link,
@@ -14,7 +15,7 @@ if (localStorage.length === 0 || JSON.parse(localStorage.user).profilePic === nu
   var profilePic = JSON.parse(localStorage.user).profilePic;
 }
 
-const NavBar = ({ login, isLoggedIn }) => {
+const NavBar = ({ login, isLoggedIn, setSearchItems }) => {
   //Alert 
   const alertToLogIn = (event) => {
     event.preventDefault();
@@ -38,6 +39,9 @@ let log;
         <div className={styles.navBarLogo}>
           {/* Logo Area */}
           <Greeting />
+        </div>
+        <div>
+          <Search setSearchItems={setSearchItems}/>
         </div>
         {/* If Someone IS Logged In */}
         {isLoggedIn ?

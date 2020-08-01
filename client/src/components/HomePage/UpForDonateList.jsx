@@ -7,7 +7,7 @@ var _ = require('lodash');
 
 const DonatedList = ( ) => {
 
-    var title='Items Available for Donation'
+    var title='Up for Donation'
     var sortOptions = ['dateCreated', 'estimatedValue', 'name', 'category'];
     //set states of data and sort options
     const [filteredData, setData] = useState([])
@@ -49,9 +49,7 @@ const DonatedList = ( ) => {
                 if(item.pickedUp === false  && item.claimedBy == null ) {
 
                     //makes the date look pretty
-                    item.date =  `${item.dateCreated.slice(5,7)}/\
-                    ${item.dateCreated.slice(8,9)}/${item.dateCreated.slice(0,4)}\
-                    at ${item.dateCreated.slice(11,16)}`
+                    item.date =  `${item.dateCreated.slice(5,7)}/${item.dateCreated.slice(8,10)}/${item.dateCreated.slice(2,4)}@${item.dateCreated.slice(11,16)}`
                     
                     //push data into storage array
                     arrayToDonateData.push(item);
@@ -93,6 +91,7 @@ const DonatedList = ( ) => {
             userType: userData.userType
         }
         console.log('client side', data, typeof data)
+
         Axios.delete('/items', 
         {params: { 
             _id: id,
@@ -129,7 +128,6 @@ const DonatedList = ( ) => {
         <div className={styles.listWrap}>
             {popup}
             <div className={styles.listWrapHeader}>
-                    <div>Items up for Donation: {filteredData.length}</div>
                 <select 
                     className={styles.listSelector}  
                     value={sortType} 
@@ -147,10 +145,11 @@ const DonatedList = ( ) => {
                 <table>
                     <thead className={styles.listRowHeaders}>
                         <tr>
-                            <th>date</th>
-                            <th> name</th>
-                            <th>category</th>
-                            <th>value</th>
+                            <th>Date</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Value</th>
+                            <th>X</th>
                         </tr>
                     </thead>
                     <tbody className={styles.listRowWrap}>  
@@ -160,11 +159,15 @@ const DonatedList = ( ) => {
                                 <td>{item.name} </td>
                                 <td> {item.category} </td>
                                 <td> ${item.estimatedValue} </td>
-                                <td><button value={item._id } onClick={(event) => onDeleteItem(event.target.value)}>X</button></td>
+                                <td><button className={styles.deleteButton} value={item._id } onClick={(event) => onDeleteItem(event.target.value)}>x</button></td>
                             </tr>
                         )}
                     </tbody>
                 </table>
+            </div>
+            <div className={styles.totalPickup}>
+            Items up for Donation: {filteredData.length}
+
             </div>
         </div>
 

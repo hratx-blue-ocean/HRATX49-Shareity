@@ -5,7 +5,6 @@ import { Card } from 'react-bootstrap';
 
 var _ = require('lodash');
 
-
 const PickupList = () => {
 
     //set users pickup data, sorting options and boolean if charity
@@ -48,11 +47,17 @@ const PickupList = () => {
             .then(res => {
                 //pushed to data array if item hasnt been picked up, but HAS been claimed
                 res.data.items.map((item) => {
-                    if(item.pickedUp === false && item.claimedBy !== "") {
+                    if(item.pickedUp === false && item.claimedBy !== null && item.charityEmail !== null) {
+                    
                         //makes the date look pretty
-                        item.date =  `${item.dateCreated.slice(5,7)}/${item.dateCreated.slice(8,9)}/${item.dateCreated.slice(0,4)} at ${item.dateCreated.slice(11,16)}`
+                        item.date =  `${item.dateCreated.slice(5,7)}/${item.dateCreated.slice(8,10)}/${item.dateCreated.slice(2,4)}@${item.dateCreated.slice(11,16)}`
                     
                         arrayforPickupData.push(item);
+                    }
+                    if(charity) {
+                        item.pickingUp = item.donor
+                    } else {
+                        item.pickingUp = item.charityEmail
                     }
                 })    
             }) //sets state of pickupdata
@@ -70,19 +75,27 @@ const PickupList = () => {
         sortArray(name)
     }
 
-    const handlePickupItem = (event, id) => {
-        event.preventDefault();
+    function handlePickupItem (event) {
+        //if no local storage exists, then do nothing
+        if(!localStorage.getItem('user')) {
+            return;
+        }
+        //event.preventDefault();
         if(charity) {
-            let charityInfo = JSON.parse(localStorage.user);
+            let charityInfo = JSON.parse(localStorage.getItem('user'));
             let charityEmail = charityInfo.email;
+
             Axios.put('/items/', {
                 user: charityEmail,
                 userType: 'charity',
-                _id: id,
+                _id: event,
                 item: {
                     pickedUp: true,
                 }
             }), getUserItemsData()
+        } else {
+
+            alert('only Charities can complete items as picked up')
         }
     }
     
@@ -107,17 +120,18 @@ const PickupList = () => {
     //assigns title and sortoptions for list
     var title = 'Items for Pickup';
     var sortOptions = ['date', 'name', 'Location']
-    var pickupItem = ''
+    var pickupCol = <th>Claimed By</th>
 
     //different selectors for a charity
     if(charity) {
     sortOptions = ['date', 'name', 'Location', 'estimatedValue'];
-    pickupItem = <button onclick={event => handlePickupItem()}>pickup</button>
+    pickupCol = <th>Donor</th>
     }
 
     return (
         <div className={styles.listWrap}>
             <div className={styles.listWrapHeader}>
+                <span className={styles.listTitle}>  {title}</span>
                 <select 
                     className={styles.listSelector} 
                     value={sortType} 
@@ -129,16 +143,17 @@ const PickupList = () => {
                 }
                 </select>
 
-                <span className={styles.listTitle}>  {title}</span>
 
             </div>
             <div className={styles.tableWrap}>
                 <table className={styles.pickupTable}>
                     <thead className={styles.listRowHeaders}>
                         <tr>
-                        <th> date </th>
-                        <th> name</th>
-                        <th> zip </th>
+                        <th> Date </th>
+                        <th> Name</th>
+                        <th> Zip </th>
+                        {pickupCol}
+                        <th>Pickedup?</th>
                         </tr>
                     </thead>
                     <tbody className={styles.listRowWrap}>   
@@ -147,15 +162,17 @@ const PickupList = () => {
                                 <td> {item.date} </td>
                                 <td> {item.name} </td>
                                 <td> {item.Location = item.Location.toString().slice(0,5) || ''}</td>
-                                <td> {pickupItem}</td>
+                                <td> {item.pickingUp}</td>
+                                <td> <button value={item._id} onClick={(event) => handlePickupItem(event.target.value)}>pickedUp</button></td>
                             </tr>
                         )}
                     </tbody>
-                    <tfoot>
-                        <tr><th># of Items for Pickup: {pickupData.length}</th></tr>
-                    </tfoot>
                 </table>
             </div>
+                <div className={styles.totalPickupWrap}>
+                    <div className={styles.totalPickup}>Total Items out for Pickup: {pickupData.length}
+                    </div>
+                </div>
         </div>
     )
 }
