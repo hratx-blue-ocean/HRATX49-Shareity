@@ -45,6 +45,7 @@
     "react-csv": "^2.0.3",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
+    "talkjs": "^0.14.2",
     "url": "^0.11.0"
   },
   "devDependencies": {
