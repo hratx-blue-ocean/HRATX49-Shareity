@@ -9,10 +9,12 @@ import Greeting from '../Greeting.jsx';
 
 
 //If theres an Image in local storage
-if (localStorage.length === 0 || JSON.parse(localStorage.user).profilePic === null || JSON.parse(localStorage.user).profilePic === undefined || JSON.parse(localStorage.user).profilePic === "") {
-  var profilePic = './userIcon.png';
+let profilePic;
+let user = JSON.parse(localStorage.user);
+if (!user) {
+  profilePic = './userIcon.png';
 } else { //Make one
-  var profilePic = JSON.parse(localStorage.user).profilePic;
+  profilePic = JSON.parse(localStorage.user).profilePic;
 }
 
 const NavBar = ({ login, isLoggedIn, setSearchItems }) => {
@@ -32,16 +34,18 @@ let log;
   return (
     <div>
       <div className={styles.navBarMainContainer}>
+        {/* Logo Area */}
+        <div className={styles.navBarLogo}>
+          <Greeting />
+        </div>
+        <Search setSearchItems={setSearchItems}/>
         <div className={styles.navBarLogin}>
           {/* Log in || Log out btn */}
         {log}
         </div>
-        <div className={styles.navBarLogo}>
-          {/* Logo Area */}
-          <Greeting />
-        </div>
+        
         <div>
-          <Search setSearchItems={setSearchItems}/>
+          
         </div>
         {/* If Someone IS Logged In */}
         {isLoggedIn ?

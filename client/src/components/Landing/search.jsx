@@ -1,20 +1,15 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Axios from 'axios';
+import styles from './search.css';
 
-class Search extends Component {
-    constructor(props) {
-        super(props);
+const Search = ({ setSearchItems }) => {
+   
+    //const [searchData, setSearchData] = useState([]);
+    const [search, setSearch] = useState('');
 
-        this.state = {
-            searchData: [],
-            search: ''
-        };
-        this.getItems = this.getItems.bind(this);
-        this.onSearchChange = this.onSearchChange.bind(this);
-    }
-    getItems (event) {
+    const getItems =  (event) => {
         event.preventDefault();
-        var searchedWord = this.state.search.toLowerCase();
+        var searchedWord = search.toLowerCase();
         //console.log(this.state.search)
         var searchArr = [];
 
@@ -29,49 +24,49 @@ class Search extends Component {
             })
         }) 
         .then(res => {
-            this.setState ({
-                searchData: searchArr,
-                search: ''
-            })
-            this.props.setSearchItems(this.state.searchData)
-            //console.log('search results: ', this.state.searchData)
+            
+            //setSearchData(searchArr);
+            setSearch('');
+            setSearchItems(searchArr)
+
         })
         .catch(err => {
             console.log(err)
         })
-    }
+    };
 
-    onSearchChange (event){
+    const onSearchChange =  (event) => {
         event.preventDefault();
-        this.setState ({
-            search: event.target.value
-        })
-        // console.log(this.state.search)
-    }
+        setSearch(event.target.value);
+    };
 
-    render() {
+    
     return (
         <div>
             <span className="searchBarWrap">
-                <form className="form" onSubmit={(event) => this.getItems(event)}>
+                <form className="form" onSubmit={(event) => getItems(event)}>
                     <input
                         autoCorrect="off"
                         autoComplete="off"
-                        className="search"
-                        onChange={(event) => this.onSearchChange(event)}
+                        className={styles.searchBar}
+                        onChange={(event) => onSearchChange(event)}
                         type="search"
                         id="search"
                         placeholder="Search"
                         name="search"
-                        value={this.state.search}
+                        value={search}
                         aria-label="Search: suggestions appear below"
                     />
-                    <button onClick={(event) => this.getItems(event)}>search</button>
+                    <button 
+                      onClick={(event) => getItems(event)}
+                      className={styles.searchButton}
+                    >
+                      search
+                    </button>
                 </form>
             </span>
         </div>
-    )
-    }
-}
+    );
+};
 
 export default Search;
