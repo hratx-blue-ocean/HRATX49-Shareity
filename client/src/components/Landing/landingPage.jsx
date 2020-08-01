@@ -11,6 +11,8 @@ var _ = require('lodash');
 let currentUser;
 let logged;
 
+
+
 if (localStorage.token) {
   currentUser = JSON.parse(localStorage.user).type;
   logged = true;
@@ -136,7 +138,10 @@ const LandingPage = () => {
   const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
 
   //Change Page
-  const paginate = (event, pageNumber) => { event.preventDefault(), setCurrentPage(pageNumber) };
+  const paginate = (event, pageNumber) => { 
+    event.preventDefault(); 
+    setCurrentPage(pageNumber); 
+  };
 
   return (
     <div className={styles.pageContainer}>
