@@ -69,13 +69,14 @@ const LogoAvatar = () => {
                             onChange={() => setImageFile(event.target.files[0])}
                         />
                     </div>
-
-                    {/* button to upload the selected file to the s3 bucket */}
+                </div>
+                {/* button to upload the selected file to the s3 bucket */}
+                <div className={styles.submitImageLabelWrapper}>
+                    {/* the label allows for the custom button styling of the standard input button */}
                     <button className={styles.charityInputSubmitButton} onClick={() =>
                         uploadImage(imageFile)}>
                         Upload
                     </button>
-
                 </div>
             </div>
         </>
