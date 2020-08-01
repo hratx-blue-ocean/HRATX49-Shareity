@@ -81,7 +81,7 @@ const NewItem = (props) => {
             donor: userName,
             name: itemName,
             Description: description,
-            pictures: image,
+            pictures: image || 'https://sharitybo.s3.us-east-2.amazonaws.com/qstn%20mark-1596318274671.png',
             estimatedValue: estVal || 0,
             itemCondition: condition,
             Location: zipcode,
