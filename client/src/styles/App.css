@@ -2,12 +2,6 @@ body {
   text-align: center;
   display: flex;
   justify-content: center;
-
-  -webkit-animation: bgcolor 20s infinite;
-  animation: bgcolor 10s infinite;
-  -webkit-animation-direction: alternate;
-  animation-direction: alternate;
-  
 }
 
 .charityMainAppContainer {
@@ -18,31 +12,3 @@ body {
   max-width: 1300px;
   margin: auto;
 }
-
-@keyframes bgcolor {
-  0% {
-    
-    background-color: #fef5fe;
-  }
-
-  30% {
-
-    background-color: #def9fb;
-  }
-
-  60% {
-
-    background-color:  #f7e7fb;
-  }
-
-  90% {
-
-    background-color:  #dcf9fb;
-  }
-
-  100% {
-
-    background-color: #faecfd;
-  }
-}
-

@@ -37,7 +37,7 @@ const UpdatePassword = ({ buttonText, addAchievement }) => {
                         onClick={() => switchViews()}
                         htmlFor="modalButton"
                     >
-                        {buttonText || 'PUSH'}
+                        {buttonText || 'UPDATE PASSWORD'}
                     </label>
                     <div id="modalButton" className={styles.innerPassButtonWrapper} style={{ diplay: 'none' }}>
                         <button className={styles.updatePassButton} style={{ display: 'none' }}>

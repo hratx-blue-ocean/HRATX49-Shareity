@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    border-radius: 25px;
+    border-radius: 7px;
     width: 100%;
     max-width: 400px;
     height: auto;
@@ -16,7 +16,7 @@
     height: 45px;
 
     border: 2px solid antiquewhite;
-    border-radius: 10px;
+    border-radius: 7px;
     padding-top: 8px;
     color: white;
     background: rgb(227,99,135);
@@ -35,8 +35,8 @@
     height: 45px;
     margin: auto;
 
-    border: 2px solid black;
-    border-radius: 10px;
+    border: 2px solid antiquewhite;
+    border-radius: 7px;
 
     cursor: pointer;
 
@@ -86,7 +86,7 @@
 
     background-color: ghostwhite;
     border: 2px solid black;
-    border-radius: 25px;
+    border-radius: 7px;
     z-index: 110;
 }
 
@@ -96,6 +96,6 @@
 
     margin-bottom: 10px;
     border: 2px solid black;
-    border-radius: 25px;
+    border-radius: 7px;
 }
 

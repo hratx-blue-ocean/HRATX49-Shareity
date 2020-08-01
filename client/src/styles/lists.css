@@ -11,7 +11,7 @@
 .listItemRow {
     border-bottom: 1px;
     border-style: solid;
-    border-radius: 10px;
+    border-radius: 7px;  
     padding: 3mm;
 }
 .colHeader {
@@ -38,13 +38,12 @@
     border-width: 2px;
     font-weight: bolder;
     background: beige;
-   
 }
 
 .listTitle {
     font-weight: bolder;
     font-size: 22px;
-    border-radius: 10px;
+    border-radius: 7px;
 }
 
 table {
@@ -95,10 +94,8 @@ th {
 .totalPickup {
     font-size: 20;
     font-weight: bolder;
-    border: solid;
-    border-width: 1px;
+    border: 1px solid antiquewhite;
     background-color: rgb(227, 246, 244);
-    border-color: black;
     border-radius: 1px;
     width: 270px;
     margin-left: 5mm;

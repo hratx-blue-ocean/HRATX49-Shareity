@@ -8,8 +8,8 @@
     min-height: 180px;
     max-height: 230px;
     margin: 3px auto;
-    border: 2px solid black;
-    border-radius: 25px;
+    border: 2px solid antiquewhite;
+    border-radius: 7px;
 
     overflow: auto;
 
@@ -52,7 +52,8 @@
     height: 50px;
 
     border: 2px solid #f2aaaa;
-    border-radius: 25px;
+    /* border: 2px solid antiquewhite; */
+    border-radius: 7px;
 
     margin: 1.5%;
 
@@ -71,8 +72,9 @@
     width: 35px;
     height: 35px;
 
-    border: 2px solid #f2aaaa;
-    border-radius: 25px;
+    /* border: 2px solid #f2aaaa; */
+    border: 2px solid antiquewhite;
+    border-radius: 7px;
 
 }
 
@@ -88,8 +90,8 @@
 
     margin-bottom: 3px;
 
-    border-bottom: 1px solid black;
-    
+    /* border-bottom: 1px solid black; */
+    border: 2px solid antiquewhite;
     font-size: 10px;
 }
 
@@ -116,9 +118,10 @@
 
     margin-right: 1px;
 
-    border: 2px solid #f2aaaa;
+    /* border: 2px solid #f2aaaa; */
+    border: 2px solid antiquewhite;
     background-color: #a6dcef;
-    border-radius: 25px;
+    border-radius: 7px;
 }
 
 .achievementValue {
