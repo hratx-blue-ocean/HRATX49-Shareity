@@ -13,7 +13,7 @@ let logged;
 
 
 
-if (localStorage.token && JSON.parse(localStorage.user)) {
+if (localStorage.token) {
   currentUser = JSON.parse(localStorage.user).type;
   logged = true;
 } else {

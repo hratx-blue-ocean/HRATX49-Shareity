@@ -4,7 +4,7 @@ import styles from './Greeting.css';
 const Greeting = () => {
   return(
     <div>
-      <img src="./SharitySmall.png"/>
+      <img src="./sharity.png"/>
     </div>
   );
 };
