@@ -36,7 +36,8 @@ const Charity = (props) => { //
     const [taxData, changeTaxData] = useState([]);
     const [charity, isCharity] = useState(false);
     var csvData = [['date', 'name', 'category', 'estimated value']]
-    var totalVal = 0;
+    const [itemVal, valueOfItems] = useState(0); 
+    const [itemQty, numOfItems] = useState(0);
     var leftList = '';
     var donorButtons = '';
 
@@ -44,7 +45,10 @@ const Charity = (props) => { //
         getUserItemsData()
     }, []);
     //gathers user items data for tax info
-    function getUserItemsData () {
+    const getUserItemsData = () => {
+
+        var totalVal = 0;
+        var count = 0;
 
         //if no local storage exists, then do nothing
         if(!localStorage.getItem('user')) {
@@ -70,27 +74,28 @@ const Charity = (props) => { //
             email: userData.email
         }
 
+        
+
         Axios.get('/items/items', {params: userDataObj})
         .then(res => {
+
             //pushed to data array if has been picked up and claimed
             res.data.items.map((item) => {
-                console.log('items before if: 0', item)
                 if(item.pickedUp === true ) {
                     //assigns tax date to be exported
-                    csvRow.push(item.date, item.name, item.category, item.estimatedValue)
+                    csvRow.push(item.dateCreated, item.name, item.category, item.estimatedValue)
                     csvData.push(csvRow);
                     csvRow = [];
-                    totalVal += item.estimatedValue;
+                    totalVal += Number(item.estimatedValue);
+                    count++;
                 }
-            })    
+            }) 
         }) //sets state of pickupdata
         .then(res => {
-            console.log("data from axios req, ", csvData)
             if(csvData.length === 1) {
                 csvData.push (["you haven't donated any items yet", 0, 0, 0])
             }
-            changeTaxData(csvData)
-            console.log("on Tax Data state: ", taxData)
+            changeTaxData(csvData), valueOfItems(totalVal), numOfItems(count)  
         })
         .catch(err => {
             console.log(err)
@@ -103,18 +108,16 @@ const Charity = (props) => { //
                 <div className={styles.buttonWrapper}>
                     <AddItem className={styles.charityButton} buttonText={'ADD ITEM'}/>
                 </div>
-            <div className={styles.buttonWrapper}>
                 <div className={styles.buttonWrapper}>
-                    <button className={styles.charityButton}>
-                        <div> Items Donated: {csvData.length - 1}</div>
-                    </button>
+                        <button className={styles.charityButton}>
+                            <div> Items Donated <div className={styles.winningText}> {itemQty}</div></div>
+                        </button>
+                    </div>
+                    <div className={styles.buttonWrapper}>
+                        <button className={styles.charityButton}>
+                            <div> Amount <div className={styles.winningText}>${itemVal.toFixed(0)}</div></div>
+                        </button>
                 </div>
-                <div className={styles.buttonWrapper}>
-                    <button className={styles.charityButton}>
-                        <div> $ amount: {totalVal}</div>
-                    </button>
-                </div>
-            </div>
             </div>
 
         leftList = <UpForDonateList />

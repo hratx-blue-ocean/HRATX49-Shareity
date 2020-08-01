@@ -48,9 +48,8 @@ const DonatedList = ( ) => {
                 if(item.pickedUp === true ) {
 
                     //makes the date look pretty
-                    item.date =  `${item.dateCreated.slice(5,7)}\
-                        /${item.dateCreated.slice(8,9)}/${item.dateCreated.slice(0,4)}\
-                        at ${item.dateCreated.slice(11,16)}`
+                    item.date =  `${item.dateCreated.slice(5,7)}/${item.dateCreated.slice(8,10)}/${item.dateCreated.slice(2,4)}@${item.dateCreated.slice(11,16)}`
+
                     
                     //push data into storage array
                     arrayforDonatedData.push(item);
@@ -116,6 +115,7 @@ const DonatedList = ( ) => {
                             <th> name</th>
                             <th> cat </th>
                             <th> est. value</th>
+                            
                         </tr>
                     </thead>
                     <tbody className={styles.listRowWrap}>  
