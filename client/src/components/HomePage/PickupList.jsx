@@ -120,12 +120,12 @@ const PickupList = () => {
     //assigns title and sortoptions for list
     var title = 'Items for Pickup';
     var sortOptions = ['date', 'name', 'Location']
-    var pickupCol = <th>Claimed By</th>
+    var pickupCol = <th><i class="fas fa-hands-helping"></i></th>
 
     //different selectors for a charity
     if(charity) {
     sortOptions = ['date', 'name', 'Location', 'estimatedValue'];
-    pickupCol = <th>Donor</th>
+    pickupCol = <th><i class="fas fa-hands-helping"></i></th>
     }
 
     return (
@@ -149,11 +149,11 @@ const PickupList = () => {
                 <table className={styles.pickupTable}>
                     <thead className={styles.listRowHeaders}>
                         <tr>
-                        <th> Date </th>
-                        <th> Name</th>
-                        <th> Zip </th>
+                        <th> <i class="far fa-clock"></i></th>
+                        <th> <i class="fas fa-heart"></i></th>
+                        <th> <i class="fas fa-location-arrow"></i></th>
                         {pickupCol}
-                        <th>Pickedup?</th>
+                        <th><i class="fas fa-truck"></i></th>
                         </tr>
                     </thead>
                     <tbody className={styles.listRowWrap}>   

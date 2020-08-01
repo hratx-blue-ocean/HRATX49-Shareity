@@ -145,10 +145,10 @@ const DonatedList = ( ) => {
                 <table>
                     <thead className={styles.listRowHeaders}>
                         <tr>
-                            <th>Date</th>
-                            <th>Name</th>
-                            <th>Category</th>
-                            <th>Value</th>
+                            <th><i class="far fa-clock"></i></th>
+                            <th><i class="fas fa-heart"></i></th>
+                            <th><i class="fas fa-grip-lines"></i></th>
+                            <th><i class="fas fa-dollar-sign"></i></th>
                             <th>X</th>
                         </tr>
                     </thead>

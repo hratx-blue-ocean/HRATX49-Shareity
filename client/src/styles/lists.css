@@ -59,7 +59,6 @@ tr {
     text-align: center;
     width: fit-content;
     font-style: italic;
-    word-wrap: break-word;
     border-bottom: medium;
     border-width: .5px;
     padding: 5mm;
@@ -72,18 +71,20 @@ td {
 }
 th {
     font-size: medium;
-    padding: 2px;
+    padding: 7px;
+    padding-right: 4mm;
     background-color: #ff01bf;
     color: white;
 }
 
 .tableWrap {
-    height: 258px;
+    max-height: 342px;
+    min-height: 200px;
     overflow: hidden scroll;    
 }
 
 .listWrap {
-    height: 371px;
+    height: 411px;
 }
 .listWrapHeader {
     text-align: center;
@@ -105,7 +106,7 @@ th {
     border: 1px solid antiquewhite;
     border-radius: 1px;
     width: 270px;
-    margin-left: 5mm;
+    margin-left: 6mm;
     color: white;
     background-color: #ff01bf;
     border-color: #ff01bf;
