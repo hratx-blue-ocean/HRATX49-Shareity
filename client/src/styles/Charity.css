@@ -112,6 +112,7 @@
 
 .fileUploadLabelWrapper:hover {
     background-color: #FF01BF;
+    transform: scale(1.05);
     transition: .3s;
 }
 
@@ -130,7 +131,6 @@
 }
 
 .submitImageLabelWrapper {
-
     box-sizing: border-box; 
     width: 70%;
     max-width: 185px;
@@ -157,6 +157,7 @@
 
 .charityInputSubmitButton:hover {
     background-color: #FF01BF;
+    transform: scale(1.05);
     transition: .3s;
 }
 
@@ -245,7 +246,6 @@
     max-height: 510px;
     height: 95%;
     margin: 1.5% auto 0 auto;
-    /* border: 2px solid #FF01BF; */
     border-radius: 7px;
 }
 
@@ -295,6 +295,7 @@
 
 .charityButton:hover {
     background-color: #FF01BF;
+    transform: scale(1.05);
     transition: .3s;
     text-decoration: underline;
 }

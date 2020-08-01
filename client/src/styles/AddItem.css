@@ -40,7 +40,9 @@
 
 .modalButtonLabel:hover {
     background-color: #FF01BF;
+    transform: scale(1.05);
     transition: .3s;
+    text-decoration: underline;
 }
 
 .addItemButton {
@@ -96,9 +98,3 @@
     color: black;
     border-radius: 7px;
 }
-
-.modalCloseButton:hover {
-    background-color: #FF01BF;
-    transition: .3s;
-}
-

@@ -42,6 +42,13 @@
     color: black;
 }
 
+.passUpdateCancelButton:hover {
+    color: white;
+    background-color: #880088;
+    transform: scale(1.1);
+    transition: .3s;
+}
+
 .passUpdateSubmitButton {
     float: right;
     box-sizing: border-box;
@@ -50,4 +57,11 @@
     border-radius: 7px;
     background-color: whitesmoke;
     color: black;
+}
+
+.passUpdateSubmitButton:hover {
+    color: white;
+    background-color: #880088;
+    transform: scale(1.1);
+    transition: .3s;
 }
