@@ -1,0 +1,52 @@
+.footerContainer{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  background-color: #ff01bf;
+}
+
+.leftSide{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  color: white;
+  padding-left: 20px;
+  align-self: center;
+}
+
+.aTags{
+  color: white;
+  font-size: 18px;
+  font-style: italic;
+  margin: 5px 0px;
+}
+
+.center{
+  align-self: center;
+}
+
+.imgArea{
+  align-self: center;
+}
+
+.img{
+
+}
+
+.rightSide{
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  color: white;
+  padding-right: 20px;
+  align-self: center;
+
+}
+
+.linkTags{
+  color: white;
+  font-size: 18px;
+  font-style: italic;
+  margin: 5px 0px;
+}
