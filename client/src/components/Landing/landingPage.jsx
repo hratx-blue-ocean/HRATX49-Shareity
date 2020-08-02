@@ -65,7 +65,7 @@ const LandingPage = () => {
   // Click Handler for login functionality
   const handlingLogin = (event) => {
     //If Logging Out
-    if (localStorage.getItem('token')) {
+    if (localStorage.getItem('token') && isLoggedIn) {
       // Clear Local Storage
       localStorage.clear();
       // Clear type of user
