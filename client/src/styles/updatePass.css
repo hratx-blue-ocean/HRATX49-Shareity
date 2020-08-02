@@ -29,6 +29,13 @@
     color: black;
 }
 
+.passModelButtonLabel:hover {
+    background-color: #FF01BF;
+    transform: scale(1.05);
+    transition: .3s;
+    text-decoration: underline;
+}
+
 .updatePassButton {
     box-sizing: border-box; 
     width: 100%;

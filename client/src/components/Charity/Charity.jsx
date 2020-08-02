@@ -161,6 +161,7 @@ const Charity = (props) => { //
 
                                 <div className={styles.buttonWrapper}>
                                     <Link to='/chat' className={styles.charityButtonHomeLink}>
+
                                         <button className={styles.charityButton}>MESSAGES</button>
                                     </Link>
                                 </div>

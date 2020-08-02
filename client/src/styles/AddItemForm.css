@@ -157,6 +157,13 @@
     border-radius: 7px;
 }
 
+.addItemUploadSubmitButton:hover {
+    color: white;
+    background-color: #880088;
+    transform: scale(1.1);
+    transition: .3s;
+}
+
 .addItemCancelButton {
     float: left;
     box-sizing: border-box;
@@ -167,6 +174,13 @@
     color: black;
 }
 
+.addItemCancelButton:hover {
+    color: white;
+    background-color: #880088;
+    transform: scale(1.1);
+    transition: .3s;
+}
+
 .addItemSubmitButton {
     float: right;
     box-sizing: border-box;
@@ -175,4 +189,11 @@
     border-radius: 7px;
     background-color: whitesmoke;
     color: black;
+}
+
+.addItemSubmitButton:hover {
+    color: white;
+    background-color: #880088;
+    transform: scale(1.1);
+    transition: .3s;
 }

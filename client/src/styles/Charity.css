@@ -110,6 +110,12 @@
     background-color: whitesmoke;;
 }
 
+.fileUploadLabelWrapper:hover {
+    background-color: #FF01BF;
+    transform: scale(1.05);
+    transition: .3s;
+}
+
 .fileUploadButtonLabel {
     box-sizing: border-box; 
     width: 100%;
@@ -125,12 +131,12 @@
 }
 
 .submitImageLabelWrapper {
-
     box-sizing: border-box; 
     width: 70%;
     max-width: 185px;
     height: 25px;
 }
+
 
 .charityInputSubmitButton {
     box-sizing: border-box; 
@@ -147,6 +153,12 @@
     border: 2px solid #FF01BF;
     color: black;
     background-color: whitesmoke;
+}
+
+.charityInputSubmitButton:hover {
+    background-color: #FF01BF;
+    transform: scale(1.05);
+    transition: .3s;
 }
 
 
@@ -232,7 +244,6 @@
     max-height: 510px;
     height: 95%;
     margin: 1.5% auto 0 auto;
-    /* border: 2px solid #FF01BF; */
     border-radius: 7px;
 }
 
@@ -278,6 +289,13 @@
     background-color: whitesmoke;
     color: black;
     cursor: pointer;
+}
+
+.charityButton:hover {
+    background-color: #FF01BF;
+    transform: scale(1.05);
+    transition: .3s;
+    text-decoration: underline;
 }
 
 .downloadStatement {
