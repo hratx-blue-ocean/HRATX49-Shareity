@@ -38,6 +38,13 @@
     cursor: pointer;
 }
 
+.modalButtonLabel:hover {
+    background-color: #FF01BF;
+    transform: scale(1.05);
+    transition: .3s;
+    text-decoration: underline;
+}
+
 .addItemButton {
     box-sizing: border-box; 
     width: 100%;
@@ -81,6 +88,7 @@
     z-index: 110;
 }
 
+
 .modalCloseButton {
     width: 75px;
     height: 25px;
@@ -90,4 +98,3 @@
     color: black;
     border-radius: 7px;
 }
-
