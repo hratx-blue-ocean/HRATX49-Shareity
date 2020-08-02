@@ -83,7 +83,7 @@ const Charity = (props) => { //
 
             //pushed to data array if has been picked up and claimed
             res.data.items.map((item) => {
-                if(item.pickedUp === true ) {
+                if(item.pickedUp === true && item.estimatedValue !== 0) {
                     //assigns tax date to be exported
                     csvRow.push(item.dateCreated, item.name, item.category, item.estimatedValue)
                     csvData.push(csvRow);

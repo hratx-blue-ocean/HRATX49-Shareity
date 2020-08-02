@@ -7,7 +7,7 @@ var _ = require('lodash');
 const DonatedList = ( ) => {
     //Charity  sorting options and list title
     var title='List of Donations'
-    var sortOptions = ['dateCreated', 'name', 'category', 'estimatedValue'];
+    var sortOptions = ['dateCreated', 'name', 'category', 'value'];
 
     const [donatedData, addToDonatedData] = useState([])
     const [sortType, setSortType] = useState('dateCreated');
@@ -24,7 +24,6 @@ const DonatedList = ( ) => {
         }
         //to push data from get request and tax rows
         var arrayforDonatedData = []
-        var csvRow = [];
 
         //user info from local storage
         const userData = JSON.parse(localStorage.getItem('user'))
@@ -49,8 +48,17 @@ const DonatedList = ( ) => {
 
                     //makes the date look pretty
                     item.date =  `${item.dateCreated.slice(5,7)}/${item.dateCreated.slice(8,10)}/${item.dateCreated.slice(2,4)} @${item.dateCreated.slice(11,16)}`
-
                     
+                    //fixes null values and sorting bugs
+                    if(item.name !== null && item.category !== null) {
+                        //assign new keys for sorting rows more easily
+                        item.lowerCaseName = item.name.toLowerCase();
+                        item.lowerCaseCategory = item.category.toLowerCase();
+                    }
+                    
+                    //to sort values
+                    item.value = parseInt(item.estimatedValue)
+
                     //push data into storage array
                     arrayforDonatedData.push(item);
                 }
@@ -75,14 +83,15 @@ const DonatedList = ( ) => {
 
         const types = {
             claimedBy: 'claimedBy', 
-            date:'dateCreated', 
-            estimatedValue: 'estimatedValue', 
-            name: 'name', 
-            category: 'category',
+            dateCreated:'date', 
+            value: 'value', 
+            name: 'lowerCaseName', 
+            category: 'lowerCaseCategory',
             Location: 'Location'
         };
         //defines the option that was selected in the dropdown by user
         const sortProperty = types[type]; 
+
         //sorting function compares data from the fakeData file           
         const sorted = _.orderBy(donatedData, [sortProperty, 'asc'])
         //updates data to be remapped over
@@ -124,7 +133,7 @@ const DonatedList = ( ) => {
                                 <td>{item.date}</td>
                                 <td> {item.name} </td>
                                 <td> {item.category} </td>
-                                <td> ${item.estimatedValue} </td>
+                                <td> ${item.value} </td>
                             </tr>
                         )}
                     </tbody>

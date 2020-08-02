@@ -10,7 +10,13 @@ const PickupList = () => {
     //set users pickup data, sorting options and boolean if charity
     const [sortType, setSortType] = useState('date');
     const [pickupData, addListData] = useState([]);
+    const [userData, setUserData] = useState({});
     var charity = false;
+
+        //assigns title and sort options for list
+        var title = 'Waiting for Pickup';
+        var sortOptions = ['date', 'name', 'Location', 'contact']
+  
 
         useEffect(() => {
             getUserItemsData()
@@ -34,7 +40,7 @@ const PickupList = () => {
             if(userType === "user") {
                 userType = "donor"
             }
-            if(userType === "charity") {
+            if(userType === 'charity') {
                 charity = true;
             }
             //user info to use with get request
@@ -50,13 +56,33 @@ const PickupList = () => {
                     //console.log(item)
             
                     if(item.pickedUp === false && item.claimedBy !== null && item.charityEmail !== null) {
+                        console.log(item)
                         
                         //makes the date look pretty
                         item.date =  `${item.dateCreated.slice(5,7)}/${item.dateCreated.slice(8,10)}/${item.dateCreated.slice(2,4)} @${item.dateCreated.slice(11,16)}`
+
+                        //if statements fixes bug incase location is set to null
+                        if(item.Location !== null) {
+                            //slices zip code for sorting
+                            item.Location = item.Location.toString().slice(0,5) 
+                        }
+                        if(item.name !== null){
+                            //assign new keys for sorting rows more easily
+                            item.lowerCaseName = item.name.toLowerCase();
+                        }
+                        if(item.category !== null) {
+                            //assign new keys for sorting rows more easily
+                            item.lowerCaseCategory = item.category.toLowerCase();
+                        }
+                        //value string to number for sorting
+                        item.value = parseInt(item.estimatedValue)
+
                         if(charity) {
-                            item.pickingUp = item.donor
+                            //assigns contact as email of donor
+                            item.contact = item.email
                         } else {
-                            item.pickingUp = item.charityEmail
+                            //contact as email of charity
+                            item.contact = item.charityEmail
                         }
 
                         arrayforPickupData.push(item);
@@ -114,10 +140,11 @@ const PickupList = () => {
         const types = {
             claimedBy: 'claimedBy', 
             date:'dateCreated', 
-            estimatedValue: 'estimatedValue', 
-            name: 'name', 
-            category: 'category',
-            Location: 'Location'
+            estimatedValue: 'value', 
+            name: 'lowerCaseName', 
+            category: 'lowerCaseCategory',
+            Location: 'Location',
+            contact: 'contact'
         };
         //defines the option that was selected in the dropdown by user
         const sortProperty = types[type]; 
@@ -127,17 +154,6 @@ const PickupList = () => {
         
     };
     
-    //assigns title and sortoptions for list
-    var title = 'Waiting for Pickup';
-    var sortOptions = ['date', 'name', 'Location']
-    var pickupCol = <th><i class="fas fa-hands-helping"></i></th>
-
-    //different selectors for a charity
-    if(charity) {
-    sortOptions = ['date', 'name', 'Location', 'estimatedValue'];
-    pickupCol = <th><i class="fas fa-hands-helping"></i></th>
-    }
-
     return (
         <div className={styles.listWrap}>
             <div className={styles.listWrapHeader}>
@@ -162,7 +178,7 @@ const PickupList = () => {
                         <th> <i class="far fa-clock"></i></th>
                         <th> <i class="fas fa-heart"></i></th>
                         <th> <i class="fas fa-location-arrow"></i></th>
-                        {pickupCol}
+                        <th><i class="fas fa-hands-helping"></i></th>
                         <th><i class="fas fa-truck"></i></th>
                         </tr>
                     </thead>
@@ -171,8 +187,8 @@ const PickupList = () => {
                             <tr key={i} className={styles.listItemRow} >
                                 <td> {item.date} </td>
                                 <td> {item.name} </td>
-                                <td> {item.Location = item.Location.toString().slice(0,5) || ''}</td>
-                                <td> {item.pickingUp}</td>
+                                <td> {item.Location}</td>
+                                <td> {item.contact}</td>
                                 <td className={styles.deleteButton}>
                                     <button className={styles.deleteButton} 
                                         value={item._id} 

@@ -37,6 +37,7 @@ table {
     border-spacing: 1 rem;
     border-color: #ff01bf;
     min-width: 396px;
+    max-width: 396px;
     font: impact;
 }
 tr {
@@ -68,7 +69,6 @@ th {
 
 .tableWrap {
     max-height: 342px;
-    min-height: 200px;
     overflow: hidden scroll;    
 }
 

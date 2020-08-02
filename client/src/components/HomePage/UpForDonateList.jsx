@@ -6,7 +6,7 @@ import Axios from 'axios';
 var _ = require('lodash');
 
 const DonatedList = ( ) => {
-
+    //sets title and sort options for list
     var title='Up for Donation'
     var sortOptions = ['dateCreated', 'estimatedValue', 'name', 'category'];
     //set states of data and sort options
@@ -25,7 +25,6 @@ const DonatedList = ( ) => {
         }
         //to push data from get request and tax rows
         var arrayToDonateData = []
-        var csvRow = [];
 
         //user info from local storage
         const userData = JSON.parse(localStorage.getItem('user'))
@@ -50,6 +49,16 @@ const DonatedList = ( ) => {
 
                     //makes the date look pretty
                     item.date =  `${item.dateCreated.slice(5,7)}/${item.dateCreated.slice(8,10)}/${item.dateCreated.slice(2,4)} @${item.dateCreated.slice(11,16)}`
+                    
+                    //fixes bug for sorting and null values
+                    if(item.name !== null && item.category !== null ) {
+                        //assign new keys for sorting rows more easily
+                        item.lowerCaseName = item.name.toLowerCase();
+                        item.lowerCaseCategory = item.category.toLowerCase();
+                    }
+
+                    //to sort values 
+                    item.value = parseInt(item.estimatedValue)
                     
                     //push data into storage array
                     arrayToDonateData.push(item);
@@ -92,11 +101,7 @@ const DonatedList = ( ) => {
         }
 
         Axios.delete('/items', 
-        {params: { 
-            _id: id,
-            email: userData.email,
-            userType: userData.userType
-        }} )
+        {params: data} )
         .then(res => {
             getUserItemsData();
         })
@@ -109,10 +114,10 @@ const DonatedList = ( ) => {
     const sortArray = type => {
         const types = {
             claimedBy: 'claimedBy', 
-            date:'dateCreated', 
-            estimatedValue: 'estimatedValue', 
-            name: 'name', 
-            category: 'category',
+            dateCreated:'date', 
+            estimatedValue: 'value', 
+            name: 'lowerCaseName', 
+            category: 'lowerCaseCategory',
             Location: 'Location'
         };
 

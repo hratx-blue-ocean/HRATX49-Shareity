@@ -6,10 +6,14 @@ import axios from 'axios';
 
 
 const NewItem = (props) => {
-    const[inputObj, setInputObj] = useState({});
     const [condition, onConditionChange] = useState('')
     const [selectedFile, addImageHandler] = useState(null);
     const [image, setImageUrl] = useState('')
+    const [itemName, setItemName] = useState('')
+    const [description, setDescript] = useState('')
+    const [estVal, setEstVal] = useState('')
+    const [zipcode, setZip] = useState('')
+    const [category, setCategory] = useState('')
 
     // const [userEmail, setUserEmail] = useState('')
     // const [userName, setUserName] = useState('')
@@ -71,20 +75,19 @@ const NewItem = (props) => {
         console.log("image", image)
         var data = {
             donor: userName,
-            name: inputObj.itemName,
-            Description: inputObj.description,
+            name: itemName,
+            Description: description,
             pictures: image,
-            estimatedValue: inputObj.estVal || 0,
+            estimatedValue: estVal || 0,
             itemCondition: condition,
-            Location: inputObj.zipcode,
+            Location: zipcode,
             dateCreated: date,
-            category: inputObj.category,
+            category: category,
             email: email
         };
 
         axios.post('/items', data)
         .then(res=> {
-            setInputObj({})
             props.closeModal()
             console.log('your item has been added', res.data)
         })
@@ -103,16 +106,16 @@ const NewItem = (props) => {
 
                 <input
                     className={styles.addNameInputField}
-                    value={inputObj.itemName}
-                    onChange={(event) => setInputObj(event.target.value)}
+                    value={itemName}
+                    onChange={(event) => setItemName(event.target.value)}
                     placeholder="item name"
                     type="text"
                     required
                 ></input>
                 <input
                     className={styles.addCategoryInputField}
-                    value={inputObj.category}
-                    onChange={(event) => setInputObj(event.target.value)}
+                    value={category}
+                    onChange={(event) => setCategory(event.target.value)}
                     placeholder="item category"
                     type="text"
                     required
@@ -122,16 +125,16 @@ const NewItem = (props) => {
 
                     <input
                         className={styles.addValueInputField}
-                        value={inputObj.estVal}
-                        onChange={(event) => setInputObj(event.target.value)}
+                        value={estVal}
+                        onChange={(event) => setEstVal(event.target.value)}
                         placeholder="Estimated Value"
                         type="number"
                         required
                     ></input>
                     <input
                         className={styles.addZipInputField}
-                        value={inputObj.zipcode}
-                        onChange={(event) => setInputObj(event.target.value)}
+                        value={zipcode}
+                        onChange={(event) => setZip(event.target.value)}
                         placeholder="zipcode"
                         type="number"
                         required
@@ -140,9 +143,9 @@ const NewItem = (props) => {
 
                 <input
                     className={styles.addDescriptionInputField}
-                    value={inputObj.description}
+                    value={description}
                     type="text"
-                    onChange={(event) => setInputObj(event.target.value)}
+                    onChange={(event) => setDescript(event.target.value)}
                     placeholder="brief description of your item"
                     required
                 ></input>
