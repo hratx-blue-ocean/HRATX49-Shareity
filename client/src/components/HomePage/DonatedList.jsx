@@ -92,6 +92,7 @@ const DonatedList = ( ) => {
     return (
         <div className={styles.listWrap}>
             <div className={styles.listWrapHeader}>
+                <span className={styles.listTitle}> {title}</span>
 
                 <select 
                     className={styles.listSelector}  
@@ -104,17 +105,15 @@ const DonatedList = ( ) => {
                     }
                 </select>
 
-                <span className={styles.listTitle}> {title}</span>
-
             </div>
             <div className={styles.tableWrap}>
                 <table>
                     <thead className={styles.listRowHeaders}>
                         <tr>
-                            <th> date </th>
-                            <th> name</th>
-                            <th> cat </th>
-                            <th> est. value</th>
+                            <th> <i class="far fa-clock"></i></th>
+                            <th> <i class="fas fa-heart"></i></th>
+                            <th> <i class="fas fa-grip-lines"></i></th>
+                            <th> <i class="fa fa-usd" aria-hidden="true"></i></th>
                             
                         </tr>
                     </thead>
@@ -129,11 +128,10 @@ const DonatedList = ( ) => {
                             </tr>
                         )}
                     </tbody>
-                    <tfoot>
-                        <tr>
-                        <th>Total # of Items Donated: {donatedData.length}</th></tr>
-                    </tfoot>
                 </table>
+                </div>
+            <div className={styles.totalPickupWrap}>
+                <span className={styles.totalPickup}>Total # of Items Donated: {donatedData.length}</span>
             </div>
         </div>
 

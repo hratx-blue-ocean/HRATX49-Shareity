@@ -61,10 +61,11 @@ router.put('/', async (req, res) => {
     userType: req.body.userType,
     items: [],
   }
-  let filter = req.body._id;
-  let update = req.body.item
+  // let filter = await req.body._id;
+  // let update = await req.body.item
+  
   try {
-    let updateItem = await db.editItem(filter, update);
+    let updateItem = await db.editItem(await req.body._id, req.body.item);
     userInfo.items = await db.getUserItems(userInfo.user, userInfo.userType);
     console.log(req.body)
   } catch (err) {

@@ -6,12 +6,8 @@ import axios from 'axios';
 
 
 const NewItem = (props) => {
-    const [itemName, onItemNameChange] = useState('')
-    const [category, onCatChange] = useState('')
-    const [zipcode, onZipChange] = useState('')
+    const[inputObj, setInputObj] = useState({});
     const [condition, onConditionChange] = useState('')
-    const [description, onDescChange] = useState('')
-    const [estVal, onValChange] = useState('');
     const [selectedFile, addImageHandler] = useState(null);
     const [image, setImageUrl] = useState('')
 
@@ -22,10 +18,6 @@ const NewItem = (props) => {
     // setUserEmail('test')
     // setUserName('test')
 
-
-    function onImageAdd() {
-        //add image
-    }
     const uploadHandler = (selectedFile) => {
         const data = new FormData();
         // If file selected
@@ -79,19 +71,20 @@ const NewItem = (props) => {
         console.log("image", image)
         var data = {
             donor: userName,
-            name: itemName,
-            Description: description,
+            name: inputObj.itemName,
+            Description: inputObj.description,
             pictures: image,
-            estimatedValue: estVal || 0,
+            estimatedValue: inputObj.estVal || 0,
             itemCondition: condition,
-            Location: zipcode,
+            Location: inputObj.zipcode,
             dateCreated: date,
-            category: category,
+            category: inputObj.category,
             email: email
         };
 
         axios.post('/items', data)
         .then(res=> {
+            setInputObj({})
             props.closeModal()
             console.log('your item has been added', res.data)
         })
@@ -110,16 +103,16 @@ const NewItem = (props) => {
 
                 <input
                     className={styles.addNameInputField}
-                    value={itemName}
-                    onChange={(event) => onItemNameChange(event.target.value)}
+                    value={inputObj.itemName}
+                    onChange={(event) => setInputObj(event.target.value)}
                     placeholder="item name"
                     type="text"
                     required
                 ></input>
                 <input
                     className={styles.addCategoryInputField}
-                    value={category}
-                    onChange={(event) => onCatChange(event.target.value)}
+                    value={inputObj.category}
+                    onChange={(event) => setInputObj(event.target.value)}
                     placeholder="item category"
                     type="text"
                     required
@@ -129,16 +122,16 @@ const NewItem = (props) => {
 
                     <input
                         className={styles.addValueInputField}
-                        value={estVal}
-                        onChange={(event) => onValChange(event.target.value)}
+                        value={inputObj.estVal}
+                        onChange={(event) => setInputObj(event.target.value)}
                         placeholder="Estimated Value"
                         type="number"
                         required
                     ></input>
                     <input
                         className={styles.addZipInputField}
-                        value={zipcode}
-                        onChange={(event) => onZipChange(event.target.value)}
+                        value={inputObj.zipcode}
+                        onChange={(event) => setInputObj(event.target.value)}
                         placeholder="zipcode"
                         type="number"
                         required
@@ -147,9 +140,9 @@ const NewItem = (props) => {
 
                 <input
                     className={styles.addDescriptionInputField}
-                    value={description}
+                    value={inputObj.description}
                     type="text"
-                    onChange={(event) => onDescChange(event.target.value)}
+                    onChange={(event) => setInputObj(event.target.value)}
                     placeholder="brief description of your item"
                     required
                 ></input>

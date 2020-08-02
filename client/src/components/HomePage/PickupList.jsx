@@ -10,7 +10,7 @@ const PickupList = () => {
     //set users pickup data, sorting options and boolean if charity
     const [sortType, setSortType] = useState('date');
     const [pickupData, addListData] = useState([]);
-    const [charity, isCharity] = useState(false)
+    var charity = false;
 
         useEffect(() => {
             getUserItemsData()
@@ -35,7 +35,7 @@ const PickupList = () => {
                 userType = "donor"
             }
             if(userType === "charity") {
-                isCharity(true)
+                charity = true;
             }
             //user info to use with get request
             var userDataObj = {
@@ -47,17 +47,19 @@ const PickupList = () => {
             .then(res => {
                 //pushed to data array if item hasnt been picked up, but HAS been claimed
                 res.data.items.map((item) => {
+                    console.log(item)
+            
                     if(item.pickedUp === false && item.claimedBy !== null && item.charityEmail !== null) {
-                    
+                        
                         //makes the date look pretty
                         item.date =  `${item.dateCreated.slice(5,7)}/${item.dateCreated.slice(8,10)}/${item.dateCreated.slice(2,4)} @${item.dateCreated.slice(11,16)}`
-                    
+                        if(charity) {
+                            item.pickingUp = item.donor
+                        } else {
+                            item.pickingUp = item.charityEmail
+                        }
+
                         arrayforPickupData.push(item);
-                    }
-                    if(charity) {
-                        item.pickingUp = item.donor
-                    } else {
-                        item.pickingUp = item.charityEmail
                     }
                 })    
             }) //sets state of pickupdata
@@ -75,24 +77,32 @@ const PickupList = () => {
         sortArray(name)
     }
 
-    function handlePickupItem (event) {
+    const handlePickupItem = async (event) => {
+
         //if no local storage exists, then do nothing
         if(!localStorage.getItem('user')) {
             return;
         }
-        //event.preventDefault();
-        if(charity) {
-            let charityInfo = JSON.parse(localStorage.getItem('user'));
-            let charityEmail = charityInfo.email;
 
-            Axios.put('/items/', {
-                user: charityEmail,
-                userType: 'charity',
-                _id: event,
-                item: {
-                    pickedUp: true,
-                }
-            }), getUserItemsData()
+        let charityInfo = JSON.parse(localStorage.getItem('user'));
+        let charityEmail = charityInfo.email;
+        
+        var data = {
+            user: charityEmail,
+            userType: 'charity',
+            _id: await event.target.value,
+            item: {
+                pickedUp: true,
+            }
+        }
+        // event.preventDefault();
+        if(charityInfo.type === "charity") {
+            Axios.put('/items/', data)
+            .then(res => {
+                alert('❤❤❤❤❤❤❤Thank You for spreading the love! ❤❤❤❤❤❤❤❤ ')
+                getUserItemsData()
+            })
+
         } else {
 
             alert('only Charities can complete items as picked up')
@@ -166,7 +176,7 @@ const PickupList = () => {
                                 <td className={styles.deleteButton}>
                                     <button className={styles.deleteButton} 
                                         value={item._id} 
-                                        onClick={(event) => handlePickupItem(event.target.value)}
+                                        onClick={(event) => handlePickupItem(event)}
                                     >
                                         <i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i>
                                     </button>
