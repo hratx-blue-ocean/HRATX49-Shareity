@@ -90,7 +90,6 @@ const DonatedList = ( ) => {
             email: userData.email,
             userType: userData.userType
         }
-        console.log('client side', data, typeof data)
 
         Axios.delete('/items', 
         {params: { 

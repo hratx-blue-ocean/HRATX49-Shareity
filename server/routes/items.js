@@ -67,7 +67,7 @@ router.put('/', async (req, res) => {
   try {
     let updateItem = await db.editItem(await req.body._id, req.body.item);
     userInfo.items = await db.getUserItems(userInfo.user, userInfo.userType);
-    console.log(req.body)
+    //console.log(req.body)
   } catch (err) {
     console.log(err);
   }

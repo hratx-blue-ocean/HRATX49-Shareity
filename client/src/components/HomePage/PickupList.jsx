@@ -47,7 +47,7 @@ const PickupList = () => {
             .then(res => {
                 //pushed to data array if item hasnt been picked up, but HAS been claimed
                 res.data.items.map((item) => {
-                    console.log(item)
+                    //console.log(item)
             
                     if(item.pickedUp === false && item.claimedBy !== null && item.charityEmail !== null) {
                         
