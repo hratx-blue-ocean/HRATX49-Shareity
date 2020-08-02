@@ -9,17 +9,18 @@ import Greeting from '../Greeting.jsx';
 
 let profilePic;
 //If theres an Image in local storage
-if (localStorage.length === 0 || JSON.parse(localStorage.user).profilePic === null || JSON.parse(localStorage.user).profilePic === undefined || JSON.parse(localStorage.user).profilePic === "") {
-  profilePic = './userIcon.png';
-} else { //Make one
-  profilePic = JSON.parse(localStorage.user).profilePic;
-}
 
 const NavBar = ({ login, isLoggedIn, setSearchItems }) => {
   //Alert 
   const alertToLogIn = (event) => {
     event.preventDefault();
     alert('Please Log in to visit Profiles');
+  }
+  
+  if (localStorage.length === 0 || JSON.parse(localStorage.user).profilePic === null || JSON.parse(localStorage.user).profilePic === undefined || JSON.parse(localStorage.user).profilePic === "" || !isLoggedIn) {
+    profilePic = './userIcon.png';
+  } else { //Make one
+    profilePic = JSON.parse(localStorage.user).profilePic;
   }
 
   let log;
