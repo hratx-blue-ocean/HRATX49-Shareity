@@ -1,19 +1,37 @@
 .header {
-  border: 2px solid black;
+  border: .5px solid;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: sticky;
   width: 100%;
   top: 0;
-  background-color: #ff01bf;
+  background-image: linear-gradient(to right, #ff01bf, #ff01bf, #ff01bf, #880088);
 }
 
 .link {
   border: none;
   margin: 0px 20px;
   padding: 15px 30px;
-  border-radius: 15px;
+  
+  display: flex;
+  box-sizing: border-box; 
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 100px;
+  height: 45px;
+  border-radius: 7px;
+  border: 2px solid #FF01BF;
+  background-color: whitesmoke;
+  color: black;
+  cursor: pointer;
+}
+.link:hover {
+  background-color: #FF01BF;
+  transform: scale(1.05);
+  transition: .3s;
+  text-decoration: underline;
 }
 
 .container {

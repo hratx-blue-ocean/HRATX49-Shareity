@@ -113,14 +113,18 @@ const Charity = (props) => { //
                 <div className={styles.buttonWrapper}>
                     <div className={styles.donatedButtonText}>
                         <button className={styles.charityButton}>
-                            <div> Items Donated <div className={styles.winningText}> {itemQty}</div></div>
+                            <div>Hearts Earned
+                                <div className={styles.winningText}> 
+                                    <i class="fa fa-heart" aria-hidden="true"></i> {itemQty}   
+                                </div>
+                            </div>
                         </button>
                     </div>
                 </div>
                 <div className={styles.buttonWrapper}>
                     <div className={styles.donatedButtonText}>
                         <button className={styles.charityButton}>
-                            <div> Amount <div className={styles.winningText}>${itemVal.toFixed(0)}</div></div>
+                            <div> Value Donated<div className={styles.winningText}>${itemVal.toFixed(0)}</div></div>
                         </button>
                     </div>
                 </div>

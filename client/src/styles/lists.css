@@ -1,3 +1,78 @@
+.listWrap {
+    height: 411px;
+}
+
+/* ########################################### */
+/* ######## TITLE and DROP DOWN ####### */
+/* ######################################### */ 
+.listWrapHeader {
+    /* text-align: center; */
+    margin-bottom: 20px;
+    margin-top: 10px
+
+}
+
+.listTitle {
+    font-weight: bolder;
+    color: #ff01bf;
+    font-size: 22px;
+    font: impact;
+}
+.listSelector {
+    font-size: 13px;
+    border-radius: 2px;
+    float: right;
+    margin-top: 3px;
+    padding: 1mm;
+    border-width: 2px;
+    font-weight: bolder;
+    border-color: #ff01bf;
+}
+
+/* ########################################### */
+/* ######## TABLE, HEAD, ROWS AND COL ####### */
+/* ######################################### */ 
+
+table {
+    border-spacing: 1 rem;
+    border-color: #ff01bf;
+    min-width: 396px;
+    font: impact;
+}
+tr {
+    font-size: 10px;
+    text-align: center;
+    font-style: italic;
+    border-bottom: medium;
+    border-width: .5px;
+    padding: 5mm;
+    border-color: #ff01bf;
+
+
+}
+td {
+    padding: 2px;
+    border-width: .5px;
+    border-style: solid;
+    border-color: #ff01bf;
+
+}
+th {
+    font-size: medium;
+    padding: 7px;
+    padding-right: 4mm;
+    
+    background-color: #ff01bf;
+    color: white;
+}
+
+.tableWrap {
+    max-height: 342px;
+    min-height: 200px;
+    overflow: hidden scroll;    
+}
+
+
 .listRowHeaders {
     font-size: 9px;
     font-weight: bold;
@@ -30,68 +105,11 @@
     margin: 2mm;
     height: 40px;
 }
-.listSelector {
-    font-size: 13px;
-    border-radius: 2px;
-    float: right;
-    margin-top: 3px;
-    padding: 1mm;
-    border-width: 2px;
-    font-weight: bolder;
-    border-color: #ff01bf;
-}
 
-.listTitle {
-    font-weight: bolder;
-    color: #ff01bf;;
-    font-size: 22px;
-    font: impact;
-}
+/* ########################################### */
+/* ######## LIST TOTAL INFO FOOTER ########## */
+/* ######################################### */ 
 
-table {
-    border-spacing: 1 rem;
-    width: fit-content;
-    border-color: #ff01bf;
-    font: impact;
-}
-tr {
-    font-size: 10px;
-    text-align: center;
-    width: fit-content;
-    font-style: italic;
-    border-bottom: medium;
-    border-width: .5px;
-    padding: 5mm;
-    border-color: #ff01bf;
-
-
-}
-td {
-    padding: 2px;
-}
-th {
-    font-size: medium;
-    padding: 7px;
-    padding-right: 4mm;
-    background-color: #ff01bf;
-    color: white;
-}
-
-.tableWrap {
-    max-height: 342px;
-    min-height: 200px;
-    overflow: hidden scroll;    
-}
-
-.listWrap {
-    height: 411px;
-}
-.listWrapHeader {
-    text-align: center;
-    margin-bottom: 20px;
-    margin-top: 10px
-
-}
 .pickupTable {
     width: 286px;
 }
@@ -101,16 +119,25 @@ th {
 
 }
 .totalPickup {
+    align-self: center;
     font-size: 20;
     font-weight: bolder;
-    border: 1px solid antiquewhite;
+    border: 1px solid #ff01bf;
     border-radius: 1px;
     width: 270px;
-    margin-left: 6mm;
+    padding: 0mm 5mm 0mm 5mm;
     color: white;
     background-color: #ff01bf;
     border-color: #ff01bf;
 }
+.totalPickupWrap {
+    background-color: #ff01bf;
+    width: 396px;
+    min-height: 25px;
+}
+/* ########################################### */
+/* ########   BUTTONS ON TABLES    ########## */
+/* ######################################### */ 
 
 .deleteButton {
     border-style: solid;

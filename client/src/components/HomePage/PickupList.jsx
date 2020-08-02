@@ -118,7 +118,7 @@ const PickupList = () => {
     };
     
     //assigns title and sortoptions for list
-    var title = 'Items for Pickup';
+    var title = 'Waiting for Pickup';
     var sortOptions = ['date', 'name', 'Location']
     var pickupCol = <th><i class="fas fa-hands-helping"></i></th>
 
@@ -146,7 +146,7 @@ const PickupList = () => {
 
             </div>
             <div className={styles.tableWrap}>
-                <table className={styles.pickupTable}>
+                <table>
                     <thead className={styles.listRowHeaders}>
                         <tr>
                         <th> <i class="far fa-clock"></i></th>
@@ -163,15 +163,22 @@ const PickupList = () => {
                                 <td> {item.name} </td>
                                 <td> {item.Location = item.Location.toString().slice(0,5) || ''}</td>
                                 <td> {item.pickingUp}</td>
-                                <td className={styles.deleteButton}> <button className={styles.deleteButton} value={item._id} onClick={(event) => handlePickupItem(event.target.value)}>complete</button></td>
+                                <td className={styles.deleteButton}>
+                                    <button className={styles.deleteButton} 
+                                        value={item._id} 
+                                        onClick={(event) => handlePickupItem(event.target.value)}
+                                    >
+                                        <i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i>
+                                    </button>
+                                </td>
                             </tr>
                         )}
                     </tbody>
                 </table>
             </div>
                 <div className={styles.totalPickupWrap}>
-                    <div className={styles.totalPickup}>Total Items out for Pickup: {pickupData.length}
-                    </div>
+                    <span className={styles.totalPickup}>Total Items out for Pickup: {pickupData.length}
+                    </span>
                 </div>
         </div>
     )

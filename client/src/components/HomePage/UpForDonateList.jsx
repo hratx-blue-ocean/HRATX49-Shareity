@@ -149,7 +149,7 @@ const DonatedList = ( ) => {
                             <th><i class="fas fa-heart"></i></th>
                             <th><i class="fas fa-grip-lines"></i></th>
                             <th><i class="fas fa-dollar-sign"></i></th>
-                            <th>X</th>
+                            <th><i class="fa fa-times" aria-hidden="true"></i></th>
                         </tr>
                     </thead>
                     <tbody className={styles.listRowWrap}>  
@@ -159,15 +159,24 @@ const DonatedList = ( ) => {
                                 <td>{item.name} </td>
                                 <td> {item.category} </td>
                                 <td> ${item.estimatedValue} </td>
-                                <td className={styles.deleteButton}><button className={styles.deleteButton} value={item._id } onClick={(event) => onDeleteItem(event.target.value)}>X</button></td>
+                                <td className={styles.deleteButton}>
+                                    <button 
+                                        className={styles.deleteButton} 
+                                        value={item._id } 
+                                        onClick={(event) => onDeleteItem(event.target.value)}
+                                    >
+                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                    </button>
+                                </td>
                             </tr>
                         )}
                     </tbody>
                 </table>
             </div>
-            <div className={styles.totalPickup}>
-            Items up for Donation: {filteredData.length}
-
+            <div className={styles.totalPickupWrap}>
+                <span className={styles.totalPickup}>
+                    Items up for Donation: {filteredData.length}
+                </span>
             </div>
         </div>
 
