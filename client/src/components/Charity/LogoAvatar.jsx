@@ -44,11 +44,12 @@ const LogoAvatar = () => {
 
       })
   }
-  useEffect(() => {
+
     if (imageFile) {
+      console.log("image file!", imageFile)
       uploadImage(imageFile)
+      setImageFile(null)
     }
-  }, []);
 
   return (
 
