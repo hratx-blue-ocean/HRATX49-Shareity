@@ -6,14 +6,14 @@ import axios from 'axios';
 
 
 const NewItem = (props) => {
-    const [itemName, onItemNameChange] = useState('')
-    const [category, onCatChange] = useState('')
-    const [zipcode, onZipChange] = useState('')
     const [condition, onConditionChange] = useState('')
-    const [description, onDescChange] = useState('')
-    const [estVal, onValChange] = useState('');
     const [selectedFile, addImageHandler] = useState(null);
     const [image, setImageUrl] = useState('')
+    const [itemName, setItemName] = useState('')
+    const [description, setDescript] = useState('')
+    const [estVal, setEstVal] = useState('')
+    const [zipcode, setZip] = useState('')
+    const [category, setCategory] = useState('')
 
     // const [userEmail, setUserEmail] = useState('')
     // const [userName, setUserName] = useState('')
@@ -22,10 +22,6 @@ const NewItem = (props) => {
     // setUserEmail('test')
     // setUserName('test')
 
-
-    function onImageAdd() {
-        //add image
-    }
     const uploadHandler = (selectedFile) => {
         const data = new FormData();
         // If file selected
@@ -111,7 +107,7 @@ const NewItem = (props) => {
                 <input
                     className={styles.addNameInputField}
                     value={itemName}
-                    onChange={(event) => onItemNameChange(event.target.value)}
+                    onChange={(event) => setItemName(event.target.value)}
                     placeholder="item name"
                     type="text"
                     required
@@ -119,7 +115,7 @@ const NewItem = (props) => {
                 <input
                     className={styles.addCategoryInputField}
                     value={category}
-                    onChange={(event) => onCatChange(event.target.value)}
+                    onChange={(event) => setCategory(event.target.value)}
                     placeholder="item category"
                     type="text"
                     required
@@ -130,7 +126,7 @@ const NewItem = (props) => {
                     <input
                         className={styles.addValueInputField}
                         value={estVal}
-                        onChange={(event) => onValChange(event.target.value)}
+                        onChange={(event) => setEstVal(event.target.value)}
                         placeholder="Estimated Value"
                         type="number"
                         required
@@ -138,7 +134,7 @@ const NewItem = (props) => {
                     <input
                         className={styles.addZipInputField}
                         value={zipcode}
-                        onChange={(event) => onZipChange(event.target.value)}
+                        onChange={(event) => setZip(event.target.value)}
                         placeholder="zipcode"
                         type="number"
                         required
@@ -149,7 +145,7 @@ const NewItem = (props) => {
                     className={styles.addDescriptionInputField}
                     value={description}
                     type="text"
-                    onChange={(event) => onDescChange(event.target.value)}
+                    onChange={(event) => setDescript(event.target.value)}
                     placeholder="brief description of your item"
                     required
                 ></input>

@@ -27,7 +27,7 @@ const Charity = (props) => { //
             achievement: newAchievement  
         })
             .then( res => {
-                console.log(res.data);
+                //console.log(res.data);
             })
             .catch( err => {
                 console.error(err);
@@ -83,7 +83,7 @@ const Charity = (props) => { //
 
             //pushed to data array if has been picked up and claimed
             res.data.items.map((item) => {
-                if(item.pickedUp === true ) {
+                if(item.pickedUp === true && item.estimatedValue !== 0) {
                     //assigns tax date to be exported
                     csvRow.push(item.dateCreated, item.name, item.category, item.estimatedValue)
                     csvData.push(csvRow);
@@ -113,14 +113,18 @@ const Charity = (props) => { //
                 <div className={styles.buttonWrapper}>
                     <div className={styles.donatedButtonText}>
                         <button className={styles.charityButton}>
-                            <div> Items Donated <div className={styles.winningText}> {itemQty}</div></div>
+                            <div>Hearts Earned
+                                <div className={styles.winningText}> 
+                                    <i class="fa fa-heart" aria-hidden="true"></i> {itemQty}   
+                                </div>
+                            </div>
                         </button>
                     </div>
                 </div>
                 <div className={styles.buttonWrapper}>
                     <div className={styles.donatedButtonText}>
                         <button className={styles.charityButton}>
-                            <div> Amount <div className={styles.winningText}>${itemVal.toFixed(0)}</div></div>
+                            <div> Value Donated<div className={styles.winningText}>${itemVal.toFixed(0)}</div></div>
                         </button>
                     </div>
                 </div>
