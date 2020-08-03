@@ -2,7 +2,7 @@
 
 _________________________
 # Welcome To Sharity
-Sharity is a Online, Donor to Charity, Web Application that allows for individuals to sign up and donate their unwanted items for Charities to then claim. Our team of Full Stack Software Engineers was approached by a client who asked us to build the Sharity web application. We were given feedback throughout and a little over a week to develop and deploy the application. 
+Sharity is an Online, Donor to Charity, Web Application that allows for individuals to sign up and donate their unwanted items for Charities to then claim. Our team of Full Stack Software Engineers were approached by a client who asked us to build the Sharity web application. We were given feedback throughout and a little over a week to develop and deploy the application. 
 
 Below you will find our User Stories, Dev Team, Tech Stack, Installation Guidance, and Wire Frames.
 
