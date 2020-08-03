@@ -56,7 +56,7 @@ const PickupList = () => {
                     //console.log(item)
             
                     if(item.pickedUp === false && item.claimedBy !== null && item.charityEmail !== null) {
-                        console.log(item)
+                        //console.log(item)
                         
                         //makes the date look pretty
                         item.date =  `${item.dateCreated.slice(5,7)}/${item.dateCreated.slice(8,10)}/${item.dateCreated.slice(2,4)} @${item.dateCreated.slice(11,16)}`
@@ -148,6 +148,7 @@ const PickupList = () => {
         };
         //defines the option that was selected in the dropdown by user
         const sortProperty = types[type]; 
+        console.log(type)
         //sorting function compares data from the fakeData file           
         const sorted = _.orderBy(pickupData, [sortProperty, 'asc'])
         addListData(sorted)

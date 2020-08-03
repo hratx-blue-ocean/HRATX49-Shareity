@@ -38,10 +38,22 @@ const LandingPage = () => {
   const retrieveItems = async () => {
     setLoading(true);
     const res = await Axios.get('/items');
-    let unclaimedItems = res.data.filter(item => {
+    let unclaimedItems = res.data.filter( item => {
+      // //for sorting purposes
+      //console.log(item.dateCreated)
+      if(item.name !== null) {
+        item.lowerCaseName = item.name.toLowerCase();
+      }
+      if(item.category !== null){
+        item.lowerCaseCategory = item.category.toLowerCase();
+      }
+      //date is parsed into number value to sort over
+      item.date =  `${item.dateCreated.slice(0,4)}${item.dateCreated.slice(5,7)}${item.dateCreated.slice(8,10)}${item.dateCreated.slice(11,13)}${item.dateCreated.slice(14,16)}`
+
       return item.claimedBy === null;
     }
     );
+    
     setItems(unclaimedItems)
     setLoading(false)
   };
@@ -88,6 +100,7 @@ const LandingPage = () => {
     }
   }
 
+
   const handleClaimingItem = (event, card) => { // function to handle claiming unclaimed stuff
     event.preventDefault();
     if (!isLoggedIn) {
@@ -116,20 +129,29 @@ const LandingPage = () => {
   const handleSort = (event, name) => {
     event.preventDefault();
     setToSortBy(name)
-    sortArray(toSortBy)
+    sortArray(name)
   }
 
   //Function to sort
-  const sortArray = type => {
+  const sortArray = async type => {
     const types = {
-      name: 'name',
-      date: 'dateCreated',
-      category: 'category',
+      name: 'lowerCaseName',
+      date: 'date',
+      category: 'lowerCaseCategory',
       location: 'Location'
     }
     const sortProperty = types[type];
-    const sorted = _.orderBy(items, [sortProperty, 'asc'])
-    setItems(sorted);
+
+    //console.log(sortProperty)
+    var sorted = _.orderBy(items, [sortProperty, 'desc'])
+
+    if(sortProperty === 'date') {
+      //sorts items by date from most recent to oldest
+      sorted = items.sort((a,b) => b.date - a.date)
+    }
+
+    setItems(sorted)
+
   }
 
   //Get Current Items

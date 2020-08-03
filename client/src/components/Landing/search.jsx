@@ -11,8 +11,13 @@ const Search = ({ setSearchItems }) => {
         Axios.get(`/items/`)
             .then(res => {
                 res.data.map(item => {
-                    if (item.name.toLowerCase().includes(searchedWord)
-                        || item.Description.toLowerCase().includes(searchedWord)) {
+                    //checks for null values that might cause bugs
+                    if (item.claimedBy === null && item.pickedUp !== true 
+                        && item.name !== null && item.Description !== undefined
+                        && item.category !== null)
+                        if(item.name.toLowerCase().includes(searchedWord)
+                        || item.Description.toLowerCase().includes(searchedWord) 
+                        || item.category.toLowerCase().includes(searchedWord)) {
                         searchArr.push(item);
                     }
                 })
