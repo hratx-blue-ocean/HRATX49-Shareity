@@ -5,7 +5,7 @@ import { Card } from 'react-bootstrap';
 
 var _ = require('lodash');
 
-const PickupList = () => {
+const PickupList = ({ displayCard }) => {
 
     //set users pickup data, sorting options and boolean if charity
     const [sortType, setSortType] = useState('date');
@@ -103,7 +103,7 @@ const PickupList = () => {
         sortArray(name)
     }
 
-    const handlePickupItem = async (event) => {
+    const handlePickupItem = async (event, item) => {
 
         //if no local storage exists, then do nothing
         if(!localStorage.getItem('user')) {
@@ -116,7 +116,7 @@ const PickupList = () => {
         var data = {
             user: charityEmail,
             userType: 'charity',
-            _id: await event.target.value,
+            _id: item._id,
             item: {
                 pickedUp: true,
             }
@@ -176,26 +176,26 @@ const PickupList = () => {
                 <table>
                     <thead className={styles.listRowHeaders}>
                         <tr>
-                        <th> <i class="far fa-clock"></i></th>
-                        <th> <i class="fas fa-heart"></i></th>
-                        <th> <i class="fas fa-location-arrow"></i></th>
-                        <th><i class="fas fa-hands-helping"></i></th>
-                        <th><i class="fas fa-truck"></i></th>
+                        <th> <i className="far fa-clock"></i></th>
+                        <th> <i className="fas fa-heart"></i></th>
+                        <th> <i className="fas fa-location-arrow"></i></th>
+                        <th><i className="fas fa-hands-helping"></i></th>
+                        <th><i className="fas fa-truck"></i></th>
                         </tr>
                     </thead>
                     <tbody className={styles.listRowWrap}>   
                         {pickupData.map((item, i) => 
-                            <tr key={i} className={styles.listItemRow} >
-                                <td> {item.date} </td>
-                                <td> {item.name} </td>
-                                <td> {item.Location}</td>
-                                <td> {item.contact}</td>
-                                <td className={styles.deleteButton}>
+                            <tr key={i} className={styles.listItemRow}>
+                                <td onClick={ (e) => displayCard(e, item)}> {item.date} </td>
+                                <td onClick={ (e) => displayCard(e, item)}> {item.name} </td>
+                                <td onClick={ (e) => displayCard(e, item)}> {item.Location}</td>
+                                <td className={styles.contact} onClick={ (e) => displayCard(e, item)}> {item.contact}</td>
+                                <td className={styles.deleteButton} >
                                     <button className={styles.deleteButton} 
                                         value={item._id} 
-                                        onClick={(event) => handlePickupItem(event)}
+                                        onClick={(event) => handlePickupItem(event, item)}
                                     >
-                                        <i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i>
+                                        <i className="fa fa-check-circle-o fa-lg" aria-hidden="true"></i>
                                     </button>
                                 </td>
                             </tr>

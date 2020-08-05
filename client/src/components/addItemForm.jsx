@@ -71,8 +71,8 @@ const NewItem = (props) => {
         const userData = JSON.parse(localStorage.getItem('user'))
         const userName = userData.name
         const email = userData.email
-        console.log(userName, email)
-        console.log("image", image)
+        //console.log(userName, email)
+        //console.log("image", image)
         var data = {
             donor: userName,
             name: itemName,
@@ -89,7 +89,7 @@ const NewItem = (props) => {
         axios.post('/items', data)
         .then(res=> {
             props.closeModal()
-            console.log('your item has been added', res.data)
+            //console.log('your item has been added', res.data)
         })
         .catch(err => {
             console.log('error posting on axios post request: ', err)

@@ -10,7 +10,6 @@
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: white;
 }
 
 .navBarContainer{
@@ -23,11 +22,29 @@
 
 .bodyContainer{
   min-height: 80%;
-  background-color: #e4eff03b;
+  background: gradient (rgba(218, 218, 218, 0.509), white);
+
+  /* box-shadow: 5px 3px 30px black; */
+  overflow: hidden;
+
 }
 
 .paginaterContainer{
-  min-height: 5%;
+  min-height: 2%;
   align-self: center;
   margin-top: 2%;
+
+}
+
+
+.bodyContainer::before {
+
+  margin: -35px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  filter: blur(20px);
+  z-index: -1;
 }
