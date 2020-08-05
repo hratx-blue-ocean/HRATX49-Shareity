@@ -45,8 +45,6 @@ const DonatedList = ({ displayCard }) => {
             res.data.items.map((item) => {
                 //if data is not picked up or claimed
                 if(item.pickedUp === false  && item.claimedBy == null ) {
-                    console.log(item)
-
                     //makes the date look pretty
                     item.date =  `${item.dateCreated.slice(5,7)}/${item.dateCreated.slice(8,10)}/${item.dateCreated.slice(2,4)} @${item.dateCreated.slice(11,16)}`
                     
@@ -79,14 +77,6 @@ const DonatedList = ({ displayCard }) => {
         setSortType(name);
         sortArray(name)
     }
-
-    // //item popup(not working yet)
-    // const displayCard = (e, card) => {
-    //     e.preventDefault();
-    //     console.log(card)
-    //    setSelectedCard(card)
-    //     setShowDetails(true);
-    // }
         
     //deletes an item that user no longer wishes to donate
     function onDeleteItem (id) {

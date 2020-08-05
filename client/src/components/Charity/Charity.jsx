@@ -107,7 +107,7 @@ const Charity = (props) => { //
         })
     }
 
-     //item popup(not working yet)
+     //displays detailed view modal of item when a row is clicked on
      const displayCard = (e, card) => {
         e.preventDefault();
         setSelectedCard(card)

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../../styles/lists.css';
 import Axios from 'axios';
-import { Card } from 'react-bootstrap';
 
 var _ = require('lodash');
 
@@ -10,7 +9,6 @@ const PickupList = ({ displayCard }) => {
     //set users pickup data, sorting options and boolean if charity
     const [sortType, setSortType] = useState('date');
     const [pickupData, addListData] = useState([]);
-    const [userData, setUserData] = useState({});
     var charity = false;
 
         //assigns title and sort options for list
@@ -148,7 +146,6 @@ const PickupList = ({ displayCard }) => {
         };
         //defines the option that was selected in the dropdown by user
         const sortProperty = types[type]; 
-        console.log(type)
         //sorting function compares data from the fakeData file           
         const sorted = _.orderBy(pickupData, [sortProperty, 'asc'])
         addListData(sorted)
