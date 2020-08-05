@@ -182,6 +182,7 @@ const LandingPage = () => {
       </div>
       <div className={styles.paginaterContainer}>
         <Paginater
+          className={styles.paginaterContainer}
           paginate={paginate}
           itemsPerPage={itemsPerPage}
           totalItems={items.length}

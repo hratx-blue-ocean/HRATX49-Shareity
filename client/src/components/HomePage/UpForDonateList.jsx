@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../../styles/lists.css';
-import ItemPopUp from '../Landing/LandingSubComponents/showDetails.jsx'
 import Axios from 'axios';
 
 var _ = require('lodash');
 
-const DonatedList = ( ) => {
+const DonatedList = ({ displayCard }) => {
     //sets title and sort options for list
     var title='Up for Donation'
     var sortOptions = ['dateCreated', 'estimatedValue', 'name', 'category'];
@@ -46,7 +45,6 @@ const DonatedList = ( ) => {
             res.data.items.map((item) => {
                 //if data is not picked up or claimed
                 if(item.pickedUp === false  && item.claimedBy == null ) {
-
                     //makes the date look pretty
                     item.date =  `${item.dateCreated.slice(5,7)}/${item.dateCreated.slice(8,10)}/${item.dateCreated.slice(2,4)} @${item.dateCreated.slice(11,16)}`
                     
@@ -79,12 +77,7 @@ const DonatedList = ( ) => {
         setSortType(name);
         sortArray(name)
     }
-
-    var popup = '';
-    //item popup(not working yet)
-    function onItemClick (val) {
-        popup = <ItemPopUp cart={val}/>
-    }
+        
     //deletes an item that user no longer wishes to donate
     function onDeleteItem (id) {
         //if no local storage exists, then do nothing
@@ -130,7 +123,6 @@ const DonatedList = ( ) => {
 
     return (
         <div className={styles.listWrap}>
-            {popup}
             <div className={styles.listWrapHeader}>
                 <select 
                     className={styles.listSelector}  
@@ -149,16 +141,16 @@ const DonatedList = ( ) => {
                 <table>
                     <thead className={styles.listRowHeaders}>
                         <tr>
-                            <th><i class="far fa-clock"></i></th>
-                            <th><i class="fas fa-heart"></i></th>
-                            <th><i class="fas fa-grip-lines"></i></th>
-                            <th><i class="fas fa-dollar-sign"></i></th>
-                            <th><i class="fa fa-times" aria-hidden="true"></i></th>
+                            <th><i className="far fa-clock"></i></th>
+                            <th><i className="fas fa-heart"></i></th>
+                            <th><i className="fas fa-grip-lines"></i></th>
+                            <th><i className="fas fa-dollar-sign"></i></th>
+                            <th><i className="fa fa-times" aria-hidden="true"></i></th>
                         </tr>
                     </thead>
                     <tbody className={styles.listRowWrap}>  
                         {filteredData.map((item, i) => 
-                            <tr key={i} value={item} className={styles.listItemRow} onClick={ e => onItemClick(e.target.value)}>
+                            <tr key={i} className={styles.listItemRow} onClick={ (e) => displayCard(e, item)}>
                                 <td>{item.date}</td>
                                 <td>{item.name} </td>
                                 <td> {item.category} </td>
@@ -169,7 +161,7 @@ const DonatedList = ( ) => {
                                         value={item._id } 
                                         onClick={(event) => onDeleteItem(event.target.value)}
                                     >
-                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                        <i className="fa fa-trash-o" aria-hidden="true"></i>
                                     </button>
                                 </td>
                             </tr>

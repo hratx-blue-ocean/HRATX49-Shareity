@@ -7,22 +7,23 @@
 /* ######################################### */ 
 .listWrapHeader {
     /* text-align: center; */
-    margin-bottom: 20px;
-    margin-top: 10px
+    margin-bottom: 28px;
+    margin-top: -11px
 
 }
 
 .listTitle {
     font-weight: bolder;
     color: #ff01bf;
-    font-size: 22px;
+    font-size: 27px;
     font: impact;
 }
 .listSelector {
     font-size: 13px;
     border-radius: 7px;
     float: right;
-    margin-top: 3px;
+    margin-right: 10mm;
+    margin-top: 18px;
     padding: 1mm;
     border-width: 1px;
     font-weight: bolder;
@@ -36,12 +37,11 @@
 table {
     border-spacing: 1 rem;
     border-color: #ff01bf;
-    min-width: 396px;
-    max-width: 396px;
+    width: 440px;
     font: impact;
 }
 tr {
-    font-size: 10px;
+    font-size: 14px;
     text-align: center;
     font-style: italic;
     border: medium;
@@ -51,18 +51,30 @@ tr {
 
 
 }
+thead {
+    position: sticky;
+    top: 0px;
+}
 td {
     padding: 2px;
     border-width: .5px;
     border-style: solid;
     border-color: #ff01bf;
-
+}
+.contact {
+    padding: 2px;
+    font-size: 10px;
+    border-width: .5px;
+    border-style: solid;
+    border-color: #ff01bf;
+    word-break: break-word;
 }
 th {
     font-size: medium;
     padding: 7px;
     padding-right: 4mm;
-    
+    position: sticky;
+    top: 0px;
     background-color: #ff01bf;
     color: white;
 }
@@ -89,6 +101,11 @@ th {
     border-radius: 7px;  
     border-color: #ff01bf;
     padding: 3mm;
+}
+.listItemRow:hover {
+    cursor: pointer;
+    background-color: #ff01c073;
+    color: white;
 }
 .colHeader {
     margin: 2mm;
@@ -132,7 +149,7 @@ th {
 }
 .totalPickupWrap {
     background-color: #ff01bf;
-    width: 396px;
+    width: 440px;
     min-height: 25px;
 }
 /* ########################################### */
@@ -146,4 +163,9 @@ th {
     background: transparent;
     background-color: #ff01bf;
     
+}
+
+.boximg {
+    width: 100px;
+    height: 100px;
 }
