@@ -9,6 +9,7 @@ import DonatedList from '../HomePage/DonatedList.jsx';
 import UpForDonateList from '../HomePage/UpForDonateList.jsx';
 import AddItem from '../Modals/AddItem.jsx';
 import UpdatePassword from '../Modals/UpdatePassword.jsx';
+import ItemPopUp from '../Landing/LandingSubComponents/showDetails.jsx'
 
 import {
     BrowserRouter as Router,
@@ -40,6 +41,8 @@ const Charity = (props) => { //
     var csvData = [['date', 'name', 'category', 'estimated value']]
     const [itemVal, valueOfItems] = useState(0); 
     const [itemQty, numOfItems] = useState(0);
+    const [showDetails, setShowDetails] = useState(false);
+    const [selectedCard, setSelectedCard] = useState(null);
     var leftList = '';
     var donorButtons = '';
 
@@ -103,6 +106,20 @@ const Charity = (props) => { //
             console.log(err)
         })
     }
+
+     //displays detailed view modal of item when a row is clicked on
+     const displayCard = (e, card) => {
+        e.preventDefault();
+        setSelectedCard(card)
+        setShowDetails(true);
+    }
+
+      //Click Handler to Close Card
+  const closeCard = () => {
+    setSelectedCard(null);
+    setShowDetails(false);
+  };
+
     
     if(!charity) {
         donorButtons =
@@ -115,7 +132,7 @@ const Charity = (props) => { //
                         <button className={styles.charityButton}>
                             <div>Hearts Earned
                                 <div className={styles.winningText}> 
-                                    <i class="fa fa-heart" aria-hidden="true"></i> {itemQty}   
+                                    <i className="fa fa-heart" aria-hidden="true"></i> {itemQty}   
                                 </div>
                             </div>
                         </button>
@@ -130,14 +147,15 @@ const Charity = (props) => { //
                 </div>
             </div>
 
-        leftList = <UpForDonateList />
+        leftList = <UpForDonateList displayCard={displayCard}/>
     } else {
-        leftList = <DonatedList />
+        leftList = <DonatedList displayCard={displayCard}/>
     }
 
     return (
 
         <>
+            {showDetails && <ItemPopUp card={selectedCard} closeCard={closeCard} /> }
             <div className={styles.charityContainer}>
                 <div className={styles.charityWrapper}>
 
@@ -199,8 +217,7 @@ const Charity = (props) => { //
                         {/* items to be picked up */}
                         <div className={styles.charityListItemsToBePickedUp}>
                             <div className={styles.charityUserListWrapper}>
-                                <PickupList />
-
+                                <PickupList displayCard={displayCard}/>
                             </div>
                         </div>
                 </div>

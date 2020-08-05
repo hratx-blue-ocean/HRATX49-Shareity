@@ -14,7 +14,9 @@ function IndivCards({ item, displayCard }) {
       onClick={(event) => displayCard(event, item)}
       className={Styles.cardStyle}
     >
-      <img className={Styles.cardImage} src={image} />
+      <div className={Styles.imageBox}>
+          <img className={Styles.cardImage} src={image} />
+      </div>
       <p className={Styles.cardName}>{item.name}</p>
       <p>{moment().from(item.dateCreated)}</p>
     </div>

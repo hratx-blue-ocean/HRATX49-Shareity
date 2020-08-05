@@ -3,6 +3,7 @@ import styles from '../ShowDetails.css';
 import moment from 'moment';
 
 const ShowDetails = ({ card, closeCard, claimItem }) => {
+ 
   if (card.pictures == null) {
     card.pictures = 'https://picsum.photos/200/300';
   }

@@ -6,7 +6,7 @@ const Paginater = ({ itemsPerPage, totalItems, paginate }) => {
     pageNumber.push(i)
   }
   return (
-    <nav>
+    <div>
       <ul className="pagination">
         {pageNumber.map(number => (
           <li key={number} className='page-item'>
@@ -16,7 +16,7 @@ const Paginater = ({ itemsPerPage, totalItems, paginate }) => {
           </li>
         ))}
       </ul>
-    </nav>
+    </div>
   )
 }
 

@@ -4,7 +4,7 @@ import Axios from 'axios';
 var _ = require('lodash');
 
 
-const DonatedList = ( ) => {
+const DonatedList = ({ displayCard }) => {
     //Charity  sorting options and list title
     var title='List of Donations'
     var sortOptions = ['dateCreated', 'name', 'category', 'value'];
@@ -119,17 +119,17 @@ const DonatedList = ( ) => {
                 <table>
                     <thead className={styles.listRowHeaders}>
                         <tr>
-                            <th> <i class="far fa-clock"></i></th>
-                            <th> <i class="fas fa-heart"></i></th>
-                            <th> <i class="fas fa-grip-lines"></i></th>
-                            <th> <i class="fa fa-usd" aria-hidden="true"></i></th>
+                            <th> <i className="far fa-clock"></i></th>
+                            <th> <i className="fas fa-heart"></i></th>
+                            <th> <i className="fas fa-grip-lines"></i></th>
+                            <th> <i className="fa fa-usd" aria-hidden="true"></i></th>
                             
                         </tr>
                     </thead>
                     <tbody className={styles.listRowWrap}>  
                         {donatedData.map((item, i) =>  
 
-                            <tr key={i} className={styles.listItemRow} onClick={() => alert('im clicked!')}>
+                            <tr key={i} className={styles.listItemRow} onClick={ (e) => displayCard(e, item)}>
                                 <td>{item.date}</td>
                                 <td> {item.name} </td>
                                 <td> {item.category} </td>

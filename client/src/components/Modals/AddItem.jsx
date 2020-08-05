@@ -16,8 +16,8 @@ const AddItem = ({ buttonText, addAchievement }) => {
 
             setModalView('block');
             setButtonView('none');
-            console.log(modalView);
-            console.log(buttonView);
+            //console.log(modalView);
+            //console.log(buttonView);
 
         } else {
 
