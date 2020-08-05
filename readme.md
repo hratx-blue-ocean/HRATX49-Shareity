@@ -2,7 +2,7 @@
 
 _________________________
 # Welcome To Sharity
-Sharity is an Online, Donor to Charity, Web Application that allows for individuals to sign up and donate their unwanted items for Charities to then claim. Our team of Full Stack Software Engineers were approached by a client who asked us to build the Sharity web application. We were given feedback throughout and a little over a week to develop and deploy the application. 
+Sharity is an Online, Donor to Charity, Web Application that allows for individuals to sign up and donate their unwanted items for Charities to then claim. Our team of Full Stack Software Engineers were approached by a client who asked us to build the Sharity web application. We were given feedback throughout and a little over a week to develop and deploy the application.
 
 Below you will find our User Stories, Dev Team, Tech Stack, Installation Guidance, and Wire Frames.
 
@@ -14,22 +14,22 @@ _________________________
 # User Stories
 
 * As a Donor/Charity, I want to be able to Create an Account
-* As a Donor, I want to be able to put an Item up for donation 
-* As a Charity, I want to be able to claim an Item that was put up for donation 
-* As a Donor, I want to be able to delete an Item that was put up for donation 
-* As a Charity, I want to be able to sort through unclaimed donations based on Name, Location, Date, & Category 
-* As a Charity, I want to be able to generate a statement of my Donations 
+* As a Donor, I want to be able to put an Item up for donation
+* As a Charity, I want to be able to claim an Item that was put up for donation
+* As a Donor, I want to be able to delete an Item that was put up for donation
+* As a Charity, I want to be able to sort through unclaimed donations based on Name, Location, Date, & Category
+* As a Charity, I want to be able to generate a statement of my Donations
 * As a Donor, I want to be able to generate a statement for tax purposes
 * As a Donor, I want to see all of my claimed, but not yet picked up donations
 * As a Donor, I want to see a history of all of my donations
-* As a Donor/Charity, I want to be able to establish communication with my counter part 
+* As a Donor/Charity, I want to be able to establish communication with my counter part
 * As a Donor, I want to see the total value of items I have donated
-* As a Charity, I want to be able to confirm when a donation was picked up 
-* As a Charity, I want to be able to see the total amount and value of items claimed 
+* As a Charity, I want to be able to confirm when a donation was picked up
+* As a Charity, I want to be able to see the total amount and value of items claimed
 _______________________
 
 # Yet to Come
-* As a Donor/Charity, I want to be able to chat on the site 
+* As a Donor/Charity, I want to be able to chat on the site
 * As a Donor, I want to be able to claim a donation
 * As a Donor, I want to be able to confirm a donation was picked up
 * As a Donor, I want to be able to select whether or not an individual can claim my donation
@@ -64,7 +64,7 @@ Sharity uses a number of open source projects to work properly:
 * [Babel] - The compiler for next generation JavaScript
 * [NPM] - An all in one package manager.
 ##### API
-* [Axios] - Promise based HTTP client for the browser and node.js 
+* [Axios] - Promise based HTTP client for the browser and node.js
 
 _______________________
 ### Installation
