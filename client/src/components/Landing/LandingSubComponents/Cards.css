@@ -32,8 +32,9 @@
   display: inline-block;
   vertical-align: middle;
   max-width: 90%;
-  height: auto;
   max-height: 300px;
+  width: 90%;
+  height: 160px;
 }
 
 .cardName {
