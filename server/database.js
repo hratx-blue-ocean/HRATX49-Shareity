@@ -53,7 +53,6 @@ client.connect((err) => {
   client.updateProfilePic = async (email, profilePic) => {
     try {
        let query = await userCollection.updateOne({email: email}, {$set: profilePic });
-       console.log("schwing!")
        return query;
     } catch (err) {
       console.log(err);
@@ -103,13 +102,13 @@ client.connect((err) => {
     try {
       //set up query based on donor vs charity
       let query = {};
-  
+
       if (userType === 'donor') {
         query.email = userEmail;
       } else {
         query.charityEmail = userEmail;
       }
-  
+
       //find items associated with user or charity
       let result = await itemCollection.find( query ).toArray();
       return result;

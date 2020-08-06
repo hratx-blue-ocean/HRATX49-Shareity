@@ -13,7 +13,7 @@ const NewItem = (props) => {
     const [description, onDescChange] = useState('')
     const [estVal, onValChange] = useState('');
     const [selectedFile, addImageHandler] = useState(null);
-    const [image, setImageUrl] = useState('')
+    const [image, setImageUrl] = useState(null);
 
     // const [userEmail, setUserEmail] = useState('')
     // const [userName, setUserName] = useState('')
@@ -22,10 +22,6 @@ const NewItem = (props) => {
     // setUserEmail('test')
     // setUserName('test')
 
-
-    function onImageAdd() {
-        //add image
-    }
     const uploadHandler = (selectedFile) => {
         const data = new FormData();
         // If file selected
@@ -52,8 +48,7 @@ const NewItem = (props) => {
                         } else {
                             // Success
                             let fileName = response.data;
-                            console.log('fileName', fileName.location);
-                            console.log('File Uploaded');
+
                             // localStorage.setItem('currentUploadUrl', fileName.location)
                             setImageUrl(fileName.location)
                         }
@@ -98,6 +93,10 @@ const NewItem = (props) => {
         .catch(err => {
             console.log('error posting on axios post request: ', err)
         })
+    }
+    if(selectedFile){
+        uploadHandler(selectedFile)
+        addImageHandler(null)
     }
 
     return (
@@ -181,10 +180,6 @@ const NewItem = (props) => {
                         className={styles.addItemUploadInputButton}
                         type="file"
                         onChange={() => { addImageHandler(event.target.files[0]) }} />
-                    <br />
-                    <button
-                        className={styles.addItemUploadSubmitButton}
-                        onClick={() => { uploadHandler(selectedFile) }}>Upload!</button>
                 </div>
                 <div>
                     <button
