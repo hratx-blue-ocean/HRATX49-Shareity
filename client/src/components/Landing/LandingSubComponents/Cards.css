@@ -22,7 +22,8 @@
 
 .cardImage {
   width: 90%;
-  height: auto;
+  height: 160px;
+	position: relative;
 }
 
 .cardName {
