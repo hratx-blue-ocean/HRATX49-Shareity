@@ -43,7 +43,7 @@ _______________________
   - [Ricardo Guerrero] - Back End Focus, Landing Page
   - [Christopher Murray] - Back End Focus, Charity Page
   - [Joshua Edwards] - Front End Focus, Charity Page
-  - [Kenneth 'Peyton' Perret] - Front End Focus, Chat, Login & Sign Up
+  - [Kenneth 'Peyton' Perret] - Front End Focus, Login & Sign Up
 
 _______________________
 # Tech Stack
